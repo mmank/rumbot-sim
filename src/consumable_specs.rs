@@ -775,14 +775,8 @@ fn the_wheel_of_fortune(game: &mut GameState, _cards: &[CardRef]) {
         return;
     }
     let joker = game.rng.choice("wheel_of_fortune", &plain);
-    let name = crate::shop_pool::poll_edition(
-        &mut game.rng,
-        "wheel_of_fortune",
-        1.0,
-        true,
-        1.0,
-        true,
-    );
+    let name =
+        crate::shop_pool::poll_edition(&mut game.rng, "wheel_of_fortune", 1.0, true, 1.0, true);
     let edition = edition_from_name(name);
     joker.borrow_mut().edition = edition;
     game.log(format!(
@@ -802,8 +796,7 @@ fn the_wheel_of_fortune(game: &mut GameState, _cards: &[CardRef]) {
 /// uniformly from three gives polychrome far more often than the game does.
 fn aura(game: &mut GameState, cards: &[CardRef]) {
     for card in cards {
-        let name =
-            crate::shop_pool::poll_edition(&mut game.rng, "aura", 1.0, true, 1.0, true);
+        let name = crate::shop_pool::poll_edition(&mut game.rng, "aura", 1.0, true, 1.0, true);
         card.borrow_mut().edition = edition_from_name(name);
     }
 }
@@ -1053,7 +1046,13 @@ fn the_soul(game: &mut GameState, _cards: &[CardRef]) {
 /// The rarity is not rolled: the game passes 0.99, which lands in the rare band,
 /// so this is always rare and never legendary.
 fn wraith(game: &mut GameState, _cards: &[CardRef]) {
-    game.add_random_joker("Wraith", Some(crate::jokers::Rarity::Rare), false, "wra", false);
+    game.add_random_joker(
+        "Wraith",
+        Some(crate::jokers::Rarity::Rare),
+        false,
+        "wra",
+        false,
+    );
     let money = game.money;
     game.add_money(-money, "Wraith");
 }

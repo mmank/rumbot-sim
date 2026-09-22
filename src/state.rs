@@ -37,8 +37,8 @@
 use std::collections::BTreeMap;
 
 use crate::cards::{
-    debuffed_of, edition_of, enhancement_of, extra_chips_of, rank_of, seal_of,
-    suit_of, CardRef, Edition, Enhancement, Rank, Seal, Suit,
+    debuffed_of, edition_of, enhancement_of, extra_chips_of, rank_of, seal_of, suit_of, CardRef,
+    Edition, Enhancement, Rank, Seal, Suit,
 };
 use crate::consumables::{ConsumableKind, ConsumableSpec};
 use crate::game::{GameState, PackChoice, Phase};
@@ -101,12 +101,7 @@ impl From<String> for StateValue {
 
 /// A map from owned key/value pairs; the keys are sorted by `BTreeMap`.
 fn map(pairs: Vec<(&str, StateValue)>) -> StateValue {
-    StateValue::Map(
-        pairs
-            .into_iter()
-            .map(|(k, v)| (k.to_string(), v))
-            .collect(),
-    )
+    StateValue::Map(pairs.into_iter().map(|(k, v)| (k.to_string(), v)).collect())
 }
 
 // ----------------------------------------------------------------------
@@ -353,8 +348,7 @@ pub fn card_key_and_set(card: &CardRef) -> (String, &'static str) {
 /// `_shop_key_and_set`.
 pub fn shop_key_and_set(slot: &ShopSlot) -> (String, &'static str) {
     if let Some(joker) = &slot.joker {
-        let key = crate::shop_pool::key_by_joker_name(joker.borrow().name())
-            .unwrap_or("");
+        let key = crate::shop_pool::key_by_joker_name(joker.borrow().name()).unwrap_or("");
         return (key.to_string(), "Joker");
     }
     if let Some(spec) = slot.consumable {
@@ -407,11 +401,7 @@ fn has_room(game: &GameState, slot: &ShopSlot) -> bool {
 /// `GameState` methods of the same name. They are not on the Rust `GameState`
 /// yet, so the observation builds the same answers here; when they land there,
 /// these become thin calls.
-fn shop_row(
-    game: &GameState,
-    slot: &ShopSlot,
-    picked: &[CardRef],
-) -> BTreeMap<String, StateValue> {
+fn shop_row(game: &GameState, slot: &ShopSlot, picked: &[CardRef]) -> BTreeMap<String, StateValue> {
     let (key, kind) = shop_key_and_set(slot);
     let price = slot_price(game, slot);
     let card = &slot.card;
@@ -537,8 +527,7 @@ pub fn shop_rows(game: &GameState, picked: &[CardRef]) -> StateValue {
 pub fn pack_row(game: &GameState, option: &PackChoice, picked: &[CardRef]) -> StateValue {
     match option {
         PackChoice::Joker(joker) => {
-            let key = crate::shop_pool::key_by_joker_name(joker.borrow().name())
-                .unwrap_or("");
+            let key = crate::shop_pool::key_by_joker_name(joker.borrow().name()).unwrap_or("");
             let mut m = BTreeMap::new();
             m.insert("center".to_string(), centres().of(key).into());
             m.insert("set".to_string(), shop_set_id("Joker").into());
@@ -571,8 +560,7 @@ pub fn pack_row(game: &GameState, option: &PackChoice, picked: &[CardRef]) -> St
             ])
         }
         PackChoice::Consumable(spec) => {
-            let key =
-                crate::shop_pool::key_by_consumable_name(spec.name).unwrap_or("");
+            let key = crate::shop_pool::key_by_consumable_name(spec.name).unwrap_or("");
             let usable = can_use_consumable(game, spec, picked);
             map(vec![
                 ("center", centres().of(key).into()),
@@ -646,14 +634,9 @@ fn pack_price(game: &GameState, pack: &PackSpec) -> i32 {
 /// matters most is the last: anything that selects cards is gated on the phase
 /// being `SELECTING_HAND` or one of the pack states, so a targeting Tarot
 /// cannot be used in a shop or on the cash-out screen at all.
-fn can_use_consumable(
-    game: &GameState,
-    spec: &ConsumableSpec,
-    targets: &[CardRef],
-) -> bool {
+fn can_use_consumable(game: &GameState, spec: &ConsumableSpec, targets: &[CardRef]) -> bool {
     use crate::game::{
-        FREE_CONSUMABLE_NEEDED, FREE_JOKER_NEEDED, PLAIN_JOKER_NEEDED,
-        SPARE_CARD_NEEDED,
+        FREE_CONSUMABLE_NEEDED, FREE_JOKER_NEEDED, PLAIN_JOKER_NEEDED, SPARE_CARD_NEEDED,
     };
 
     // A hand to work on: in a round, or inside a pack that dealt one.
@@ -679,9 +662,7 @@ fn can_use_consumable(
         if spec.name != "The Fool" {
             return room;
         }
-        return room
-            && !game.last_tarot_planet.is_empty()
-            && game.last_tarot_planet != "c_fool";
+        return room && !game.last_tarot_planet.is_empty() && game.last_tarot_planet != "c_fool";
     }
     if PLAIN_JOKER_NEEDED.contains(&spec.name) {
         return plain_jokers > 0;
@@ -784,8 +765,7 @@ fn blind_row(
     let mut mult = kind.mult();
     let mut effect = None;
     if kind == BlindKind::Boss && !boss_key.is_empty() {
-        effect =
-            crate::boss_data::boss_row(boss_key).and_then(|row| boss_by_name(row.name));
+        effect = crate::boss_data::boss_row(boss_key).and_then(|row| boss_by_name(row.name));
         if let Some(effect) = effect {
             mult = effect.chip_mult;
         }
@@ -834,8 +814,7 @@ pub fn deck_counts(cards: &[CardRef]) -> StateValue {
     for card in cards {
         ranks[(rank_id(rank_of(card)) - 1) as usize] += 1;
         suits[(suit_id(suit_of(card)) - 1) as usize] += 1;
-        enhancements
-            [enhancement_id(enhancement_key(enhancement_of(card))) as usize] += 1;
+        enhancements[enhancement_id(enhancement_key(enhancement_of(card))) as usize] += 1;
         seals[seal_id(seal_of(card)) as usize] += 1;
         editions[edition_id(edition_of(card)) as usize] += 1;
         let extra = extra_chips_of(card) as i64;
@@ -855,9 +834,8 @@ pub fn deck_counts(cards: &[CardRef]) -> StateValue {
     } else {
         extra_nonzero as f64 / len
     };
-    let list = |values: &[i64]| {
-        StateValue::List(values.iter().map(|v| StateValue::Int(*v)).collect())
-    };
+    let list =
+        |values: &[i64]| StateValue::List(values.iter().map(|v| StateValue::Int(*v)).collect());
     map(vec![
         ("extra_chips_mean", mean.into()),
         ("extra_chips_share", share.into()),
@@ -970,8 +948,7 @@ pub fn state_dict(
         }
     };
 
-    let mut vouchers: Vec<String> =
-        game.vouchers.iter().map(|v| v.key.to_string()).collect();
+    let mut vouchers: Vec<String> = game.vouchers.iter().map(|v| v.key.to_string()).collect();
     vouchers.sort();
 
     let hand_rows = StateValue::List(
@@ -980,8 +957,7 @@ pub fn state_dict(
             .map(|(index, card)| card_row(card, chosen.contains(&index)))
             .collect(),
     );
-    let jokers =
-        StateValue::List(game.jokers.iter().map(|j| joker_row(game, j)).collect());
+    let jokers = StateValue::List(game.jokers.iter().map(|j| joker_row(game, j)).collect());
     let consumables = StateValue::List(
         game.consumables
             .iter()
@@ -1042,7 +1018,10 @@ pub fn state_dict(
         ("toggles_used", toggles_used.into()),
         ("joker_swaps_used", joker_swaps_used.into()),
         ("boss", (if boss { 1 } else { 0 }).into()),
-        ("skippable", (if game.blind_index < 2 { 1 } else { 0 }).into()),
+        (
+            "skippable",
+            (if game.blind_index < 2 { 1 } else { 0 }).into(),
+        ),
         ("offered_tag", centres().tag(tag_key).into()),
         ("best_hand", game.best_hand.into()),
         ("deck_size", (game.full_deck.len() as i32).into()),
@@ -1054,7 +1033,10 @@ pub fn state_dict(
         ("ancient_suit", suit_id_of(game.ancient_suit).into()),
         ("mail_rank", rank_id_of(game.mail_rank).into()),
         ("castle_suit", suit_id_of(game.castle_suit).into()),
-        ("vouchers", StateValue::List(vouchers.into_iter().map(StateValue::Str).collect())),
+        (
+            "vouchers",
+            StateValue::List(vouchers.into_iter().map(StateValue::Str).collect()),
+        ),
         ("blinds", StateValue::List(rows)),
         ("hand_levels", StateValue::Map(levels)),
         ("selected_hand", made),

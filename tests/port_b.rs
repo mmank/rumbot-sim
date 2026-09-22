@@ -16,9 +16,7 @@ use std::collections::{BTreeMap, BTreeSet, HashMap, HashSet};
 use std::rc::Rc;
 
 use jimbot_sim::blinds::{boss_by_name, make_blind, BlindKind};
-use jimbot_sim::cards::{
-    make_card, CardRef, Edition, Enhancement, Rank, Seal, Suit,
-};
+use jimbot_sim::cards::{make_card, CardRef, Edition, Enhancement, Rank, Seal, Suit};
 use jimbot_sim::consumables;
 use jimbot_sim::game::{Action, ActionType, GameState, PackChoice, Phase, Tag};
 use jimbot_sim::hands::{HandType, HANDLIST, SECRET_HANDS};
@@ -202,8 +200,7 @@ fn test_the_hollow_jokers_are_the_ones_we_say_they_are() {
     // (Diet Cola's Double Tag pool, Hallucination's booster pack) were blocked on
     // machinery that now exists. The set stays so anything new has to be named.
     let not_yet_built: HashSet<&'static str> = HashSet::new();
-    let expected: HashSet<&'static str> =
-        read_elsewhere().union(&not_yet_built).copied().collect();
+    let expected: HashSet<&'static str> = read_elsewhere().union(&not_yet_built).copied().collect();
     assert_eq!(behaviourless(), expected);
 }
 
@@ -308,7 +305,10 @@ fn test_the_hook_list_matches_the_spec() {
         HOOK_NAMES.len(),
         "JokerSpec and HOOKS disagree: {HOOK_NAMES:?}"
     );
-    assert!(hooks.iter().all(|set| !set), "the default spec carries no hook");
+    assert!(
+        hooks.iter().all(|set| !set),
+        "the default spec carries no hook"
+    );
     assert_eq!(
         has_hook(&spec),
         hooks.iter().any(|set| *set),
@@ -393,7 +393,12 @@ fn round_end(game: &mut GameState, kind: BlindKind) {
 fn face_card(game: &GameState) -> CardRef {
     game.hand
         .iter()
-        .find(|c| matches!(jimbot_sim::cards::rank_of(c), Rank::Jack | Rank::Queen | Rank::King))
+        .find(|c| {
+            matches!(
+                jimbot_sim::cards::rank_of(c),
+                Rank::Jack | Rank::Queen | Rank::King
+            )
+        })
         .unwrap()
         .clone()
 }
@@ -413,7 +418,12 @@ fn test_canio_ignores_a_number_card() {
     let plain = game
         .hand
         .iter()
-        .find(|c| !matches!(jimbot_sim::cards::rank_of(c), Rank::Jack | Rank::Queen | Rank::King))
+        .find(|c| {
+            !matches!(
+                jimbot_sim::cards::rank_of(c),
+                Rank::Jack | Rank::Queen | Rank::King
+            )
+        })
         .unwrap()
         .clone();
     let before = counter_of(&game, "Canio");
@@ -509,16 +519,27 @@ fn test_yorick_counts_down_to_its_next_multiplier() {
     let joker = game.jokers[0].clone();
     assert_eq!(joker.borrow().secondary, 23.0);
     game.hand = (0..5).map(|_| make_card(Rank::Two, Suit::Clubs)).collect();
-    game.step(&Action::with_cards(ActionType::Discard, vec![0, 1, 2, 3, 4]));
+    game.step(&Action::with_cards(
+        ActionType::Discard,
+        vec![0, 1, 2, 3, 4],
+    ));
     assert_eq!(joker.borrow().secondary, 18.0);
-    assert_eq!(joker.borrow().counter, 1.0, "it should not have paid out yet");
+    assert_eq!(
+        joker.borrow().counter,
+        1.0,
+        "it should not have paid out yet"
+    );
 
     joker.borrow_mut().secondary = 1.0;
     game.hand = vec![make_card(Rank::Two, Suit::Clubs)];
     game.discards_left = 1;
     game.step(&Action::with_cards(ActionType::Discard, vec![0]));
     assert_eq!(joker.borrow().counter, 2.0);
-    assert_eq!(joker.borrow().secondary, 23.0, "and it starts counting again");
+    assert_eq!(
+        joker.borrow().secondary,
+        23.0,
+        "and it starts counting again"
+    );
 }
 
 #[test]
@@ -552,7 +573,12 @@ fn test_rocket_grows_on_the_boss_it_is_paid_for() {
     // dollars, not one, and the boss after it five. Nothing moved this counter
     // at all before -- a Rocket paid a dollar a round for the whole run.
     let mut game = run(&["Rocket"]);
-    for kind in [BlindKind::Small, BlindKind::Boss, BlindKind::Small, BlindKind::Boss] {
+    for kind in [
+        BlindKind::Small,
+        BlindKind::Boss,
+        BlindKind::Small,
+        BlindKind::Boss,
+    ] {
         round_end(&mut game, kind);
     }
     assert_eq!(paid(&game, "Rocket"), vec![1, 3, 3, 5]);
@@ -579,7 +605,10 @@ fn test_castle_ignores_a_debuffed_card() {
     // `not context.other_card.debuff`, in the same line.
     let mut game = run(&["Castle"]);
     game.castle_suit = Some(Suit::Hearts);
-    let hearts = vec![make_card(Rank::Two, Suit::Hearts), make_card(Rank::Nine, Suit::Hearts)];
+    let hearts = vec![
+        make_card(Rank::Two, Suit::Hearts),
+        make_card(Rank::Nine, Suit::Hearts),
+    ];
     hearts[0].borrow_mut().debuffed = true;
     game.hand = hearts;
     game.step(&Action::with_cards(ActionType::Discard, vec![0, 1]));
@@ -601,12 +630,20 @@ fn test_pareidolia_stops_ride_the_bus_from_ever_growing() {
     let mut game = run(&["Ride the Bus"]);
     game.hand = hand();
     game.step(&Action::with_cards(ActionType::Play, vec![0, 1, 2]));
-    assert_eq!(counter_of(&game, "Ride the Bus"), 1.0, "no face cards, so it grows");
+    assert_eq!(
+        counter_of(&game, "Ride the Bus"),
+        1.0,
+        "no face cards, so it grows"
+    );
 
     let mut game = run(&["Ride the Bus", "Pareidolia"]);
     game.hand = hand();
     game.step(&Action::with_cards(ActionType::Play, vec![0, 1, 2]));
-    assert_eq!(counter_of(&game, "Ride the Bus"), 0.0, "every card is a face card");
+    assert_eq!(
+        counter_of(&game, "Ride the Bus"),
+        0.0,
+        "every card is a face card"
+    );
 }
 
 #[test]
@@ -619,7 +656,6 @@ fn test_trading_card_shatters_the_glass_card_it_eats() {
     game.step(&Action::with_cards(ActionType::Discard, vec![0]));
     assert_eq!(counter_of(&game, "Glass Joker"), before + 0.75);
 }
-
 
 // ==========================================================================
 // tests/test_matador_trigger.py -- "Matador pays only when the boss's ability
@@ -736,7 +772,10 @@ fn test_a_debuffed_scoring_card_triggers_the_boss() {
 fn test_a_debuffed_high_card_triggers_the_boss() {
     // The engine's own case: K and Q of Clubs into The Club pays $8.
     let mut game = boss_game("The Club", &["Matador"]);
-    let hand = vec![make_card(Rank::King, Suit::Clubs), make_card(Rank::Queen, Suit::Clubs)];
+    let hand = vec![
+        make_card(Rank::King, Suit::Clubs),
+        make_card(Rank::Queen, Suit::Clubs),
+    ];
     assert_eq!(matador_play(&mut game, &hand), 8);
 }
 
@@ -799,7 +838,10 @@ fn test_the_psychic_does_not_pay_for_five_cards() {
 fn test_the_mouth_pays_only_for_the_hand_it_refuses() {
     let mut game = boss_game("The Mouth", &["Matador"]);
     assert_eq!(matador_play(&mut game, &flush(Suit::Spades)), 0); // sets the hand
-    let pair = vec![make_card(Rank::Ace, Suit::Hearts), make_card(Rank::Ace, Suit::Clubs)];
+    let pair = vec![
+        make_card(Rank::Ace, Suit::Hearts),
+        make_card(Rank::Ace, Suit::Clubs),
+    ];
     assert_eq!(matador_play(&mut game, &pair), 8); // refused
 }
 
@@ -864,7 +906,11 @@ fn room_game() -> GameState {
 
 fn blue_joker(negative: bool) -> JokerRef {
     let mut instance = JokerInstance::new(jokers::spec_or_panic("Blueprint"));
-    instance.edition = if negative { Edition::Negative } else { Edition::None };
+    instance.edition = if negative {
+        Edition::Negative
+    } else {
+        Edition::None
+    };
     jokers::make_ref(instance)
 }
 
@@ -1018,7 +1064,10 @@ fn sell_invisible(game: &mut GameState) {
 }
 
 fn row_names(game: &GameState) -> Vec<String> {
-    game.jokers.iter().map(|j| j.borrow().name().to_string()).collect()
+    game.jokers
+        .iter()
+        .map(|j| j.borrow().name().to_string())
+        .collect()
 }
 
 /// A copy of the run's RNG state, so a probe draw does not move the run.
@@ -1050,7 +1099,11 @@ fn test_a_charged_invisible_joker_leaves_a_copy_behind() {
     sell_invisible(&mut game);
 
     assert_eq!(row_names(&game)[..2], ["Greedy Joker", "Joker"]);
-    assert_eq!(game.jokers.len(), 3, "the sale should leave a copy in the row");
+    assert_eq!(
+        game.jokers.len(),
+        3,
+        "the sale should leave a copy in the row"
+    );
     let clone = game.jokers[2].clone();
     assert_eq!(clone.borrow().name(), expected_name);
     assert!(!Rc::ptr_eq(&clone, &joker) && !Rc::ptr_eq(&clone, &greedy));
@@ -1111,7 +1164,10 @@ fn test_the_copy_keeps_everything_else_the_original_has() {
     assert_eq!(clone.borrow().edition, Edition::Foil);
     assert!(clone.borrow().perishable);
     assert_eq!(clone.borrow().perish_tally, 3);
-    assert_eq!(clone.borrow().hands_at_create, loyalty.borrow().hands_at_create);
+    assert_eq!(
+        clone.borrow().hands_at_create,
+        loyalty.borrow().hands_at_create
+    );
     assert_eq!(clone.borrow().hands_at_create, 0);
 }
 
@@ -1128,7 +1184,13 @@ fn test_a_copied_invisible_joker_starts_counting_again() {
 fn test_a_full_row_still_gets_its_copy() {
     // #G.jokers.cards <= card_limit is read with the sold card still held.
     let mut game = invisible_row(
-        &["Joker", "Greedy Joker", "Lusty Joker", "Wrathful Joker", "Invisible Joker"],
+        &[
+            "Joker",
+            "Greedy Joker",
+            "Lusty Joker",
+            "Wrathful Joker",
+            "Invisible Joker",
+        ],
         2.0,
     );
     assert_eq!(game.jokers.len() as i32, game.joker_slots());
@@ -1141,8 +1203,14 @@ fn test_a_negative_invisible_joker_still_counts_its_own_slot() {
     // Six cards against a limit of six while it is held, so the copy is made --
     // and the row ends one over once remove_from_deck takes the slot back.
     let mut game = invisible_row(
-        &["Joker", "Greedy Joker", "Lusty Joker", "Wrathful Joker", "Gluttonous Joker",
-          "Invisible Joker"],
+        &[
+            "Joker",
+            "Greedy Joker",
+            "Lusty Joker",
+            "Wrathful Joker",
+            "Gluttonous Joker",
+            "Invisible Joker",
+        ],
         2.0,
     );
     game.jokers[5].borrow_mut().edition = Edition::Negative;
@@ -1235,7 +1303,8 @@ fn made_by_emperor(seed: &str, held: bool) -> Vec<String> {
     game.phase = Phase::Playing;
     game.consumables.clear();
     if held {
-        let emperor = game.hold_consumable(consumables::spec_or_panic("The Emperor"), Edition::None);
+        let emperor =
+            game.hold_consumable(consumables::spec_or_panic("The Emperor"), Edition::None);
         game.consumables.push(emperor);
         game.step(&Action::at(ActionType::UseConsumable, 0));
     } else {
@@ -1243,7 +1312,10 @@ fn made_by_emperor(seed: &str, held: bool) -> Vec<String> {
         let spec = consumables::spec_or_panic("The Emperor");
         game.use_consumable(spec, &[], false);
     }
-    game.consumables.iter().map(|c| c.borrow().spec.name.to_string()).collect()
+    game.consumables
+        .iter()
+        .map(|c| c.borrow().spec.name.to_string())
+        .collect()
 }
 
 fn emperor_seeds() -> Vec<String> {
@@ -1295,7 +1367,8 @@ fn eights(seed: &str, full_row: bool) -> GameState {
     game.consumables.clear();
     if full_row {
         while (game.consumables.len() as i32) < game.consumable_slots() {
-            let hermit = game.hold_consumable(consumables::spec_or_panic("The Hermit"), Edition::None);
+            let hermit =
+                game.hold_consumable(consumables::spec_or_panic("The Hermit"), Edition::None);
             game.consumables.push(hermit);
         }
     }
@@ -1341,7 +1414,9 @@ fn test_8_ball_stops_rolling_once_its_tarot_fills_the_row() {
         // A: the row is full, so the 8ball stream is never advanced.
         let mut full = eights(&seed, true);
         full._play(vec![0, 1, 2, 3]);
-        let stream: Vec<f64> = (0..5).map(|_| full.rng.pseudorandom("8ball", None, None)).collect();
+        let stream: Vec<f64> = (0..5)
+            .map(|_| full.rng.pseudorandom("8ball", None, None))
+            .collect();
         // The first success, 1-based; none means all four missed.
         let first = (1..=4).find(|k| stream[k - 1] < 1.0 / 4.0);
 
@@ -1365,7 +1440,10 @@ fn test_8_ball_stops_rolling_once_its_tarot_fills_the_row() {
             assert_eq!(next, stream[4], "{seed}: a miss must not stop the rolls");
         }
     }
-    assert!(fired_somewhere, "no seed made a Tarot, so this proves nothing");
+    assert!(
+        fired_somewhere,
+        "no seed made a Tarot, so this proves nothing"
+    );
 }
 // ==========================================================================
 // tests/test_pool_flags_and_gates.py -- "Cavendish only after Gros Michel dies,
@@ -1410,7 +1488,10 @@ fn test_extinction_sets_the_flag() {
             );
         }
     }
-    assert!(seen_extinction, "no seed went extinct, so this proves nothing");
+    assert!(
+        seen_extinction,
+        "no seed went extinct, so this proves nothing"
+    );
 }
 
 #[test]
@@ -1441,7 +1522,11 @@ fn test_the_flag_swaps_gros_michel_for_cavendish_in_the_pool() {
         jimbot_sim::shop_pool::build_pool(1u8, &owned, &seen, false, &["gros_michel_extinct"]);
     assert!(before.contains(&gros.to_string()) && !before.contains(&"j_cavendish".to_string()));
     assert!(after.contains(&"j_cavendish".to_string()) && !after.contains(&gros.to_string()));
-    assert_eq!(before.len(), after.len(), "entries are blanked, never removed");
+    assert_eq!(
+        before.len(),
+        after.len(),
+        "entries are blanked, never removed"
+    );
 }
 
 #[test]
@@ -1560,16 +1645,22 @@ fn tally(
             continue;
         }
         let stripped = label.trim_start_matches('-');
-        let name = if stripped.is_empty() { "none" } else { stripped };
+        let name = if stripped.is_empty() {
+            "none"
+        } else {
+            stripped
+        };
         out.insert(format!("{prefix}{name}"), *count);
     }
 }
 
-const RANK_LABELS: [&str; 14] =
-    ["", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
+const RANK_LABELS: [&str; 14] = [
+    "", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A",
+];
 const SUIT_LABELS: [&str; 5] = ["", "S", "H", "C", "D"];
-const ENHANCEMENT_LABELS: [&str; 9] =
-    ["plain", "bonus", "mult", "wild", "glass", "steel", "stone", "gold", "lucky"];
+const ENHANCEMENT_LABELS: [&str; 9] = [
+    "plain", "bonus", "mult", "wild", "glass", "steel", "stone", "gold", "lucky",
+];
 const SEAL_LABELS: [&str; 5] = ["", "-gold", "-red", "-blue", "-purple"];
 const EDITION_LABELS: [&str; 5] = ["", "-foil", "-holo", "-poly", "-neg"];
 
@@ -1580,9 +1671,23 @@ fn deck_cards(game: &GameState) -> BTreeMap<String, i64> {
     let mut out = BTreeMap::new();
     tally(&mut out, &counts, "ranks", &RANK_LABELS, 1, "");
     tally(&mut out, &counts, "suits", &SUIT_LABELS, 1, "");
-    tally(&mut out, &counts, "enhancements", &ENHANCEMENT_LABELS, 0, "");
+    tally(
+        &mut out,
+        &counts,
+        "enhancements",
+        &ENHANCEMENT_LABELS,
+        0,
+        "",
+    );
     tally(&mut out, &counts, "seals", &SEAL_LABELS, 0, "seal ");
-    tally(&mut out, &counts, "editions", &EDITION_LABELS, 0, "edition ");
+    tally(
+        &mut out,
+        &counts,
+        "editions",
+        &EDITION_LABELS,
+        0,
+        "edition ",
+    );
     out
 }
 
@@ -1613,10 +1718,14 @@ fn differences(game: &GameState, shadow: &GameState) -> Vec<String> {
             .filter(|k| held.get(k).unwrap_or(&0) != mirrored.get(k).unwrap_or(&0))
             .collect();
         if !keys.is_empty() {
-            let want: BTreeMap<String, i64> =
-                keys.iter().map(|k| (k.clone(), *held.get(k).unwrap_or(&0))).collect();
-            let got: BTreeMap<String, i64> =
-                keys.iter().map(|k| (k.clone(), *mirrored.get(k).unwrap_or(&0))).collect();
+            let want: BTreeMap<String, i64> = keys
+                .iter()
+                .map(|k| (k.clone(), *held.get(k).unwrap_or(&0)))
+                .collect();
+            let got: BTreeMap<String, i64> = keys
+                .iter()
+                .map(|k| (k.clone(), *mirrored.get(k).unwrap_or(&0)))
+                .collect();
             out.push(format!(
                 "deck_cards    game {}\ndeck_cards    shadow {}",
                 py_map(&want),
@@ -2024,10 +2133,17 @@ fn test_the_secret_hands_are_not_in_the_pool_until_they_are_played() {
     let visible: HashSet<HandType> = game.visible_hands().into_iter().collect();
     let all: HashSet<HandType> = HandType::ALL.into_iter().collect();
     let secret: HashSet<HandType> = SECRET_HANDS.into_iter().collect();
-    assert_eq!(visible, all.difference(&secret).copied().collect::<HashSet<_>>());
+    assert_eq!(
+        visible,
+        all.difference(&secret).copied().collect::<HashSet<_>>()
+    );
     assert_eq!(visible.len(), 9);
 
-    *game.hand_levels.plays.entry(HandType::FlushHouse).or_insert(0) += 1;
+    *game
+        .hand_levels
+        .plays
+        .entry(HandType::FlushHouse)
+        .or_insert(0) += 1;
     assert!(game.visible_hands().contains(&HandType::FlushHouse));
     assert_eq!(game.visible_hands().len(), 10);
 }
@@ -2071,7 +2187,10 @@ fn test_a_joker_only_takes_the_stickers_its_centre_allows() {
     // they would lose. Neither was modelled, so a Ride the Bus came out of the
     // shop perishable and was debuffed five rounds later in a run where the game
     // had left it alone.
-    assert_eq!(jimbot_sim::shop_pool::takes_sticker("Ride the Bus"), (true, false));
+    assert_eq!(
+        jimbot_sim::shop_pool::takes_sticker("Ride the Bus"),
+        (true, false)
+    );
     assert!(!jimbot_sim::shop_pool::takes_sticker("Gros Michel").0);
 
     let mut game = GameState::new("TESTSEED", "Red Deck", 8);
@@ -2083,7 +2202,10 @@ fn test_a_joker_only_takes_the_stickers_its_centre_allows() {
             assert!(!(joker.borrow().eternal && !eternal_ok), "{name}");
             assert!(!(joker.borrow().perishable && !perishable_ok), "{name}");
             // The game's own mutual exclusion, both ways round.
-            assert!(!(joker.borrow().eternal && joker.borrow().perishable), "{name}");
+            assert!(
+                !(joker.borrow().eternal && joker.borrow().perishable),
+                "{name}"
+            );
         }
     }
 }
@@ -2149,14 +2271,14 @@ fn five_jacks(game: &mut GameState, name: &str) -> Vec<usize> {
 }
 
 const DISCARDERS: [&str; 8] = [
-    "Ramen",         // card.lua:2757  discard
-    "Yorick",        // card.lua:2788  discard
-    "Castle",        // card.lua:2814  discard
+    "Ramen",          // card.lua:2757  discard
+    "Yorick",         // card.lua:2788  discard
+    "Castle",         // card.lua:2814  discard
     "Mail-In Rebate", // card.lua:2825  discard
-    "Hit the Road",  // card.lua:2835  discard
+    "Hit the Road",   // card.lua:2835  discard
     "Faceless Joker", // card.lua:2858  discard
-    "Burnt Joker",   // card.lua:2749  pre_discard
-    "Trading Card",  // card.lua:2802  discard
+    "Burnt Joker",    // card.lua:2749  pre_discard
+    "Trading Card",   // card.lua:2802  discard
 ];
 
 fn discarder_pick(game: &mut GameState, name: &str) -> Vec<usize> {
@@ -2198,14 +2320,19 @@ fn round_state(game: &GameState) -> RoundState {
 
 /// name, row, blind kind, a counter to stamp first.
 const ROUND_ENDERS: [(&str, &[&str], BlindKind, Option<f64>); 8] = [
-    ("Popcorn", &["Popcorn"], BlindKind::Small, None),               // 2945
-    ("Gros Michel", &["Gros Michel"], BlindKind::Small, None),       // 3019
-    ("Invisible Joker", &["Invisible Joker"], BlindKind::Small, None), // 2934
-    ("Egg", &["Egg"], BlindKind::Small, None),                       // 2985
-    ("Gift Card", &["Gift Card", "Joker"], BlindKind::Small, None),  // 2993
-    ("To Do List", &["To Do List"], BlindKind::Small, None),         // 2975
-    ("Rocket", &["Rocket"], BlindKind::Boss, None),                  // 2896
-    ("Campfire", &["Campfire"], BlindKind::Boss, Some(2.0)),         // 2889
+    ("Popcorn", &["Popcorn"], BlindKind::Small, None), // 2945
+    ("Gros Michel", &["Gros Michel"], BlindKind::Small, None), // 3019
+    (
+        "Invisible Joker",
+        &["Invisible Joker"],
+        BlindKind::Small,
+        None,
+    ), // 2934
+    ("Egg", &["Egg"], BlindKind::Small, None),         // 2985
+    ("Gift Card", &["Gift Card", "Joker"], BlindKind::Small, None), // 2993
+    ("To Do List", &["To Do List"], BlindKind::Small, None), // 2975
+    ("Rocket", &["Rocket"], BlindKind::Boss, None),    // 2896
+    ("Campfire", &["Campfire"], BlindKind::Boss, Some(2.0)), // 2889
 ];
 
 fn beat_round(
@@ -2252,17 +2379,17 @@ fn hallucination() -> GameState {
 /// Every context outside the discard and the round's end, each named after the
 /// `card.lua` branch it tests.
 const OTHER_CONTEXTS: [&str; 12] = [
-    "Hologram",     // playing_card_added 2457
+    "Hologram",      // playing_card_added 2457
     "Constellation", // using_consumeable 2727
-    "Campfire",     // selling_card 2396
-    "Canio",        // remove_playing_cards 2623
-    "Glass Joker",  // using_consumeable 2709
-    "Flash Card",   // reroll_shop 2404
-    "Red Card",     // skipping_booster 2442
-    "Perkeo",       // ending_shop 2413
-    "Diet Cola",    // selling_self 2361
-    "DNA",          // before 3501
-    "Vagabond",     // joker_main 3743
+    "Campfire",      // selling_card 2396
+    "Canio",         // remove_playing_cards 2623
+    "Glass Joker",   // using_consumeable 2709
+    "Flash Card",    // reroll_shop 2404
+    "Red Card",      // skipping_booster 2442
+    "Perkeo",        // ending_shop 2413
+    "Diet Cola",     // selling_self 2361
+    "DNA",           // before 3501
+    "Vagabond",      // joker_main 3743
     "Hallucination", // open_booster 2336
 ];
 
@@ -2421,7 +2548,10 @@ fn test_a_crimson_heart_joker_pays_no_row_on_the_cash_out_that_frees_it() {
     assert!(!joker.borrow().debuffed); // freed on the cash-out screen ...
     game._cash_out();
     assert!(
-        !game.logs.iter().any(|line| line.starts_with("Golden Joker: +$")),
+        !game
+            .logs
+            .iter()
+            .any(|line| line.starts_with("Golden Joker: +$")),
         "... and unpaid"
     );
 }
@@ -2488,11 +2618,11 @@ fn test_a_debuffed_rule_joker_is_not_found() {
     // find_joker(name) skips `v.debuff` (misc_functions.lua:907); Oops! All 6s
     // halves the probabilities back in remove_from_deck (card.lua:665-669).
     let probes: [(&str, fn(&GameState) -> bool); 6] = [
-        ("Four Fingers", |g| g.four_fingers()),      // misc_functions.lua:524
-        ("Shortcut", |g| g.shortcut_joker()),        // misc_functions.lua:567
-        ("Splash", |g| g.splash()),                  // state_events.lua:583
-        ("Pareidolia", |g| g.has_pareidolia()),      // card.lua:967
-        ("Smeared Joker", |g| g.has_smeared()),      // card.lua:4072
+        ("Four Fingers", |g| g.four_fingers()), // misc_functions.lua:524
+        ("Shortcut", |g| g.shortcut_joker()),   // misc_functions.lua:567
+        ("Splash", |g| g.splash()),             // state_events.lua:583
+        ("Pareidolia", |g| g.has_pareidolia()), // card.lua:967
+        ("Smeared Joker", |g| g.has_smeared()), // card.lua:4072
         ("Oops! All 6s", |g| g.probability_scale() > 1.0), // card.lua:665
     ];
     for (name, probe) in probes {

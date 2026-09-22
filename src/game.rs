@@ -423,13 +423,17 @@ pub const WIN_ANTE: i32 = 8;
 /// The consumables whose use is gated on something other than how many cards are
 /// selected. Grouped by what they need, from Card:can_use_consumeable.
 pub const FREE_JOKER_NEEDED: [&str; 3] = ["Judgement", "The Soul", "Wraith"];
-pub const FREE_CONSUMABLE_NEEDED: [&str; 3] =
-    ["The Emperor", "The High Priestess", "The Fool"];
-pub const PLAIN_JOKER_NEEDED: [&str; 3] =
-    ["The Wheel of Fortune", "Ectoplasm", "Hex"];
+pub const FREE_CONSUMABLE_NEEDED: [&str; 3] = ["The Emperor", "The High Priestess", "The Fool"];
+pub const PLAIN_JOKER_NEEDED: [&str; 3] = ["The Wheel of Fortune", "Ectoplasm", "Hex"];
 /// These destroy a card picked at random, and want one to spare.
-pub const SPARE_CARD_NEEDED: [&str; 6] =
-    ["Familiar", "Grim", "Incantation", "Immolate", "Sigil", "Ouija"];
+pub const SPARE_CARD_NEEDED: [&str; 6] = [
+    "Familiar",
+    "Grim",
+    "Incantation",
+    "Immolate",
+    "Sigil",
+    "Ouija",
+];
 
 /// A joker's deferred blind-select action.
 ///
@@ -833,13 +837,9 @@ impl GameState {
             if let Some(row) = crate::consumable_data::consumable_row_by_key(key) {
                 if crate::consumables::spec(row.name).is_some() {
                     let spec = crate::consumables::spec_or_panic(row.name);
-                    self.consumables
-                        .push(crate::consumables::make_ref(
-                            crate::consumables::ConsumableInstance::new(
-                                spec,
-                                Edition::None,
-                            ),
-                        ));
+                    self.consumables.push(crate::consumables::make_ref(
+                        crate::consumables::ConsumableInstance::new(spec, Edition::None),
+                    ));
                 }
             }
         }
@@ -1078,7 +1078,11 @@ impl GameState {
     pub fn consumable_slots(&self) -> i32 {
         BASE_CONSUMABLE_SLOTS
             + self.extra_consumable_slots
-            + self.vouchers.iter().map(|v| v.consumable_slots).sum::<i32>()
+            + self
+                .vouchers
+                .iter()
+                .map(|v| v.consumable_slots)
+                .sum::<i32>()
             + self
                 .consumables
                 .iter()
@@ -1153,13 +1157,8 @@ impl GameState {
             .sum::<i32>();
         hands += config.hands;
         // Blue stake and up start a round with one discard fewer.
-        let mut discards =
-            BASE_DISCARDS - if self.stake >= 5 { 1 } else { 0 };
-        discards += self
-            .vouchers
-            .iter()
-            .map(|v| v.extra_discards)
-            .sum::<i32>();
+        let mut discards = BASE_DISCARDS - if self.stake >= 5 { 1 } else { 0 };
+        discards += self.vouchers.iter().map(|v| v.extra_discards).sum::<i32>();
         discards += self
             .active_jokers()
             .iter()
@@ -1193,9 +1192,7 @@ impl GameState {
     pub fn visible_hands(&self) -> Vec<HandType> {
         crate::hands::HANDLIST
             .into_iter()
-            .filter(|h| {
-                !crate::hands::is_secret(*h) || self.hand_levels.played(*h) > 0
-            })
+            .filter(|h| !crate::hands::is_secret(*h) || self.hand_levels.played(*h) > 0)
             .collect()
     }
 
@@ -1232,8 +1229,7 @@ use crate::consumables::{ConsumableKind, ConsumableSpec};
 use crate::effects::ScoreContext;
 use crate::hands::{planet_for_hand, HandResult, HANDLIST};
 use crate::scoring::{
-    after_hand_pass, calculating_specs, effective_specs, held_triggers, score_hand,
-    shattered_glass,
+    after_hand_pass, calculating_specs, effective_specs, held_triggers, score_hand, shattered_glass,
 };
 use crate::shop::{pack_from_key, pack_from_row, voucher_by_key, PackKind, ShopSlot};
 
@@ -1355,7 +1351,6 @@ fn pick_from<T: Clone>(rng: &mut RunRng, key: &str, items: &[T]) -> Option<T> {
     }
 }
 
-
 // --------------------------------------------------------------------------
 // run setup (__post_init__'s remaining steps)
 // --------------------------------------------------------------------------
@@ -1407,7 +1402,11 @@ impl GameState {
         self.ante_tags = self
             .ante_tag_keys
             .iter()
-            .map(|k| tag_by_key(k).map(|t| t.label().to_string()).unwrap_or_default())
+            .map(|k| {
+                tag_by_key(k)
+                    .map(|t| t.label().to_string())
+                    .unwrap_or_default()
+            })
             .collect();
     }
 
@@ -1449,7 +1448,6 @@ impl GameState {
     }
 }
 
-
 // --------------------------------------------------------------------------
 // blind flow
 // --------------------------------------------------------------------------
@@ -1470,8 +1468,11 @@ impl GameState {
                 continue;
             }
             let named = joker.borrow().named_hand;
-            let pool: Vec<HandType> =
-                visible.iter().cloned().filter(|h| Some(*h) != named).collect();
+            let pool: Vec<HandType> = visible
+                .iter()
+                .cloned()
+                .filter(|h| Some(*h) != named)
+                .collect();
             if let Some(choice) = pick_from(&mut self.rng, "to_do", &pool) {
                 joker.borrow_mut().named_hand = Some(choice);
             }
@@ -1496,7 +1497,11 @@ impl GameState {
     /// The blind that comes up next, offered on the select screen.
     pub fn _next_blind(&mut self) {
         let kind = [BlindKind::Small, BlindKind::Big, BlindKind::Boss][self.blind_index as usize];
-        let boss = if kind == BlindKind::Boss { self._pick_boss() } else { None };
+        let boss = if kind == BlindKind::Boss {
+            self._pick_boss()
+        } else {
+            None
+        };
         let ante_scaling = self.deck_config().ante_scaling;
         let no_reward = kind == BlindKind::Small && self.stake >= 2;
         let mut blind = make_blind(
@@ -1595,7 +1600,6 @@ impl GameState {
     }
 }
 
-
 impl GameState {
     /// set_blind and the deal: the round begins.
     pub fn _start_round(&mut self) {
@@ -1679,7 +1683,10 @@ impl GameState {
         self.phase = Phase::Playing;
         let target = self.blind.as_ref().map(|b| b.target).unwrap_or(0);
         let name = self.blind.as_ref().map(|b| b.name()).unwrap_or_default();
-        self.log(format!("--- Ante {} {}: need {} ---", self.ante, name, target));
+        self.log(format!(
+            "--- Ante {} {}: need {} ---",
+            self.ante, name, target
+        ));
         self._drawn_to_hand();
     }
 
@@ -1725,7 +1732,6 @@ impl GameState {
         self.joker_buffer = 0;
     }
 }
-
 
 impl GameState {
     /// Blind:drawn_to_hand, after every deal into the round.
@@ -1800,7 +1806,6 @@ impl GameState {
     }
 }
 
-
 // --------------------------------------------------------------------------
 // playing: sorting, dealing, the blind's own hooks
 // --------------------------------------------------------------------------
@@ -1834,7 +1839,11 @@ impl GameState {
     /// The choice sticks, as it does in the game: CardArea keeps the method on
     /// itself and applies it to every later draw.
     pub fn sort_hand(&mut self, by: &str) {
-        self.hand_sort = if by == "suit" { "suit".to_string() } else { "rank".to_string() };
+        self.hand_sort = if by == "suit" {
+            "suit".to_string()
+        } else {
+            "rank".to_string()
+        };
         self._sort_hand();
     }
 
@@ -1900,9 +1909,9 @@ impl GameState {
     /// Is an Arcana or Spectral pack open? Those two deal a hand.
     pub fn _in_hand_pack(&self) -> bool {
         self.phase == Phase::Pack
-            && self.pack.is_some_and(|p| {
-                matches!(p.kind, PackKind::Arcana | PackKind::Spectral)
-            })
+            && self
+                .pack
+                .is_some_and(|p| matches!(p.kind, PackKind::Arcana | PackKind::Spectral))
     }
 
     /// Turn the boss off mid-round, the way Blind:disable does it.
@@ -1946,7 +1955,6 @@ impl GameState {
         self.log(format!("{}: {} is disabled", source, boss.name));
     }
 }
-
 
 // --------------------------------------------------------------------------
 // playing: the hand itself
@@ -2059,7 +2067,6 @@ impl GameState {
     }
 }
 
-
 impl GameState {
     /// The scoring half of a played hand, split only to keep this readable.
     pub fn _play_hand_score(
@@ -2076,7 +2083,9 @@ impl GameState {
             if boss.level_down_played_hand {
                 let level = self.hand_levels.level(result.hand);
                 arm_triggered = level > 1;
-                self.hand_levels.levels.insert(result.hand, (level - 1).max(1));
+                self.hand_levels
+                    .levels
+                    .insert(result.hand, (level - 1).max(1));
             }
         }
 
@@ -2189,7 +2198,6 @@ impl GameState {
     }
 }
 
-
 impl GameState {
     /// Fix the hand The Ox will punish, as a boss round closes.
     ///
@@ -2272,7 +2280,6 @@ impl GameState {
         }
     }
 }
-
 
 impl GameState {
     /// context.after for a hand the boss refused, over self.jokers.
@@ -2386,7 +2393,6 @@ impl GameState {
     }
 }
 
-
 // --------------------------------------------------------------------------
 // ending a round: lose, beat, cash out
 // --------------------------------------------------------------------------
@@ -2475,7 +2481,6 @@ impl GameState {
         self._beat_blind_deck(blind, config.double_tag_after_boss);
     }
 }
-
 
 impl GameState {
     /// The deck-return and tag half of `_beat_blind`, split for readability.
@@ -2570,12 +2575,11 @@ impl GameState {
 
         // And now the interest, on what is left after the rent. The multiplier
         // applies after the cap has bitten.
-        let per_block = 1
-            + self
-                .active_jokers()
-                .iter()
-                .map(|j| j.borrow().spec.interest_bonus)
-                .sum::<i32>();
+        let per_block = 1 + self
+            .active_jokers()
+            .iter()
+            .map(|j| j.borrow().spec.interest_bonus)
+            .sum::<i32>();
         if !self.deck_config().no_interest {
             let blocks = (self.money.max(0) / 5).min(self.interest_cap());
             self.pending_payout += (per_block * blocks) as i64;
@@ -2671,7 +2675,6 @@ impl GameState {
     }
 }
 
-
 // --------------------------------------------------------------------------
 // packs
 // --------------------------------------------------------------------------
@@ -2750,7 +2753,10 @@ impl GameState {
             edition_rate,
         );
 
-        self.pack_options = contents.iter().map(|entry| self._pack_card(entry)).collect();
+        self.pack_options = contents
+            .iter()
+            .map(|entry| self._pack_card(entry))
+            .collect();
 
         // The open_booster jokers come after the pack is filled. A copied
         // Hallucination rolls again.
@@ -2797,7 +2803,6 @@ impl GameState {
         crate::shop_pool::key_by_consumable_name(name).map(|s| s.to_string())
     }
 }
-
 
 impl GameState {
     /// One entry from `shop_pool.pack_contents`, as a simulator object.
@@ -2872,7 +2877,10 @@ impl GameState {
             }
             PackChoice::Card(card) => {
                 self.add_card(&card);
-                self.log(format!("Pack: added {} to deck", crate::cards::label_of(&card)));
+                self.log(format!(
+                    "Pack: added {} to deck",
+                    crate::cards::label_of(&card)
+                ));
             }
             PackChoice::Consumable(spec) => {
                 // A consumable taken from a pack is used there and then.
@@ -2890,7 +2898,6 @@ impl GameState {
         }
     }
 }
-
 
 // --------------------------------------------------------------------------
 // shop
@@ -2960,8 +2967,7 @@ impl GameState {
         // turns out to be. The game decides Enhanced-or-Base inside the table of
         // candidate types, which Lua builds in full before picking from it.
         let illusion = self.vouchers.iter().any(|v| v.key == "v_illusion");
-        let enhanced =
-            illusion && self.rng.pseudorandom("illusion", None, None) > 0.6;
+        let enhanced = illusion && self.rng.pseudorandom("illusion", None, None) > 0.6;
 
         if kind == "Joker" {
             let name = crate::shop_pool::name_by_joker_key(&key)
@@ -3023,7 +3029,6 @@ impl GameState {
     }
 }
 
-
 impl GameState {
     /// Let an edition tag claim a shop card as it is made.
     ///
@@ -3039,7 +3044,10 @@ impl GameState {
             return slot;
         }
         for tag in self.tags.clone() {
-            let edition = EDITION_TAGS.iter().find(|(t, _)| *t == tag).map(|(_, e)| *e);
+            let edition = EDITION_TAGS
+                .iter()
+                .find(|(t, _)| *t == tag)
+                .map(|(_, e)| *e);
             let Some(edition) = edition else { continue };
             if let Some(i) = self.tags.iter().position(|t| *t == tag) {
                 self.tags.remove(i);
@@ -3096,7 +3104,6 @@ impl GameState {
         pack_from_row(row)
     }
 }
-
 
 impl GameState {
     /// A shop slot an Uncommon or Rare Tag fills instead of a roll.
@@ -3216,7 +3223,6 @@ impl GameState {
         self.price(pack.cost)
     }
 }
-
 
 impl GameState {
     /// Open the shop: the row, its packs, its voucher, and the tags.
@@ -3347,7 +3353,6 @@ impl GameState {
     }
 }
 
-
 // --------------------------------------------------------------------------
 // consumables: use, buy-and-use, forced cards
 // --------------------------------------------------------------------------
@@ -3414,7 +3419,9 @@ impl GameState {
             if spec.name != "The Fool" {
                 return room;
             }
-            return room && !self.last_tarot_planet.is_empty() && self.last_tarot_planet != "c_fool";
+            return room
+                && !self.last_tarot_planet.is_empty()
+                && self.last_tarot_planet != "c_fool";
         }
         if crate::game::PLAIN_JOKER_NEEDED.contains(&spec.name) {
             return plain_jokers > 0;
@@ -3485,7 +3492,6 @@ impl GameState {
     }
 }
 
-
 impl GameState {
     /// The shop's buy-and-use button, quirk included.
     ///
@@ -3539,7 +3545,6 @@ impl GameState {
         }
     }
 }
-
 
 // --------------------------------------------------------------------------
 // actions
@@ -3621,8 +3626,7 @@ impl GameState {
                 if !spec.accepts(subset.len() as i32) {
                     continue;
                 }
-                let targets: Vec<CardRef> =
-                    subset.iter().map(|&j| self.hand[j].clone()).collect();
+                let targets: Vec<CardRef> = subset.iter().map(|&j| self.hand[j].clone()).collect();
                 if self._usable_now(spec, &targets) {
                     actions.push(Action {
                         r#type: ActionType::UseConsumable,
@@ -3659,7 +3663,6 @@ impl GameState {
     }
 }
 
-
 impl GameState {
     /// Every action available in the current phase -- the RL action mask.
     pub fn legal_actions(&self) -> Vec<Action> {
@@ -3684,7 +3687,11 @@ impl GameState {
             }
             Phase::BlindSelect => {
                 let mut actions = vec![Action::new(ActionType::SelectBlind)];
-                if self.blind.as_ref().is_some_and(|b| b.kind != BlindKind::Boss) {
+                if self
+                    .blind
+                    .as_ref()
+                    .is_some_and(|b| b.kind != BlindKind::Boss)
+                {
                     actions.push(Action::new(ActionType::SkipBlind));
                 }
                 // The Director's Cut / Retcon button.
@@ -3723,7 +3730,6 @@ impl GameState {
         }
     }
 }
-
 
 impl GameState {
     /// The shop's action list, split out of `legal_actions`.
@@ -3810,7 +3816,6 @@ impl GameState {
     }
 }
 
-
 impl GameState {
     /// Exact membership test for `legal_actions()` without building the list.
     pub fn is_legal(&self, action: &Action) -> bool {
@@ -3839,9 +3844,10 @@ impl GameState {
             },
             Phase::BlindSelect => match t {
                 ActionType::SelectBlind => cards.is_empty(),
-                ActionType::SkipBlind => {
-                    self.blind.as_ref().is_some_and(|b| b.kind != BlindKind::Boss)
-                }
+                ActionType::SkipBlind => self
+                    .blind
+                    .as_ref()
+                    .is_some_and(|b| b.kind != BlindKind::Boss),
                 ActionType::RerollBoss => self.can_reroll_boss(),
                 _ => false,
             },
@@ -3874,7 +3880,6 @@ impl GameState {
         }
     }
 }
-
 
 impl GameState {
     fn _is_legal_shop(&self, t: ActionType, index: i32, cards: &[usize]) -> bool {
@@ -3953,7 +3958,6 @@ impl GameState {
     }
 }
 
-
 impl GameState {
     /// Apply one action.
     pub fn step(&mut self, action: &Action) {
@@ -3969,7 +3973,11 @@ impl GameState {
                 self.skipped_this_ante.insert(self.blind_index);
                 self.add_tag_by_key(&key);
                 let name = self.blind.as_ref().map(|b| b.name()).unwrap_or_default();
-                let reward = if tag.is_empty() { key.clone() } else { tag.clone() };
+                let reward = if tag.is_empty() {
+                    key.clone()
+                } else {
+                    tag.clone()
+                };
                 self.log(format!("Skipped {}, gained {}", name, reward));
                 self._fire_immediate_tags();
                 self.blind_index += 1;
@@ -4053,14 +4061,16 @@ impl GameState {
     }
 }
 
-
 impl GameState {
     fn _step_buy_voucher(&mut self, index: usize) {
         let voucher = match self.shop.as_mut() {
             Some(shop) => shop.vouchers.remove(index),
             None => return,
         };
-        self.add_money(-self.price(voucher.cost), &format!("bought {}", voucher.name));
+        self.add_money(
+            -self.price(voucher.cost),
+            &format!("bought {}", voucher.name),
+        );
         self.vouchers.push(voucher);
         // Any voucher redeemed takes the ante's off the later shelves.
         self.round_voucher = String::new();
@@ -4128,7 +4138,6 @@ impl GameState {
     }
 }
 
-
 // --------------------------------------------------------------------------
 // previews -- read-only
 // --------------------------------------------------------------------------
@@ -4185,7 +4194,12 @@ impl GameState {
             let n = runs.len() as f64;
             let score = runs.iter().map(|r| r.0 as f64).sum::<f64>() / n;
             let dollars = runs.iter().map(|r| r.2 as f64).sum::<f64>() / n;
-            return (score.round() as i64, runs[0].1.clone(), dollars.round() as i64, runs[0].3);
+            return (
+                score.round() as i64,
+                runs[0].1.clone(),
+                dollars.round() as i64,
+                runs[0].3,
+            );
         }
         if mode == "pessimistic" {
             return self._preview(indices, "_preview", true, None);
@@ -4213,7 +4227,6 @@ impl GameState {
     }
 }
 
-
 impl GameState {
     /// Score a candidate play without advancing the run.
     ///
@@ -4238,8 +4251,7 @@ impl GameState {
             .collect();
 
         // The Hook takes two held cards before the hand scores, as `_play` does.
-        let hook = self.boss().is_some_and(|b| b.discard_random_on_play > 0)
-            && !held.is_empty();
+        let hook = self.boss().is_some_and(|b| b.discard_random_on_play > 0) && !held.is_empty();
         let mut hook_taken = hook_taken;
         if hook && hook_taken.is_none() {
             let mut pool = held.clone();
@@ -4277,7 +4289,14 @@ impl GameState {
             .chain(held.iter())
             .map(|c| {
                 let b = c.borrow();
-                (c.clone(), b.enhancement, b.extra_chips, b.seal, b.edition, b.debuffed)
+                (
+                    c.clone(),
+                    b.enhancement,
+                    b.extra_chips,
+                    b.seal,
+                    b.edition,
+                    b.debuffed,
+                )
             })
             .collect();
         let levels = self.hand_levels.levels.clone();
@@ -4310,7 +4329,9 @@ impl GameState {
             // The Arm takes the level off before the hand scores, as `_play` does.
             if self.boss().is_some_and(|b| b.level_down_played_hand) {
                 let level = self.hand_levels.level(result.hand);
-                self.hand_levels.levels.insert(result.hand, (level - 1).max(1));
+                self.hand_levels
+                    .levels
+                    .insert(result.hand, (level - 1).max(1));
             }
             let ctx = score_hand(self, &result, &played, &held);
             let dollars = (ctx.money_gained as i64) + ((self.money - money) as i64);
@@ -4340,7 +4361,6 @@ impl GameState {
         out
     }
 }
-
 
 impl GameState {
     /// `(joker, spec)` for each joker that answers `hook`, copies included.
@@ -4391,4 +4411,3 @@ impl GameState {
         (self.money - self.bankrupt_at()) - BOSS_REROLL_COST >= 0
     }
 }
-

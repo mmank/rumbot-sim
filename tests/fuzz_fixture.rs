@@ -418,7 +418,11 @@ fn replay(
         let got: [(&str, String, String); 13] = [
             ("phase", game.phase.as_str().to_string(), step.phase.clone()),
             ("ante", game.ante.to_string(), step.ante.to_string()),
-            ("action", action_field(&step.action), step.action_text.clone()),
+            (
+                "action",
+                action_field(&step.action),
+                step.action_text.clone(),
+            ),
             ("money", game.money.to_string(), step.money.to_string()),
             ("hands", game.hands_left.to_string(), step.hands.to_string()),
             (
@@ -435,7 +439,11 @@ fn replay(
             ),
             ("shop", shop_label(&game), step.shop.clone()),
             ("pack", pack_label(&game), step.pack.clone()),
-            ("chips", game.chips_scored.to_string(), step.chips.to_string()),
+            (
+                "chips",
+                game.chips_scored.to_string(),
+                step.chips.to_string(),
+            ),
             ("rng", rng_signature(&game), step.rng.clone()),
         ];
         for (field, actual, expected) in got {
@@ -443,7 +451,13 @@ fn replay(
                 panic!(
                     "seed {} diverged at step {} of {} ({} steps matched) on {}:\n  \
                      python: {}\n  rust:   {}",
-                    seed, n, steps.len(), i, field, expected, actual
+                    seed,
+                    n,
+                    steps.len(),
+                    i,
+                    field,
+                    expected,
+                    actual
                 );
             }
         }
@@ -485,7 +499,15 @@ fn replay(
                         "seed {} diverged at step {} of {} on state key {}:\n  \
                          python: {:016x}\n  rust:   {:016x}\n  \
                          (python tools/gen_fuzz_fixture.py --dump {} {} {})",
-                        seed, n, steps.len(), key, want, actual, seed, n, key
+                        seed,
+                        n,
+                        steps.len(),
+                        key,
+                        want,
+                        actual,
+                        seed,
+                        n,
+                        key
                     );
                 }
                 None => panic!(
@@ -528,8 +550,17 @@ fn replay(
                  sorted: python {:016x}  rust {:016x}\n  \
                  the engine's list, canonical order:\n{}  \
                  (python tools/gen_fuzz_fixture.py --dump {} {})",
-                seed, n, steps.len(), verdict, want_order, order, want_sorted, sorted,
-                listing, seed, n
+                seed,
+                n,
+                steps.len(),
+                verdict,
+                want_order,
+                order,
+                want_sorted,
+                sorted,
+                listing,
+                seed,
+                n
             );
         }
         legal_comparisons += 2;
@@ -562,7 +593,11 @@ fn the_random_legal_actions_replay_step_by_step() {
     for seed in &seeds {
         let path = dir.join(format!("fuzz_{}.txt", seed));
         let (file_seed, deck, stake, endless, steps, footer) = parse(&path);
-        assert_eq!(file_seed, *seed, "fixture {} names seed {}", seed, file_seed);
+        assert_eq!(
+            file_seed, *seed,
+            "fixture {} names seed {}",
+            seed, file_seed
+        );
         let (matched, deepest, keys, legal) = replay(&file_seed, &deck, stake, endless, &steps);
         assert_eq!(
             matched,

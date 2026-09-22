@@ -180,43 +180,121 @@ impl Default for BossEffect {
 
 /// The twenty-three ordinary bosses, in the game's order.
 pub const BOSSES: &[BossEffect] = &[
-    BossEffect { discard_random_on_play: 2, ..BossEffect::new("The Hook", "Discards 2 random cards per hand played") },
-    BossEffect { zero_money_on_most_played: true, ..BossEffect::new("The Ox", "Playing your most played hand sets money to $0") },
+    BossEffect {
+        discard_random_on_play: 2,
+        ..BossEffect::new("The Hook", "Discards 2 random cards per hand played")
+    },
+    BossEffect {
+        zero_money_on_most_played: true,
+        ..BossEffect::new("The Ox", "Playing your most played hand sets money to $0")
+    },
     BossEffect::new("The House", "First hand is drawn face down"),
-    BossEffect { chip_mult: 4.0, ..BossEffect::new("The Wall", "Extra large blind") },
+    BossEffect {
+        chip_mult: 4.0,
+        ..BossEffect::new("The Wall", "Extra large blind")
+    },
     BossEffect::new("The Wheel", "1 in 7 cards get drawn face down"),
-    BossEffect { level_down_played_hand: true, ..BossEffect::new("The Arm", "Decrease level of played poker hand") },
-    BossEffect { debuff_suit: Some(Suit::Clubs), ..BossEffect::new("The Club", "All Club cards are debuffed") },
+    BossEffect {
+        level_down_played_hand: true,
+        ..BossEffect::new("The Arm", "Decrease level of played poker hand")
+    },
+    BossEffect {
+        debuff_suit: Some(Suit::Clubs),
+        ..BossEffect::new("The Club", "All Club cards are debuffed")
+    },
     BossEffect::new("The Fish", "Cards drawn face down after each hand played"),
-    BossEffect { min_cards_played: 5, ..BossEffect::new("The Psychic", "Must play 5 cards") },
-    BossEffect { debuff_suit: Some(Suit::Spades), ..BossEffect::new("The Goad", "All Spade cards are debuffed") },
-    BossEffect { discards_delta: -99, ..BossEffect::new("The Water", "Start with 0 discards") },
-    BossEffect { debuff_suit: Some(Suit::Diamonds), ..BossEffect::new("The Window", "All Diamond cards are debuffed") },
-    BossEffect { hand_size_delta: -1, ..BossEffect::new("The Manacle", "-1 hand size") },
-    BossEffect { no_repeat_hand: true, ..BossEffect::new("The Eye", "No repeat hand types this round") },
-    BossEffect { lock_first_hand_type: true, ..BossEffect::new("The Mouth", "Play only one hand type this round") },
-    BossEffect { debuff_face: true, ..BossEffect::new("The Plant", "All face cards are debuffed") },
-    BossEffect { always_draw_three: true, ..BossEffect::new("The Serpent", "After play or discard, always draw 3 cards") },
-    BossEffect { debuff_previously_played: true, ..BossEffect::new("The Pillar", "Cards played earlier this ante are debuffed") },
+    BossEffect {
+        min_cards_played: 5,
+        ..BossEffect::new("The Psychic", "Must play 5 cards")
+    },
+    BossEffect {
+        debuff_suit: Some(Suit::Spades),
+        ..BossEffect::new("The Goad", "All Spade cards are debuffed")
+    },
+    BossEffect {
+        discards_delta: -99,
+        ..BossEffect::new("The Water", "Start with 0 discards")
+    },
+    BossEffect {
+        debuff_suit: Some(Suit::Diamonds),
+        ..BossEffect::new("The Window", "All Diamond cards are debuffed")
+    },
+    BossEffect {
+        hand_size_delta: -1,
+        ..BossEffect::new("The Manacle", "-1 hand size")
+    },
+    BossEffect {
+        no_repeat_hand: true,
+        ..BossEffect::new("The Eye", "No repeat hand types this round")
+    },
+    BossEffect {
+        lock_first_hand_type: true,
+        ..BossEffect::new("The Mouth", "Play only one hand type this round")
+    },
+    BossEffect {
+        debuff_face: true,
+        ..BossEffect::new("The Plant", "All face cards are debuffed")
+    },
+    BossEffect {
+        always_draw_three: true,
+        ..BossEffect::new("The Serpent", "After play or discard, always draw 3 cards")
+    },
+    BossEffect {
+        debuff_previously_played: true,
+        ..BossEffect::new("The Pillar", "Cards played earlier this ante are debuffed")
+    },
     // One hand, and the *small* blind's requirement for it: bl_needle is
     // `mult = 1` in game.lua:285, alone among the ordinary bosses. The
     // default here said two, so the simulator asked for twice what the
     // game asks -- see the check below, which is why it cannot happen
     // again.
-    BossEffect { hands_delta: -99, chip_mult: 1.0, ..BossEffect::new("The Needle", "Play only 1 hand") },
-    BossEffect { debuff_suit: Some(Suit::Hearts), ..BossEffect::new("The Head", "All Heart cards are debuffed") },
-    BossEffect { money_per_card_played: -1, ..BossEffect::new("The Tooth", "Lose $1 per card played") },
-    BossEffect { halve_base: true, ..BossEffect::new("The Flint", "Base Chips and Mult are halved") },
+    BossEffect {
+        hands_delta: -99,
+        chip_mult: 1.0,
+        ..BossEffect::new("The Needle", "Play only 1 hand")
+    },
+    BossEffect {
+        debuff_suit: Some(Suit::Hearts),
+        ..BossEffect::new("The Head", "All Heart cards are debuffed")
+    },
+    BossEffect {
+        money_per_card_played: -1,
+        ..BossEffect::new("The Tooth", "Lose $1 per card played")
+    },
+    BossEffect {
+        halve_base: true,
+        ..BossEffect::new("The Flint", "Base Chips and Mult are halved")
+    },
     BossEffect::new("The Mark", "All face cards are drawn face down"),
 ];
 
 /// The five finisher bosses, in the game's order.
 pub const FINISHER_BOSSES: &[BossEffect] = &[
-    BossEffect { is_finisher: true, shuffles_jokers: true, ..BossEffect::new("Amber Acorn", "Flips and shuffles all Jokers") },
-    BossEffect { is_finisher: true, debuff_until_sale: true, ..BossEffect::new("Verdant Leaf", "All cards debuffed until a Joker is sold") },
-    BossEffect { chip_mult: 6.0, is_finisher: true, ..BossEffect::new("Violet Vessel", "Very large blind") },
-    BossEffect { is_finisher: true, debuff_a_joker: true, ..BossEffect::new("Crimson Heart", "One random Joker disabled each hand") },
-    BossEffect { is_finisher: true, forces_a_card: true, ..BossEffect::new("Cerulean Bell", "Forces one card to always be selected") },
+    BossEffect {
+        is_finisher: true,
+        shuffles_jokers: true,
+        ..BossEffect::new("Amber Acorn", "Flips and shuffles all Jokers")
+    },
+    BossEffect {
+        is_finisher: true,
+        debuff_until_sale: true,
+        ..BossEffect::new("Verdant Leaf", "All cards debuffed until a Joker is sold")
+    },
+    BossEffect {
+        chip_mult: 6.0,
+        is_finisher: true,
+        ..BossEffect::new("Violet Vessel", "Very large blind")
+    },
+    BossEffect {
+        is_finisher: true,
+        debuff_a_joker: true,
+        ..BossEffect::new("Crimson Heart", "One random Joker disabled each hand")
+    },
+    BossEffect {
+        is_finisher: true,
+        forces_a_card: true,
+        ..BossEffect::new("Cerulean Bell", "Forces one card to always be selected")
+    },
 ];
 
 /// The boss with this display name, ordinary or finisher.

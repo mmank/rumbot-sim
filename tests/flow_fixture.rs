@@ -11,11 +11,10 @@ use std::path::PathBuf;
 use jimbot_sim::game::{Action, ActionType, GameState, PackChoice, Phase};
 
 const SEEDS: [&str; 32] = [
-    "FLOW0001", "FLOW0002", "FLOW0003", "FLOW0004", "FLOW0005", "FLOW0006", "FLOW0007",
-    "FLOW0008", "FLOW0009", "FLOW0010", "FLOW0011", "FLOW0012", "FLOW0013", "FLOW0014",
-    "FLOW0015", "FLOW0016", "FLOW0017", "FLOW0018", "FLOW0019", "FLOW0020", "FLOW0021",
-    "FLOW0022", "FLOW0023", "FLOW0024", "FLOW0025", "FLOW0026", "FLOW0027", "FLOW0028",
-    "FLOW0029", "FLOW0030", "FLOW0031", "FLOW0032",
+    "FLOW0001", "FLOW0002", "FLOW0003", "FLOW0004", "FLOW0005", "FLOW0006", "FLOW0007", "FLOW0008",
+    "FLOW0009", "FLOW0010", "FLOW0011", "FLOW0012", "FLOW0013", "FLOW0014", "FLOW0015", "FLOW0016",
+    "FLOW0017", "FLOW0018", "FLOW0019", "FLOW0020", "FLOW0021", "FLOW0022", "FLOW0023", "FLOW0024",
+    "FLOW0025", "FLOW0026", "FLOW0027", "FLOW0028", "FLOW0029", "FLOW0030", "FLOW0031", "FLOW0032",
 ];
 
 /// The one seed whose policy skips blinds, so the skip-tag path stays covered.
@@ -93,11 +92,8 @@ impl Policy {
                 if let Some(use_it) = first(UseConsumable) {
                     return use_it;
                 }
-                let plays: Vec<Action> = acts
-                    .iter()
-                    .filter(|a| a.r#type == Play)
-                    .cloned()
-                    .collect();
+                let plays: Vec<Action> =
+                    acts.iter().filter(|a| a.r#type == Play).cloned().collect();
                 if !plays.is_empty() {
                     let mut best = plays[0].clone();
                     let mut best_score = game.preview_score(&best.cards, "roll");
@@ -118,8 +114,7 @@ impl Policy {
                     if short && game.discards_left > 0 {
                         let keep: Vec<usize> = best.cards.clone();
                         if let Some(discard) = acts.iter().find(|a| {
-                            a.r#type == Discard
-                                && a.cards.iter().all(|i| !keep.contains(i))
+                            a.r#type == Discard && a.cards.iter().all(|i| !keep.contains(i))
                         }) {
                             return discard.clone();
                         }
@@ -200,7 +195,6 @@ impl Policy {
                 }
                 first(SkipPack).expect("skip pack is always offered")
             }
-
 
             _ => acts[0].clone(),
         }
@@ -383,7 +377,11 @@ fn replay(seed: &str, deck: &str, stake: i32, steps: &[Step]) -> usize {
             ),
             ("shop", shop_label(&game), step.shop.clone()),
             ("pack", pack_label(&game), step.pack.clone()),
-            ("chips", game.chips_scored.to_string(), step.chips.to_string()),
+            (
+                "chips",
+                game.chips_scored.to_string(),
+                step.chips.to_string(),
+            ),
             ("rng", rng_signature(&game), step.rng.clone()),
         ];
         for (field, actual, expected) in got {

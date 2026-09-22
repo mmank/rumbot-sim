@@ -360,10 +360,7 @@ impl Card {
                 - 1000.0 * suit_nominal(self.suit)
                 - 1000.0 * original;
         }
-        (self.rank.chips() as f64)
-            + suit_nominal(self.suit)
-            + original
-            + face_nominal(self.rank)
+        (self.rank.chips() as f64) + suit_nominal(self.suit) + original + face_nominal(self.rank)
     }
 
     /// get_nominal('suit'), which is what the sort-by-suit button uses.
@@ -566,8 +563,7 @@ impl std::fmt::Display for Card {
 /// any other order shuffles reproducibly into a different deck, and every hand
 /// of the run is then wrong from the same seed while every rule stays right --
 /// the failure that is hardest to see.
-pub const DECK_SUIT_ORDER: [Suit; 4] =
-    [Suit::Clubs, Suit::Diamonds, Suit::Hearts, Suit::Spades];
+pub const DECK_SUIT_ORDER: [Suit; 4] = [Suit::Clubs, Suit::Diamonds, Suit::Hearts, Suit::Spades];
 
 pub const DECK_RANK_ORDER: [Rank; 13] = [
     Rank::Two,

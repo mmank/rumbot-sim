@@ -1,6 +1,6 @@
 //! Shop contents: joker/consumable slots, vouchers and booster packs.
 
-use crate::cards::{CardRef, next_sort_id};
+use crate::cards::{next_sort_id, CardRef};
 use crate::consumables::ConsumableSpec;
 use crate::jokers::JokerRef;
 use crate::pack_data::PACK_DATA;

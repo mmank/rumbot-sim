@@ -135,8 +135,7 @@ fn the_stream_matches_the_python_simulator() {
             "shuffle" => {
                 let seed = f[1];
                 let n: usize = f[2].parse().unwrap();
-                let want: Vec<usize> =
-                    f[3].split(',').map(|s| s.parse().unwrap()).collect();
+                let want: Vec<usize> = f[3].split(',').map(|s| s.parse().unwrap()).collect();
                 let mut rng = RunRng::new(seed);
                 let mut items: Vec<usize> = (0..n).collect();
                 rng.shuffle(&mut items, "shuffle");

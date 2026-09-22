@@ -10,8 +10,8 @@
 use std::collections::HashMap;
 
 use jimbot_sim::blinds::{
-    all_bosses, ante_base_chips, boss_by_name, make_blind, reward_for, BlindKind,
-    BOSSES, FINISHER_BOSSES, FINISHER_REWARD,
+    all_bosses, ante_base_chips, boss_by_name, make_blind, reward_for, BlindKind, BOSSES,
+    FINISHER_BOSSES, FINISHER_REWARD,
 };
 use jimbot_sim::boss_data::eligible_bosses;
 use jimbot_sim::cards::Suit;
@@ -121,13 +121,38 @@ fn the_data_matches_the_python_simulator() {
                 bits_eq(boss.chip_mult, f[2].parse().unwrap(), line);
                 assert_eq!(boss.debuff_suit, parse_suit(f[3]), "{}", line);
                 assert_eq!(boss.debuff_face, flag(f[4]), "{}", line);
-                assert_eq!(boss.hand_size_delta, f[5].parse::<i32>().unwrap(), "{}", line);
+                assert_eq!(
+                    boss.hand_size_delta,
+                    f[5].parse::<i32>().unwrap(),
+                    "{}",
+                    line
+                );
                 assert_eq!(boss.hands_delta, f[6].parse::<i32>().unwrap(), "{}", line);
-                assert_eq!(boss.discards_delta, f[7].parse::<i32>().unwrap(), "{}", line);
-                assert_eq!(boss.min_cards_played, f[8].parse::<i32>().unwrap(), "{}", line);
-                assert_eq!(boss.money_per_card_played, f[9].parse::<i32>().unwrap(), "{}", line);
+                assert_eq!(
+                    boss.discards_delta,
+                    f[7].parse::<i32>().unwrap(),
+                    "{}",
+                    line
+                );
+                assert_eq!(
+                    boss.min_cards_played,
+                    f[8].parse::<i32>().unwrap(),
+                    "{}",
+                    line
+                );
+                assert_eq!(
+                    boss.money_per_card_played,
+                    f[9].parse::<i32>().unwrap(),
+                    "{}",
+                    line
+                );
                 assert_eq!(boss.zero_money_on_most_played, flag(f[10]), "{}", line);
-                assert_eq!(boss.discard_random_on_play, f[11].parse::<i32>().unwrap(), "{}", line);
+                assert_eq!(
+                    boss.discard_random_on_play,
+                    f[11].parse::<i32>().unwrap(),
+                    "{}",
+                    line
+                );
                 assert_eq!(boss.level_down_played_hand, flag(f[12]), "{}", line);
                 assert_eq!(boss.no_repeat_hand, flag(f[13]), "{}", line);
                 assert_eq!(boss.lock_first_hand_type, flag(f[14]), "{}", line);
@@ -178,12 +203,32 @@ fn the_data_matches_the_python_simulator() {
                 assert_eq!(config.dollars, f[8].parse::<i32>().unwrap(), "{}", line);
                 assert_eq!(config.hand_size, f[9].parse::<i32>().unwrap(), "{}", line);
                 bits_eq(config.ante_scaling, f[10].parse().unwrap(), line);
-                assert_eq!(config.consumable_slot, f[11].parse::<i32>().unwrap(), "{}", line);
+                assert_eq!(
+                    config.consumable_slot,
+                    f[11].parse::<i32>().unwrap(),
+                    "{}",
+                    line
+                );
                 assert_eq!(config.randomize_rank_suit, flag(f[12]), "{}", line);
-                assert_eq!(config.extra_hand_bonus, f[13].parse::<i32>().unwrap(), "{}", line);
-                assert_eq!(config.extra_discard_bonus, f[14].parse::<i32>().unwrap(), "{}", line);
+                assert_eq!(
+                    config.extra_hand_bonus,
+                    f[13].parse::<i32>().unwrap(),
+                    "{}",
+                    line
+                );
+                assert_eq!(
+                    config.extra_discard_bonus,
+                    f[14].parse::<i32>().unwrap(),
+                    "{}",
+                    line
+                );
                 assert_eq!(config.no_interest, flag(f[15]), "{}", line);
-                assert_eq!(config.spectral_rate, f[16].parse::<i32>().unwrap(), "{}", line);
+                assert_eq!(
+                    config.spectral_rate,
+                    f[16].parse::<i32>().unwrap(),
+                    "{}",
+                    line
+                );
                 assert_eq!(config.consumables, split_list(f[17]).as_slice(), "{}", line);
                 assert_eq!(config.voucher, dash(f[18]), "{}", line);
                 assert_eq!(config.vouchers, split_list(f[19]).as_slice(), "{}", line);
@@ -249,7 +294,12 @@ fn the_finisher_reward_rule_holds_for_every_boss() {
     // The five finishers pay eight; every ordinary boss pays the usual five.
     for boss in all_bosses() {
         let want = if boss.is_finisher { FINISHER_REWARD } else { 5 };
-        assert_eq!(reward_for(BlindKind::Boss, Some(boss)), want, "{}", boss.name);
+        assert_eq!(
+            reward_for(BlindKind::Boss, Some(boss)),
+            want,
+            "{}",
+            boss.name
+        );
     }
     assert_eq!(reward_for(BlindKind::Small, None), 3);
     assert_eq!(reward_for(BlindKind::Big, None), 4);

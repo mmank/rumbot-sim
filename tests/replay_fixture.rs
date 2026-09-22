@@ -41,9 +41,7 @@ use jimbot_sim::cards::{self, CardRef};
 use jimbot_sim::game::{Action, ActionType, GameState, PackChoice};
 use jimbot_sim::jokers::JokerRef;
 use jimbot_sim::shop_pool::key_by_joker_name;
-use jimbot_sim::state::{
-    digest_leaves, flatten_state, key_digests, state_dict, StateValue,
-};
+use jimbot_sim::state::{digest_leaves, flatten_state, key_digests, state_dict, StateValue};
 
 /// The recording stems. `13` does not exist (the raw files are 1..16 minus 13).
 const RECORDINGS: [&str; 15] = [
@@ -181,12 +179,15 @@ fn match_hand_order(game: &mut GameState, ids: &[i64], deck_index: &HashMap<u64,
     }
     made.sort_by_key(cards::uid_of);
     let made_ids: Vec<i64> = {
-        let mut ids: Vec<i64> = ids.iter().copied().filter(|w| *w >= deck_index.len() as i64).collect();
+        let mut ids: Vec<i64> = ids
+            .iter()
+            .copied()
+            .filter(|w| *w >= deck_index.len() as i64)
+            .collect();
         ids.sort();
         ids
     };
-    let mut by_made: HashMap<i64, CardRef> =
-        made_ids.into_iter().zip(made.into_iter()).collect();
+    let mut by_made: HashMap<i64, CardRef> = made_ids.into_iter().zip(made.into_iter()).collect();
 
     let mut ordered: Vec<CardRef> = Vec::new();
     let mut leftover: Vec<CardRef> = game.hand.clone();
@@ -658,7 +659,11 @@ fn replay(
             ),
             ("shop", shop_label(&game), step.shop.clone()),
             ("pack", pack_label(&game), step.pack.clone()),
-            ("chips", game.chips_scored.to_string(), step.chips.to_string()),
+            (
+                "chips",
+                game.chips_scored.to_string(),
+                step.chips.to_string(),
+            ),
             ("rng", rng_signature(&game), step.rng.clone()),
         ];
         for (field, actual, expected) in got {
@@ -859,8 +864,7 @@ fn replay(
 
         match &mv {
             Move::Action(action) => game.step(action),
-            Move::Sort => game
-                .sort_hand(step.sort.as_deref().expect("a sort move has a sort")),
+            Move::Sort => game.sort_hand(step.sort.as_deref().expect("a sort move has a sort")),
             Move::Skip => {}
         }
         deepest = deepest.max(game.ante);
@@ -905,10 +909,8 @@ fn the_recorded_human_games_replay_step_by_step() {
     // distinct digests the fixture actually carries, so a fixture that pinned
     // them again (or a Rust side that ignored them) fails here rather than
     // passing while proving nothing.
-    let mut toggles_variants: std::collections::BTreeSet<u64> =
-        std::collections::BTreeSet::new();
-    let mut swaps_variants: std::collections::BTreeSet<u64> =
-        std::collections::BTreeSet::new();
+    let mut toggles_variants: std::collections::BTreeSet<u64> = std::collections::BTreeSet::new();
+    let mut swaps_variants: std::collections::BTreeSet<u64> = std::collections::BTreeSet::new();
     for name in RECORDINGS {
         let path = dir.join(format!("replay_{}.txt", name));
         let (seed, deck, stake, money, steps, footer) = parse(&path);

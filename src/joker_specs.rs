@@ -157,7 +157,6 @@ fn rough_gem(j: &JokerRef, card: &CardRef, ctx: &mut ScoreContext, game: &mut Ga
     let _ = j;
 }
 
-
 // -- _hand_mult / _hand_chips / _hand_xmult ---------------------------------
 
 /// `_hand_mult(hands, amount)`: +Mult when the played hand contains a hand.
@@ -290,7 +289,6 @@ fn the_tribe(j: &JokerRef, ctx: &mut ScoreContext, _game: &mut GameState) {
         ctx.times_mult(2.0, j.borrow().spec.name);
     }
 }
-
 
 // -- _rank_scorer -----------------------------------------------------------
 
@@ -556,7 +554,6 @@ fn swashbuckler(j: &JokerRef, ctx: &mut ScoreContext, game: &mut GameState) {
     ctx.add_mult(total as f64, j.borrow().spec.name);
 }
 
-
 fn golden_joker(_j: &JokerRef, game: &mut GameState) {
     game.add_money(4, "Golden Joker");
 }
@@ -697,7 +694,6 @@ fn steel_joker(j: &JokerRef, ctx: &mut ScoreContext, game: &mut GameState) {
     ctx.times_mult(1.0 + 0.2 * count as f64, j.borrow().spec.name);
 }
 
-
 /// `_vampire`: strip every enhanced card in the scoring hand, before it scores.
 ///
 /// context.before, alongside Midas Mask: the game walks the scoring hand
@@ -777,11 +773,7 @@ fn loyalty_card(j: &JokerRef, ctx: &mut ScoreContext, game: &mut GameState) {
 /// a debuffed Uncommon joker still counts.
 fn baseball_card(j: &JokerRef, other: &JokerRef, ctx: &mut ScoreContext, _game: &mut GameState) {
     if other.borrow().spec.rarity == Rarity::Uncommon && !std::rc::Rc::ptr_eq(other, j) {
-        let text = format!(
-            "{} on {}",
-            j.borrow().spec.name,
-            other.borrow().spec.name
-        );
+        let text = format!("{} on {}", j.borrow().spec.name, other.borrow().spec.name);
         ctx.times_mult(1.5, &text);
     }
 }
@@ -793,9 +785,7 @@ fn hack(_j: &JokerRef, card: &CardRef, _ctx: &mut ScoreContext, _game: &mut Game
         let c = card.borrow();
         (c.is_stone(), c.rank)
     };
-    if !is_stone
-        && matches!(rank, Rank::Two | Rank::Three | Rank::Four | Rank::Five)
-    {
+    if !is_stone && matches!(rank, Rank::Two | Rank::Three | Rank::Four | Rank::Five) {
         1
     } else {
         0
@@ -848,7 +838,6 @@ fn triboulet(j: &JokerRef, card: &CardRef, ctx: &mut ScoreContext, _game: &mut G
         ctx.times_mult(2.0, j.borrow().spec.name);
     }
 }
-
 
 /// `_canio`: `if val:is_face() then face_cards = face_cards + 1 end` over the
 /// cards removed (card.lua:2673-2679): not a debuffed King, not a Stone one, and
@@ -924,12 +913,7 @@ fn photograph(j: &JokerRef, card: &CardRef, ctx: &mut ScoreContext, game: &mut G
 /// `context.other_card:get_id() == 12` (card.lua:3272-3273), and get_id
 /// answers a Stone card with a random negative (card.lua:958-960): a Stone
 /// Queen held pays nothing, as a Stone King does nothing for Baron.
-fn shoot_the_moon(
-    j: &JokerRef,
-    card: &CardRef,
-    ctx: &mut ScoreContext,
-    _game: &mut GameState,
-) {
+fn shoot_the_moon(j: &JokerRef, card: &CardRef, ctx: &mut ScoreContext, _game: &mut GameState) {
     let (rank, debuffed, is_stone) = {
         let c = card.borrow();
         (c.rank, c.debuffed, c.is_stone())
@@ -982,9 +966,11 @@ fn raised_fist(j: &JokerRef, card: &CardRef, ctx: &mut ScoreContext, _game: &mut
         // next lowest card.
         return;
     }
-    ctx.add_mult(2.0 * card.borrow().rank.chips() as f64, j.borrow().spec.name);
+    ctx.add_mult(
+        2.0 * card.borrow().rank.chips() as f64,
+        j.borrow().spec.name,
+    );
 }
-
 
 fn acrobat(j: &JokerRef, ctx: &mut ScoreContext, game: &mut GameState) {
     if game.hands_left == 0 {
@@ -1047,7 +1033,11 @@ fn erosion(j: &JokerRef, ctx: &mut ScoreContext, game: &mut GameState) {
 }
 
 fn stone_joker(j: &JokerRef, ctx: &mut ScoreContext, game: &mut GameState) {
-    let count = game.full_deck.iter().filter(|c| c.borrow().is_stone()).count();
+    let count = game
+        .full_deck
+        .iter()
+        .filter(|c| c.borrow().is_stone())
+        .count();
     ctx.add_chips(25.0 * count as f64, j.borrow().spec.name);
 }
 
@@ -1093,7 +1083,10 @@ fn throwback(j: &JokerRef, ctx: &mut ScoreContext, game: &mut GameState) {
     // Card:update recomputes this as 1 + skips * 0.25 every frame, so the
     // joker keeps no growth of its own however much the tooltip looks like it
     // does.
-    ctx.times_mult(1.0 + 0.25 * game.blinds_skipped as f64, j.borrow().spec.name);
+    ctx.times_mult(
+        1.0 + 0.25 * game.blinds_skipped as f64,
+        j.borrow().spec.name,
+    );
 }
 
 /// `_glass_joker`: X0.75 for each glass card that *shattered*.
@@ -1138,7 +1131,6 @@ fn hiker(_j: &JokerRef, card: &CardRef, _ctx: &mut ScoreContext, _game: &mut Gam
     card.borrow_mut().extra_chips += 5;
 }
 
-
 /// `_ceremonial_dagger`: eat the joker to the right, keep twice its sell value
 /// as mult.
 ///
@@ -1149,10 +1141,7 @@ fn hiker(_j: &JokerRef, card: &CardRef, _ctx: &mut ScoreContext, _game: &mut Gam
 /// ever did the eating, so it sat on zero for whole runs while the row kept
 /// a joker the game had taken away.
 fn ceremonial_dagger(j: &JokerRef, game: &mut GameState) {
-    let index = game
-        .jokers
-        .iter()
-        .position(|o| std::rc::Rc::ptr_eq(o, j));
+    let index = game.jokers.iter().position(|o| std::rc::Rc::ptr_eq(o, j));
     let index = match index {
         Some(index) if index + 1 < game.jokers.len() => index,
         _ => return,
@@ -1240,7 +1229,6 @@ fn hit_the_road_end(j: &JokerRef, _game: &mut GameState) {
         j.borrow_mut().counter = 1.0;
     }
 }
-
 
 // -- chance-based scoring ---------------------------------------------------
 
@@ -1355,7 +1343,6 @@ fn matador_debuffed(j: &JokerRef, game: &mut GameState) {
     }
 }
 
-
 fn red_card_skip(j: &JokerRef, _game: &mut GameState) {
     j.borrow_mut().counter += 3.0;
 }
@@ -1384,9 +1371,7 @@ fn madness(j: &JokerRef, game: &mut GameState) {
     let mut prey: Vec<JokerRef> = game
         .jokers
         .iter()
-        .filter(|o| {
-            !std::rc::Rc::ptr_eq(o, j) && !o.borrow().eternal && !game.is_getting_sliced(o)
-        })
+        .filter(|o| !std::rc::Rc::ptr_eq(o, j) && !o.borrow().eternal && !game.is_getting_sliced(o))
         .cloned()
         .collect();
     prey.sort_by_key(|o| o.borrow().uid);
@@ -1511,7 +1496,6 @@ fn mail_in(j: &JokerRef, cards: &[CardRef], game: &mut GameState) {
     game.add_money(5 * matched, j.borrow().spec.name);
 }
 
-
 // -- shop and run structure -------------------------------------------------
 
 /// `_invisible_sold`: sold after two rounds, a copy of a random other joker
@@ -1591,7 +1575,12 @@ fn random_front_card(
 /// cards against each other (get_nominal, card.lua:950-955). Always making
 /// an Ace of Spades showed up on seed TTL5O2HL as a 7C in the game's hand.
 fn marble(_j: &JokerRef, game: &mut GameState) {
-    let card = random_front_card(game, "marb_fr", Enhancement::Stone, crate::cards::Seal::None);
+    let card = random_front_card(
+        game,
+        "marb_fr",
+        Enhancement::Stone,
+        crate::cards::Seal::None,
+    );
     game.add_card(&card);
 }
 
@@ -1623,7 +1612,6 @@ fn certificate(_j: &JokerRef, game: &mut GameState) {
     // place by the hand's sort rather than joining the end.
     game.sort_hand("rank");
 }
-
 
 fn cartomancer(_j: &JokerRef, game: &mut GameState) {
     let specs = game.random_consumables(ConsumableKind::Tarot, 1, "car");
@@ -1726,7 +1714,6 @@ fn seance(_j: &JokerRef, ctx: &mut ScoreContext, game: &mut GameState) {
     }
 }
 
-
 /// Vagabond: `G.GAME.dollars <= extra` in joker_main (card.lua:3743-3744), and
 /// the hand's own payouts are `ease_dollars` events still queued then:
 /// Matador's $8 left of it did not stop the game's tarot, and read after the
@@ -1770,7 +1757,6 @@ fn burnt(_j: &JokerRef, cards: &[CardRef], game: &mut GameState) {
     game.hand_levels.level_up(hand, 1);
 }
 
-
 fn gros_michel_mult(j: &JokerRef, ctx: &mut ScoreContext, _game: &mut GameState) {
     ctx.add_mult(15.0, j.borrow().spec.name);
 }
@@ -1778,7 +1764,6 @@ fn gros_michel_mult(j: &JokerRef, ctx: &mut ScoreContext, _game: &mut GameState)
 fn cavendish(j: &JokerRef, ctx: &mut ScoreContext, _game: &mut GameState) {
     ctx.times_mult(3.0, j.borrow().spec.name);
 }
-
 
 /// Turtle Bean's round end: `_decay(j, -1, g)`.
 fn turtle_bean_end(j: &JokerRef, game: &mut GameState) {
@@ -1790,14 +1775,12 @@ fn invisible_round_end(j: &JokerRef, _game: &mut GameState) {
     bump(j, 1.0, None);
 }
 
-
 /// Golden Ticket: a played Gold card earns $4.
 fn golden_ticket(_j: &JokerRef, card: &CardRef, ctx: &mut ScoreContext, _game: &mut GameState) {
     if card.borrow().enhancement == Enhancement::Gold {
         ctx.money_gained += 4;
     }
 }
-
 
 // --------------------------------------------------------------------------
 // the registry
@@ -2184,4 +2167,3 @@ pub const SPECS: &[JokerSpec] = &[
                 text: "Upgrade the level of the first discarded poker hand each round", cost: 8,
                 on_first_discard: Some(burnt), ..JokerSpec::DEFAULT },
 ];
-

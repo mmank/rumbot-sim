@@ -78,22 +78,139 @@ impl Default for DeckConfig {
 
 /// display name -> (key, config), in the Python dict's order.
 pub const DECK_DATA: &[(&str, DeckConfig)] = &[
-    ("Abandoned Deck", DeckConfig { key: "b_abandoned", remove_faces: true, ..DeckConfig::empty() }),
-    ("Anaglyph Deck", DeckConfig { key: "b_anaglyph", double_tag_after_boss: true, ..DeckConfig::empty() }),
-    ("Black Deck", DeckConfig { key: "b_black", hands: -1, joker_slot: 1, ..DeckConfig::empty() }),
-    ("Blue Deck", DeckConfig { key: "b_blue", hands: 1, ..DeckConfig::empty() }),
-    ("Challenge Deck", DeckConfig { key: "b_challenge", ..DeckConfig::empty() }),
-    ("Checkered Deck", DeckConfig { key: "b_checkered", ..DeckConfig::empty() }),
-    ("Erratic Deck", DeckConfig { key: "b_erratic", randomize_rank_suit: true, ..DeckConfig::empty() }),
-    ("Ghost Deck", DeckConfig { key: "b_ghost", spectral_rate: 2, consumables: &["c_hex"], ..DeckConfig::empty() }),
-    ("Green Deck", DeckConfig { key: "b_green", extra_hand_bonus: 2, extra_discard_bonus: 1, no_interest: true, ..DeckConfig::empty() }),
-    ("Magic Deck", DeckConfig { key: "b_magic", consumables: &["c_fool", "c_fool"], voucher: "v_crystal_ball", ..DeckConfig::empty() }),
-    ("Nebula Deck", DeckConfig { key: "b_nebula", consumable_slot: -1, voucher: "v_telescope", ..DeckConfig::empty() }),
-    ("Painted Deck", DeckConfig { key: "b_painted", hand_size: 2, joker_slot: -1, ..DeckConfig::empty() }),
-    ("Plasma Deck", DeckConfig { key: "b_plasma", ante_scaling: 2.0, ..DeckConfig::empty() }),
-    ("Red Deck", DeckConfig { key: "b_red", discards: 1, ..DeckConfig::empty() }),
-    ("Yellow Deck", DeckConfig { key: "b_yellow", dollars: 10, ..DeckConfig::empty() }),
-    ("Zodiac Deck", DeckConfig { key: "b_zodiac", vouchers: &["v_tarot_merchant", "v_planet_merchant", "v_overstock_norm"], ..DeckConfig::empty() }),
+    (
+        "Abandoned Deck",
+        DeckConfig {
+            key: "b_abandoned",
+            remove_faces: true,
+            ..DeckConfig::empty()
+        },
+    ),
+    (
+        "Anaglyph Deck",
+        DeckConfig {
+            key: "b_anaglyph",
+            double_tag_after_boss: true,
+            ..DeckConfig::empty()
+        },
+    ),
+    (
+        "Black Deck",
+        DeckConfig {
+            key: "b_black",
+            hands: -1,
+            joker_slot: 1,
+            ..DeckConfig::empty()
+        },
+    ),
+    (
+        "Blue Deck",
+        DeckConfig {
+            key: "b_blue",
+            hands: 1,
+            ..DeckConfig::empty()
+        },
+    ),
+    (
+        "Challenge Deck",
+        DeckConfig {
+            key: "b_challenge",
+            ..DeckConfig::empty()
+        },
+    ),
+    (
+        "Checkered Deck",
+        DeckConfig {
+            key: "b_checkered",
+            ..DeckConfig::empty()
+        },
+    ),
+    (
+        "Erratic Deck",
+        DeckConfig {
+            key: "b_erratic",
+            randomize_rank_suit: true,
+            ..DeckConfig::empty()
+        },
+    ),
+    (
+        "Ghost Deck",
+        DeckConfig {
+            key: "b_ghost",
+            spectral_rate: 2,
+            consumables: &["c_hex"],
+            ..DeckConfig::empty()
+        },
+    ),
+    (
+        "Green Deck",
+        DeckConfig {
+            key: "b_green",
+            extra_hand_bonus: 2,
+            extra_discard_bonus: 1,
+            no_interest: true,
+            ..DeckConfig::empty()
+        },
+    ),
+    (
+        "Magic Deck",
+        DeckConfig {
+            key: "b_magic",
+            consumables: &["c_fool", "c_fool"],
+            voucher: "v_crystal_ball",
+            ..DeckConfig::empty()
+        },
+    ),
+    (
+        "Nebula Deck",
+        DeckConfig {
+            key: "b_nebula",
+            consumable_slot: -1,
+            voucher: "v_telescope",
+            ..DeckConfig::empty()
+        },
+    ),
+    (
+        "Painted Deck",
+        DeckConfig {
+            key: "b_painted",
+            hand_size: 2,
+            joker_slot: -1,
+            ..DeckConfig::empty()
+        },
+    ),
+    (
+        "Plasma Deck",
+        DeckConfig {
+            key: "b_plasma",
+            ante_scaling: 2.0,
+            ..DeckConfig::empty()
+        },
+    ),
+    (
+        "Red Deck",
+        DeckConfig {
+            key: "b_red",
+            discards: 1,
+            ..DeckConfig::empty()
+        },
+    ),
+    (
+        "Yellow Deck",
+        DeckConfig {
+            key: "b_yellow",
+            dollars: 10,
+            ..DeckConfig::empty()
+        },
+    ),
+    (
+        "Zodiac Deck",
+        DeckConfig {
+            key: "b_zodiac",
+            vouchers: &["v_tarot_merchant", "v_planet_merchant", "v_overstock_norm"],
+            ..DeckConfig::empty()
+        },
+    ),
 ];
 
 /// The config for a deck name, or the empty one for an unknown name.
@@ -106,4 +223,3 @@ pub fn deck_config(deck: &str) -> &'static DeckConfig {
         .map(|(_, config)| config)
         .unwrap_or(&DeckConfig::EMPTY)
 }
-

@@ -25,34 +25,202 @@ pub struct BossRow {
 
 /// key -> (name, min_ante, showdown, chip_mult), alphabetical by key.
 pub const BOSS_DATA: &[BossRow] = &[
-    BossRow { key: "bl_arm", name: "The Arm", min_ante: 2, showdown: false, chip_mult: 2.0 },
-    BossRow { key: "bl_club", name: "The Club", min_ante: 1, showdown: false, chip_mult: 2.0 },
-    BossRow { key: "bl_eye", name: "The Eye", min_ante: 3, showdown: false, chip_mult: 2.0 },
-    BossRow { key: "bl_final_acorn", name: "Amber Acorn", min_ante: 10, showdown: true, chip_mult: 2.0 },
-    BossRow { key: "bl_final_bell", name: "Cerulean Bell", min_ante: 10, showdown: true, chip_mult: 2.0 },
-    BossRow { key: "bl_final_heart", name: "Crimson Heart", min_ante: 10, showdown: true, chip_mult: 2.0 },
-    BossRow { key: "bl_final_leaf", name: "Verdant Leaf", min_ante: 10, showdown: true, chip_mult: 2.0 },
-    BossRow { key: "bl_final_vessel", name: "Violet Vessel", min_ante: 10, showdown: true, chip_mult: 6.0 },
-    BossRow { key: "bl_fish", name: "The Fish", min_ante: 2, showdown: false, chip_mult: 2.0 },
-    BossRow { key: "bl_flint", name: "The Flint", min_ante: 2, showdown: false, chip_mult: 2.0 },
-    BossRow { key: "bl_goad", name: "The Goad", min_ante: 1, showdown: false, chip_mult: 2.0 },
-    BossRow { key: "bl_head", name: "The Head", min_ante: 1, showdown: false, chip_mult: 2.0 },
-    BossRow { key: "bl_hook", name: "The Hook", min_ante: 1, showdown: false, chip_mult: 2.0 },
-    BossRow { key: "bl_house", name: "The House", min_ante: 2, showdown: false, chip_mult: 2.0 },
-    BossRow { key: "bl_manacle", name: "The Manacle", min_ante: 1, showdown: false, chip_mult: 2.0 },
-    BossRow { key: "bl_mark", name: "The Mark", min_ante: 2, showdown: false, chip_mult: 2.0 },
-    BossRow { key: "bl_mouth", name: "The Mouth", min_ante: 2, showdown: false, chip_mult: 2.0 },
-    BossRow { key: "bl_needle", name: "The Needle", min_ante: 2, showdown: false, chip_mult: 1.0 },
-    BossRow { key: "bl_ox", name: "The Ox", min_ante: 6, showdown: false, chip_mult: 2.0 },
-    BossRow { key: "bl_pillar", name: "The Pillar", min_ante: 1, showdown: false, chip_mult: 2.0 },
-    BossRow { key: "bl_plant", name: "The Plant", min_ante: 4, showdown: false, chip_mult: 2.0 },
-    BossRow { key: "bl_psychic", name: "The Psychic", min_ante: 1, showdown: false, chip_mult: 2.0 },
-    BossRow { key: "bl_serpent", name: "The Serpent", min_ante: 5, showdown: false, chip_mult: 2.0 },
-    BossRow { key: "bl_tooth", name: "The Tooth", min_ante: 3, showdown: false, chip_mult: 2.0 },
-    BossRow { key: "bl_wall", name: "The Wall", min_ante: 2, showdown: false, chip_mult: 4.0 },
-    BossRow { key: "bl_water", name: "The Water", min_ante: 2, showdown: false, chip_mult: 2.0 },
-    BossRow { key: "bl_wheel", name: "The Wheel", min_ante: 2, showdown: false, chip_mult: 2.0 },
-    BossRow { key: "bl_window", name: "The Window", min_ante: 1, showdown: false, chip_mult: 2.0 },
+    BossRow {
+        key: "bl_arm",
+        name: "The Arm",
+        min_ante: 2,
+        showdown: false,
+        chip_mult: 2.0,
+    },
+    BossRow {
+        key: "bl_club",
+        name: "The Club",
+        min_ante: 1,
+        showdown: false,
+        chip_mult: 2.0,
+    },
+    BossRow {
+        key: "bl_eye",
+        name: "The Eye",
+        min_ante: 3,
+        showdown: false,
+        chip_mult: 2.0,
+    },
+    BossRow {
+        key: "bl_final_acorn",
+        name: "Amber Acorn",
+        min_ante: 10,
+        showdown: true,
+        chip_mult: 2.0,
+    },
+    BossRow {
+        key: "bl_final_bell",
+        name: "Cerulean Bell",
+        min_ante: 10,
+        showdown: true,
+        chip_mult: 2.0,
+    },
+    BossRow {
+        key: "bl_final_heart",
+        name: "Crimson Heart",
+        min_ante: 10,
+        showdown: true,
+        chip_mult: 2.0,
+    },
+    BossRow {
+        key: "bl_final_leaf",
+        name: "Verdant Leaf",
+        min_ante: 10,
+        showdown: true,
+        chip_mult: 2.0,
+    },
+    BossRow {
+        key: "bl_final_vessel",
+        name: "Violet Vessel",
+        min_ante: 10,
+        showdown: true,
+        chip_mult: 6.0,
+    },
+    BossRow {
+        key: "bl_fish",
+        name: "The Fish",
+        min_ante: 2,
+        showdown: false,
+        chip_mult: 2.0,
+    },
+    BossRow {
+        key: "bl_flint",
+        name: "The Flint",
+        min_ante: 2,
+        showdown: false,
+        chip_mult: 2.0,
+    },
+    BossRow {
+        key: "bl_goad",
+        name: "The Goad",
+        min_ante: 1,
+        showdown: false,
+        chip_mult: 2.0,
+    },
+    BossRow {
+        key: "bl_head",
+        name: "The Head",
+        min_ante: 1,
+        showdown: false,
+        chip_mult: 2.0,
+    },
+    BossRow {
+        key: "bl_hook",
+        name: "The Hook",
+        min_ante: 1,
+        showdown: false,
+        chip_mult: 2.0,
+    },
+    BossRow {
+        key: "bl_house",
+        name: "The House",
+        min_ante: 2,
+        showdown: false,
+        chip_mult: 2.0,
+    },
+    BossRow {
+        key: "bl_manacle",
+        name: "The Manacle",
+        min_ante: 1,
+        showdown: false,
+        chip_mult: 2.0,
+    },
+    BossRow {
+        key: "bl_mark",
+        name: "The Mark",
+        min_ante: 2,
+        showdown: false,
+        chip_mult: 2.0,
+    },
+    BossRow {
+        key: "bl_mouth",
+        name: "The Mouth",
+        min_ante: 2,
+        showdown: false,
+        chip_mult: 2.0,
+    },
+    BossRow {
+        key: "bl_needle",
+        name: "The Needle",
+        min_ante: 2,
+        showdown: false,
+        chip_mult: 1.0,
+    },
+    BossRow {
+        key: "bl_ox",
+        name: "The Ox",
+        min_ante: 6,
+        showdown: false,
+        chip_mult: 2.0,
+    },
+    BossRow {
+        key: "bl_pillar",
+        name: "The Pillar",
+        min_ante: 1,
+        showdown: false,
+        chip_mult: 2.0,
+    },
+    BossRow {
+        key: "bl_plant",
+        name: "The Plant",
+        min_ante: 4,
+        showdown: false,
+        chip_mult: 2.0,
+    },
+    BossRow {
+        key: "bl_psychic",
+        name: "The Psychic",
+        min_ante: 1,
+        showdown: false,
+        chip_mult: 2.0,
+    },
+    BossRow {
+        key: "bl_serpent",
+        name: "The Serpent",
+        min_ante: 5,
+        showdown: false,
+        chip_mult: 2.0,
+    },
+    BossRow {
+        key: "bl_tooth",
+        name: "The Tooth",
+        min_ante: 3,
+        showdown: false,
+        chip_mult: 2.0,
+    },
+    BossRow {
+        key: "bl_wall",
+        name: "The Wall",
+        min_ante: 2,
+        showdown: false,
+        chip_mult: 4.0,
+    },
+    BossRow {
+        key: "bl_water",
+        name: "The Water",
+        min_ante: 2,
+        showdown: false,
+        chip_mult: 2.0,
+    },
+    BossRow {
+        key: "bl_wheel",
+        name: "The Wheel",
+        min_ante: 2,
+        showdown: false,
+        chip_mult: 2.0,
+    },
+    BossRow {
+        key: "bl_window",
+        name: "The Window",
+        min_ante: 1,
+        showdown: false,
+        chip_mult: 2.0,
+    },
 ];
 
 /// The row for a boss key, or `None` if the key is unknown.
@@ -84,7 +252,11 @@ pub fn eligible_bosses(ante: i32, used: &HashMap<String, i32>, win_ante: i32) ->
     if pool.is_empty() {
         return Vec::new();
     }
-    let fewest = pool.iter().map(|key| *used.get(*key).unwrap_or(&0)).min().unwrap();
+    let fewest = pool
+        .iter()
+        .map(|key| *used.get(*key).unwrap_or(&0))
+        .min()
+        .unwrap();
     // Keys sorted, because pseudorandom_element sorts a keyed table before it
     // picks and the order therefore decides which key an index lands on.
     let mut out: Vec<&'static str> = pool

@@ -497,10 +497,8 @@ pub fn make(name: &str) -> JokerRef {
 
 /// Jokers of that rarity, in the game's pool order (Python `by_rarity`).
 pub fn by_rarity(rarity: Rarity) -> Vec<&'static JokerSpec> {
-    let mut out: Vec<&'static JokerSpec> = all_specs()
-        .iter()
-        .filter(|s| s.rarity == rarity)
-        .collect();
+    let mut out: Vec<&'static JokerSpec> =
+        all_specs().iter().filter(|s| s.rarity == rarity).collect();
     out.sort_by_key(|s| spec_order(s.name));
     out
 }

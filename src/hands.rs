@@ -1,8 +1,6 @@
 //! Poker hand detection and hand-level bookkeeping.
 
-use crate::cards::{
-    is_stone, rank_of, uid_of, CardRef, Enhancement, Rank, Suit,
-};
+use crate::cards::{is_stone, rank_of, uid_of, CardRef, Enhancement, Rank, Suit};
 use std::collections::HashMap;
 
 /// The twelve poker hands, weakest first, as the game numbers them.
@@ -371,7 +369,11 @@ pub fn straight_cards(cards: &[CardRef], needed: usize, shortcut: bool) -> Optio
             None => ids.push((value, vec![c.clone()])),
         }
     }
-    let has = |value: u8| ids.iter().find(|(v, _)| *v == value).map(|(_, l)| l.clone());
+    let has = |value: u8| {
+        ids.iter()
+            .find(|(v, _)| *v == value)
+            .map(|(_, l)| l.clone())
+    };
 
     let mut run: Vec<CardRef> = Vec::new();
     let mut length = 0usize;
@@ -533,7 +535,11 @@ pub fn evaluate(cards: &[CardRef], flags: EvalFlags) -> HandResult {
         }
     }
     let size_count = |want: usize| -> usize {
-        sizes.iter().find(|(s, _)| *s == want).map(|(_, n)| *n).unwrap_or(0)
+        sizes
+            .iter()
+            .find(|(s, _)| *s == want)
+            .map(|(_, n)| *n)
+            .unwrap_or(0)
     };
     let n_five = size_count(5);
     let n_four = size_count(4);

@@ -149,7 +149,6 @@ pub fn build_pool<O: AsRef<str>, S: AsRef<str>, P: AsRef<str>>(
     pool
 }
 
-
 /// One shop joker, as the game would roll it.
 pub fn draw_joker<O: AsRef<str>, S: AsRef<str>, P: AsRef<str>>(
     rng: &mut RunRng,
@@ -165,13 +164,7 @@ pub fn draw_joker<O: AsRef<str>, S: AsRef<str>, P: AsRef<str>>(
         Some(rarity) => rarity,
         None => roll_rarity(rng, ante, append),
     };
-    let pool = build_pool(
-        rarity,
-        owned_enhancements,
-        seen_jokers,
-        showman,
-        pool_flags,
-    );
+    let pool = build_pool(rarity, owned_enhancements, seen_jokers, showman, pool_flags);
     // A legendary draw names a different stream, and the game is explicit about it
     // in get_current_pool:
     //
@@ -299,17 +292,11 @@ pub fn roll_slot_type(rng: &mut RunRng, ante: i32, rates: Option<&HashMap<String
     RATE_ORDER[0].to_string()
 }
 
-
 /// One shop slot: its type and the card in it.
 ///
 /// Shop cards carry the game's "sho" key_append, which puts them on their own
 /// pools -- the same joker rolled for a pack draws from a different stream.
-pub fn draw_shop_card<
-    O: AsRef<str>,
-    S: AsRef<str>,
-    P: AsRef<str>,
-    H: AsRef<str>,
->(
+pub fn draw_shop_card<O: AsRef<str>, S: AsRef<str>, P: AsRef<str>, H: AsRef<str>>(
     rng: &mut RunRng,
     ante: i32,
     rates: Option<&HashMap<String, f64>>,
@@ -443,7 +430,6 @@ pub fn poll_edition(
     "none"
 }
 
-
 // --------------------------------------------------------------------------
 // booster packs
 // --------------------------------------------------------------------------
@@ -534,7 +520,6 @@ pub fn draw_tag<S: AsRef<str>>(
     draw(rng, &pool, &format!("Tag{}{}", append, ante))
 }
 
-
 // --------------------------------------------------------------------------
 // what is inside a pack
 // --------------------------------------------------------------------------
@@ -549,7 +534,9 @@ pub const ENHANCEMENTS: [&str; 8] = [
 // G.P_CARDS is keyed by strings, so pseudorandom_element sorts it by key: clubs,
 // diamonds, hearts, spades, and within a suit 2-9 then A J K Q T.
 pub const SUITS: [&str; 4] = ["C", "D", "H", "S"];
-pub const RANKS: [&str; 13] = ["2", "3", "4", "5", "6", "7", "8", "9", "A", "J", "K", "Q", "T"];
+pub const RANKS: [&str; 13] = [
+    "2", "3", "4", "5", "6", "7", "8", "9", "A", "J", "K", "Q", "T",
+];
 
 /// `SUITS` x `RANKS`, in the game's key order -- the Standard pack's front draw.
 pub const FRONTS: [&str; 52] = [
@@ -648,14 +635,21 @@ fn pack_consumable(
         };
     }
     let seen_vec: Vec<&str> = seen.iter().map(|s| s.as_str()).collect();
-    let key = draw_consumable(rng, card_set, ante, played_hands, &seen_vec, showman, append);
+    let key = draw_consumable(
+        rng,
+        card_set,
+        ante,
+        played_hands,
+        &seen_vec,
+        showman,
+        append,
+    );
     PackCard {
         set: card_set,
         key: Some(key),
         ..PackCard::default()
     }
 }
-
 
 /// One card from a Standard pack: face, enhancement, edition, seal.
 ///
@@ -672,7 +666,10 @@ fn pack_consumable(
 fn standard_card(rng: &mut RunRng, ante: i32, edition_rate: f64) -> PackCard {
     let enhanced = rng.pseudorandom(&format!("stdset{}", ante), None, None) > 0.6;
     let enhancement = if enhanced {
-        Some(rng.choice(&format!("Enhancedsta{}", ante), &ENHANCEMENTS).to_string())
+        Some(
+            rng.choice(&format!("Enhancedsta{}", ante), &ENHANCEMENTS)
+                .to_string(),
+        )
     } else {
         None
     };
@@ -714,7 +711,6 @@ fn standard_card(rng: &mut RunRng, ante: i32, edition_rate: f64) -> PackCard {
     }
 }
 
-
 /// Everything a pack offers, in the order the game creates it.
 ///
 /// The simulator drew pack contents uniformly from whole card sets, which is wrong
@@ -725,13 +721,7 @@ fn standard_card(rng: &mut RunRng, ante: i32, edition_rate: f64) -> PackCard {
 /// The `stickers`/`edition_rate` pair is the run's stake and its vouchers, exactly
 /// as the shop passes them.
 #[allow(clippy::too_many_arguments)]
-pub fn pack_contents<
-    H: AsRef<str>,
-    S: AsRef<str>,
-    O: AsRef<str>,
-    J: AsRef<str>,
-    P: AsRef<str>,
->(
+pub fn pack_contents<H: AsRef<str>, S: AsRef<str>, O: AsRef<str>, J: AsRef<str>, P: AsRef<str>>(
     rng: &mut RunRng,
     kind: &str,
     cards: i32,
@@ -842,7 +832,6 @@ pub fn pack_contents<
     out
 }
 
-
 // --------------------------------------------------------------------------
 // stickers
 // --------------------------------------------------------------------------
@@ -911,7 +900,11 @@ pub fn poll_stickers(
     };
     let mut out = StickerPoll::default();
     let poll = rng.pseudorandom(
-        &format!("{}{}", if in_pack { "packetper" } else { "etperpoll" }, ante),
+        &format!(
+            "{}{}",
+            if in_pack { "packetper" } else { "etperpoll" },
+            ante
+        ),
         None,
         None,
     );
@@ -931,7 +924,6 @@ pub fn poll_stickers(
     }
     out
 }
-
 
 // --------------------------------------------------------------------------
 // vouchers
@@ -990,4 +982,3 @@ pub fn draw_voucher<R: AsRef<str>, O: AsRef<str>>(
     };
     draw(rng, &pool, &key)
 }
-

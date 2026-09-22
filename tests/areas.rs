@@ -26,8 +26,8 @@
 use std::rc::Rc;
 
 use jimbot_sim::cards::{
-    enhancement_of, extra_chips_of, make_card, played_this_ante_of, set_played_this_ante,
-    Enhancement, Edition, Rank, Suit,
+    enhancement_of, extra_chips_of, make_card, played_this_ante_of, set_played_this_ante, Edition,
+    Enhancement, Rank, Suit,
 };
 use jimbot_sim::game::GameState;
 use jimbot_sim::jokers::{JokerInstance, JokerSpec};
@@ -169,8 +169,14 @@ fn money_spendable_and_affords_agree_with_the_python_rules() {
     assert_eq!(game.money, field(money, 5).parse::<i32>().unwrap());
     assert_eq!(game.logs.join("|"), field(logs, 1));
 
-    assert_eq!(game.bankrupt_at(), field(record("bankrupt_plain"), 1).parse::<i32>().unwrap());
-    assert_eq!(game.spendable(), field(record("spendable_plain"), 1).parse::<i32>().unwrap());
+    assert_eq!(
+        game.bankrupt_at(),
+        field(record("bankrupt_plain"), 1).parse::<i32>().unwrap()
+    );
+    assert_eq!(
+        game.spendable(),
+        field(record("spendable_plain"), 1).parse::<i32>().unwrap()
+    );
     let costs = [-1, 0, 1, 11, 12, 13];
     for (cost, want) in costs.iter().zip(flags(affords, 1)) {
         assert_eq!(game.affords(*cost), want, "affords({})", cost);
@@ -241,4 +247,3 @@ fn seen_centers_is_the_centres_that_currently_exist() {
         .push(jimbot_sim::jokers::make_ref(JokerInstance::new(&JOKER)));
     assert!(game.seen_centers().contains("j_joker"));
 }
-

@@ -63,11 +63,7 @@ fn a_stencil_counts_every_stencil() {
     );
     // Three, X5 each: X125.
     assert_eq!(
-        sim_score(&[
-            "Joker Stencil",
-            "Joker Stencil",
-            "Joker Stencil"
-        ]),
+        sim_score(&["Joker Stencil", "Joker Stencil", "Joker Stencil"]),
         7500,
         "three of them"
     );

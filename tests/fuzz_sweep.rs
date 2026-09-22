@@ -188,7 +188,6 @@ fn load_rows() -> Vec<Row> {
         .collect()
 }
 
-
 /// Replay one seed. Panics on the first divergence with the seed, the block,
 /// the step range, both digests and the `--detail` command. Returns
 /// `(steps matched, deepest ante, checkpoint comparisons)`.
@@ -281,7 +280,11 @@ fn replay(row: &Row) -> (usize, i32, usize) {
         );
         if got_digest != *want {
             // The block starts just after the previous checkpoint.
-            let start = if i == 0 { 1 } else { row.checkpoints[i - 1].0 + 1 };
+            let start = if i == 0 {
+                1
+            } else {
+                row.checkpoints[i - 1].0 + 1
+            };
             panic!(
                 "seed {} diverged in checkpoint block {} (steps {}-{}, {}):\n  \
                  python {:016x}\n  rust   {:016x}\n  \
@@ -315,7 +318,6 @@ fn replay(row: &Row) -> (usize, i32, usize) {
 
     (steps, deepest, comparisons)
 }
-
 
 #[test]
 fn the_sweep_rolling_digests_replay() {
@@ -385,4 +387,3 @@ fn the_sweep_rolling_digests_replay() {
         seeds, total_steps, total_checkpoints, deepest_ante, ended_by_themselves
     );
 }
-

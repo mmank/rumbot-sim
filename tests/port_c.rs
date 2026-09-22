@@ -58,7 +58,9 @@ fn skip(game: &mut GameState) {
 }
 
 fn apply(name: &str, game: &mut GameState) {
-    (spec_or_panic(name).apply.expect("a registered consumable has an apply"))(game, &[]);
+    (spec_or_panic(name)
+        .apply
+        .expect("a registered consumable has an apply"))(game, &[]);
 }
 
 fn hand_targets(game: &GameState, n: usize) -> Vec<CardRef> {
@@ -224,7 +226,10 @@ fn test_orbital_never_names_a_hand_the_run_has_not_seen() {
         assert!(!SECRET_HANDS.contains(&named));
         seen.insert(named);
     }
-    assert!(seen.len() > 1, "eight seeds and it named one hand every time");
+    assert!(
+        seen.len() > 1,
+        "eight seeds and it named one hand every time"
+    );
 }
 
 #[test]
@@ -254,7 +259,10 @@ fn test_a_voucher_tag_puts_a_second_voucher_in_the_shop() {
     game._open_shop();
     let offered = &game.shop.as_ref().unwrap().vouchers;
     assert_eq!(offered.len(), 2);
-    assert_ne!(offered[0].key, offered[1].key, "the shop must not repeat one");
+    assert_ne!(
+        offered[0].key, offered[1].key,
+        "the shop must not repeat one"
+    );
 }
 
 #[test]
@@ -309,10 +317,15 @@ fn test_the_shop_tags_are_spent_when_they_fire() {
 #[test]
 fn test_the_immediate_list_holds_only_tags_that_pay_on_the_skip() {
     let actual: HashSet<Tag> = IMMEDIATE_TAGS.into_iter().collect();
-    let expected: HashSet<Tag> =
-        [Tag::Handy, Tag::Garbage, Tag::Speed, Tag::TopUp, Tag::Orbital]
-            .into_iter()
-            .collect();
+    let expected: HashSet<Tag> = [
+        Tag::Handy,
+        Tag::Garbage,
+        Tag::Speed,
+        Tag::TopUp,
+        Tag::Orbital,
+    ]
+    .into_iter()
+    .collect();
     assert_eq!(actual, expected);
 }
 
@@ -651,7 +664,10 @@ fn shop_rates(game: &GameState) -> std::collections::HashMap<String, f64> {
 #[test]
 fn test_an_upgrade_replaces_its_base_rate_rather_than_stacking() {
     // G.GAME.tarot_rate = 4*extra, an assignment. Summing gives 41.6.
-    assert_eq!(shop_rates(&voucher_run(&["v_tarot_merchant"]))["Tarot"], 9.6);
+    assert_eq!(
+        shop_rates(&voucher_run(&["v_tarot_merchant"]))["Tarot"],
+        9.6
+    );
     let both = voucher_run(&["v_tarot_merchant", "v_tarot_tycoon"]);
     assert_eq!(shop_rates(&both)["Tarot"], 32.0);
 }
@@ -679,7 +695,10 @@ fn test_glow_up_replaces_hone() {
 fn test_money_tree_replaces_seed_money() {
     // The cap is in five-dollar blocks: $50 is 10, $100 is 20.
     assert_eq!(voucher_run(&["v_seed_money"]).interest_cap(), 10);
-    assert_eq!(voucher_run(&["v_seed_money", "v_money_tree"]).interest_cap(), 20);
+    assert_eq!(
+        voucher_run(&["v_seed_money", "v_money_tree"]).interest_cap(),
+        20
+    );
 }
 
 // ------------------------------------------------------------------
@@ -709,7 +728,10 @@ fn test_paint_brush_and_palette_stack() {
 #[test]
 fn test_overstock_and_overstock_plus_stack() {
     let plain = run()._shop_slot_count();
-    assert_eq!(voucher_run(&["v_overstock_norm"])._shop_slot_count(), plain + 1);
+    assert_eq!(
+        voucher_run(&["v_overstock_norm"])._shop_slot_count(),
+        plain + 1
+    );
     let both = voucher_run(&["v_overstock_norm", "v_overstock_plus"]);
     assert_eq!(both._shop_slot_count(), plain + 2);
 }
@@ -783,15 +805,8 @@ fn test_an_upgrade_is_not_offered_before_its_base_is_redeemed() {
         .filter(|v| !v.requires.is_empty())
         .map(|v| v.key)
         .collect();
-    let live: HashSet<String> = pool
-        .iter()
-        .filter(|k| *k != UNAVAILABLE)
-        .cloned()
-        .collect();
-    let expected: HashSet<String> = keys
-        .difference(&gated)
-        .map(|k| k.to_string())
-        .collect();
+    let live: HashSet<String> = pool.iter().filter(|k| *k != UNAVAILABLE).cloned().collect();
+    let expected: HashSet<String> = keys.difference(&gated).map(|k| k.to_string()).collect();
     assert_eq!(live, expected);
 
     let with_base = build_voucher_pool(&["v_hieroglyph"] as &[&str], &[] as &[&str]);
@@ -875,11 +890,7 @@ fn test_every_voucher_either_carries_a_field_or_is_read_by_key() {
         inert.push(voucher.name);
     }
 
-    assert_eq!(
-        inert,
-        vec!["Blank"],
-        "a voucher that does nothing at all"
-    );
+    assert_eq!(inert, vec!["Blank"], "a voucher that does nothing at all");
 }
 
 // ------------------------------------------------------------------
@@ -1057,7 +1068,10 @@ fn test_the_consumables_a_shop_allows() {
     for name in USABLE_IN_A_SHOP {
         let mut game = use_run(&["Joker"], Phase::Shop);
         game.last_tarot_planet = "c_death".to_string();
-        assert!(can_use(&game, name, &[]), "{name} should be usable in a shop");
+        assert!(
+            can_use(&game, name, &[]),
+            "{name} should be usable in a shop"
+        );
     }
 }
 
@@ -1115,12 +1129,18 @@ fn test_they_need_a_joker_with_no_edition() {
     // Engine: no jokers = no, all foil = no, one plain among them = yes.
     for name in ["Ectoplasm", "Hex", "The Wheel of Fortune"] {
         let mut game = use_run(&[], Phase::Playing);
-        assert!(!can_use(&game, name, &[]), "an empty row has nothing to edition");
+        assert!(
+            !can_use(&game, name, &[]),
+            "an empty row has nothing to edition"
+        );
 
         for _ in 0..3 {
             game.gain_joker(&editioned("Joker", Edition::Foil));
         }
-        assert!(!can_use(&game, name, &[]), "every joker already has an edition");
+        assert!(
+            !can_use(&game, name, &[]),
+            "every joker already has an edition"
+        );
 
         game.gain_joker(&joker("Joker"));
         assert!(can_use(&game, name, &[]));
@@ -1140,7 +1160,14 @@ fn test_aura_refuses_a_card_that_already_has_an_edition() {
 #[test]
 fn test_the_random_destroyers_want_a_card_to_spare() {
     // `#G.hand.cards > 1`. They eat a card chosen at random.
-    for name in ["Familiar", "Grim", "Incantation", "Immolate", "Sigil", "Ouija"] {
+    for name in [
+        "Familiar",
+        "Grim",
+        "Incantation",
+        "Immolate",
+        "Sigil",
+        "Ouija",
+    ] {
         let mut game = use_run(&[], Phase::Playing);
         assert!(can_use(&game, name, &[]));
         game.hand.truncate(1);
@@ -1177,7 +1204,10 @@ fn test_ankh_asks_only_for_a_joker_which_is_the_bug() {
     while (game.jokers.len() as i32) < game.joker_slots() {
         game.gain_joker(&joker("Joker"));
     }
-    assert!(can_use(&game, "Ankh", &[]), "the button is live even with a full row");
+    assert!(
+        can_use(&game, "Ankh", &[]),
+        "the button is live even with a full row"
+    );
     assert!(
         game.refuses_use(spec_or_panic("Ankh")),
         "and then it says No Room"
@@ -1298,7 +1328,11 @@ fn test_the_free_pack_is_offered_below_its_list_price() {
     let packs = game.shop.as_ref().unwrap().packs.clone();
     assert_eq!(game.pack_price(&packs[0]), 0);
     assert_eq!(game.pack_price(&packs[1]), 4);
-    assert_eq!(pack_buys(&game), vec![0], "only the Celestial pack is free at $3");
+    assert_eq!(
+        pack_buys(&game),
+        vec![0],
+        "only the Celestial pack is free at $3"
+    );
 }
 
 #[test]
@@ -1452,10 +1486,7 @@ fn test_selling_makes_room_for_the_pack_joker_and_the_pack_stays_open() {
     let pick = Action::at(ActionType::PickPack, 0);
     assert!(game.is_legal(&pick));
     game.step(&pick);
-    assert!(game
-        .jokers
-        .iter()
-        .any(|j| j.borrow().name() == "Mr. Bones"));
+    assert!(game.jokers.iter().any(|j| j.borrow().name() == "Mr. Bones"));
 }
 
 #[test]
@@ -1583,4 +1614,3 @@ fn test_hallucination_never_duplicates_a_card_in_the_pack() {
         .collect();
     assert!(offered.is_disjoint(&held));
 }
-

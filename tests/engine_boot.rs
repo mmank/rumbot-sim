@@ -4,7 +4,7 @@
 //! boots from a seed, builds the game's own 52-card deck in the game's own
 //! order, and the deck's own config lands on the run.
 
-use jimbot_sim::cards::{suit_of, rank_of, Suit};
+use jimbot_sim::cards::{rank_of, suit_of, Suit};
 use jimbot_sim::game::{GameState, Phase, BASE_CONSUMABLE_SLOTS, BASE_HAND_SIZE};
 use jimbot_sim::jokers;
 
@@ -16,9 +16,17 @@ fn a_run_boots_from_a_seed() {
     assert_eq!(game.full_deck.len(), 52);
     assert_eq!(game.draw_pile.len(), 52);
     // The draw pile is the whole deck, just shuffled.
-    let mut uids: Vec<u64> = game.draw_pile.iter().map(jimbot_sim::cards::uid_of).collect();
+    let mut uids: Vec<u64> = game
+        .draw_pile
+        .iter()
+        .map(jimbot_sim::cards::uid_of)
+        .collect();
     uids.sort();
-    let mut deck_uids: Vec<u64> = game.full_deck.iter().map(jimbot_sim::cards::uid_of).collect();
+    let mut deck_uids: Vec<u64> = game
+        .full_deck
+        .iter()
+        .map(jimbot_sim::cards::uid_of)
+        .collect();
     deck_uids.sort();
     assert_eq!(uids, deck_uids);
     assert_eq!(game.hand_size(), BASE_HAND_SIZE);
@@ -64,6 +72,9 @@ fn the_checkered_deck_converts_in_place() {
 fn an_unregistered_joker_is_a_loud_failure() {
     // "Contributed nothing at all rather than contributing wrongly" is how a
     // whole class of joker bugs stayed invisible. A missing spec must panic.
-    assert!(jokers::spec("Joker").is_some(), "the spec table is filled in");
+    assert!(
+        jokers::spec("Joker").is_some(),
+        "the spec table is filled in"
+    );
     assert!(std::panic::catch_unwind(|| jokers::spec_or_panic("No Such Joker")).is_err());
 }

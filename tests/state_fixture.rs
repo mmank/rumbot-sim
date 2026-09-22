@@ -243,9 +243,9 @@ fn build_shop_slot(spec: &str) -> ShopSlot {
 
 /// One pack option, from the generator's `J|...`, `C|...` or `K|...`.
 fn build_pack_option(spec: &str) -> PackChoice {
-    let (tag, rest) = spec.split_once('|').unwrap_or_else(|| {
-        panic!("pack option spec {:?}", spec)
-    });
+    let (tag, rest) = spec
+        .split_once('|')
+        .unwrap_or_else(|| panic!("pack option spec {:?}", spec));
     match tag {
         "J" => PackChoice::Joker(build_joker(rest)),
         "C" => PackChoice::Card(wrap(make_card(rest))),
@@ -313,8 +313,6 @@ fn parse_case(fields: &[&str]) -> Setup {
     }
 }
 
-
-
 fn build_game(setup: &Setup) -> GameState {
     let mut game = GameState::new(setup.seed.as_str(), &setup.deck, setup.stake);
     game.blind = None;
@@ -337,7 +335,11 @@ fn build_game(setup: &Setup) -> GameState {
     game.ancient_suit = setup.ancient_suit;
     game.mail_rank = setup.mail_rank;
     game.castle_suit = setup.castle_suit;
-    game.hand = setup.hand.iter().map(|spec| wrap(make_card(spec))).collect();
+    game.hand = setup
+        .hand
+        .iter()
+        .map(|spec| wrap(make_card(spec)))
+        .collect();
     game.hands_played = setup.hands_played;
     game.jokers = setup.jokers.iter().map(|spec| build_joker(spec)).collect();
     game.consumables = setup
@@ -348,10 +350,7 @@ fn build_game(setup: &Setup) -> GameState {
     game.vouchers = setup
         .vouchers
         .iter()
-        .map(|key| {
-            voucher_by_key(key)
-                .unwrap_or_else(|| panic!("no voucher with key {:?}", key))
-        })
+        .map(|key| voucher_by_key(key).unwrap_or_else(|| panic!("no voucher with key {:?}", key)))
         .collect();
     if setup.shop {
         let mut shop = Shop::default();
@@ -360,13 +359,16 @@ fn build_game(setup: &Setup) -> GameState {
             .iter()
             .map(|spec| build_shop_slot(spec))
             .collect();
-        shop.packs = setup.shop_packs.iter().map(|key| pack_from_key(key)).collect();
+        shop.packs = setup
+            .shop_packs
+            .iter()
+            .map(|key| pack_from_key(key))
+            .collect();
         shop.vouchers = setup
             .shop_vouchers
             .iter()
             .map(|key| {
-                voucher_by_key(key)
-                    .unwrap_or_else(|| panic!("no voucher with key {:?}", key))
+                voucher_by_key(key).unwrap_or_else(|| panic!("no voucher with key {:?}", key))
             })
             .collect();
         shop.rerolls = setup.shop_rerolls;

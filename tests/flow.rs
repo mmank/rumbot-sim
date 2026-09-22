@@ -131,7 +131,11 @@ pub fn drive_to_playing(game: &mut GameState) {
         game.step(&action);
         steps += 1;
     }
-    assert_eq!(game.phase, Phase::Playing, "never reached the playing phase");
+    assert_eq!(
+        game.phase,
+        Phase::Playing,
+        "never reached the playing phase"
+    );
     assert!(!game.hand.is_empty(), "no cards dealt");
 }
 
@@ -240,4 +244,3 @@ fn previews_are_read_only() {
         );
     }
 }
-

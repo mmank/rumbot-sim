@@ -23,8 +23,12 @@ use std::collections::HashMap;
 pub const M64: u64 = u64::MAX;
 
 /// i, k, q, s -- L'Ecuyer table 3, first entry: L=64, J=4, k=223, N1=49.
-const TW223_PARAMS: [(usize, u32, u32, u32); 4] =
-    [(0, 63, 31, 18), (1, 58, 19, 28), (2, 55, 24, 7), (3, 47, 21, 8)];
+const TW223_PARAMS: [(usize, u32, u32, u32); 4] = [
+    (0, 63, 31, 18),
+    (1, 58, 19, 28),
+    (2, 55, 24, 7),
+    (3, 47, 21, 8),
+];
 
 /// Python's `%` on floats, which the game's arithmetic relies on.
 ///
@@ -348,8 +352,6 @@ pub fn random_string(length: usize, rng: &mut TW223) -> String {
     }
     out
 }
-
-
 
 #[cfg(test)]
 mod tests {

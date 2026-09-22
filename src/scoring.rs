@@ -77,9 +77,7 @@ pub fn effective_specs(jokers: &[JokerRef]) -> Vec<(&'static JokerSpec, JokerRef
                 Copier::Right => idx + 1,
                 Copier::Leftmost => 0,
             };
-            if target >= jokers.len()
-                || seen.contains(&target)
-                || jokers[target].borrow().debuffed
+            if target >= jokers.len() || seen.contains(&target) || jokers[target].borrow().debuffed
             {
                 // Copies nothing: its own spec has no effect hooks. A debuffed
                 // joker is nothing to copy -- other_joker:calculate_joker is nil
@@ -344,7 +342,6 @@ pub fn score_hand(
         }
     }
 
-
     // The base is read after the before pass, and it is this reading The Flint
     // halves: evaluate_play reads G.GAME.hands[text] again at state_events.lua:
     // 640-641, straight after the jokers' `before` pass, and passes that to
@@ -388,7 +385,11 @@ pub fn score_hand(
         if card.borrow().debuffed {
             continue;
         }
-        let mut triggers = 1 + if card.borrow().seal == Seal::Red { 1 } else { 0 };
+        let mut triggers = 1 + if card.borrow().seal == Seal::Red {
+            1
+        } else {
+            0
+        };
         for (spec, source) in &pairs {
             if let Some(retrigger) = spec.retrigger_scored {
                 triggers += retrigger(source, card, &mut ctx, game);
@@ -447,7 +448,11 @@ pub fn score_hand(
         if !held_card_once(card, &mut ctx, &pairs, game) {
             continue;
         }
-        let mut repeats = if card.borrow().seal == Seal::Red { 1 } else { 0 };
+        let mut repeats = if card.borrow().seal == Seal::Red {
+            1
+        } else {
+            0
+        };
         for (spec, source) in &pairs {
             if let Some(retrigger) = spec.retrigger_held {
                 repeats += retrigger(source, card, &mut ctx, game);
@@ -457,8 +462,6 @@ pub fn score_hand(
             held_card_once(card, &mut ctx, &pairs, game);
         }
     }
-
-
 
     // One joker at a time, and the whole row answers about each one before the
     // next (state_events.lua:877-944): its foil and holo, its own joker_main,
@@ -541,7 +544,6 @@ pub fn score_hand(
     ctx
 }
 
-
 /// Glass cards that break after scoring, to be removed from the deck.
 ///
 /// A debuffed Glass card never breaks, and never rolls to (state_events.lua:961):
@@ -567,7 +569,12 @@ pub fn shattered_glass(game: &mut GameState, scoring: &[CardRef]) -> Vec<CardRef
         };
         if is_glass
             && !debuffed
-            && listed(game, "glass", GLASS_SHATTER_CHANCE.0, GLASS_SHATTER_CHANCE.1)
+            && listed(
+                game,
+                "glass",
+                GLASS_SHATTER_CHANCE.0,
+                GLASS_SHATTER_CHANCE.1,
+            )
         {
             out.push(card.clone());
         }
@@ -593,7 +600,11 @@ pub fn held_triggers(game: &mut GameState, card: &CardRef) -> i32 {
     if card.borrow().debuffed {
         return 0;
     }
-    let mut triggers = 1 + if card.borrow().seal == Seal::Red { 1 } else { 0 };
+    let mut triggers = 1 + if card.borrow().seal == Seal::Red {
+        1
+    } else {
+        0
+    };
     // Python passes `None` as the context here; the retrigger hooks never read it.
     let mut ctx = ScoreContext::new(
         HandType::HighCard,
@@ -611,7 +622,6 @@ pub fn held_triggers(game: &mut GameState, card: &CardRef) -> i32 {
     }
     triggers
 }
-
 
 #[cfg(test)]
 mod tests {
@@ -752,7 +762,10 @@ mod tests {
         let adder = inst(&ADDER, 7.0, false);
         adder.borrow_mut().edition = Edition::Polychrome;
         game.jokers = vec![adder];
-        let played = vec![make_card(Rank::Ace, Suit::Spades), make_card(Rank::Ace, Suit::Hearts)];
+        let played = vec![
+            make_card(Rank::Ace, Suit::Spades),
+            make_card(Rank::Ace, Suit::Hearts),
+        ];
         let result = game.evaluate_selection(&played);
         let ctx = score_hand(&mut game, &result, &played, &[]);
         // Pair: 10 chips, 2 mult; two Aces add 22 chips; Adder adds 7 mult; its
@@ -782,4 +795,3 @@ mod tests {
         assert_eq!(grower.borrow().counter, 1.0);
     }
 }
-

@@ -76,9 +76,24 @@ const CLEARS_SELECTION: &[ActionType] = &[
 /// cards picked (mod_conv, suit_conv; card.lua:1150) and the four seal
 /// Spectrals (card.lua:1190). Anything else leaves it where it was.
 const UNHIGHLIGHTS: &[&str] = &[
-    "c_magician", "c_empress", "c_heirophant", "c_lovers", "c_chariot", "c_justice", "c_devil",
-    "c_tower", "c_death", "c_strength", "c_star", "c_moon", "c_sun", "c_world", "c_talisman",
-    "c_deja_vu", "c_trance", "c_medium",
+    "c_magician",
+    "c_empress",
+    "c_heirophant",
+    "c_lovers",
+    "c_chariot",
+    "c_justice",
+    "c_devil",
+    "c_tower",
+    "c_death",
+    "c_strength",
+    "c_star",
+    "c_moon",
+    "c_sun",
+    "c_world",
+    "c_talisman",
+    "c_deja_vu",
+    "c_trance",
+    "c_medium",
 ];
 
 /// The game allows this many cards highlighted (G.hand.config.highlighted_limit).
@@ -166,7 +181,6 @@ impl SimRun {
         }
         self.swaps
     }
-
 
     /// The highlighted cards: those clicked, and Cerulean Bell's. The boss
     /// highlights its card from the deal and no click or clear takes it off
@@ -322,7 +336,10 @@ impl SimRun {
             let (chips, mult) = self.game.hand_levels.values(result.hand);
             let card_chips: i32 = result.scoring.iter().map(|c| rank_of(c).chips()).sum();
             made.insert("name".to_string(), result.hand.label().into());
-            made.insert("level".to_string(), self.game.hand_levels.level(result.hand).into());
+            made.insert(
+                "level".to_string(),
+                self.game.hand_levels.level(result.hand).into(),
+            );
             made.insert("chips".to_string(), (chips + card_chips).into());
             made.insert("mult".to_string(), mult.into());
             made.insert("cards".to_string(), (result.scoring.len() as i32).into());
@@ -445,7 +462,14 @@ fn in_a_shop(seed: &str) -> GameState {
 
 /// `_boss(name)`: the boss in force for the run's ante.
 fn boss_blind(game: &GameState, name: &str) -> Blind {
-    make_blind(BlindKind::Boss, game.ante, boss_by_name(name), 1.0, 1, false)
+    make_blind(
+        BlindKind::Boss,
+        game.ante,
+        boss_by_name(name),
+        1.0,
+        1,
+        false,
+    )
 }
 
 /// `_on_deck(name)`: the boss offered on the blind select screen, not yet set.
@@ -474,7 +498,6 @@ fn reroll_cost_carried(game: &GameState) -> i32 {
         game.reroll_price_carried
     }
 }
-
 
 // ==========================================================================
 // tests/test_engine_agreement.py -- "Where the simulator parted from the
@@ -593,7 +616,6 @@ fn test_a_planet_leaves_the_highlight_a_tarot_that_converts_takes_it() {
     assert!(run.selection().is_empty());
 }
 
-
 #[test]
 fn test_a_skipped_orbital_tag_levels_its_hand() {
     // Built with the blind it was offered on, as the select screen builds it;
@@ -688,7 +710,11 @@ fn test_a_pack_at_the_blind_select_does_not_spend_the_bells_draw() {
     game._open_pack(pack_from_key("p_arcana_normal_1"), false);
     assert!(!game.hand.is_empty());
     assert!(game.forced_card.is_none());
-    assert!(!game.rng.pools.keys().any(|k| k.starts_with("cerulean_bell")));
+    assert!(!game
+        .rng
+        .pools
+        .keys()
+        .any(|k| k.starts_with("cerulean_bell")));
 }
 
 #[test]
@@ -716,7 +742,6 @@ fn test_a_coupon_tag_taken_mid_shop_waits_for_the_next_shop() {
         .iter()
         .all(|slot| !slot.couponed));
 }
-
 
 #[test]
 fn test_ankh_draws_its_joker_oldest_first() {
@@ -808,7 +833,15 @@ fn test_perkeo_draws_its_consumable_oldest_first() {
         let perkeo = joker("Perkeo");
         let hook = perkeo.borrow().spec.on_shop_end.unwrap();
         hook(&perkeo, &mut game);
-        picks.push(game.consumables.last().unwrap().borrow().spec.name.to_string());
+        picks.push(
+            game.consumables
+                .last()
+                .unwrap()
+                .borrow()
+                .spec
+                .name
+                .to_string(),
+        );
     }
     assert_eq!(picks[0], picks[1]);
 }
@@ -832,7 +865,6 @@ fn test_a_consumable_bought_is_as_old_as_the_shop_that_stocked_it() {
     assert!(fool.borrow().uid < later.borrow().uid);
 }
 
-
 // ==========================================================================
 // tests/test_scoring_fixtures.py -- "Pinned scores for hands the recordings
 // never play."
@@ -840,7 +872,12 @@ fn test_a_consumable_bought_is_as_old_as_the_shop_that_stocked_it() {
 
 /// `scene.play([...])`: score these positions out of this hand, with an
 /// optional hand level, through the run's own pipeline.
-fn score_play(cards: &[CardRef], played: &[usize], jokers: &[&str], level: Option<HandType>) -> i64 {
+fn score_play(
+    cards: &[CardRef],
+    played: &[usize],
+    jokers: &[&str],
+    level: Option<HandType>,
+) -> i64 {
     let played_cards: Vec<CardRef> = played.iter().map(|i| cards[*i].clone()).collect();
     let held: Vec<CardRef> = cards
         .iter()
@@ -886,13 +923,19 @@ fn test_straight_flush() {
         card(Rank::Three, D),
         card(Rank::Four, C),
     ];
-    assert_eq!(score_play(&cards, &[0, 1, 2, 3, 4], &[], None), (100 + 51) * 8);
+    assert_eq!(
+        score_play(&cards, &[0, 1, 2, 3, 4], &[], None),
+        (100 + 51) * 8
+    );
 }
 
 #[test]
 fn test_pair() {
     // (10 base + 11+11) * 2 mult
-    assert_eq!(score_play(&pair_of_aces(), &[0, 1], &[], None), (10 + 22) * 2);
+    assert_eq!(
+        score_play(&pair_of_aces(), &[0, 1], &[], None),
+        (10 + 22) * 2
+    );
 }
 
 #[test]
@@ -908,7 +951,10 @@ fn test_flush() {
         card(Rank::Three, D),
         card(Rank::Five, C),
     ];
-    assert_eq!(score_play(&cards, &[0, 1, 2, 3, 4], &[], None), (35 + 30) * 4);
+    assert_eq!(
+        score_play(&cards, &[0, 1, 2, 3, 4], &[], None),
+        (35 + 30) * 4
+    );
 }
 
 #[test]
@@ -991,7 +1037,6 @@ fn test_joker_order_matters_for_multiplication() {
     );
 }
 
-
 // ==========================================================================
 // tests/test_getting_sliced.py -- "A joker Madness or Ceremonial Dagger takes
 // is gone only once the blind is set."
@@ -1001,8 +1046,8 @@ fn test_joker_order_matters_for_multiplication() {
 fn select_row(seed: &str, keys: &[&str], perished: &[usize]) -> GameState {
     let mut game = GameState::new(seed, "Red Deck", 1);
     for (i, key) in keys.iter().enumerate() {
-        let name = shop_pool::name_by_joker_key(key)
-            .unwrap_or_else(|| panic!("no joker key {key:?}"));
+        let name =
+            shop_pool::name_by_joker_key(key).unwrap_or_else(|| panic!("no joker key {key:?}"));
         game.gain_joker(&joker(name));
         if perished.contains(&i) {
             let j = game.jokers[i].clone();
@@ -1075,7 +1120,12 @@ fn test_the_dagger_hands_its_slot_back_through_the_buffer() {
     );
     assert_eq!(
         row_keys(&game)[..4],
-        ["j_ceremonial", "j_riff_raff", "j_greedy_joker", "j_lusty_joker"]
+        [
+            "j_ceremonial",
+            "j_riff_raff",
+            "j_greedy_joker",
+            "j_lusty_joker"
+        ]
     );
     assert_eq!(game.jokers.len(), 5);
 }
@@ -1134,7 +1184,6 @@ fn test_a_perished_joker_does_nothing_when_the_blind_is_selected() {
     assert_eq!(counters(&game), counters(&select_row("SLICE1", &[], &[])));
 }
 
-
 // ==========================================================================
 // tests/test_shop_pool.py -- "Which joker the shop offers, draw for draw
 // against the game."
@@ -1173,8 +1222,14 @@ fn test_a_gated_joker_is_blanked_not_dropped() {
     assert_eq!(full.len(), gated.len());
     assert_eq!(full.len(), jimbot_sim::joker_data::pool_for_rarity(2).len());
     let lucky_cat = joker_key("Lucky Cat");
-    assert!(!full.contains(&lucky_cat.to_string()), "Lucky Cat offered with no Lucky card owned");
-    assert!(gated.contains(&lucky_cat.to_string()), "Lucky Cat still withheld once one is owned");
+    assert!(
+        !full.contains(&lucky_cat.to_string()),
+        "Lucky Cat offered with no Lucky card owned"
+    );
+    assert!(
+        gated.contains(&lucky_cat.to_string()),
+        "Lucky Cat still withheld once one is owned"
+    );
 }
 
 #[test]
@@ -1228,7 +1283,6 @@ fn test_gros_michel_and_cavendish_swap_places() {
     assert!(!extinct.contains(&gros.to_string()));
     assert!(extinct.contains(&cavendish.to_string()));
 }
-
 
 #[test]
 fn test_a_planet_is_locked_until_its_hand_is_played() {
@@ -1370,7 +1424,6 @@ fn test_a_showman_puts_it_back() {
     assert!(shops_offering("The Star", true, 80) > 0);
 }
 
-
 // ==========================================================================
 // tests/test_pack_contents.py -- "What a booster pack contains, checked card
 // for card against the game."
@@ -1494,7 +1547,6 @@ fn test_the_run_hands_its_edition_rate_to_the_pack() {
     assert_eq!(game.edition_rate(), 2.0);
 }
 
-
 // ==========================================================================
 // tests/test_headless.py -- "Fidelity tests against the real game's own Lua."
 //
@@ -1609,7 +1661,11 @@ fn test_joker_scoring_matches_hand_calculation() {
         (vec!["The Duo"], 200, "X2 mult: 50 x 4"),
         (vec!["Joker", "The Duo"], 600, "+4 then X2: 50 x ((2+4)*2)"),
         (vec!["The Duo", "Joker"], 400, "X2 then +4: 50 x ((2*2)+4)"),
-        (vec!["Blueprint", "The Duo"], 400, "Blueprint copies The Duo: 50 x (2*2*2)"),
+        (
+            vec!["Blueprint", "The Duo"],
+            400,
+            "Blueprint copies The Duo: 50 x (2*2*2)",
+        ),
     ] {
         let mut game = start_run(&names);
         assert_eq!(hand_score(&mut game, &[1, 2, 3, 4]), expected, "{why}");
@@ -1685,7 +1741,6 @@ fn test_shop_purchase_costs_money_and_grants_the_card() {
     assert_eq!(game.money, before_money - cost);
     assert_eq!(game.jokers.len(), before_jokers + 1);
 }
-
 
 #[test]
 fn test_leaving_the_shop_returns_to_blind_select() {
@@ -1770,13 +1825,7 @@ fn test_a_voucher_can_only_be_bought_once() {
     game.step(&Action::new(ActionType::CashOut));
     game.money = 500;
 
-    let voucher = game
-        .shop
-        .as_ref()
-        .unwrap()
-        .vouchers
-        .first()
-        .map(|v| v.key);
+    let voucher = game.shop.as_ref().unwrap().vouchers.first().map(|v| v.key);
     let voucher = match voucher {
         Some(key) => key,
         None => return, // no voucher in this shop
@@ -1803,7 +1852,6 @@ fn test_a_voucher_can_only_be_bought_once() {
     }
     assert!(game.ante >= before_ante - 2);
 }
-
 
 // ==========================================================================
 // tests/test_run.py -- "One interface for every backend."
@@ -1881,7 +1929,6 @@ fn test_a_state_does_not_differ_from_itself() {
         .collect();
     assert_eq!(firsts, vec!["dollars"]);
 }
-
 
 #[test]
 fn test_a_highlight_is_held_by_card_as_the_game_holds_it() {
@@ -2020,18 +2067,27 @@ fn test_a_bought_out_shop_is_not_waited_on() {
     assert_eq!(game.phase, Phase::Shop);
     let stocking = StateValue::Map(
         [
-            ("state_name".to_string(), StateValue::Str("SHOP".to_string())),
+            (
+                "state_name".to_string(),
+                StateValue::Str("SHOP".to_string()),
+            ),
             ("shop_ready".to_string(), 0.into()),
         ]
         .into_iter()
         .collect(),
     );
     // A shop still dealing is waited on: the shadow's shelves are full.
-    assert_eq!(state_int(&ready_if_sold_out(&stocking, &game), "shop_ready"), 0);
+    assert_eq!(
+        state_int(&ready_if_sold_out(&stocking, &game), "shop_ready"),
+        0
+    );
     game.shop.as_mut().unwrap().slots.clear();
     game.shop.as_mut().unwrap().packs.clear();
     game.shop.as_mut().unwrap().vouchers.clear();
-    assert_eq!(state_int(&ready_if_sold_out(&stocking, &game), "shop_ready"), 1);
+    assert_eq!(
+        state_int(&ready_if_sold_out(&stocking, &game), "shop_ready"),
+        1
+    );
     // And nothing else about the state is touched.
     let other = StateValue::Map(
         [(
@@ -2043,4 +2099,3 @@ fn test_a_bought_out_shop_is_not_waited_on() {
     );
     assert_eq!(ready_if_sold_out(&other, &game), other);
 }
-

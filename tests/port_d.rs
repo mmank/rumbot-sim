@@ -54,7 +54,6 @@ fn hand_uids(game: &GameState) -> Vec<u64> {
     game.hand.iter().map(uid_of).collect()
 }
 
-
 // ==========================================================================
 // tests/test_running_out.py -- "The two ways a run ends without the blind ever
 // being scored."
@@ -242,8 +241,6 @@ fn test_a_run_without_mr_bones_simply_ends() {
     assert_eq!(game.phase, Phase::GameOver);
 }
 
-
-
 #[test]
 fn test_a_saved_round_pays_everything_except_the_blind_reward() {
     // Engine, from $10: saved cashes out at $12, beaten at $15.
@@ -338,7 +335,11 @@ fn dealt_round(names: &[&str], deck: &str) -> GameState {
 fn assert_sorted(game: &mut GameState) {
     let before = hand_uids(game);
     game._sort_hand();
-    assert_eq!(hand_uids(game), before, "the hand is re-sorted after the deal");
+    assert_eq!(
+        hand_uids(game),
+        before,
+        "the hand is re-sorted after the deal"
+    );
 }
 
 fn uid_set(cards: &[CardRef]) -> HashSet<u64> {
@@ -491,7 +492,14 @@ fn test_luchador_against_the_manacle_deals_two_even_over_the_limit() {
     let mut game = dealt_round(&[], "Red Deck");
     game.gain_joker(&joker("Luchador"));
     let ante = game.ante;
-    game.blind = Some(make_blind(BlindKind::Boss, ante, Some(manacle), 1.0, 1, false));
+    game.blind = Some(make_blind(
+        BlindKind::Boss,
+        ante,
+        Some(manacle),
+        1.0,
+        1,
+        false,
+    ));
     assert_eq!(game.hand_size(), 7);
     assert_eq!(game.hand.len(), 8);
 
@@ -510,7 +518,14 @@ fn test_luchador_against_the_manacle_still_deals_two() {
     game.gain_joker(&joker("Luchador"));
     game.ante_boss = String::new();
     let ante = game.ante;
-    game.blind = Some(make_blind(BlindKind::Boss, ante, Some(manacle), 1.0, 1, false));
+    game.blind = Some(make_blind(
+        BlindKind::Boss,
+        ante,
+        Some(manacle),
+        1.0,
+        1,
+        false,
+    ));
     game._start_round();
     assert_eq!(game.hand_size(), 7);
     assert_eq!(game.hand.len(), 7);
@@ -565,7 +580,11 @@ fn test_a_legendary_draw_ignores_the_append_and_the_ante() {
         );
         picks.insert(key);
     }
-    assert_eq!(picks.len(), 1, "a legendary draw varied with ante or source: {picks:?}");
+    assert_eq!(
+        picks.len(),
+        1,
+        "a legendary draw varied with ante or source: {picks:?}"
+    );
 }
 
 #[test]
@@ -601,7 +620,10 @@ fn test_an_ordinary_draw_still_varies_with_the_ante_and_the_source() {
             append,
         ));
     }
-    assert!(by_source.len() > 1, "rare draws stopped varying with the source");
+    assert!(
+        by_source.len() > 1,
+        "rare draws stopped varying with the source"
+    );
 }
 
 #[test]
@@ -916,7 +938,14 @@ fn under(boss: &str, jokers: &[&str]) -> GameState {
     game.ante_boss = String::new();
     let ante = game.ante;
     let effect = boss_by_name(boss).unwrap_or_else(|| panic!("no boss {boss}"));
-    game.blind = Some(make_blind(BlindKind::Boss, ante, Some(effect), 1.0, 1, false));
+    game.blind = Some(make_blind(
+        BlindKind::Boss,
+        ante,
+        Some(effect),
+        1.0,
+        1,
+        false,
+    ));
     game._start_round();
     game
 }
@@ -1015,7 +1044,10 @@ fn test_crimson_heart_switches_one_joker_off_each_hand() {
 #[test]
 fn test_verdant_leaf_debuffs_the_deck_until_a_joker_is_sold() {
     let mut game = under("Verdant Leaf", &["Joker"]);
-    assert!(game.hand.iter().all(|c| c.borrow().debuffed), "the whole deck should be off");
+    assert!(
+        game.hand.iter().all(|c| c.borrow().debuffed),
+        "the whole deck should be off"
+    );
     game.step(&Action::at(ActionType::SellJoker, 0));
     game._apply_debuffs();
     assert!(
@@ -1031,7 +1063,10 @@ fn test_cerulean_bell_forces_a_card_into_every_hand() {
     assert!(game.hand.iter().any(|c| Rc::ptr_eq(c, &forced)));
 
     let index = index_of(&game.hand, &forced);
-    let others: Vec<usize> = (0..game.hand.len()).filter(|i| *i != index).take(2).collect();
+    let others: Vec<usize> = (0..game.hand.len())
+        .filter(|i| *i != index)
+        .take(2)
+        .collect();
     assert!(!game.is_legal(&Action::with_cards(ActionType::Play, others.clone())));
     let with_forced = vec![index, others[0]];
     assert!(game.is_legal(&Action::with_cards(ActionType::Play, with_forced)));
@@ -1055,7 +1090,10 @@ fn test_dragging_does_not_shake_the_forced_card_off() {
         .as_ref()
         .is_some_and(|f| Rc::ptr_eq(f, &forced)));
     let index = index_of(&game.hand, &forced);
-    let others: Vec<usize> = (0..game.hand.len()).filter(|i| *i != index).take(2).collect();
+    let others: Vec<usize> = (0..game.hand.len())
+        .filter(|i| *i != index)
+        .take(2)
+        .collect();
     assert!(!game.is_legal(&Action::with_cards(ActionType::Play, others.clone())));
     assert!(game.is_legal(&Action::with_cards(
         ActionType::Play,
@@ -1144,7 +1182,10 @@ fn test_a_suit_boss_reads_the_cards_the_game_reads() {
     );
     // Smeared makes spades and clubs one suit, so The Goad takes clubs too.
     let club = make_card(Rank::Five, Suit::Clubs);
-    assert_eq!(debuffs("The Goad", &[club.clone()], &["Smeared Joker"]), vec![true]);
+    assert_eq!(
+        debuffs("The Goad", &[club.clone()], &["Smeared Joker"]),
+        vec![true]
+    );
     assert_eq!(debuffs("The Goad", &[club], &[]), vec![false]);
 }
 
@@ -1206,7 +1247,10 @@ fn test_directors_cut_allows_one_an_ante() {
     let mut game = reroll_run(&["v_directors_cut"], 100);
     assert!(game.can_reroll_boss());
     game.step(&Action::new(ActionType::RerollBoss));
-    assert!(!game.can_reroll_boss(), "Director's Cut re-rolled twice in an ante");
+    assert!(
+        !game.can_reroll_boss(),
+        "Director's Cut re-rolled twice in an ante"
+    );
 }
 
 #[test]
@@ -1421,7 +1465,14 @@ fn mouth_round() -> GameState {
     game.ante_boss = String::new();
     let ante = game.ante;
     let mouth = boss_by_name("The Mouth").unwrap();
-    game.blind = Some(make_blind(BlindKind::Boss, ante, Some(mouth), 1.0, 1, false));
+    game.blind = Some(make_blind(
+        BlindKind::Boss,
+        ante,
+        Some(mouth),
+        1.0,
+        1,
+        false,
+    ));
     game._start_round();
     game.blind.as_mut().unwrap().target = 10i64.pow(12); // never cleared
     game.hands_left = 10;
@@ -1486,7 +1537,14 @@ fn test_a_new_blind_clears_the_lock() {
     mouth_play(&mut game, &PAIR);
     let ante = game.ante;
     let mouth = boss_by_name("The Mouth").unwrap();
-    game.blind = Some(make_blind(BlindKind::Boss, ante, Some(mouth), 1.0, 1, false));
+    game.blind = Some(make_blind(
+        BlindKind::Boss,
+        ante,
+        Some(mouth),
+        1.0,
+        1,
+        false,
+    ));
     game._start_round();
     game.blind.as_mut().unwrap().target = 10i64.pow(12);
     game.hands_left = 10;
@@ -1774,7 +1832,14 @@ fn preview_mouth(names: &[&str]) -> GameState {
     game.ante_boss = String::new();
     let ante = game.ante;
     let mouth = boss_by_name("The Mouth").unwrap();
-    game.blind = Some(make_blind(BlindKind::Boss, ante, Some(mouth), 1.0, 1, false));
+    game.blind = Some(make_blind(
+        BlindKind::Boss,
+        ante,
+        Some(mouth),
+        1.0,
+        1,
+        false,
+    ));
     game._start_round();
     game.blind.as_mut().unwrap().target = 10i64.pow(12); // never cleared
     game.hands_left = 10;
@@ -1986,7 +2051,11 @@ fn fingerprint(game: &GameState) -> String {
         .iter()
         .map(|j| {
             let b = j.borrow();
-            (b.name().to_string(), b.counter.to_bits(), b.secondary.to_bits())
+            (
+                b.name().to_string(),
+                b.counter.to_bits(),
+                b.secondary.to_bits(),
+            )
         })
         .collect();
     out.push_str(&format!("jokers|{jokers:?}\n"));
@@ -2082,7 +2151,11 @@ fn test_a_four_card_play_grows_the_returned_row() {
     let mut game = square_game();
     let (_, row) = game.preview_play(&[0, 1, 2, 3], "roll");
     assert_eq!(row[0].borrow().counter, 4.0);
-    assert_eq!(game.jokers[0].borrow().counter, 0.0, "the run's row must be untouched");
+    assert_eq!(
+        game.jokers[0].borrow().counter,
+        0.0,
+        "the run's row must be untouched"
+    );
 }
 
 #[test]
@@ -2184,18 +2257,11 @@ fn tied_with_obelisk() -> (GameState, HandType) {
     obelisk.borrow_mut().counter = 2.0;
     game.gain_joker(&obelisk);
     game._start_round();
-    game.hand = COUNT_HAND
-        .iter()
-        .map(|(r, s)| make_card(*r, *s))
-        .collect();
+    game.hand = COUNT_HAND.iter().map(|(r, s)| make_card(*r, *s)).collect();
     let pair = game
         .evaluate_selection(&[game.hand[0].clone(), game.hand[1].clone()])
         .hand;
-    let other = HandType::ALL
-        .iter()
-        .find(|h| **h != pair)
-        .copied()
-        .unwrap();
+    let other = HandType::ALL.iter().find(|h| **h != pair).copied().unwrap();
     game.hand_levels.plays.insert(pair, 2);
     game.hand_levels.plays.insert(other, 2);
     (game, pair)
@@ -2210,7 +2276,11 @@ fn test_the_preview_scores_what_the_play_scores_when_obelisk_resets() {
     let before = fork.chips_scored;
     fork.step(&Action::with_cards(ActionType::Play, vec![0, 1]));
     let scored = fork.chips_scored - before;
-    assert_eq!(fork.jokers[0].borrow().counter, 1.0, "the play should reset Obelisk");
+    assert_eq!(
+        fork.jokers[0].borrow().counter,
+        1.0,
+        "the play should reset Obelisk"
+    );
     assert_eq!(game.preview_score(&[0, 1], "roll"), scored);
 }
 

@@ -150,11 +150,14 @@ fn test_red_seal_retriggers_the_card() {
 #[test]
 fn test_scored_card_hook_only_sees_scoring_cards() {
     // The 3 does not score in a pair, so Odd Todd must not count it.
-    let cards = [card(Rank::King, S), card(Rank::King, H), card(Rank::Three, D)];
+    let cards = [
+        card(Rank::King, S),
+        card(Rank::King, H),
+        card(Rank::Three, D),
+    ];
     let ctx = play(&cards, &["Odd Todd"], &[], 0);
     assert_eq!(ctx.chips, 30.0);
 }
-
 
 #[test]
 fn test_blueprint_copies_the_joker_to_its_right() {
@@ -268,7 +271,6 @@ fn test_blackboard_counts_a_debuffed_spade_as_black() {
     let stone = stone_card(Rank::Five, S);
     assert!(!jokers::counts_for_flush(&stone, S, &game));
 }
-
 
 // ==========================================================================
 // tests/test_hands.py -- hand detection and the level table.
@@ -452,7 +454,6 @@ fn test_hand_levels_scale() {
     assert_eq!(levels.values(HandType::Pair), (55, 5));
 }
 
-
 // ==========================================================================
 // tests/test_id_ranking.py -- "Card ids are compared by order, not by value."
 //
@@ -539,10 +540,7 @@ const COMPARED: [&str; 19] = [
 
 /// `differences(recorded, snapshot)`: where a backend's snapshot differs from
 /// what the player saw, comparing id fields by rank.
-fn differences(
-    recorded: &BTreeMap<&str, Field>,
-    engine: &BTreeMap<&str, Field>,
-) -> Vec<String> {
+fn differences(recorded: &BTreeMap<&str, Field>, engine: &BTreeMap<&str, Field>) -> Vec<String> {
     let mut out = Vec::new();
     let scoring = matches!(
         recorded.get("phase"),
@@ -570,7 +568,10 @@ fn differences(
 
 #[test]
 fn test_a_constant_offset_disappears() {
-    assert_eq!(ranked_ids(&[68, 53, 54, 136]), ranked_ids(&[68, 53, 54, 83]));
+    assert_eq!(
+        ranked_ids(&[68, 53, 54, 136]),
+        ranked_ids(&[68, 53, 54, 83])
+    );
 }
 
 #[test]
@@ -595,7 +596,10 @@ fn test_a_swapped_pair_of_new_cards_is_still_caught() {
     //
     // Blanking drifted ids to a placeholder lost this: both became "new" and a
     // hand holding them the other way round compared equal.
-    assert_ne!(ranked_ids(&[4, 17, 171, 172]), ranked_ids(&[4, 17, 119, 118]));
+    assert_ne!(
+        ranked_ids(&[4, 17, 171, 172]),
+        ranked_ids(&[4, 17, 119, 118])
+    );
 }
 
 #[test]
@@ -613,23 +617,25 @@ fn test_non_numeric_lists_are_left_alone() {
 #[test]
 fn test_differences_uses_the_ranking() {
     let phase = || Field::Text("SHOP".into());
-    let drifted = BTreeMap::from([("phase", phase()), ("joker_ids", Field::Ints(vec![
-        68, 53, 54, 136,
-    ]))]);
-    let engine = BTreeMap::from([("phase", phase()), ("joker_ids", Field::Ints(vec![
-        68, 53, 54, 83,
-    ]))]);
+    let drifted = BTreeMap::from([
+        ("phase", phase()),
+        ("joker_ids", Field::Ints(vec![68, 53, 54, 136])),
+    ]);
+    let engine = BTreeMap::from([
+        ("phase", phase()),
+        ("joker_ids", Field::Ints(vec![68, 53, 54, 83])),
+    ]);
     assert_eq!(differences(&drifted, &engine), Vec::<String>::new());
 
-    let reordered = BTreeMap::from([("phase", phase()), ("joker_ids", Field::Ints(vec![
-        53, 68, 54, 136,
-    ]))]);
+    let reordered = BTreeMap::from([
+        ("phase", phase()),
+        ("joker_ids", Field::Ints(vec![53, 68, 54, 136])),
+    ]);
     assert!(
         !differences(&reordered, &engine).is_empty(),
         "a reordering slipped through"
     );
 }
-
 
 // ==========================================================================
 // tests/test_is_versus_contains.py -- "Is a Flush" and "contains a Flush" are
@@ -730,7 +736,10 @@ const MEASURED: [(&str, &[&str]); 12] = [
         ],
     ),
     ("S_K H_K D_Q C_Q S_2", &["Two Pair", "Pair", "High Card"]),
-    ("S_K H_K D_K C_Q S_2", &["Three of a Kind", "Pair", "High Card"]),
+    (
+        "S_K H_K D_K C_Q S_2",
+        &["Three of a Kind", "Pair", "High Card"],
+    ),
     (
         "S_9 S_8 S_7 S_6 S_5",
         &["Straight Flush", "Flush", "Straight", "High Card"],
@@ -745,8 +754,7 @@ const MEASURED: [(&str, &[&str]); 12] = [
 fn test_the_containment_table_matches_the_engine() {
     for (codes, expected) in MEASURED {
         let got = ivc_contains(codes);
-        let want: BTreeMap<String, ()> =
-            expected.iter().map(|l| (l.to_string(), ())).collect();
+        let want: BTreeMap<String, ()> = expected.iter().map(|l| (l.to_string(), ())).collect();
         assert_eq!(got, want, "on {codes}");
     }
 }
@@ -780,7 +788,6 @@ fn test_a_flush_holding_a_pair_contains_a_pair() {
     // The case that a list of top hands cannot express.
     assert!(has(&ivc_contains("S_K S_K S_9 S_6 S_3"), "Pair"));
 }
-
 
 // ------------------------------------------------------------------ the
 // jokers that read one table or the other ---------------------------------
@@ -901,7 +908,6 @@ fn test_the_ox_reads_the_snapshot_not_a_live_tie() {
     assert!(!game._is_most_played(HandType::Flush));
 }
 
-
 // ==========================================================================
 // tests/test_face_cards.py -- "Which cards are face cards: Card:is_face, as
 // the game asks it."
@@ -969,7 +975,10 @@ fn test_sock_and_buskin_retriggers_a_stone_card_beside_pareidolia() {
     // card.lua:3344-3345: the Stone card's 50 chips come twice.
     let played = vec![stone_card(Rank::King, S), card(Rank::Seven, H)];
     let mut game = face_game(&["Pareidolia", "Sock and Buskin"], &played, None);
-    assert_eq!(face_score(&mut game, &played, &[]).score(), 5 + 2 * 50 + 2 * 7);
+    assert_eq!(
+        face_score(&mut game, &played, &[]).score(),
+        5 + 2 * 50 + 2 * 7
+    );
 }
 
 #[test]
@@ -980,7 +989,10 @@ fn test_photograph_takes_a_leading_stone_card_beside_pareidolia() {
     mult_king.borrow_mut().enhancement = Enhancement::Mult;
     let played = vec![stone_card(Rank::King, S), mult_king];
     let mut game = face_game(&["Pareidolia", "Photograph"], &played, None);
-    assert_eq!(face_score(&mut game, &played, &[]).score(), (5 + 50 + 10) * (1 * 2 + 4));
+    assert_eq!(
+        face_score(&mut game, &played, &[]).score(),
+        (5 + 50 + 10) * (1 * 2 + 4)
+    );
 }
 
 #[test]
@@ -1006,7 +1018,10 @@ fn test_midas_mask_gilds_a_stone_card_beside_pareidolia() {
     let played = vec![stone_card(Rank::Two, S), card(Rank::Seven, H)];
     let mut game = face_game(&["Pareidolia", "Midas Mask"], &played, None);
     face_score(&mut game, &played, &[]);
-    assert_eq!(enhancements(&played), vec![Enhancement::Gold, Enhancement::Gold]);
+    assert_eq!(
+        enhancements(&played),
+        vec![Enhancement::Gold, Enhancement::Gold]
+    );
 }
 
 #[test]
@@ -1014,7 +1029,10 @@ fn test_midas_mask_without_pareidolia_leaves_a_stone_king() {
     let played = vec![stone_card(Rank::King, S), card(Rank::King, H)];
     let mut game = face_game(&["Midas Mask"], &played, None);
     face_score(&mut game, &played, &[]);
-    assert_eq!(enhancements(&played), vec![Enhancement::Stone, Enhancement::Gold]);
+    assert_eq!(
+        enhancements(&played),
+        vec![Enhancement::Stone, Enhancement::Gold]
+    );
 }
 
 #[test]
@@ -1025,9 +1043,11 @@ fn test_midas_mask_leaves_the_kings_the_plant_debuffed() {
     let mut game = face_game(&["Midas Mask"], &played, Some("The Plant"));
     assert!(played.iter().all(|c| c.borrow().debuffed));
     face_score(&mut game, &played, &[]);
-    assert_eq!(enhancements(&played), vec![Enhancement::None, Enhancement::None]);
+    assert_eq!(
+        enhancements(&played),
+        vec![Enhancement::None, Enhancement::None]
+    );
 }
-
 
 /// The RNG pools a scoring pass advanced. Python monkeypatches `rng.chance` to
 /// record each listed probability it rolls; the Rust stream names the same pool
@@ -1186,7 +1206,6 @@ fn test_canio_counts_what_is_face_counts() {
     }
 }
 
-
 // ==========================================================================
 // tests/test_ordered_play.py -- "A play names its cards in the order they
 // score."
@@ -1295,7 +1314,6 @@ fn test_a_preview_counts_the_money_a_play_earns_while_it_scores() {
     assert_eq!(game.money, GameState::new("AWEFRTUZ", "Blue Deck", 1).money);
 }
 
-
 #[test]
 fn test_the_queen_first_scores_the_photograph_three_times() {
     let mut game = op_game(&["Hanging Chad", "Photograph"]);
@@ -1385,7 +1403,6 @@ fn test_a_consumable_in_hand_order_is_left_alone() {
     );
     assert!(same_refs(&game.hand, &before));
 }
-
 
 // ==========================================================================
 // tests/test_four_fingers_straight_scores_every_card.py -- "A Four Fingers
@@ -1539,7 +1556,6 @@ fn test_four_fingers_straight_flush_needs_no_overlap() {
     assert_eq!(result.scoring.len(), 5);
 }
 
-
 // ==========================================================================
 // tests/test_flush_reads_debuffed_suits.py -- "A debuffed card still counts
 // towards a flush by its printed suit."
@@ -1579,7 +1595,10 @@ fn test_the_qwertyui_hand_is_a_flush_under_smeared_joker() {
         smeared: true,
         ..EvalFlags::default()
     };
-    assert_eq!(evaluate(&deb_cards(&QWERTYUI, true), flags).hand, HandType::Flush);
+    assert_eq!(
+        evaluate(&deb_cards(&QWERTYUI, true), flags).hand,
+        HandType::Flush
+    );
 }
 
 #[test]
@@ -1643,7 +1662,6 @@ fn test_a_stone_card_is_never_a_suit() {
     assert_ne!(evaluate(&cards, plain_flags()).hand, HandType::Flush);
 }
 
-
 // ==========================================================================
 // tests/test_straight_reads_debuffed_ranks.py -- "A debuffed card still counts
 // towards a straight."
@@ -1697,7 +1715,9 @@ fn test_one_debuffed_card_still_completes_a_straight() {
 fn test_a_stone_card_still_breaks_a_straight() {
     let cards = deb_cards(&RUN_OF_CLUBS, false);
     cards[2].borrow_mut().enhancement = Enhancement::Stone;
-    assert!(!evaluate(&cards, plain_flags()).contains.contains(HandType::Straight));
+    assert!(!evaluate(&cards, plain_flags())
+        .contains
+        .contains(HandType::Straight));
 }
 
 fn joker_instance(name: &str) -> JokerInstance {
@@ -1739,12 +1759,14 @@ fn test_the_n1oa90w1_play_scores_27000() {
     assert!(play.iter().all(|&i| game.hand[i].borrow().debuffed));
 
     let played: Vec<CardRef> = play.iter().map(|&i| game.hand[i].clone()).collect();
-    assert_eq!(game.evaluate_selection(&played).hand, HandType::StraightFlush);
+    assert_eq!(
+        game.evaluate_selection(&played).hand,
+        HandType::StraightFlush
+    );
     assert_eq!(game.preview_score(&play, "roll"), 27000);
     game.step(&Action::with_cards(ActionType::Play, play.to_vec()));
     assert_eq!(game.chips_scored, 27000);
 }
-
 
 // ==========================================================================
 // tests/test_flower_pot_seeing_double_suits.py -- "Flower Pot and Seeing Double
@@ -1833,7 +1855,6 @@ fn fp_score(
     );
     score_hand(&mut game, &result, &played, &held).score()
 }
-
 
 /// label, hand, play, jokers, boss, wild, engine score.
 const FP_CASES: [(&str, &str, &[usize], &[&str], Option<&str>, &[usize], i64); 8] = [
@@ -1979,4 +2000,3 @@ fn test_a_held_stone_queen_gives_nothing() {
     let stone = stone_card(Rank::Queen, H);
     assert_eq!(stm_score(&[stone]), stm_score(&[]));
 }
-

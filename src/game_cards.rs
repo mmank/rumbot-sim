@@ -11,9 +11,7 @@
 //! machine could be cut apart without moving the struct.
 
 use crate::cards::{CardRef, Enhancement};
-use crate::consumables::{
-    ConsumableInstance, ConsumableKind, ConsumableRef, ConsumableSpec,
-};
+use crate::consumables::{ConsumableInstance, ConsumableKind, ConsumableRef, ConsumableSpec};
 use crate::game::{tag_by_key, GameState, Tag, IMMEDIATE_TAGS};
 use crate::hands::HandType;
 use crate::jokers::{JokerRef, Rarity};
@@ -169,10 +167,7 @@ impl GameState {
     /// copied joker and not the copier. A copier whose copy names the hook in
     /// `_NOT_COPIED` yields nothing; for these two that is Canio and Glass Joker
     /// themselves, so a Blueprint on one of them does not answer twice.
-    pub fn calculating_card_hooks(
-        &self,
-        hook: &str,
-    ) -> Vec<(JokerRef, crate::jokers::CardsHook)> {
+    pub fn calculating_card_hooks(&self, hook: &str) -> Vec<(JokerRef, crate::jokers::CardsHook)> {
         let shut: Option<&[&str]> = match hook {
             "on_cards_destroyed" => Some(&["Canio"]),
             "on_glass_shattered" => Some(&["Glass Joker"]),

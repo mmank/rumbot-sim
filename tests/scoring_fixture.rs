@@ -178,14 +178,9 @@ fn packcard_str(card: &PackCard) -> String {
             card.rental as i32
         )
     } else {
-        format!(
-            "C:{}:{}",
-            card.set,
-            card.key.as_deref().unwrap_or("-")
-        )
+        format!("C:{}:{}", card.set, card.key.as_deref().unwrap_or("-"))
     }
 }
-
 
 #[test]
 fn the_scoring_pipeline_matches_the_python_simulator() {
@@ -367,12 +362,8 @@ fn the_scoring_pipeline_matches_the_python_simulator() {
             }
             "tag" => {
                 let mut rng = RunRng::new(f[1]);
-                let got = shop_pool::draw_tag(
-                    &mut rng,
-                    f[2].parse().unwrap(),
-                    None::<&[&str]>,
-                    f[3],
-                );
+                let got =
+                    shop_pool::draw_tag(&mut rng, f[2].parse().unwrap(), None::<&[&str]>, f[3]);
                 assert_eq!(got, f[4], "{}: draw_tag", at);
                 pool_checked += 1;
             }
@@ -433,23 +424,8 @@ fn the_scoring_pipeline_matches_the_python_simulator() {
                 let cards: i32 = f[3].parse().unwrap();
                 let ante: i32 = f[4].parse().unwrap();
                 let contents = shop_pool::pack_contents(
-                    &mut rng,
-                    f[2],
-                    cards,
-                    ante,
-                    EMPTY,
-                    EMPTY,
-                    false,
-                    EMPTY,
-                    EMPTY,
-                    EMPTY,
-                    false,
-                    false,
-                    false,
-                    false,
-                    None,
-                    None,
-                    1.0,
+                    &mut rng, f[2], cards, ante, EMPTY, EMPTY, false, EMPTY, EMPTY, EMPTY, false,
+                    false, false, false, None, None, 1.0,
                 );
                 let got: Vec<String> = contents.iter().map(packcard_str).collect();
                 assert_eq!(got.join(","), f[5], "{}: pack contents", at);
@@ -506,4 +482,3 @@ fn the_scoring_pipeline_matches_the_python_simulator() {
     assert_eq!(score_checked, 15, "score cases the Rust side checked");
     assert_eq!(held_checked, 4, "held cases the Rust side checked");
 }
-

@@ -26,7 +26,10 @@ fn everything_but_the_stickers_reads_the_positive_stake() {
     let b = GameState::new("NEGSTAKE", "Red Deck", -5);
     assert_eq!(a.blind_scaling(), b.blind_scaling());
     assert_eq!(a.round_allowance(false), b.round_allowance(false));
-    assert_eq!(a.blind.as_ref().map(|x| x.target), b.blind.as_ref().map(|x| x.target));
+    assert_eq!(
+        a.blind.as_ref().map(|x| x.target),
+        b.blind.as_ref().map(|x| x.target)
+    );
 }
 
 #[test]
@@ -34,5 +37,8 @@ fn minus_eight_is_gold() {
     let gold = GameState::new("NEGSTAKE", "Red Deck", 8);
     let neg = GameState::new("NEGSTAKE", "Red Deck", -8);
     let (g, n) = (gold.sticker_rules(), neg.sticker_rules());
-    assert_eq!((g.eternals, g.perishables, g.rentals), (n.eternals, n.perishables, n.rentals));
+    assert_eq!(
+        (g.eternals, g.perishables, g.rentals),
+        (n.eternals, n.perishables, n.rentals)
+    );
 }

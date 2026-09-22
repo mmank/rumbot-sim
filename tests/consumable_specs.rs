@@ -88,8 +88,15 @@ fn every_python_registry_card_is_registered() {
         );
     }
 
-    assert_eq!(registry_names.len(), total, "fixture replayed the wrong count");
-    assert_eq!(registered, total, "registered {registered} of {total} consumables");
+    assert_eq!(
+        registry_names.len(),
+        total,
+        "fixture replayed the wrong count"
+    );
+    assert_eq!(
+        registered, total,
+        "registered {registered} of {total} consumables"
+    );
     assert!(missing.is_empty(), "unregistered consumables: {missing:?}");
     assert!(
         missing_from_data.is_empty(),
@@ -110,7 +117,12 @@ fn every_spec_field_matches_the_python() {
         let name = f[1];
         let spec = spec_or_panic(name);
         assert_eq!(spec.kind.set_name(), f[2], "{} kind", name);
-        assert_eq!(spec.targets, f[3].parse::<i32>().unwrap(), "{} targets", name);
+        assert_eq!(
+            spec.targets,
+            f[3].parse::<i32>().unwrap(),
+            "{} targets",
+            name
+        );
         let max = if f[4] == "-" {
             None
         } else {
@@ -194,7 +206,10 @@ fn hanged_man_destroys_both_from_every_pile() {
 
     assert_eq!(game.full_deck.len(), 1, "full_deck kept the wrong cards");
     assert_eq!(game.hand.len(), 1, "hand kept the wrong cards");
-    assert!(game.draw_pile.is_empty(), "draw_pile retained a destroyed card");
+    assert!(
+        game.draw_pile.is_empty(),
+        "draw_pile retained a destroyed card"
+    );
     assert!(
         game.discard_pile.is_empty(),
         "discard_pile retained a destroyed card"

@@ -23,7 +23,7 @@ use jimbot_sim::consumables::spec_or_panic;
 use jimbot_sim::game::{Action, ActionType, GameState, Phase};
 use jimbot_sim::hands::HandType;
 use jimbot_sim::jokers::{self, JokerRef};
-use jimbot_sim::rng::{py_mod, pseudohash, round13, TW223};
+use jimbot_sim::rng::{pseudohash, py_mod, round13, TW223};
 
 // ==========================================================================
 // shared builders
@@ -141,7 +141,9 @@ fn test_hit_the_road_grows_only_on_a_live_jack() {
 }
 
 fn faceless(row: &[&str], rank: Rank, debuffed: &[usize], stone: &[usize]) -> i64 {
-    let names: Vec<&str> = std::iter::once("Faceless Joker").chain(row.iter().copied()).collect();
+    let names: Vec<&str> = std::iter::once("Faceless Joker")
+        .chain(row.iter().copied())
+        .collect();
     let mut game = run("TESTSEED", "Red Deck", &names);
     dress(&game, 3, Some(rank), false, false);
     for &i in debuffed {
@@ -245,8 +247,14 @@ fn test_these_count_a_debuffed_card_all_the_same() {
             game._discard(&(0..n).collect::<Vec<usize>>());
             outcomes.push((before, read(&game)));
         }
-        assert_ne!(outcomes[0].0, outcomes[0].1, "{name}: the live case did not move");
-        assert_eq!(outcomes[1], outcomes[0], "{name}: a debuffed card moved it differently");
+        assert_ne!(
+            outcomes[0].0, outcomes[0].1,
+            "{name}: the live case did not move"
+        );
+        assert_eq!(
+            outcomes[1], outcomes[0],
+            "{name}: a debuffed card moved it differently"
+        );
     }
 }
 
@@ -315,7 +323,14 @@ fn on_boss(seed: &str, boss: &'static BossEffect, names: &[&str]) -> GameState {
         game.gain_joker(&joker(name));
     }
     game.ante_boss = String::new();
-    game.blind = Some(make_blind(BlindKind::Boss, game.ante, Some(boss), 1.0, 1, false));
+    game.blind = Some(make_blind(
+        BlindKind::Boss,
+        game.ante,
+        Some(boss),
+        1.0,
+        1,
+        false,
+    ));
     game._start_round();
     game.blind.as_mut().unwrap().target = 1_000_000_000_000; // never cleared
     game.hands_left = 10;
@@ -326,7 +341,10 @@ fn on_boss(seed: &str, boss: &'static BossEffect, names: &[&str]) -> GameState {
 fn play(game: &mut GameState, specs: &[(Rank, Suit)]) -> i64 {
     game.hand = specs.iter().map(|(r, s)| make_card(*r, *s)).collect();
     let before = game.chips_scored;
-    game.step(&Action::with_cards(ActionType::Play, (0..specs.len()).collect()));
+    game.step(&Action::with_cards(
+        ActionType::Play,
+        (0..specs.len()).collect(),
+    ));
     game.chips_scored - before
 }
 
@@ -402,12 +420,20 @@ fn one_card(game: &mut GameState, rank: Rank, enhancement: Enhancement) -> (Card
         .find(|c| rank_of(c) == rank)
         .cloned()
         .unwrap_or_else(|| panic!("no {rank:?} in the deck"));
-    if let Some(pos) = game.draw_pile.iter().position(|c| uid_of(c) == uid_of(&card)) {
+    if let Some(pos) = game
+        .draw_pile
+        .iter()
+        .position(|c| uid_of(c) == uid_of(&card))
+    {
         game.draw_pile.remove(pos);
     }
     game.hand.insert(0, card.clone());
     card.borrow_mut().enhancement = enhancement;
-    let index = game.hand.iter().position(|c| uid_of(c) == uid_of(&card)).unwrap();
+    let index = game
+        .hand
+        .iter()
+        .position(|c| uid_of(c) == uid_of(&card))
+        .unwrap();
     let before = game.chips_scored;
     game.step(&Action::with_cards(ActionType::Play, vec![index]));
     (card, game.chips_scored - before)
@@ -489,7 +515,14 @@ fn boss_round(boss: &'static BossEffect, hand: Vec<CardRef>, names: &[&str]) -> 
         game.gain_joker(&joker(name));
     }
     game.ante_boss = String::new();
-    game.blind = Some(make_blind(BlindKind::Boss, game.ante, Some(boss), 1.0, 1, false));
+    game.blind = Some(make_blind(
+        BlindKind::Boss,
+        game.ante,
+        Some(boss),
+        1.0,
+        1,
+        false,
+    ));
     game._start_round();
     game.blind.as_mut().unwrap().target = 1_000_000_000_000; // never beaten
     game.hand = hand.clone();
@@ -501,7 +534,12 @@ fn boss_round(boss: &'static BossEffect, hand: Vec<CardRef>, names: &[&str]) -> 
 fn discard_cards(game: &mut GameState, cards: &[CardRef]) {
     let indices: Vec<usize> = cards
         .iter()
-        .map(|c| game.hand.iter().position(|h| uid_of(h) == uid_of(c)).unwrap())
+        .map(|c| {
+            game.hand
+                .iter()
+                .position(|h| uid_of(h) == uid_of(c))
+                .unwrap()
+        })
         .collect();
     game._discard(&indices);
 }
@@ -652,7 +690,11 @@ fn test_death_copies_the_right_cards_debuff() {
     let mut game = boss_round(window(), vec![left.clone(), right.clone()], &[]);
     assert!(debuffed_of(&right));
     assert!(!debuffed_of(&left));
-    game.use_consumable(spec_or_panic("Death"), &[left.clone(), right.clone()], false);
+    game.use_consumable(
+        spec_or_panic("Death"),
+        &[left.clone(), right.clone()],
+        false,
+    );
     assert_eq!(suit_of(&left), Suit::Diamonds);
     assert!(debuffed_of(&left));
 
@@ -660,7 +702,11 @@ fn test_death_copies_the_right_cards_debuff() {
     let left = make_card(Rank::Nine, Suit::Diamonds);
     let right = make_card(Rank::Five, Suit::Clubs);
     let mut game = boss_round(window(), vec![left.clone(), right.clone()], &[]);
-    game.use_consumable(spec_or_panic("Death"), &[left.clone(), right.clone()], false);
+    game.use_consumable(
+        spec_or_panic("Death"),
+        &[left.clone(), right.clone()],
+        false,
+    );
     assert_eq!(suit_of(&left), Suit::Clubs);
     assert!(!debuffed_of(&left));
 }
@@ -921,7 +967,11 @@ fn todo_game(seed: &str, names: &[&str], money: i32, named: HandType) -> GameSta
     game._start_round();
     game.blind.as_mut().unwrap().target = 1_000_000_000_000;
     game.hands_left = 10;
-    if game.jokers.iter().any(|j| j.borrow().name() == "To Do List") {
+    if game
+        .jokers
+        .iter()
+        .any(|j| j.borrow().name() == "To Do List")
+    {
         find_joker(&game, "To Do List").borrow_mut().named_hand = Some(named);
     }
     game.money = money;
@@ -937,14 +987,24 @@ fn play_ace(game: &mut GameState) -> i64 {
 
 #[test]
 fn test_bootstraps_left_of_the_list_counts_its_four_dollars() {
-    let mut game = todo_game("2MIUP34I", &["Bootstraps", "To Do List"], 3, HandType::HighCard);
+    let mut game = todo_game(
+        "2MIUP34I",
+        &["Bootstraps", "To Do List"],
+        3,
+        HandType::HighCard,
+    );
     assert_eq!(play_ace(&mut game), 16 * (1 + 2)); // $3 + $4 = $7: one lot of +2
     assert_eq!(game.money, 7);
 }
 
 #[test]
 fn test_the_order_of_the_row_does_not_matter() {
-    let mut game = todo_game("2MIUP34I", &["To Do List", "Bootstraps"], 3, HandType::HighCard);
+    let mut game = todo_game(
+        "2MIUP34I",
+        &["To Do List", "Bootstraps"],
+        3,
+        HandType::HighCard,
+    );
     assert_eq!(play_ace(&mut game), 16 * 3);
 }
 
@@ -1106,9 +1166,15 @@ fn test_a_finisher_boss_pays_eight() {
 
 #[test]
 fn test_the_ordinary_blinds_are_unchanged() {
-    assert_eq!(make_blind(BlindKind::Small, 1, None, 1.0, 1, false).reward, 3);
+    assert_eq!(
+        make_blind(BlindKind::Small, 1, None, 1.0, 1, false).reward,
+        3
+    );
     assert_eq!(make_blind(BlindKind::Big, 1, None, 1.0, 1, false).reward, 4);
-    assert_eq!(make_blind(BlindKind::Small, 1, None, 1.0, 1, true).reward, 0);
+    assert_eq!(
+        make_blind(BlindKind::Small, 1, None, 1.0, 1, true).reward,
+        0
+    );
 }
 
 // ==========================================================================
@@ -1210,7 +1276,10 @@ fn test_a_live_glass_card_still_rolls() {
         broke += jimbot_sim::scoring::shattered_glass(&mut game, &[glass_card(false)]).len();
     }
     assert_ne!(game.rng.state(), before);
-    assert!(broke > 0 && broke < 200, "one in four, not never and not always");
+    assert!(
+        broke > 0 && broke < 200,
+        "one in four, not never and not always"
+    );
 }
 
 // ==========================================================================
@@ -1268,7 +1337,10 @@ fn test_a_steel_card_the_hook_takes_does_not_score() {
     bare.blind = Some(make_blind(BlindKind::Boss, 1, None, 1.0, 1, false));
     let without_steel = score_play(&mut bare);
 
-    assert!(with_steel > without_steel, "the Steel cards were never scoring");
+    assert!(
+        with_steel > without_steel,
+        "the Steel cards were never scoring"
+    );
     assert_eq!(
         hook_taken, without_steel,
         "The Hook took both Steel cards and they still paid: {hook_taken}, against {with_steel} held and {without_steel} not"
@@ -1360,7 +1432,10 @@ fn test_riff_raff_makes_the_jokers_the_game_makes() {
             "Magic Deck",
             5,
             &["j_riff_raff"],
-            &[("j_droll", Edition::None), ("j_red_card", Edition::Polychrome)],
+            &[
+                ("j_droll", Edition::None),
+                ("j_red_card", Edition::Polychrome),
+            ],
         ),
         (
             "IGS6H949",
@@ -1381,14 +1456,20 @@ fn test_riff_raff_makes_the_jokers_the_game_makes() {
             "Painted Deck",
             5,
             &["j_riff_raff"],
-            &[("j_business", Edition::None), ("j_reserved_parking", Edition::None)],
+            &[
+                ("j_business", Edition::None),
+                ("j_reserved_parking", Edition::None),
+            ],
         ),
         (
             "08F809NE",
             "Red Deck",
             7,
             &["j_riff_raff"],
-            &[("j_gluttenous_joker", Edition::None), ("j_popcorn", Edition::None)],
+            &[
+                ("j_gluttenous_joker", Edition::None),
+                ("j_popcorn", Edition::None),
+            ],
         ),
         (
             "LC4JWH61",
@@ -1409,7 +1490,11 @@ fn test_riff_raff_makes_the_jokers_the_game_makes() {
             .iter()
             .map(|j| j.borrow().edition)
             .collect();
-        assert_eq!(editions, made.iter().map(|(_, e)| *e).collect::<Vec<_>>(), "{seed}");
+        assert_eq!(
+            editions,
+            made.iter().map(|(_, e)| *e).collect::<Vec<_>>(),
+            "{seed}"
+        );
     }
 }
 
@@ -1430,7 +1515,10 @@ fn test_riff_raff_count_is_fixed_before_a_negative_arrives() {
     assert_eq!(game.joker_slots() - game.jokers.len() as i32, 1);
     select_blind_riff(&mut game);
     assert_eq!(game.jokers.len(), 5);
-    assert_eq!(game.jokers.last().unwrap().borrow().edition, Edition::Negative);
+    assert_eq!(
+        game.jokers.last().unwrap().borrow().edition,
+        Edition::Negative
+    );
 }
 
 #[test]
@@ -1456,8 +1544,6 @@ fn test_a_created_joker_polls_its_edition_under_its_append() {
         );
     }
 }
-
-
 
 // ==========================================================================
 // tests/test_vagabond_reads_money_before_the_hand.py -- "Vagabond reads the
@@ -1513,7 +1599,10 @@ fn test_five_dollars_held_makes_none() {
 // ==========================================================================
 
 fn survivors(game: &GameState) -> Vec<String> {
-    game.jokers.iter().map(|j| j.borrow().name().to_string()).collect()
+    game.jokers
+        .iter()
+        .map(|j| j.borrow().name().to_string())
+        .collect()
 }
 
 #[test]
@@ -1538,7 +1627,6 @@ fn test_madness_draws_by_age_not_by_row_position() {
         "Madness picked its victim by where the jokers sit in the row"
     );
 }
-
 
 #[test]
 fn test_a_joker_bought_later_from_an_earlier_slot_is_older() {
@@ -1679,7 +1767,6 @@ fn test_the_round_shuffle_sorts_by_id_first() {
     assert_eq!(faces(&one), faces(&two));
 }
 
-
 // ==========================================================================
 // tests/test_recordings.py -- "Replay real human games through the simulator,
 // action for action."
@@ -1715,35 +1802,34 @@ fn test_the_recordings_are_still_there() {
         present.len()
     );
 
-// --------------------------------------------------------------------------
-// Not ported, and why (recorded here so the gap is not silent):
-//
-// tests/test_replay.py (11) -- every one drives `jimbot_sim.replay`, the
-//   recorded-action replayer: `merge_buy_and_use`, `to_move`, `Move`,
-//   `differences`, `Recording` and `replay`. That module is a driver, not the
-//   simulator, and PORTING.md explicitly leaves `replay.py`/`run.py`/`compare.py`
-//   out of the port. There is no production Rust counterpart to test, and
-//   re-implementing the driver inside the test would test the test's own
-//   translation rather than the engine. The recorded-action translation is
-//   exercised indirectly by `tools/gen_replay_fixture.py`, whose output
-//   `tests/replay_fixture.rs` replays through the engine.
-//
-// tests/test_recordings.py::test_the_simulator_follows_a_real_game -- drives the
-//   same out-of-scope replayer. Covered more strongly by
-//   `tests/replay_fixture.rs` (see the header above); not re-ported.
-//
-// tests/test_recorder_survives.py (2) -- both drive `scripts/record_replay.py`'s
-//   `do_record` against a fake bridge, monkeypatching `_connect` and
-//   `time.sleep` to simulate the game's socket dying. That is the headless
-//   bridge/recorder layer, which PORTING.md puts out of scope (it drives the
-//   game's Lua through `lupa`), with no Rust analogue.
-// --------------------------------------------------------------------------
+    // --------------------------------------------------------------------------
+    // Not ported, and why (recorded here so the gap is not silent):
+    //
+    // tests/test_replay.py (11) -- every one drives `jimbot_sim.replay`, the
+    //   recorded-action replayer: `merge_buy_and_use`, `to_move`, `Move`,
+    //   `differences`, `Recording` and `replay`. That module is a driver, not the
+    //   simulator, and PORTING.md explicitly leaves `replay.py`/`run.py`/`compare.py`
+    //   out of the port. There is no production Rust counterpart to test, and
+    //   re-implementing the driver inside the test would test the test's own
+    //   translation rather than the engine. The recorded-action translation is
+    //   exercised indirectly by `tools/gen_replay_fixture.py`, whose output
+    //   `tests/replay_fixture.rs` replays through the engine.
+    //
+    // tests/test_recordings.py::test_the_simulator_follows_a_real_game -- drives the
+    //   same out-of-scope replayer. Covered more strongly by
+    //   `tests/replay_fixture.rs` (see the header above); not re-ported.
+    //
+    // tests/test_recorder_survives.py (2) -- both drive `scripts/record_replay.py`'s
+    //   `do_record` against a fake bridge, monkeypatching `_connect` and
+    //   `time.sleep` to simulate the game's socket dying. That is the headless
+    //   bridge/recorder layer, which PORTING.md puts out of scope (it drives the
+    //   game's Lua through `lupa`), with no Rust analogue.
+    // --------------------------------------------------------------------------
 
     for want in [1, 2, 3, 4, 5] {
         assert!(present.contains(&want), "replay fixture {want} is missing");
     }
 }
-
 
 // ==========================================================================
 // Python tests in this batch that are NOT applicable to the Rust port

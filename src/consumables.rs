@@ -166,10 +166,8 @@ pub fn make(name: &str) -> ConsumableRef {
 
 /// Cards of that kind, in the game's pool order (Python `by_kind`).
 pub fn by_kind(kind: ConsumableKind) -> Vec<&'static ConsumableSpec> {
-    let mut out: Vec<&'static ConsumableSpec> = all_specs()
-        .iter()
-        .filter(|s| s.kind == kind)
-        .collect();
+    let mut out: Vec<&'static ConsumableSpec> =
+        all_specs().iter().filter(|s| s.kind == kind).collect();
     out.sort_by_key(|s| spec_order(s.name));
     out
 }

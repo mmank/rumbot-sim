@@ -181,7 +181,11 @@ impl GameState {
         // A forced rarity skips the rarity roll entirely, which is how Wraith is
         // always rare and never legendary; `legendary` names the pool key
         // "Joker4" rather than a rarity flag.
-        let rarity_index = if legendary { Some(4) } else { rarity.map(|r| r as u8) };
+        let rarity_index = if legendary {
+            Some(4)
+        } else {
+            rarity.map(|r| r as u8)
+        };
         let key = crate::shop_pool::draw_joker(
             &mut self.rng,
             self.ante,
@@ -688,10 +692,4 @@ impl GameState {
         };
         (cost / 2).max(1) + h.extra_sell_value
     }
-
-
-
-
-
 }
-

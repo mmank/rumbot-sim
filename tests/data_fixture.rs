@@ -54,7 +54,11 @@ fn joker_rows_match_the_python_table() {
 
     let total = total.expect("fixture has no total record");
     assert_eq!(seen, total, "fixture replayed {seen} of {total} jokers");
-    assert_eq!(jd::JOKER_DATA.len(), total, "table has a different row count");
+    assert_eq!(
+        jd::JOKER_DATA.len(),
+        total,
+        "table has a different row count"
+    );
 
     // The shop draws an index into the pool, so per-rarity order is load-bearing.
     for rarity in 1..=4u8 {
@@ -113,8 +117,15 @@ fn consumable_rows_match_the_python_table() {
     }
 
     let total = total.expect("fixture has no total record");
-    assert_eq!(seen, total, "fixture replayed {seen} of {total} consumables");
-    assert_eq!(cd::CONSUMABLE_DATA.len(), total, "table has a different row count");
+    assert_eq!(
+        seen, total,
+        "fixture replayed {seen} of {total} consumables"
+    );
+    assert_eq!(
+        cd::CONSUMABLE_DATA.len(),
+        total,
+        "table has a different row count"
+    );
 
     // Sets come in Tarot, Planet, Spectral order, each in its own pool order.
     let fixture_order: Vec<&str> = fixture_sets.iter().map(|(s, _)| s.as_str()).collect();

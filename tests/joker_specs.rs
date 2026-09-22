@@ -116,7 +116,6 @@ fn costs_and_rarities_match_the_python_registry() {
     }
 }
 
-
 #[test]
 fn a_scaling_counter_grows_across_hands() {
     let mut game = GameState::new("SEED0000", "Red Deck", 1);
@@ -242,4 +241,3 @@ fn a_round_end_joker_acts_when_the_round_closes() {
     hook(&golden, &mut game);
     assert_eq!(game.money, before + 4);
 }
-
