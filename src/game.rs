@@ -656,9 +656,18 @@ pub struct GameState {
     /// The stake, one to eight. It is not a difficulty label: it changes the chips
     /// every ante asks for, the discards a round starts with, whether the Small
     /// Blind pays, and what stickers the shop puts on its jokers.
+    ///
+    /// `new` also takes a *negative* stake: -n is stake n in every respect but
+    /// the stickers, which are rolled as on Gold -- eternal, perishable and
+    /// rental all on. Stored here as n with `all_stickers` set, so nothing
+    /// below this line knows the difference. It is for tuning the sticker
+    /// rules on a stake that does not kill the run first; a real run cannot
+    /// be at stake -3, and the rolls move the RNG, so it is not a stake-3 run
+    /// with stickers added but its own run.
     pub stake: i32,
     /// Put every sticker on every stake, whatever the stake would allow.
-    /// Training only: it moves the RNG, so evaluation leaves it off.
+    /// Set by a negative stake (above). It moves the RNG, so a measurement
+    /// against the real stake leaves it off.
     pub all_stickers: bool,
     /// Endless: keep playing past the ante-eight boss instead of ending there.
     pub endless: bool,
@@ -761,8 +770,8 @@ impl GameState {
             ante_boss: String::new(),
             forced_card: None,
             boss_rerolled: false,
-            stake,
-            all_stickers: false,
+            stake: stake.abs(),
+            all_stickers: stake < 0,
             endless: false,
             pack_options: Vec::new(),
             pack_picks_left: 0,
