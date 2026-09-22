@@ -1,0 +1,32 @@
+[package]
+name = "jimbot_sim"
+version = "0.1.0"
+edition = "2021"
+description = "Balatro as a Rust library: the pure-Python simulator from jimbot-sim, translated"
+license = "MIT"
+
+[dependencies]
+
+[dev-dependencies]
+
+[lib]
+name = "jimbot_sim"
+path = "src/lib.rs"
+
+[profile.release]
+lto = true
+codegen-units = 1
+
+# A fast iteration profile: the same optimisation the tests need, without the
+# whole-program link that `release` pays for a shippable binary. `release`
+# builds the port in ~51 s after a one-file edit; this builds and runs the
+# same suite in ~15 s, because `lto = true` + `codegen-units = 1` is the
+# expensive part and neither changes a single answer the fixtures compare.
+#
+#     cargo test --profile quick
+#
+# Use `--release` for anything measured for speed (see rust/PORTING.md).
+[profile.quick]
+inherits = "release"
+lto = false
+codegen-units = 16

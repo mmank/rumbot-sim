@@ -1,0 +1,53 @@
+total	52
+consumable	Tarot	c_fool	The Fool	1	False	
+consumable	Tarot	c_magician	The Magician	2	False	
+consumable	Tarot	c_high_priestess	The High Priestess	3	False	
+consumable	Tarot	c_empress	The Empress	4	False	
+consumable	Tarot	c_emperor	The Emperor	5	False	
+consumable	Tarot	c_heirophant	The Hierophant	6	False	
+consumable	Tarot	c_lovers	The Lovers	7	False	
+consumable	Tarot	c_chariot	The Chariot	8	False	
+consumable	Tarot	c_justice	Justice	9	False	
+consumable	Tarot	c_hermit	The Hermit	10	False	
+consumable	Tarot	c_wheel_of_fortune	The Wheel of Fortune	11	False	
+consumable	Tarot	c_strength	Strength	12	False	
+consumable	Tarot	c_hanged_man	The Hanged Man	13	False	
+consumable	Tarot	c_death	Death	14	False	
+consumable	Tarot	c_temperance	Temperance	15	False	
+consumable	Tarot	c_devil	The Devil	16	False	
+consumable	Tarot	c_tower	The Tower	17	False	
+consumable	Tarot	c_star	The Star	18	False	
+consumable	Tarot	c_moon	The Moon	19	False	
+consumable	Tarot	c_sun	The Sun	20	False	
+consumable	Tarot	c_judgement	Judgement	21	False	
+consumable	Tarot	c_world	The World	22	False	
+consumable	Planet	c_mercury	Mercury	1	False	Pair
+consumable	Planet	c_venus	Venus	2	False	Three of a Kind
+consumable	Planet	c_earth	Earth	3	False	Full House
+consumable	Planet	c_mars	Mars	4	False	Four of a Kind
+consumable	Planet	c_jupiter	Jupiter	5	False	Flush
+consumable	Planet	c_saturn	Saturn	6	False	Straight
+consumable	Planet	c_uranus	Uranus	7	False	Two Pair
+consumable	Planet	c_neptune	Neptune	8	False	Straight Flush
+consumable	Planet	c_pluto	Pluto	9	False	High Card
+consumable	Planet	c_planet_x	Planet X	10	True	Five of a Kind
+consumable	Planet	c_ceres	Ceres	11	True	Flush House
+consumable	Planet	c_eris	Eris	12	True	Flush Five
+consumable	Spectral	c_familiar	Familiar	1	False	
+consumable	Spectral	c_grim	Grim	2	False	
+consumable	Spectral	c_incantation	Incantation	3	False	
+consumable	Spectral	c_talisman	Talisman	4	False	
+consumable	Spectral	c_aura	Aura	5	False	
+consumable	Spectral	c_wraith	Wraith	6	False	
+consumable	Spectral	c_sigil	Sigil	7	False	
+consumable	Spectral	c_ouija	Ouija	8	False	
+consumable	Spectral	c_ectoplasm	Ectoplasm	9	False	
+consumable	Spectral	c_immolate	Immolate	10	False	
+consumable	Spectral	c_ankh	Ankh	11	False	
+consumable	Spectral	c_deja_vu	Deja Vu	12	False	
+consumable	Spectral	c_hex	Hex	13	False	
+consumable	Spectral	c_trance	Trance	14	False	
+consumable	Spectral	c_medium	Medium	15	False	
+consumable	Spectral	c_cryptid	Cryptid	16	False	
+consumable	Spectral	c_soul	The Soul	17	False	
+consumable	Spectral	c_black_hole	Black Hole	18	False	

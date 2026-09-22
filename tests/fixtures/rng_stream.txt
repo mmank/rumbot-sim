@@ -1,0 +1,2316 @@
+hash	SEED0000	0.93645955504473477
+pseudoseed	SEED0000	Joker1	0	0.66145940452856733
+pseudoseed	SEED0000	Joker1	1	0.8686447223932674
+pseudoseed	SEED0000	Joker1	2	0.72589692265416739
+pseudoseed	SEED0000	Joker1	3	0.47975513005621739
+draw	SEED0000	Joker1	0	0.84759978338006059
+draw	SEED0000	Joker1	1	0.046299315597974955
+draw	SEED0000	Joker1	2	0.34864173625142048
+draw	SEED0000	Joker1	3	0.20263487173644013
+draw	SEED0000	Joker1	4	0.65866476309965272
+draw	SEED0000	Joker1	5	0.38253575886472246
+int	SEED0000	Joker1	0	9
+int	SEED0000	Joker1	1	1
+int	SEED0000	Joker1	2	4
+int	SEED0000	Joker1	3	3
+int	SEED0000	Joker1	4	7
+int	SEED0000	Joker1	5	4
+pseudoseed	SEED0000	shop_pack	0	0.87134670524556745
+pseudoseed	SEED0000	shop_pack	1	0.73055598502886743
+pseudoseed	SEED0000	shop_pack	2	0.48778880880171738
+pseudoseed	SEED0000	shop_pack	3	0.56918237108631742
+draw	SEED0000	shop_pack	0	0.5535409558766784
+draw	SEED0000	shop_pack	1	0.86837445923029843
+draw	SEED0000	shop_pack	2	0.31471244122429098
+draw	SEED0000	shop_pack	3	0.50445503958969318
+draw	SEED0000	shop_pack	4	0.11961841691838337
+draw	SEED0000	shop_pack	5	0.046251796748379759
+int	SEED0000	shop_pack	0	6
+int	SEED0000	shop_pack	1	9
+int	SEED0000	shop_pack	2	4
+int	SEED0000	shop_pack	3	6
+int	SEED0000	shop_pack	4	2
+int	SEED0000	shop_pack	5	1
+pseudoseed	SEED0000	erratic	0	0.82906943476976735
+pseudoseed	SEED0000	erratic	1	0.65765676584591737
+pseudoseed	SEED0000	erratic	2	0.86208778558821741
+pseudoseed	SEED0000	erratic	3	0.71459071560861742
+draw	SEED0000	erratic	0	0.35831657262199434
+draw	SEED0000	erratic	1	0.85442499475863198
+draw	SEED0000	erratic	2	0.099022955995106354
+draw	SEED0000	erratic	3	0.86038676607470022
+draw	SEED0000	erratic	4	0.38445810459004304
+draw	SEED0000	erratic	5	0.68403867301479249
+int	SEED0000	erratic	0	4
+int	SEED0000	erratic	1	9
+int	SEED0000	erratic	2	1
+int	SEED0000	erratic	3	9
+int	SEED0000	erratic	4	4
+int	SEED0000	erratic	5	7
+pseudoseed	SEED0000	shuffle	0	0.64341482459951738
+pseudoseed	SEED0000	shuffle	1	0.83753023055146736
+pseudoseed	SEED0000	shuffle	2	0.67224582041851733
+pseudoseed	SEED0000	shuffle	3	0.88724387241666736
+draw	SEED0000	shuffle	0	0.69633227477750448
+draw	SEED0000	shuffle	1	0.62541308084469405
+draw	SEED0000	shuffle	2	0.22508063410182166
+draw	SEED0000	shuffle	3	0.32828706667055263
+draw	SEED0000	shuffle	4	0.74430907869314433
+draw	SEED0000	shuffle	5	0.75894383947292288
+int	SEED0000	shuffle	0	7
+int	SEED0000	shuffle	1	7
+int	SEED0000	shuffle	2	3
+int	SEED0000	shuffle	3	4
+int	SEED0000	shuffle	4	8
+int	SEED0000	shuffle	5	8
+pseudoseed	SEED0000	glass	0	0.78656662197286731
+pseudoseed	SEED0000	glass	1	0.58436864125551735
+pseudoseed	SEED0000	glass	2	0.7357161679815174
+pseudoseed	SEED0000	glass	3	0.49668657594361737
+draw	SEED0000	glass	0	0.583292134348943
+draw	SEED0000	glass	1	0.8793290408529828
+draw	SEED0000	glass	2	0.48522031388990827
+draw	SEED0000	glass	3	0.20087552054346736
+draw	SEED0000	glass	4	0.32974522618018454
+draw	SEED0000	glass	5	0.98031650415734473
+int	SEED0000	glass	0	6
+int	SEED0000	glass	1	9
+int	SEED0000	glass	2	5
+int	SEED0000	glass	3	3
+int	SEED0000	glass	4	4
+int	SEED0000	glass	5	10
+pseudoseed	SEED0000	lucky_mult	0	0.75672439376036738
+pseudoseed	SEED0000	lucky_mult	1	0.53291131889561738
+pseudoseed	SEED0000	lucky_mult	2	0.64698767205296737
+pseudoseed	SEED0000	lucky_mult	3	0.84369093550441732
+draw	SEED0000	lucky_mult	0	0.37400514853776756
+draw	SEED0000	lucky_mult	1	0.99402036693607765
+draw	SEED0000	lucky_mult	2	0.10070250695635319
+draw	SEED0000	lucky_mult	3	0.083769655772579332
+draw	SEED0000	lucky_mult	4	0.7714002084449989
+draw	SEED0000	lucky_mult	5	0.54276282531701692
+int	SEED0000	lucky_mult	0	4
+int	SEED0000	lucky_mult	1	10
+int	SEED0000	lucky_mult	2	2
+int	SEED0000	lucky_mult	3	1
+int	SEED0000	lucky_mult	4	8
+int	SEED0000	lucky_mult	5	6
+pseudoseed	SEED0000	Joker2	0	0.71496005833556742
+pseudoseed	SEED0000	Joker2	1	0.96089655995071732
+pseudoseed	SEED0000	Joker2	2	0.88496790454216745
+pseudoseed	SEED0000	Joker2	3	0.75404318706161733
+draw	SEED0000	Joker2	0	0.20370379192369681
+draw	SEED0000	Joker2	1	0.63098844150724354
+draw	SEED0000	Joker2	2	0.56018221805962343
+draw	SEED0000	Joker2	3	0.13425302485683033
+draw	SEED0000	Joker2	4	0.022191222436098501
+draw	SEED0000	Joker2	5	0.22828545635925246
+int	SEED0000	Joker2	0	3
+int	SEED0000	Joker2	1	7
+int	SEED0000	Joker2	2	6
+int	SEED0000	Joker2	3	2
+int	SEED0000	Joker2	4	1
+int	SEED0000	Joker2	5	3
+pseudoseed	SEED0000	rarity	0	0.85393191372911736
+pseudoseed	SEED0000	rarity	1	0.70052744511851739
+pseudoseed	SEED0000	rarity	2	0.93601022688211732
+pseudoseed	SEED0000	rarity	3	0.84205609333461739
+draw	SEED0000	rarity	0	0.47286339061593607
+draw	SEED0000	rarity	1	0.59745081622229668
+draw	SEED0000	rarity	2	0.77032819653832174
+draw	SEED0000	rarity	3	0.71168257845377392
+draw	SEED0000	rarity	4	0.93281785046735943
+draw	SEED0000	rarity	5	0.22047957214913616
+int	SEED0000	rarity	0	5
+int	SEED0000	rarity	1	6
+int	SEED0000	rarity	2	8
+int	SEED0000	rarity	3	8
+int	SEED0000	rarity	4	10
+int	SEED0000	rarity	5	3
+pseudoseed	SEED0000	voucher	0	0.54562097337026738
+pseudoseed	SEED0000	voucher	1	0.66890308610076743
+pseudoseed	SEED0000	voucher	2	0.88147995438321747
+pseudoseed	SEED0000	voucher	3	0.74802887156121733
+draw	SEED0000	voucher	0	0.26240332868848504
+draw	SEED0000	voucher	1	0.51773409338841736
+draw	SEED0000	voucher	2	0.024678029147856106
+draw	SEED0000	voucher	3	0.98281761912529686
+draw	SEED0000	voucher	4	0.88283794504531032
+draw	SEED0000	voucher	5	0.094340415422497159
+int	SEED0000	voucher	0	3
+int	SEED0000	voucher	1	6
+int	SEED0000	voucher	2	1
+int	SEED0000	voucher	3	10
+int	SEED0000	voucher	4	9
+int	SEED0000	voucher	5	1
+pseudoseed	SEED0000	boss	0	0.6321388894773674
+pseudoseed	SEED0000	boss	1	0.81808699647531746
+pseudoseed	SEED0000	boss	2	0.63871961197151739
+pseudoseed	SEED0000	boss	3	0.82943421747811741
+draw	SEED0000	boss	0	0.75769974842019261
+draw	SEED0000	boss	1	0.52913251440404596
+draw	SEED0000	boss	2	0.18373355571399275
+draw	SEED0000	boss	3	0.077178766442063784
+draw	SEED0000	boss	4	0.16986834952965357
+draw	SEED0000	boss	5	0.090845116713916152
+int	SEED0000	boss	0	8
+int	SEED0000	boss	1	6
+int	SEED0000	boss	2	2
+int	SEED0000	boss	3	1
+int	SEED0000	boss	4	2
+int	SEED0000	boss	5	1
+pseudoseed	SEED0000	tag	0	0.59911601596816744
+pseudoseed	SEED0000	tag	1	0.76114524818116736
+pseudoseed	SEED0000	tag	2	0.54053425272676736
+pseudoseed	SEED0000	tag	3	0.6601319909250174
+draw	SEED0000	tag	0	0.18008744171187785
+draw	SEED0000	tag	1	0.064155756354129734
+draw	SEED0000	tag	2	0.88026269656012057
+draw	SEED0000	tag	3	0.02214561424783823
+draw	SEED0000	tag	4	0.7250668215649112
+draw	SEED0000	tag	5	0.62137812447821505
+int	SEED0000	tag	0	2
+int	SEED0000	tag	1	1
+int	SEED0000	tag	2	9
+int	SEED0000	tag	3	1
+int	SEED0000	tag	4	8
+int	SEED0000	tag	5	7
+pseudoseed	SEED0000	pack	0	0.58506665804156743
+pseudoseed	SEED0000	pack	1	0.73691976693921735
+pseudoseed	SEED0000	pack	2	0.49876195647881738
+pseudoseed	SEED0000	pack	3	0.58810350503456743
+draw	SEED0000	pack	0	0.16910827116190119
+draw	SEED0000	pack	1	0.43849151409646892
+draw	SEED0000	pack	2	0.41058950873376054
+draw	SEED0000	pack	3	0.19763460133460686
+draw	SEED0000	pack	4	0.88416799018920966
+draw	SEED0000	pack	5	0.1583875552174574
+int	SEED0000	pack	0	2
+int	SEED0000	pack	1	5
+int	SEED0000	pack	2	5
+int	SEED0000	pack	3	2
+int	SEED0000	pack	4	9
+int	SEED0000	pack	5	2
+pseudoseed	SEED0000	edition	0	0.76677953461691739
+pseudoseed	SEED0000	edition	1	0.55024952235501734
+pseudoseed	SEED0000	edition	2	0.67688415023146742
+pseudoseed	SEED0000	edition	3	0.89524180175011736
+draw	SEED0000	edition	0	0.47461590213164406
+draw	SEED0000	edition	1	0.078420987198545511
+draw	SEED0000	edition	2	0.44594469441643936
+draw	SEED0000	edition	3	0.40218139033631428
+draw	SEED0000	edition	4	0.52620863589736633
+draw	SEED0000	edition	5	0.35261326439802487
+int	SEED0000	edition	0	5
+int	SEED0000	edition	1	1
+int	SEED0000	edition	2	5
+int	SEED0000	edition	3	5
+int	SEED0000	edition	4	6
+int	SEED0000	edition	5	4
+live	SEED0000	0	0.8624052515313736
+live	SEED0000	1	0.11447559802461549
+live	SEED0000	2	0.82640244237950822
+live	SEED0000	3	0.34893099022612728
+live	SEED0000	4	0.84759608874861603
+live	SEED0000	5	0.37691685988700097
+livemix	SEED0000	shop_pack	0.52527004354648388,0.97541425258364467,0.049000410895346791
+livemix	SEED0000	Joker1	0.7855737905202318,0.044024881093326584,0.71067313015975531
+livemix	SEED0000	shuffle	0.30223457900448558,0.84578939960253496,0.38545360463713418
+livemix	SEED0000	cashout	0.5027525625215834,0.02453232354644741,0.17825438858961107
+shuffle	SEED0000	1	0
+shuffle	SEED0000	5	4,0,2,1,3
+shuffle	SEED0000	8	2,4,1,6,0,7,3,5
+shuffle	SEED0000	52	32,0,4,2,23,51,20,35,14,24,5,13,44,28,9,31,26,16,38,17,49,11,41,21,7,29,10,6,27,40,19,46,48,3,43,8,47,37,39,15,34,25,12,33,18,50,30,42,1,45,22,36
+hash	Red Deck	0.94948998385189043
+pseudoseed	Red Deck	Joker1	0	0.59364751485709522
+pseudoseed	Red Deck	Joker1	1	0.74699679404374519
+pseudoseed	Red Deck	Joker1	2	0.5114188484753952
+pseudoseed	Red Deck	Joker1	3	0.60520888990004518
+draw	Red Deck	Joker1	0	0.6513926865045605
+draw	Red Deck	Joker1	1	0.048832855616620652
+draw	Red Deck	Joker1	2	0.76652651233208036
+draw	Red Deck	Joker1	3	0.97845194972462268
+draw	Red Deck	Joker1	4	0.20288079585344732
+draw	Red Deck	Joker1	5	0.41346858873330272
+int	Red Deck	Joker1	0	7
+int	Red Deck	Joker1	1	1
+int	Red Deck	Joker1	2	8
+int	Red Deck	Joker1	3	10
+int	Red Deck	Joker1	4	3
+int	Red Deck	Joker1	5	5
+pseudoseed	Red Deck	shop_pack	0	0.86917776492169518
+pseudoseed	Red Deck	shop_pack	1	0.72209700427344525
+pseudoseed	Red Deck	shop_pack	2	0.96848383371109525
+pseudoseed	Red Deck	shop_pack	3	0.89333168412389519
+draw	Red Deck	shop_pack	0	0.36019762521016685
+draw	Red Deck	shop_pack	1	0.79877527947940297
+draw	Red Deck	shop_pack	2	0.81258464520436768
+draw	Red Deck	shop_pack	3	0.23395028197988665
+draw	Red Deck	shop_pack	4	0.092934895668470352
+draw	Red Deck	shop_pack	5	0.38222780857304284
+int	Red Deck	shop_pack	0	4
+int	Red Deck	shop_pack	1	8
+int	Red Deck	shop_pack	2	9
+int	Red Deck	shop_pack	3	3
+int	Red Deck	shop_pack	4	1
+int	Red Deck	shop_pack	5	4
+pseudoseed	Red Deck	erratic	0	0.88300292166019523
+pseudoseed	Red Deck	erratic	1	0.74593589264004523
+pseudoseed	Red Deck	erratic	2	0.50958952309349526
+pseudoseed	Red Deck	erratic	3	0.60205456157014525
+draw	Red Deck	erratic	0	0.17393781120043794
+draw	Red Deck	erratic	1	0.57144741876193272
+draw	Red Deck	erratic	2	0.45571196556264981
+draw	Red Deck	erratic	3	0.70906671808989818
+draw	Red Deck	erratic	4	0.70313213154583787
+draw	Red Deck	erratic	5	0.29567928911688868
+int	Red Deck	erratic	0	2
+int	Red Deck	erratic	1	6
+int	Red Deck	erratic	2	5
+int	Red Deck	erratic	3	8
+int	Red Deck	erratic	4	8
+int	Red Deck	erratic	5	3
+pseudoseed	Red Deck	shuffle	0	0.61862151635894524
+pseudoseed	Red Deck	shuffle	1	0.79005977301259522
+pseudoseed	Red Deck	shuffle	2	0.58567287450854522
+pseudoseed	Red Deck	shuffle	3	0.73324602328369526
+draw	Red Deck	shuffle	0	0.7071066715749581
+draw	Red Deck	shuffle	1	0.035720894941437376
+draw	Red Deck	shuffle	2	0.94183484633871983
+draw	Red Deck	shuffle	3	0.3226082246291897
+draw	Red Deck	shuffle	4	0.55438825923012436
+draw	Red Deck	shuffle	5	0.71480674643966968
+int	Red Deck	shuffle	0	8
+int	Red Deck	shuffle	1	1
+int	Red Deck	shuffle	2	10
+int	Red Deck	shuffle	3	4
+int	Red Deck	shuffle	4	6
+int	Red Deck	shuffle	5	8
+pseudoseed	Red Deck	glass	0	0.53636194881809518
+pseudoseed	Red Deck	glass	1	0.64821858561884516
+pseudoseed	Red Deck	glass	2	0.84109436476524524
+pseudoseed	Red Deck	glass	3	0.67367245083449523
+draw	Red Deck	glass	0	0.56106158365771708
+draw	Red Deck	glass	1	0.98594176603178552
+draw	Red Deck	glass	2	0.71227260405088555
+draw	Red Deck	glass	3	0.017260212661112329
+draw	Red Deck	glass	4	0.70657196268972289
+draw	Red Deck	glass	5	0.53093365312226193
+int	Red Deck	glass	0	6
+int	Red Deck	glass	1	10
+int	Red Deck	glass	2	8
+int	Red Deck	glass	3	1
+int	Red Deck	glass	4	8
+int	Red Deck	glass	5	6
+pseudoseed	Red Deck	lucky_mult	0	0.95456881031854524
+pseudoseed	Red Deck	lucky_mult	1	0.86933783757674521
+pseudoseed	Red Deck	lucky_mult	2	0.72237301952784527
+pseudoseed	Red Deck	lucky_mult	3	0.96895977022024526
+draw	Red Deck	lucky_mult	0	0.56407768609487752
+draw	Red Deck	lucky_mult	1	0.83253795005020392
+draw	Red Deck	lucky_mult	2	0.90039308991396561
+draw	Red Deck	lucky_mult	3	0.41366805511641802
+draw	Red Deck	lucky_mult	4	0.41211317228314903
+draw	Red Deck	lucky_mult	5	0.28173496098102691
+int	Red Deck	lucky_mult	0	6
+int	Red Deck	lucky_mult	1	9
+int	Red Deck	lucky_mult	2	10
+int	Red Deck	lucky_mult	3	5
+int	Red Deck	lucky_mult	4	5
+int	Red Deck	lucky_mult	5	3
+pseudoseed	Red Deck	Joker2	0	0.90500486600649521
+pseudoseed	Red Deck	Joker2	1	0.7838741167803952
+pseudoseed	Red Deck	Joker2	2	0.57500687113639526
+pseudoseed	Red Deck	Joker2	3	0.7148545020505952
+draw	Red Deck	Joker2	0	0.46826765209083776
+draw	Red Deck	Joker2	1	0.47422301892638874
+draw	Red Deck	Joker2	2	0.29216169778766887
+draw	Red Deck	Joker2	3	0.89924548391346759
+draw	Red Deck	Joker2	4	0.25879664498933841
+draw	Red Deck	Joker2	5	0.48610055417165343
+int	Red Deck	Joker2	0	5
+int	Red Deck	Joker2	1	5
+int	Red Deck	Joker2	2	3
+int	Red Deck	Joker2	3	9
+int	Red Deck	Joker2	4	3
+int	Red Deck	Joker2	5	5
+pseudoseed	Red Deck	rarity	0	0.70563811658179521
+pseudoseed	Red Deck	rarity	1	0.94010357056169513
+pseudoseed	Red Deck	rarity	2	0.84439524616294515
+pseudoseed	Red Deck	rarity	3	0.67936420136144515
+draw	Red Deck	rarity	0	0.10134833549086641
+draw	Red Deck	rarity	1	0.67571206276778595
+draw	Red Deck	rarity	2	0.23269967967705729
+draw	Red Deck	rarity	3	0.98705181839580525
+draw	Red Deck	rarity	4	0.057771353364296729
+draw	Red Deck	rarity	5	0.44459649614648744
+int	Red Deck	rarity	0	2
+int	Red Deck	rarity	1	7
+int	Red Deck	rarity	2	3
+int	Red Deck	rarity	3	10
+int	Red Deck	rarity	4	1
+int	Red Deck	rarity	5	5
+pseudoseed	Red Deck	voucher	0	0.88885341610594515
+pseudoseed	Red Deck	voucher	1	0.75602397240799524
+pseudoseed	Red Deck	voucher	2	0.52698452352424519
+pseudoseed	Red Deck	voucher	3	0.63204897546719518
+draw	Red Deck	voucher	0	0.28997812318280269
+draw	Red Deck	voucher	1	0.83230388655663079
+draw	Red Deck	voucher	2	0.628994692911927
+draw	Red Deck	voucher	3	0.88536230231566249
+draw	Red Deck	voucher	4	0.51514259492499748
+draw	Red Deck	voucher	5	0.71878257044991822
+int	Red Deck	voucher	0	3
+int	Red Deck	voucher	1	9
+int	Red Deck	voucher	2	7
+int	Red Deck	voucher	3	9
+int	Red Deck	voucher	4	6
+int	Red Deck	voucher	5	8
+pseudoseed	Red Deck	boss	0	0.85771728539584524
+pseudoseed	Red Deck	boss	1	0.70233555800469527
+pseudoseed	Red Deck	boss	2	0.93440892805359521
+pseudoseed	Red Deck	boss	3	0.83457590381434521
+draw	Red Deck	boss	0	0.034357474012441269
+draw	Red Deck	boss	1	0.87307996872935334
+draw	Red Deck	boss	2	0.025775003058097878
+draw	Red Deck	boss	3	0.82394343625204391
+draw	Red Deck	boss	4	0.056813801124885321
+draw	Red Deck	boss	5	0.18620136979274271
+int	Red Deck	boss	0	1
+int	Red Deck	boss	1	9
+int	Red Deck	boss	2	1
+int	Red Deck	boss	3	9
+int	Red Deck	boss	4	1
+int	Red Deck	boss	5	2
+pseudoseed	Red Deck	tag	0	0.77688522969604523
+pseudoseed	Red Deck	tag	1	0.56295584689394518
+pseudoseed	Red Deck	tag	2	0.69407477223969516
+pseudoseed	Red Deck	tag	3	0.92016475322094515
+draw	Red Deck	tag	0	0.45411585060600279
+draw	Red Deck	tag	1	0.89251345892533873
+draw	Red Deck	tag	2	0.93025571537566387
+draw	Red Deck	tag	3	0.67245494260788652
+draw	Red Deck	tag	4	0.5217297529082372
+draw	Red Deck	tag	5	0.066871981259523983
+int	Red Deck	tag	0	5
+int	Red Deck	tag	1	9
+int	Red Deck	tag	2	10
+int	Red Deck	tag	3	7
+int	Red Deck	tag	4	6
+int	Red Deck	tag	5	1
+pseudoseed	Red Deck	pack	0	0.63245809006919518
+pseudoseed	Red Deck	pack	1	0.81391834780449523
+pseudoseed	Red Deck	pack	2	0.62681250943704525
+pseudoseed	Red Deck	pack	3	0.8041836034539952
+draw	Red Deck	pack	0	0.83564519272463023
+draw	Red Deck	pack	1	0.64003855446746849
+draw	Red Deck	pack	2	0.10821964610928481
+draw	Red Deck	pack	3	0.20829020550430499
+draw	Red Deck	pack	4	0.77270219324515188
+draw	Red Deck	pack	5	0.21673304331906973
+int	Red Deck	pack	0	9
+int	Red Deck	pack	1	7
+int	Red Deck	pack	2	2
+int	Red Deck	pack	3	3
+int	Red Deck	pack	4	8
+int	Red Deck	pack	5	3
+pseudoseed	Red Deck	edition	0	0.78894203898954518
+pseudoseed	Red Deck	edition	1	0.58374555193979516
+pseudoseed	Red Deck	edition	2	0.72992271719524515
+pseudoseed	Red Deck	edition	3	0.48197780707144522
+draw	Red Deck	edition	0	0.35206084193502818
+draw	Red Deck	edition	1	0.5691080402852926
+draw	Red Deck	edition	2	0.76260760036304753
+draw	Red Deck	edition	3	0.98243051759782851
+draw	Red Deck	edition	4	0.55998165410217182
+draw	Red Deck	edition	5	0.86302799801968422
+int	Red Deck	edition	0	4
+int	Red Deck	edition	1	6
+int	Red Deck	edition	2	8
+int	Red Deck	edition	3	10
+int	Red Deck	edition	4	6
+int	Red Deck	edition	5	9
+live	Red Deck	0	0.78572460579172798
+live	Red Deck	1	0.60054000878452984
+live	Red Deck	2	0.96668229373579351
+live	Red Deck	3	0.58365921472846805
+live	Red Deck	4	0.1425163916407497
+live	Red Deck	5	0.28815362346245244
+livemix	Red Deck	shop_pack	0.069309616289633613,0.4744179401119184,0.24398618952786544
+livemix	Red Deck	Joker1	0.054260057601769329,0.50645754996701386,0.28709099941433958
+livemix	Red Deck	shuffle	0.88969038343454909,0.38666943106601082,0.13108365751163564
+livemix	Red Deck	cashout	0.78929096676222943,0.15346715616621531,0.11243421070987658
+shuffle	Red Deck	1	0
+shuffle	Red Deck	5	1,4,2,0,3
+shuffle	Red Deck	8	2,0,4,3,6,7,1,5
+shuffle	Red Deck	52	19,29,31,25,20,48,5,24,50,6,23,40,38,43,28,47,4,51,18,10,3,35,14,0,8,26,34,17,33,39,42,11,16,49,2,44,45,7,15,41,32,9,1,27,30,21,22,37,13,46,12,36
+hash		1
+pseudoseed		Joker1	0	0.81203925973824997
+pseudoseed		Joker1	1	0.60527986070164996
+pseudoseed		Joker1	2	0.74876207753184998
+pseudoseed		Joker1	3	0.99617023458269993
+draw		Joker1	0	0.47688244169076621
+draw		Joker1	1	0.55444870371829835
+draw		Joker1	2	0.49988984286842708
+draw		Joker1	3	0.71543207066988201
+draw		Joker1	4	0.23499392157830346
+draw		Joker1	5	0.070837707135309902
+int		Joker1	0	5
+int		Joker1	1	6
+int		Joker1	2	5
+int		Joker1	3	8
+int		Joker1	4	3
+int		Joker1	5	1
+pseudoseed		shop_pack	0	0.64550382564310005
+pseudoseed		shop_pack	1	0.8181207566441
+pseudoseed		shop_pack	2	0.61576626086205
+pseudoseed		shop_pack	3	0.76684390673059999
+draw		shop_pack	0	0.13840608520261077
+draw		shop_pack	1	0.85120530102642844
+draw		shop_pack	2	0.53823738497431739
+draw		shop_pack	3	0.24976189295731666
+draw		shop_pack	4	0.097129399691353369
+draw		shop_pack	5	0.36833265205278765
+int		shop_pack	0	2
+int		shop_pack	1	9
+int		shop_pack	2	6
+int		shop_pack	3	3
+int		shop_pack	4	1
+int		shop_pack	5	4
+pseudoseed		erratic	0	0.9616851663539
+pseudoseed		erratic	1	0.86331614410950008
+pseudoseed		erratic	2	0.69369722517974997
+pseudoseed		erratic	3	0.90122123017169997
+draw		erratic	0	0.53960414436612081
+draw		erratic	1	0.99084164312101675
+draw		erratic	2	0.83822597200546967
+draw		erratic	3	0.68674458934590255
+draw		erratic	4	0.43203026575896386
+draw		erratic	5	0.37525037211261658
+int		erratic	0	6
+int		erratic	1	10
+int		erratic	2	9
+int		erratic	3	7
+int		erratic	4	5
+int		erratic	5	4
+pseudoseed		shuffle	0	0.82197058029925008
+pseudoseed		shuffle	1	0.62240455929744998
+pseudoseed		shuffle	2	0.77829040663935001
+pseudoseed		shuffle	3	0.54708629684235
+draw		shuffle	0	0.4817399515712848
+draw		shuffle	1	0.60565685497113075
+draw		shuffle	2	0.0087092841140330446
+draw		shuffle	3	0.86130654331064682
+draw		shuffle	4	0.31024942862089899
+draw		shuffle	5	0.83028803153741526
+int		shuffle	0	5
+int		shuffle	1	7
+int		shuffle	2	1
+int		shuffle	3	9
+int		shuffle	4	4
+int		shuffle	5	9
+pseudoseed		glass	0	0.90148760469995004
+pseudoseed		glass	1	0.75951674571165007
+pseudoseed		glass	2	0.51471464163775005
+pseudoseed		glass	3	0.59259935272514996
+draw		glass	0	0.80719759698777382
+draw		glass	1	0.7040817746982333
+draw		glass	2	0.71711579397601066
+draw		glass	3	0.6414139081152086
+draw		glass	4	0.072256949448198604
+draw		glass	5	0.72191499552602689
+int		glass	0	9
+int		glass	1	8
+int		glass	2	8
+int		glass	3	7
+int		glass	4	1
+int		glass	5	8
+pseudoseed		lucky_mult	0	0.6487307881055
+pseudoseed		lucky_mult	1	0.82368504783875007
+pseudoseed		lucky_mult	2	0.62536083683235
+pseudoseed		lucky_mult	3	0.78338795247324999
+draw		lucky_mult	0	0.23738972557949589
+draw		lucky_mult	1	0.16196230161402037
+draw		lucky_mult	2	0.11922634656061515
+draw		lucky_mult	3	0.98103080159762923
+draw		lucky_mult	4	0.36928120192742697
+draw		lucky_mult	5	0.50227542317888063
+int		lucky_mult	0	3
+int		lucky_mult	1	2
+int		lucky_mult	2	2
+int		lucky_mult	3	10
+int		lucky_mult	4	4
+int		lucky_mult	5	6
+pseudoseed		Joker2	0	0.95962406871035
+pseudoseed		Joker2	1	0.85976216800874994
+pseudoseed		Joker2	2	0.68756906033315002
+pseudoseed		Joker2	3	0.89065435990514996
+draw		Joker2	0	0.7662389165377248
+draw		Joker2	1	0.80217316003656136
+draw		Joker2	2	0.6580054125839514
+draw		Joker2	3	0.72060211024908827
+draw		Joker2	4	0.7675307423602622
+draw		Joker2	5	0.81481946310994791
+int		Joker2	0	8
+int		Joker2	1	9
+int		Joker2	2	7
+int		Joker2	3	8
+int		Joker2	4	8
+int		Joker2	5	9
+pseudoseed		rarity	0	0.54421060170434998
+pseudoseed		rarity	1	0.64345960064815
+pseudoseed		rarity	2	0.81459587425960001
+pseudoseed		rarity	3	0.60968826266940002
+draw		rarity	0	0.88906599640527739
+draw		rarity	1	0.495039232143762
+draw		rarity	2	0.57105860900910566
+draw		rarity	3	0.69131279765844966
+draw		rarity	4	0.56743488311672996
+draw		rarity	5	0.98993328021161653
+int		rarity	0	9
+int		rarity	1	5
+int		rarity	2	6
+int		rarity	3	7
+int		rarity	4	6
+int		rarity	5	10
+pseudoseed		voucher	0	0.81024612834014997
+pseudoseed		voucher	1	0.60218794210464999
+pseudoseed		voucher	2	0.74343064414075
+pseudoseed		voucher	3	0.98697717819654995
+draw		voucher	0	0.84610016191727411
+draw		voucher	1	0.19601344677831123
+draw		voucher	2	0.3924449325944277
+draw		voucher	3	0.071873798355769347
+draw		voucher	4	0.63235359260277102
+draw		voucher	5	0.03869472594198875
+int		voucher	0	9
+int		voucher	1	2
+int		voucher	2	4
+int		voucher	3	1
+int		voucher	4	7
+int		voucher	5	1
+pseudoseed		boss	0	0.88859639317099992
+pseudoseed		boss	1	0.73728827059474999
+pseudoseed		boss	2	0.97638580769429995
+pseudoseed		boss	3	0.88866464137864998
+draw		boss	0	0.17081156446828838
+draw		boss	1	0.0065846652030581154
+draw		boss	2	0.035352479428842232
+draw		boss	3	0.68907524530732145
+draw		boss	4	0.29151976800262691
+draw		boss	5	0.99559231885404342
+int		boss	0	2
+int		boss	1	1
+int		boss	2	1
+int		boss	3	7
+int		boss	4	3
+int		boss	5	10
+pseudoseed		tag	0	0.96507244651665003
+pseudoseed		tag	1	0.86915687309315004
+pseudoseed		tag	2	0.70376846624084999
+pseudoseed		tag	3	0.91858719541245004
+draw		tag	0	0.086000210907698937
+draw		tag	1	0.86407906210527563
+draw		tag	2	0.1518233934014106
+draw		tag	3	0.18514853733985337
+draw		tag	4	0.9406172481667372
+draw		tag	5	0.29337361573907739
+int		tag	0	1
+int		tag	1	9
+int		tag	2	2
+int		tag	3	2
+int		tag	4	10
+int		tag	5	3
+pseudoseed		pack	0	0.98081814705980008
+pseudoseed		pack	1	0.89630737884165002
+pseudoseed		pack	2	0.75058441834019995
+pseudoseed		pack	3	0.99931251932624998
+draw		pack	0	0.097289168984653784
+draw		pack	1	0.82067762138498268
+draw		pack	2	0.23023141824068971
+draw		pack	3	0.055021434473743858
+draw		pack	4	0.89760341540288957
+draw		pack	5	0.55671391611359944
+int		pack	0	1
+int		pack	1	9
+int		pack	2	3
+int		pack	3	1
+int		pack	4	9
+int		pack	5	6
+pseudoseed		edition	0	0.96276787615600001
+pseudoseed		edition	1	0.86518307398189997
+pseudoseed		edition	2	0.6969163953966
+pseudoseed		edition	3	0.9067720851012
+draw		edition	0	0.53858477208424294
+draw		edition	1	0.11448432934705322
+draw		edition	2	0.040120261355871323
+draw		edition	3	0.77911761297514137
+draw		edition	4	0.39355753766752288
+draw		edition	5	0.24817399194351797
+int		edition	0	6
+int		edition	1	2
+int		edition	2	1
+int		edition	3	8
+int		edition	4	4
+int		edition	5	3
+live		0	0.23404645297496129
+live		1	0.19764357113248665
+live		2	0.37147349468010948
+live		3	0.31249286057401471
+live		4	0.53650078283551994
+live		5	0.83802562199411756
+livemix		shop_pack	0.27034218372626939,0.76058785197100298,0.25617992801465506
+livemix		Joker1	0.79910504092804646,0.80755933702733573,0.93447403347669122
+livemix		shuffle	0.59878158510540969,0.54969894516311579,0.52430287995248959
+livemix		cashout	0.68917730690738543,0.13901851844695234,0.081784739512938298
+shuffle		1	0
+shuffle		5	3,4,1,0,2
+shuffle		8	0,4,5,6,7,2,1,3
+shuffle		52	34,44,47,8,13,46,29,37,21,0,38,31,51,10,27,50,36,39,9,5,45,15,4,12,2,49,41,43,14,1,30,3,23,6,18,48,32,28,26,20,19,40,7,16,24,42,35,17,33,22,11,25
+hash	QWERTYUI	0.95192822443232217
+pseudoseed	QWERTYUI	Joker1	0	0.84723379416336109
+pseudoseed	QWERTYUI	Joker1	1	0.68337572083611109
+pseudoseed	QWERTYUI	Joker1	2	0.90083322298931101
+pseudoseed	QWERTYUI	Joker1	3	0.77579787737761108
+draw	QWERTYUI	Joker1	0	0.27673304974215385
+draw	QWERTYUI	Joker1	1	0.37324023096834513
+draw	QWERTYUI	Joker1	2	0.75361438188906882
+draw	QWERTYUI	Joker1	3	0.83337868422899075
+draw	QWERTYUI	Joker1	4	0.98993932610541013
+draw	QWERTYUI	Joker1	5	0.10995434322866715
+int	QWERTYUI	Joker1	0	3
+int	QWERTYUI	Joker1	1	4
+int	QWERTYUI	Joker1	2	8
+int	QWERTYUI	Joker1	3	9
+int	QWERTYUI	Joker1	4	10
+int	QWERTYUI	Joker1	5	2
+pseudoseed	QWERTYUI	shop_pack	0	0.62783744139611108
+pseudoseed	QWERTYUI	shop_pack	1	0.80506788240851113
+pseudoseed	QWERTYUI	shop_pack	2	0.61066851886986107
+pseudoseed	QWERTYUI	shop_pack	3	0.77546329743201103
+draw	QWERTYUI	shop_pack	0	0.17089911738326702
+draw	QWERTYUI	shop_pack	1	0.91959692876428067
+draw	QWERTYUI	shop_pack	2	0.50102292453089814
+draw	QWERTYUI	shop_pack	3	0.85466869337730556
+draw	QWERTYUI	shop_pack	4	0.64464456283377136
+draw	QWERTYUI	shop_pack	5	0.07882530724709258
+int	QWERTYUI	shop_pack	0	2
+int	QWERTYUI	shop_pack	1	10
+int	QWERTYUI	shop_pack	2	6
+int	QWERTYUI	shop_pack	3	9
+int	QWERTYUI	shop_pack	4	7
+int	QWERTYUI	shop_pack	5	1
+pseudoseed	QWERTYUI	erratic	0	0.83826632938981116
+pseudoseed	QWERTYUI	erratic	1	0.66791301066856112
+pseudoseed	QWERTYUI	erratic	2	0.87417068103756113
+pseudoseed	QWERTYUI	erratic	3	0.72982332727446109
+draw	QWERTYUI	erratic	0	0.51905917611064334
+draw	QWERTYUI	erratic	1	0.4840168597381258
+draw	QWERTYUI	erratic	2	0.92864998835997214
+draw	QWERTYUI	erratic	3	0.54740547588993205
+draw	QWERTYUI	erratic	4	0.0017115388767854345
+draw	QWERTYUI	erratic	5	0.9828008720163528
+int	QWERTYUI	erratic	0	6
+int	QWERTYUI	erratic	1	5
+int	QWERTYUI	erratic	2	10
+int	QWERTYUI	erratic	3	6
+int	QWERTYUI	erratic	4	1
+int	QWERTYUI	erratic	5	10
+pseudoseed	QWERTYUI	shuffle	0	0.78650869210466112
+pseudoseed	QWERTYUI	shuffle	1	0.57866667800851113
+pseudoseed	QWERTYUI	shuffle	2	0.72028212833206107
+pseudoseed	QWERTYUI	shuffle	3	0.96447139685961103
+draw	QWERTYUI	shuffle	0	0.54552139513751796
+draw	QWERTYUI	shuffle	1	0.81167236254810882
+draw	QWERTYUI	shuffle	2	0.29126788926538638
+draw	QWERTYUI	shuffle	3	0.54476055421505065
+draw	QWERTYUI	shuffle	4	0.69036078370605192
+draw	QWERTYUI	shuffle	5	0.83740409063357868
+int	QWERTYUI	shuffle	0	6
+int	QWERTYUI	shuffle	1	9
+int	QWERTYUI	shuffle	2	3
+int	QWERTYUI	shuffle	3	6
+int	QWERTYUI	shuffle	4	7
+int	QWERTYUI	shuffle	5	9
+pseudoseed	QWERTYUI	glass	0	0.60531653570471111
+pseudoseed	QWERTYUI	glass	1	0.76623480681686107
+pseudoseed	QWERTYUI	glass	2	0.54370816742701111
+pseudoseed	QWERTYUI	glass	3	0.66000273714836111
+draw	QWERTYUI	glass	0	0.98826497180095974
+draw	QWERTYUI	glass	1	0.020042177043714915
+draw	QWERTYUI	glass	2	0.71556479126351347
+draw	QWERTYUI	glass	3	0.88196330476568208
+draw	QWERTYUI	glass	4	0.27776019018212206
+draw	QWERTYUI	glass	5	0.62788163739741121
+int	QWERTYUI	glass	0	10
+int	QWERTYUI	glass	1	1
+int	QWERTYUI	glass	2	8
+int	QWERTYUI	glass	3	9
+int	QWERTYUI	glass	4	3
+int	QWERTYUI	glass	5	7
+pseudoseed	QWERTYUI	lucky_mult	0	0.85497800285041103
+pseudoseed	QWERTYUI	lucky_mult	1	0.69672915543871106
+pseudoseed	QWERTYUI	lucky_mult	2	0.92385871505596107
+pseudoseed	QWERTYUI	lucky_mult	3	0.81550101748271109
+draw	QWERTYUI	lucky_mult	0	0.26926656207860766
+draw	QWERTYUI	lucky_mult	1	0.49797405217280932
+draw	QWERTYUI	lucky_mult	2	0.3267762290868661
+draw	QWERTYUI	lucky_mult	3	0.30438215488766263
+draw	QWERTYUI	lucky_mult	4	0.69873437763377644
+draw	QWERTYUI	lucky_mult	5	0.69771962653669206
+int	QWERTYUI	lucky_mult	0	3
+int	QWERTYUI	lucky_mult	1	5
+int	QWERTYUI	lucky_mult	2	4
+int	QWERTYUI	lucky_mult	3	4
+int	QWERTYUI	lucky_mult	4	7
+int	QWERTYUI	lucky_mult	5	7
+pseudoseed	QWERTYUI	Joker2	0	0.92809961799531115
+pseudoseed	QWERTYUI	Joker2	1	0.82281365875381107
+pseudoseed	QWERTYUI	Joker2	2	0.64126778000491114
+pseudoseed	QWERTYUI	Joker2	3	0.82822598100206113
+draw	QWERTYUI	Joker2	0	0.4781859973920457
+draw	QWERTYUI	Joker2	1	0.29624602616633688
+draw	QWERTYUI	Joker2	2	0.082563922958673652
+draw	QWERTYUI	Joker2	3	0.68371271825464497
+draw	QWERTYUI	Joker2	4	0.080771687623614641
+draw	QWERTYUI	Joker2	5	0.52154431586026151
+int	QWERTYUI	Joker2	0	5
+int	QWERTYUI	Joker2	1	3
+int	QWERTYUI	Joker2	2	1
+int	QWERTYUI	Joker2	3	7
+int	QWERTYUI	Joker2	4	1
+int	QWERTYUI	Joker2	5	6
+pseudoseed	QWERTYUI	rarity	0	0.77992471070411107
+pseudoseed	QWERTYUI	rarity	1	0.56731383763321108
+pseudoseed	QWERTYUI	rarity	2	0.70070628557891101
+pseudoseed	QWERTYUI	rarity	3	0.93071652963446105
+draw	QWERTYUI	rarity	0	0.33990072985099418
+draw	QWERTYUI	rarity	1	0.44267479733267456
+draw	QWERTYUI	rarity	2	0.49010875594552195
+draw	QWERTYUI	rarity	3	0.95929311243066273
+draw	QWERTYUI	rarity	4	0.10020844063655443
+draw	QWERTYUI	rarity	5	0.41704508018783648
+int	QWERTYUI	rarity	0	4
+int	QWERTYUI	rarity	1	5
+int	QWERTYUI	rarity	2	5
+int	QWERTYUI	rarity	3	10
+int	QWERTYUI	rarity	4	2
+int	QWERTYUI	rarity	5	5
+pseudoseed	QWERTYUI	voucher	0	0.84435823128936116
+pseudoseed	QWERTYUI	voucher	1	0.67841735228801103
+pseudoseed	QWERTYUI	voucher	2	0.89228344691551109
+pseudoseed	QWERTYUI	voucher	3	0.76105539298936109
+draw	QWERTYUI	voucher	0	0.50082911227302884
+draw	QWERTYUI	voucher	1	0.90115897317139848
+draw	QWERTYUI	voucher	2	0.82541073415855548
+draw	QWERTYUI	voucher	3	0.53364061531944373
+draw	QWERTYUI	voucher	4	0.82432139246647784
+draw	QWERTYUI	voucher	5	0.76219723472970657
+int	QWERTYUI	voucher	0	6
+int	QWERTYUI	voucher	1	10
+int	QWERTYUI	voucher	2	9
+int	QWERTYUI	voucher	3	6
+int	QWERTYUI	voucher	4	9
+int	QWERTYUI	voucher	5	8
+pseudoseed	QWERTYUI	boss	0	0.82655125471191115
+pseudoseed	QWERTYUI	boss	1	0.64771256283741108
+pseudoseed	QWERTYUI	boss	2	0.83933879956876112
+pseudoseed	QWERTYUI	boss	3	0.66976228423241113
+draw	QWERTYUI	boss	0	0.55477611831239759
+draw	QWERTYUI	boss	1	0.43618151702329944
+draw	QWERTYUI	boss	2	0.15952262721327193
+draw	QWERTYUI	boss	3	0.13083137431131919
+draw	QWERTYUI	boss	4	0.09747186481951875
+draw	QWERTYUI	boss	5	0.10834755479134039
+int	QWERTYUI	boss	0	6
+int	QWERTYUI	boss	1	5
+int	QWERTYUI	boss	2	2
+int	QWERTYUI	boss	3	2
+int	QWERTYUI	boss	4	1
+int	QWERTYUI	boss	5	2
+pseudoseed	QWERTYUI	tag	0	0.88315942286706106
+pseudoseed	QWERTYUI	tag	1	0.74532272573216107
+pseudoseed	QWERTYUI	tag	2	0.50764920795761104
+pseudoseed	QWERTYUI	tag	3	0.59782582836771114
+draw	QWERTYUI	tag	0	0.98365963017724445
+draw	QWERTYUI	tag	1	0.38170275543442944
+draw	QWERTYUI	tag	2	0.30398155532346505
+draw	QWERTYUI	tag	3	0.71605602922985567
+draw	QWERTYUI	tag	4	0.37384921215603417
+draw	QWERTYUI	tag	5	0.50525701411453716
+int	QWERTYUI	tag	0	10
+int	QWERTYUI	tag	1	4
+int	QWERTYUI	tag	2	4
+int	QWERTYUI	tag	3	8
+int	QWERTYUI	tag	4	4
+int	QWERTYUI	tag	5	6
+pseudoseed	QWERTYUI	pack	0	0.6442924789231611
+pseudoseed	QWERTYUI	pack	1	0.8334415066716111
+pseudoseed	QWERTYUI	pack	2	0.65959350931726113
+pseudoseed	QWERTYUI	pack	3	0.85982526219486111
+draw	QWERTYUI	pack	0	0.92327323057997868
+draw	QWERTYUI	pack	1	0.057405782047850185
+draw	QWERTYUI	pack	2	0.40075085261815446
+draw	QWERTYUI	pack	3	0.3294529751217552
+draw	QWERTYUI	pack	4	0.27633197089468142
+draw	QWERTYUI	pack	5	0.3521219811051064
+int	QWERTYUI	pack	0	10
+int	QWERTYUI	pack	1	1
+int	QWERTYUI	pack	2	5
+int	QWERTYUI	pack	3	4
+int	QWERTYUI	pack	4	3
+int	QWERTYUI	pack	5	4
+pseudoseed	QWERTYUI	edition	0	0.85909530340721107
+pseudoseed	QWERTYUI	edition	1	0.70382866759631102
+pseudoseed	QWERTYUI	edition	2	0.93610049147726104
+pseudoseed	QWERTYUI	edition	3	0.83660966362951106
+draw	QWERTYUI	edition	0	0.79789049777514998
+draw	QWERTYUI	edition	1	0.13506277729434912
+draw	QWERTYUI	edition	2	0.70906585401869959
+draw	QWERTYUI	edition	3	0.98354793856676226
+draw	QWERTYUI	edition	4	0.96614208239295696
+draw	QWERTYUI	edition	5	0.32196169667176266
+int	QWERTYUI	edition	0	8
+int	QWERTYUI	edition	1	2
+int	QWERTYUI	edition	2	8
+int	QWERTYUI	edition	3	10
+int	QWERTYUI	edition	4	10
+int	QWERTYUI	edition	5	4
+live	QWERTYUI	0	0.67794292782209054
+live	QWERTYUI	1	0.067415183268128676
+live	QWERTYUI	2	0.67863146282840647
+live	QWERTYUI	3	0.48852419504031053
+live	QWERTYUI	4	0.89992557276866614
+live	QWERTYUI	5	0.098852757977742289
+livemix	QWERTYUI	shop_pack	0.23910773749821357,0.88932284727898958,0.62798540263783664
+livemix	QWERTYUI	Joker1	0.26407511054756982,0.73087325824305238,0.19699561497565266
+livemix	QWERTYUI	shuffle	0.18301558814147922,0.59642516142224311,0.45249747694464704
+livemix	QWERTYUI	cashout	0.70439112589599251,0.25653155678272355,0.62955773769185952
+shuffle	QWERTYUI	1	0
+shuffle	QWERTYUI	5	4,0,1,3,2
+shuffle	QWERTYUI	8	3,5,1,7,0,2,6,4
+shuffle	QWERTYUI	52	12,37,11,41,44,0,23,14,46,32,19,39,6,25,26,10,4,29,31,51,20,33,48,7,16,18,35,15,42,9,5,34,21,50,36,17,45,27,1,38,2,43,22,47,13,40,30,3,8,24,49,28
+hash	64PUKM3K	0.072257899924295543
+pseudoseed	64PUKM3K	Joker1	0	0.31715162978099776
+pseudoseed	64PUKM3K	Joker1	1	0.087926539164147777
+pseudoseed	64PUKM3K	Joker1	2	0.19267088677589778
+pseudoseed	64PUKM3K	Joker1	3	0.37328285790809779
+draw	64PUKM3K	Joker1	0	0.28777974651126548
+draw	64PUKM3K	Joker1	1	0.16980085729943917
+draw	64PUKM3K	Joker1	2	0.73190960316489861
+draw	64PUKM3K	Joker1	3	0.15519198353806973
+draw	64PUKM3K	Joker1	4	0.95766608136240272
+draw	64PUKM3K	Joker1	5	0.33642546218513125
+int	64PUKM3K	Joker1	0	3
+int	64PUKM3K	Joker1	1	2
+int	64PUKM3K	Joker1	2	8
+int	64PUKM3K	Joker1	3	2
+int	64PUKM3K	Joker1	4	10
+int	64PUKM3K	Joker1	5	4
+pseudoseed	64PUKM3K	shop_pack	0	0.30873027443584777
+pseudoseed	64PUKM3K	shop_pack	1	0.073405492222997776
+pseudoseed	64PUKM3K	shop_pack	2	0.16763206634554778
+pseudoseed	64PUKM3K	shop_pack	3	0.33010811086099778
+draw	64PUKM3K	shop_pack	0	0.62587409019800577
+draw	64PUKM3K	shop_pack	1	0.96076621186019384
+draw	64PUKM3K	shop_pack	2	0.54346121257817592
+draw	64PUKM3K	shop_pack	3	0.42419058526150888
+draw	64PUKM3K	shop_pack	4	0.34413239650549166
+draw	64PUKM3K	shop_pack	5	0.80887179781466645
+int	64PUKM3K	shop_pack	0	7
+int	64PUKM3K	shop_pack	1	10
+int	64PUKM3K	shop_pack	2	6
+int	64PUKM3K	shop_pack	3	5
+int	64PUKM3K	shop_pack	4	4
+int	64PUKM3K	shop_pack	5	9
+pseudoseed	64PUKM3K	erratic	0	0.36542038263129778
+pseudoseed	64PUKM3K	erratic	1	0.17115694534034778
+pseudoseed	64PUKM3K	erratic	2	0.33618610320874776
+pseudoseed	64PUKM3K	erratic	3	0.12074791658104778
+draw	64PUKM3K	erratic	0	0.50153664748046589
+draw	64PUKM3K	erratic	1	0.54852335252382067
+draw	64PUKM3K	erratic	2	0.64079364125725125
+draw	64PUKM3K	erratic	3	0.98928390865376103
+draw	64PUKM3K	erratic	4	0.58850025068589051
+draw	64PUKM3K	erratic	5	0.84939997119629829
+int	64PUKM3K	erratic	0	6
+int	64PUKM3K	erratic	1	6
+int	64PUKM3K	erratic	2	7
+int	64PUKM3K	erratic	3	10
+int	64PUKM3K	erratic	4	6
+int	64PUKM3K	erratic	5	9
+pseudoseed	64PUKM3K	shuffle	0	0.12087847639894778
+pseudoseed	64PUKM3K	shuffle	1	0.24949031877679778
+pseudoseed	64PUKM3K	shuffle	2	0.47125730565904778
+pseudoseed	64PUKM3K	shuffle	3	0.35365285774469779
+draw	64PUKM3K	shuffle	0	0.75465753457767981
+draw	64PUKM3K	shuffle	1	0.28128193672987911
+draw	64PUKM3K	shuffle	2	0.17232388091794149
+draw	64PUKM3K	shuffle	3	0.81578833956589181
+draw	64PUKM3K	shuffle	4	0.13057542805044453
+draw	64PUKM3K	shuffle	5	0.8383768836918466
+int	64PUKM3K	shuffle	0	8
+int	64PUKM3K	shuffle	1	3
+int	64PUKM3K	shuffle	2	2
+int	64PUKM3K	shuffle	3	9
+int	64PUKM3K	shuffle	4	2
+int	64PUKM3K	shuffle	5	9
+pseudoseed	64PUKM3K	glass	0	0.31873694458879775
+pseudoseed	64PUKM3K	glass	1	0.09066011705004777
+pseudoseed	64PUKM3K	glass	2	0.19738442885689778
+pseudoseed	64PUKM3K	glass	3	0.38141047668349776
+draw	64PUKM3K	glass	0	0.12037634252983542
+draw	64PUKM3K	glass	1	0.4936301787172257
+draw	64PUKM3K	glass	2	0.21272889098261905
+draw	64PUKM3K	glass	3	0.035990347125774091
+draw	64PUKM3K	glass	4	0.85662845388538056
+draw	64PUKM3K	glass	5	0.80434787836885291
+int	64PUKM3K	glass	0	2
+int	64PUKM3K	glass	1	5
+int	64PUKM3K	glass	2	3
+int	64PUKM3K	glass	3	1
+int	64PUKM3K	glass	4	9
+int	64PUKM3K	glass	5	9
+pseudoseed	64PUKM3K	lucky_mult	0	0.38382413838944779
+pseudoseed	64PUKM3K	lucky_mult	1	0.20289076849644777
+pseudoseed	64PUKM3K	lucky_mult	2	0.39090512607219779
+pseudoseed	64PUKM3K	lucky_mult	3	0.21510060293719777
+draw	64PUKM3K	lucky_mult	0	0.55547179927179413
+draw	64PUKM3K	lucky_mult	1	0.928985330994615
+draw	64PUKM3K	lucky_mult	2	0.92661851108463389
+draw	64PUKM3K	lucky_mult	3	0.015965755186515995
+draw	64PUKM3K	lucky_mult	4	0.11993785531272616
+draw	64PUKM3K	lucky_mult	5	0.98620198515938573
+int	64PUKM3K	lucky_mult	0	6
+int	64PUKM3K	lucky_mult	1	10
+int	64PUKM3K	lucky_mult	2	10
+int	64PUKM3K	lucky_mult	3	1
+int	64PUKM3K	lucky_mult	4	2
+int	64PUKM3K	lucky_mult	5	10
+pseudoseed	64PUKM3K	Joker2	0	0.33981684241944776
+pseudoseed	64PUKM3K	Joker2	1	0.12700844500534778
+pseudoseed	64PUKM3K	Joker2	2	0.26006029928859775
+pseudoseed	64PUKM3K	Joker2	3	0.48948325348909777
+draw	64PUKM3K	Joker2	0	0.90604555952306209
+draw	64PUKM3K	Joker2	1	0.38888871974735584
+draw	64PUKM3K	Joker2	2	0.27420828518014395
+draw	64PUKM3K	Joker2	3	0.89602819106947118
+draw	64PUKM3K	Joker2	4	0.28600517996515018
+draw	64PUKM3K	Joker2	5	0.26393950542380407
+int	64PUKM3K	Joker2	0	10
+int	64PUKM3K	Joker2	1	4
+int	64PUKM3K	Joker2	2	3
+int	64PUKM3K	Joker2	3	9
+int	64PUKM3K	Joker2	4	3
+int	64PUKM3K	Joker2	5	3
+pseudoseed	64PUKM3K	rarity	0	0.45803300317994777
+pseudoseed	64PUKM3K	rarity	1	0.33085002979209777
+pseudoseed	64PUKM3K	rarity	2	0.11154685934154777
+pseudoseed	64PUKM3K	rarity	3	0.23339969633254778
+draw	64PUKM3K	rarity	0	0.63276217140042923
+draw	64PUKM3K	rarity	1	0.10899487904471838
+draw	64PUKM3K	rarity	2	0.22641520958196448
+draw	64PUKM3K	rarity	3	0.7997767853918154
+draw	64PUKM3K	rarity	4	0.32815803499139995
+draw	64PUKM3K	rarity	5	0.89779115017683497
+int	64PUKM3K	rarity	0	7
+int	64PUKM3K	rarity	1	2
+int	64PUKM3K	rarity	2	3
+int	64PUKM3K	rarity	3	8
+int	64PUKM3K	rarity	4	4
+int	64PUKM3K	rarity	5	9
+pseudoseed	64PUKM3K	voucher	0	0.11031933153204777
+pseudoseed	64PUKM3K	voucher	1	0.23128305498294777
+pseudoseed	64PUKM3K	voucher	2	0.43986229602164778
+pseudoseed	64PUKM3K	voucher	3	0.29951805521254776
+draw	64PUKM3K	voucher	0	0.22733692867118305
+draw	64PUKM3K	voucher	1	0.7250713875624657
+draw	64PUKM3K	voucher	2	0.62917643257310862
+draw	64PUKM3K	voucher	3	0.31940367273754133
+draw	64PUKM3K	voucher	4	0.4717398561360322
+draw	64PUKM3K	voucher	5	0.0063223236044711584
+int	64PUKM3K	voucher	0	3
+int	64PUKM3K	voucher	1	8
+int	64PUKM3K	voucher	2	7
+int	64PUKM3K	voucher	3	4
+int	64PUKM3K	voucher	4	5
+int	64PUKM3K	voucher	5	1
+pseudoseed	64PUKM3K	boss	0	0.059988426907147771
+pseudoseed	64PUKM3K	boss	1	0.14449685505484777
+pseudoseed	64PUKM3K	boss	2	0.29021578054394775
+pseudoseed	64PUKM3K	boss	3	0.041480721936347775
+draw	64PUKM3K	boss	0	0.82537869148330145
+draw	64PUKM3K	boss	1	0.35768891607385123
+draw	64PUKM3K	boss	2	0.36923904184012279
+draw	64PUKM3K	boss	3	0.96553140779890767
+draw	64PUKM3K	boss	4	0.57459472341019624
+draw	64PUKM3K	boss	5	0.63342865814444838
+int	64PUKM3K	boss	0	9
+int	64PUKM3K	boss	1	4
+int	64PUKM3K	boss	2	4
+int	64PUKM3K	boss	3	10
+int	64PUKM3K	boss	4	6
+int	64PUKM3K	boss	5	7
+pseudoseed	64PUKM3K	tag	0	0.32774648087209779
+pseudoseed	64PUKM3K	tag	1	0.10619537164099777
+pseudoseed	64PUKM3K	tag	2	0.22417206005314777
+pseudoseed	64PUKM3K	tag	3	0.42760071971454777
+draw	64PUKM3K	tag	0	0.33481610362392922
+draw	64PUKM3K	tag	1	0.0054767237107817834
+draw	64PUKM3K	tag	2	0.46762210706503704
+draw	64PUKM3K	tag	3	0.86851582425317986
+draw	64PUKM3K	tag	4	0.89381697814786998
+draw	64PUKM3K	tag	5	0.55377183949027153
+int	64PUKM3K	tag	0	4
+int	64PUKM3K	tag	1	1
+int	64PUKM3K	tag	2	5
+int	64PUKM3K	tag	3	9
+int	64PUKM3K	tag	4	9
+int	64PUKM3K	tag	5	6
+pseudoseed	64PUKM3K	pack	0	0.38390441287074778
+pseudoseed	64PUKM3K	pack	1	0.20302918677514778
+pseudoseed	64PUKM3K	pack	2	0.39114380241824775
+pseudoseed	64PUKM3K	pack	3	0.21551215550599778
+draw	64PUKM3K	pack	0	0.29007997756610426
+draw	64PUKM3K	pack	1	0.70112697176222705
+draw	64PUKM3K	pack	2	0.64684140440666305
+draw	64PUKM3K	pack	3	0.16829053861342724
+draw	64PUKM3K	pack	4	0.77287869798599385
+draw	64PUKM3K	pack	5	0.94316984061013853
+int	64PUKM3K	pack	0	3
+int	64PUKM3K	pack	1	8
+int	64PUKM3K	pack	2	7
+int	64PUKM3K	pack	3	2
+int	64PUKM3K	pack	4	8
+int	64PUKM3K	pack	5	10
+pseudoseed	64PUKM3K	edition	0	0.30458851572314777
+pseudoseed	64PUKM3K	edition	1	0.066263806565397765
+pseudoseed	64PUKM3K	edition	2	0.15531756963774779
+pseudoseed	64PUKM3K	edition	3	0.30887407222684776
+draw	64PUKM3K	edition	0	0.44506698927240573
+draw	64PUKM3K	edition	1	0.60235414592541137
+draw	64PUKM3K	edition	2	0.779621764231198
+draw	64PUKM3K	edition	3	0.42347753427188572
+draw	64PUKM3K	edition	4	0.16682765465834049
+draw	64PUKM3K	edition	5	0.10715587648196423
+int	64PUKM3K	edition	0	5
+int	64PUKM3K	edition	1	7
+int	64PUKM3K	edition	2	8
+int	64PUKM3K	edition	3	5
+int	64PUKM3K	edition	4	2
+int	64PUKM3K	edition	5	2
+live	64PUKM3K	0	0.075188951540585913
+live	64PUKM3K	1	0.58944610503755435
+live	64PUKM3K	2	0.45287022303089208
+live	64PUKM3K	3	0.83458419083118707
+live	64PUKM3K	4	0.41493747689120997
+live	64PUKM3K	5	0.39069758197054472
+livemix	64PUKM3K	shop_pack	0.28483599884221245,0.28420594607276595,0.071516420539639025
+livemix	64PUKM3K	Joker1	0.7750599969062153,0.0084608240068055895,0.51335811966658063
+livemix	64PUKM3K	shuffle	0.8296165819598893,0.36656623756921847,0.54416136068495113
+livemix	64PUKM3K	cashout	0.60500679382038625,0.41120087057666344,0.40568633353527117
+shuffle	64PUKM3K	1	0
+shuffle	64PUKM3K	5	2,1,0,4,3
+shuffle	64PUKM3K	8	5,2,3,0,4,1,7,6
+shuffle	64PUKM3K	52	15,24,25,50,33,49,43,34,0,40,21,26,3,19,17,48,36,11,47,14,2,28,37,31,27,5,20,22,6,13,4,45,35,41,16,51,38,42,23,7,30,32,12,29,18,8,1,9,44,10,46,39
+hash	aaaaaaaa	0.10593684355535515
+pseudoseed	aaaaaaaa	Joker1	0	0.29938801184602759
+pseudoseed	aaaaaaaa	Joker1	1	0.5450994763207776
+pseudoseed	aaaaaaaa	Joker1	2	0.46878278659407757
+pseudoseed	aaaaaaaa	Joker1	3	0.33718897675037757
+draw	aaaaaaaa	Joker1	0	0.67200332759582304
+draw	aaaaaaaa	Joker1	1	0.57817524664832165
+draw	aaaaaaaa	Joker1	2	0.81345806697477396
+draw	aaaaaaaa	Joker1	3	0.97465092974756939
+draw	aaaaaaaa	Joker1	4	0.14241549572030032
+draw	aaaaaaaa	Joker1	5	0.86546806385362562
+int	aaaaaaaa	Joker1	0	7
+int	aaaaaaaa	Joker1	1	6
+int	aaaaaaaa	Joker1	2	9
+int	aaaaaaaa	Joker1	3	10
+int	aaaaaaaa	Joker1	4	2
+int	aaaaaaaa	Joker1	5	9
+pseudoseed	aaaaaaaa	shop_pack	0	0.37645492592237756
+pseudoseed	aaaaaaaa	shop_pack	1	0.17798690726832758
+pseudoseed	aaaaaaaa	shop_pack	2	0.33576605360782757
+pseudoseed	aaaaaaaa	shop_pack	3	0.10782658263567757
+draw	aaaaaaaa	shop_pack	0	0.62016718169135321
+draw	aaaaaaaa	shop_pack	1	0.16709942967390612
+draw	aaaaaaaa	shop_pack	2	0.13790375390256338
+draw	aaaaaaaa	shop_pack	3	0.28025364225341276
+draw	aaaaaaaa	shop_pack	4	0.73742711695870944
+draw	aaaaaaaa	shop_pack	5	0.40032831257458867
+int	aaaaaaaa	shop_pack	0	7
+int	aaaaaaaa	shop_pack	1	2
+int	aaaaaaaa	shop_pack	2	2
+int	aaaaaaaa	shop_pack	3	3
+int	aaaaaaaa	shop_pack	4	8
+int	aaaaaaaa	shop_pack	5	5
+pseudoseed	aaaaaaaa	erratic	0	0.26792819576737759
+pseudoseed	aaaaaaaa	erratic	1	0.49085292724222757
+pseudoseed	aaaaaaaa	erratic	2	0.37524479261547755
+pseudoseed	aaaaaaaa	erratic	3	0.17590025947422758
+draw	aaaaaaaa	erratic	0	0.876769886878217
+draw	aaaaaaaa	erratic	1	0.44052672838284601
+draw	aaaaaaaa	erratic	2	0.91721295108503864
+draw	aaaaaaaa	erratic	3	0.4968369864638682
+draw	aaaaaaaa	erratic	4	0.47145595479755942
+draw	aaaaaaaa	erratic	5	0.80089697610410937
+int	aaaaaaaa	erratic	0	9
+int	aaaaaaaa	erratic	1	5
+int	aaaaaaaa	erratic	2	10
+int	aaaaaaaa	erratic	3	5
+int	aaaaaaaa	erratic	4	5
+int	aaaaaaaa	erratic	5	9
+pseudoseed	aaaaaaaa	shuffle	0	0.44548127548302757
+pseudoseed	aaaaaaaa	shuffle	1	0.29700989360092755
+pseudoseed	aaaaaaaa	shuffle	2	0.54099885768477751
+pseudoseed	aaaaaaaa	shuffle	3	0.46171203927837756
+draw	aaaaaaaa	shuffle	0	0.77395676870509367
+draw	aaaaaaaa	shuffle	1	0.07533494139955943
+draw	aaaaaaaa	shuffle	2	0.41717806579266425
+draw	aaaaaaaa	shuffle	3	0.031204417984660449
+draw	aaaaaaaa	shuffle	4	0.11208712942259758
+draw	aaaaaaaa	shuffle	5	0.14184106158346754
+int	aaaaaaaa	shuffle	0	8
+int	aaaaaaaa	shuffle	1	1
+int	aaaaaaaa	shuffle	2	5
+int	aaaaaaaa	shuffle	3	1
+int	aaaaaaaa	shuffle	4	2
+int	aaaaaaaa	shuffle	5	2
+pseudoseed	aaaaaaaa	glass	0	0.12068868568212758
+pseudoseed	aaaaaaaa	glass	1	0.23696602306667758
+pseudoseed	aaaaaaaa	glass	2	0.43746447078117756
+pseudoseed	aaaaaaaa	glass	3	0.28318641832617758
+draw	aaaaaaaa	glass	0	0.1022256357805571
+draw	aaaaaaaa	glass	1	0.29898720083487995
+draw	aaaaaaaa	glass	2	0.59697285445663861
+draw	aaaaaaaa	glass	3	0.49272649108286593
+draw	aaaaaaaa	glass	4	0.5340639127611726
+draw	aaaaaaaa	glass	5	0.7899408786450719
+int	aaaaaaaa	glass	0	2
+int	aaaaaaaa	glass	1	3
+int	aaaaaaaa	glass	2	6
+int	aaaaaaaa	glass	3	5
+int	aaaaaaaa	glass	4	6
+int	aaaaaaaa	glass	5	8
+pseudoseed	aaaaaaaa	lucky_mult	0	0.3050494786956276
+pseudoseed	aaaaaaaa	lucky_mult	1	0.054861613472027573
+pseudoseed	aaaaaaaa	lucky_mult	2	0.12345959014872758
+pseudoseed	aaaaaaaa	lucky_mult	3	0.24174392783137758
+draw	aaaaaaaa	lucky_mult	0	0.13098598676036999
+draw	aaaaaaaa	lucky_mult	1	0.078719757808124013
+draw	aaaaaaaa	lucky_mult	2	0.3900741376308432
+draw	aaaaaaaa	lucky_mult	3	0.49929586907884005
+draw	aaaaaaaa	lucky_mult	4	0.29908650387637103
+draw	aaaaaaaa	lucky_mult	5	0.35783855601996306
+int	aaaaaaaa	lucky_mult	0	2
+int	aaaaaaaa	lucky_mult	1	1
+int	aaaaaaaa	lucky_mult	2	4
+int	aaaaaaaa	lucky_mult	3	5
+int	aaaaaaaa	lucky_mult	4	3
+int	aaaaaaaa	lucky_mult	5	4
+pseudoseed	aaaaaaaa	Joker2	0	0.14563027773917758
+pseudoseed	aaaaaaaa	Joker2	1	0.27997311802987757
+pseudoseed	aaaaaaaa	Joker2	2	0.51162213533377754
+pseudoseed	aaaaaaaa	Joker2	3	0.41105739441977757
+draw	aaaaaaaa	Joker2	0	0.14756106538394675
+draw	aaaaaaaa	Joker2	1	0.45676613838691593
+draw	aaaaaaaa	Joker2	2	0.13076205377917738
+draw	aaaaaaaa	Joker2	3	0.023560774556462327
+draw	aaaaaaaa	Joker2	4	0.92521429228389107
+draw	aaaaaaaa	Joker2	5	0.55817877086082168
+int	aaaaaaaa	Joker2	0	2
+int	aaaaaaaa	Joker2	1	5
+int	aaaaaaaa	Joker2	2	2
+int	aaaaaaaa	Joker2	3	1
+int	aaaaaaaa	Joker2	4	10
+int	aaaaaaaa	Joker2	5	6
+pseudoseed	aaaaaaaa	rarity	0	0.30828415220477756
+pseudoseed	aaaaaaaa	rarity	1	0.060439200919727577
+pseudoseed	aaaaaaaa	rarity	2	0.13307709301222759
+pseudoseed	aaaaaaaa	rarity	3	0.25832750669892757
+draw	aaaaaaaa	rarity	0	0.68736074849097561
+draw	aaaaaaaa	rarity	1	0.16664723623693867
+draw	aaaaaaaa	rarity	2	0.62122191693255657
+draw	aaaaaaaa	rarity	3	0.56310336812166017
+draw	aaaaaaaa	rarity	4	0.77569704135397566
+draw	aaaaaaaa	rarity	5	0.56212364392681913
+int	aaaaaaaa	rarity	0	7
+int	aaaaaaaa	rarity	1	2
+int	aaaaaaaa	rarity	2	7
+int	aaaaaaaa	rarity	3	6
+int	aaaaaaaa	rarity	4	8
+int	aaaaaaaa	rarity	5	6
+pseudoseed	aaaaaaaa	voucher	0	0.40105592065427759
+pseudoseed	aaaaaaaa	voucher	1	0.22040670606082757
+pseudoseed	aaaaaaaa	voucher	2	0.40891103612602758
+pseudoseed	aaaaaaaa	voucher	3	0.23395137860087759
+draw	aaaaaaaa	voucher	0	0.5985773128663896
+draw	aaaaaaaa	voucher	1	0.96614502973906879
+draw	aaaaaaaa	voucher	2	0.11950555827555642
+draw	aaaaaaaa	voucher	3	0.49721069213581148
+draw	aaaaaaaa	voucher	4	0.91604383064310491
+draw	aaaaaaaa	voucher	5	0.0078266392285595288
+int	aaaaaaaa	voucher	0	6
+int	aaaaaaaa	voucher	1	10
+int	aaaaaaaa	voucher	2	2
+int	aaaaaaaa	voucher	3	5
+int	aaaaaaaa	voucher	4	10
+int	aaaaaaaa	voucher	5	1
+pseudoseed	aaaaaaaa	boss	0	0.30830955106492758
+pseudoseed	aaaaaaaa	boss	1	0.060482996487727578
+pseudoseed	aaaaaaaa	boss	2	0.13315261025057756
+pseudoseed	aaaaaaaa	boss	3	0.2584577220048776
+draw	aaaaaaaa	boss	0	0.21328697541704034
+draw	aaaaaaaa	boss	1	0.15886718974708547
+draw	aaaaaaaa	boss	2	0.79951833255087257
+draw	aaaaaaaa	boss	3	0.30842982857691004
+draw	aaaaaaaa	boss	4	0.96935759364105412
+draw	aaaaaaaa	boss	5	0.34654987229261125
+int	aaaaaaaa	boss	0	3
+int	aaaaaaaa	boss	1	2
+int	aaaaaaaa	boss	2	8
+int	aaaaaaaa	boss	3	4
+int	aaaaaaaa	boss	4	10
+int	aaaaaaaa	boss	5	4
+pseudoseed	aaaaaaaa	tag	0	0.15604394940547758
+pseudoseed	aaaaaaaa	tag	1	0.29792954058882759
+pseudoseed	aaaaaaaa	tag	2	0.54258461633442756
+pseudoseed	aaaaaaaa	tag	3	0.46444638248622755
+draw	aaaaaaaa	tag	0	0.39730619169150039
+draw	aaaaaaaa	tag	1	0.67923830754482473
+draw	aaaaaaaa	tag	2	0.11097758118702061
+draw	aaaaaaaa	tag	3	0.7340643635062829
+draw	aaaaaaaa	tag	4	0.5886453145319952
+draw	aaaaaaaa	tag	5	0.33758675881263778
+int	aaaaaaaa	tag	0	4
+int	aaaaaaaa	tag	1	7
+int	aaaaaaaa	tag	2	2
+int	aaaaaaaa	tag	3	8
+int	aaaaaaaa	tag	4	6
+int	aaaaaaaa	tag	5	4
+pseudoseed	aaaaaaaa	pack	0	0.50719720497497756
+pseudoseed	aaaaaaaa	pack	1	0.40342743239847756
+pseudoseed	aaaaaaaa	pack	2	0.22449593302582757
+pseudoseed	aaaaaaaa	pack	3	0.41596214064282755
+draw	aaaaaaaa	pack	0	0.29572741889696386
+draw	aaaaaaaa	pack	1	0.097369942003055376
+draw	aaaaaaaa	pack	2	0.7122555531340975
+draw	aaaaaaaa	pack	3	0.5177484115467077
+draw	aaaaaaaa	pack	4	0.97086183172199569
+draw	aaaaaaaa	pack	5	0.88620718807224774
+int	aaaaaaaa	pack	0	3
+int	aaaaaaaa	pack	1	1
+int	aaaaaaaa	pack	2	8
+int	aaaaaaaa	pack	3	6
+int	aaaaaaaa	pack	4	10
+int	aaaaaaaa	pack	5	9
+pseudoseed	aaaaaaaa	edition	0	0.40619693411872759
+pseudoseed	aaaaaaaa	edition	1	0.22927141901767759
+pseudoseed	aaaaaaaa	edition	2	0.42419657006807759
+pseudoseed	aaaaaaaa	edition	3	0.26030841340067756
+draw	aaaaaaaa	edition	0	0.57154072816433543
+draw	aaaaaaaa	edition	1	0.050950075917940429
+draw	aaaaaaaa	edition	2	0.20296639657510518
+draw	aaaaaaaa	edition	3	0.091062491477867935
+draw	aaaaaaaa	edition	4	0.19354635209966053
+draw	aaaaaaaa	edition	5	0.57276206796677087
+int	aaaaaaaa	edition	0	6
+int	aaaaaaaa	edition	1	1
+int	aaaaaaaa	edition	2	3
+int	aaaaaaaa	edition	3	1
+int	aaaaaaaa	edition	4	2
+int	aaaaaaaa	edition	5	6
+live	aaaaaaaa	0	0.96463086930646935
+live	aaaaaaaa	1	0.10913155543687081
+live	aaaaaaaa	2	0.41170948838495747
+live	aaaaaaaa	3	0.83900914341453281
+live	aaaaaaaa	4	0.03318508714824242
+live	aaaaaaaa	5	0.099588174902369486
+livemix	aaaaaaaa	shop_pack	0.022956944557751324,0.032674117084034782,0.0167935806325894
+livemix	aaaaaaaa	Joker1	0.572318099931584,0.65801737761458101,0.54187554089539947
+livemix	aaaaaaaa	shuffle	0.71472548883752429,0.20051455196772006,0.33309358114061549
+livemix	aaaaaaaa	cashout	0.2363505446668519,0.72990676417724631,0.65340911273826863
+shuffle	aaaaaaaa	1	0
+shuffle	aaaaaaaa	5	0,1,2,4,3
+shuffle	aaaaaaaa	8	5,1,2,0,3,4,7,6
+shuffle	aaaaaaaa	52	43,32,42,29,28,30,39,13,3,47,8,27,25,48,5,16,4,17,33,1,10,19,20,18,38,6,7,14,22,15,21,23,51,50,37,45,36,46,11,34,24,0,2,26,12,35,49,9,31,41,44,40
+hash	12345678	0.57550361536391392
+pseudoseed	12345678	Joker1	0	0.57309526765055696
+pseudoseed	12345678	Joker1	1	0.34699977141460697
+pseudoseed	12345678	Joker1	2	0.45714051723655696
+pseudoseed	12345678	Joker1	3	0.647057564394107
+draw	12345678	Joker1	0	0.094814567648018766
+draw	12345678	Joker1	1	0.92961149375567387
+draw	12345678	Joker1	2	0.028633208333931792
+draw	12345678	Joker1	3	0.29360555548292377
+draw	12345678	Joker1	4	0.39250337109434508
+draw	12345678	Joker1	5	0.62512464303116255
+int	12345678	Joker1	0	1
+int	12345678	Joker1	1	10
+int	12345678	Joker1	2	1
+int	12345678	Joker1	3	3
+int	12345678	Joker1	4	4
+int	12345678	Joker1	5	7
+pseudoseed	12345678	shop_pack	0	0.60552618571595695
+pseudoseed	12345678	shop_pack	1	0.40292080363230698
+pseudoseed	12345678	shop_pack	2	0.55356584315505697
+pseudoseed	12345678	shop_pack	3	0.31332494376390696
+draw	12345678	shop_pack	0	0.88121101270191105
+draw	12345678	shop_pack	1	0.79144004984527605
+draw	12345678	shop_pack	2	0.96278781462753193
+draw	12345678	shop_pack	3	0.039323036352086227
+draw	12345678	shop_pack	4	0.31985312881634287
+draw	12345678	shop_pack	5	0.59186029172210985
+int	12345678	shop_pack	0	9
+int	12345678	shop_pack	1	8
+int	12345678	shop_pack	2	10
+int	12345678	shop_pack	3	1
+int	12345678	shop_pack	4	4
+int	12345678	shop_pack	5	6
+pseudoseed	12345678	erratic	0	0.37704216419170694
+pseudoseed	12345678	erratic	1	0.50894298582520703
+pseudoseed	12345678	erratic	2	0.73638120022400688
+pseudoseed	12345678	erratic	3	0.62855571989940695
+draw	12345678	erratic	0	0.27399097276943141
+draw	12345678	erratic	1	0.90186252386453236
+draw	12345678	erratic	2	0.18909967056930066
+draw	12345678	erratic	3	0.13951492697647905
+draw	12345678	erratic	4	0.51654647069653237
+draw	12345678	erratic	5	0.4164485159393736
+int	12345678	erratic	0	3
+int	12345678	erratic	1	10
+int	12345678	erratic	2	2
+int	12345678	erratic	3	2
+int	12345678	erratic	4	6
+int	12345678	erratic	5	5
+pseudoseed	12345678	shuffle	0	0.65210387958320704
+pseudoseed	12345678	shuffle	1	0.48323529593635695
+pseudoseed	12345678	shuffle	2	0.69205311331575703
+pseudoseed	12345678	shuffle	3	0.55212025263490694
+draw	12345678	shuffle	0	0.94137623355160249
+draw	12345678	shuffle	1	0.028573239679842377
+draw	12345678	shuffle	2	0.96384876078894322
+draw	12345678	shuffle	3	0.42504303879189287
+draw	12345678	shuffle	4	0.50325702090426039
+draw	12345678	shuffle	5	0.95316319931281823
+int	12345678	shuffle	0	10
+int	12345678	shuffle	1	1
+int	12345678	shuffle	2	10
+int	12345678	shuffle	3	5
+int	12345678	shuffle	4	6
+int	12345678	shuffle	5	10
+pseudoseed	12345678	glass	0	0.37146235600125699
+pseudoseed	12345678	glass	1	0.49932165370760695
+pseudoseed	12345678	glass	2	0.71979101852640692
+pseudoseed	12345678	glass	3	0.59994906487540689
+draw	12345678	glass	0	0.30323904851816619
+draw	12345678	glass	1	0.22448862641694434
+draw	12345678	glass	2	0.74974190707811816
+draw	12345678	glass	3	0.4837708250968229
+draw	12345678	glass	4	0.59708538016010482
+draw	12345678	glass	5	0.15432484904460231
+int	12345678	glass	0	4
+int	12345678	glass	1	3
+int	12345678	glass	2	8
+int	12345678	glass	3	5
+int	12345678	glass	4	6
+int	12345678	glass	5	2
+pseudoseed	12345678	lucky_mult	0	0.72919266604720701
+pseudoseed	12345678	lucky_mult	1	0.61616044171185691
+pseudoseed	12345678	lucky_mult	2	0.42125758247275696
+pseudoseed	12345678	lucky_mult	3	0.58518417718550697
+draw	12345678	lucky_mult	0	0.77043043793197374
+draw	12345678	lucky_mult	1	0.50386195816717683
+draw	12345678	lucky_mult	2	0.63240459094065904
+draw	12345678	lucky_mult	3	0.34275793673222044
+draw	12345678	lucky_mult	4	0.99461298874032522
+draw	12345678	lucky_mult	5	0.4313149757674144
+int	12345678	lucky_mult	0	8
+int	12345678	lucky_mult	1	6
+int	12345678	lucky_mult	2	7
+int	12345678	lucky_mult	3	4
+int	12345678	lucky_mult	4	10
+int	12345678	lucky_mult	5	5
+pseudoseed	12345678	Joker2	0	0.37333999534170698
+pseudoseed	12345678	Joker2	1	0.50255929039240699
+pseudoseed	12345678	Joker2	2	0.72537371541440698
+pseudoseed	12345678	Joker2	3	0.60957537800985695
+draw	12345678	Joker2	0	0.33752108893219801
+draw	12345678	Joker2	1	0.80065054823318826
+draw	12345678	Joker2	2	0.38489322749168831
+draw	12345678	Joker2	3	0.80642088279849067
+draw	12345678	Joker2	4	0.83837945629867283
+draw	12345678	Joker2	5	0.39181819247817407
+int	12345678	Joker2	0	4
+int	12345678	Joker2	1	9
+int	12345678	Joker2	2	4
+int	12345678	Joker2	3	9
+int	12345678	Joker2	4	9
+int	12345678	Joker2	5	4
+pseudoseed	12345678	rarity	0	0.46747251118325694
+pseudoseed	12345678	rarity	1	0.66487314905320694
+pseudoseed	12345678	rarity	2	0.50525350485625697
+pseudoseed	12345678	rarity	3	0.73001938266105704
+draw	12345678	rarity	0	0.45895294276225496
+draw	12345678	rarity	1	0.69244527453047167
+draw	12345678	rarity	2	0.29191566087622256
+draw	12345678	rarity	3	0.84302944026168669
+draw	12345678	rarity	4	0.39595843589747681
+draw	12345678	rarity	5	0.7047651184171384
+int	12345678	rarity	0	5
+int	12345678	rarity	1	7
+int	12345678	rarity	2	3
+int	12345678	rarity	3	9
+int	12345678	rarity	4	4
+int	12345678	rarity	5	8
+pseudoseed	12345678	voucher	0	0.41386161841790697
+pseudoseed	12345678	voucher	1	0.57243122509950695
+pseudoseed	12345678	voucher	2	0.34585475464955695
+pseudoseed	12345678	voucher	3	0.45516615069905697
+draw	12345678	voucher	0	0.53958883137519953
+draw	12345678	voucher	1	0.98070652640861078
+draw	12345678	voucher	2	0.29582871360885155
+draw	12345678	voucher	3	0.019826915193758232
+draw	12345678	voucher	4	0.33293708593779447
+draw	12345678	voucher	5	0.55710046490784415
+int	12345678	voucher	0	6
+int	12345678	voucher	1	10
+int	12345678	voucher	2	3
+int	12345678	voucher	3	1
+int	12345678	voucher	4	4
+int	12345678	voucher	5	6
+pseudoseed	12345678	boss	0	0.66481482351740695
+pseudoseed	12345678	boss	1	0.50515293341515699
+pseudoseed	12345678	boss	2	0.72984596608410701
+pseudoseed	12345678	boss	3	0.617286935027207
+draw	12345678	boss	0	0.74749805353880094
+draw	12345678	boss	1	0.10556089433849936
+draw	12345678	boss	2	0.35231706767900173
+draw	12345678	boss	3	0.58652477647646162
+draw	12345678	boss	4	0.81106386306032152
+draw	12345678	boss	5	0.54285984635301299
+int	12345678	boss	0	8
+int	12345678	boss	1	2
+int	12345678	boss	2	4
+int	12345678	boss	3	6
+int	12345678	boss	4	9
+int	12345678	boss	5	6
+pseudoseed	12345678	tag	0	0.56789579783845689
+pseudoseed	12345678	tag	1	0.33803426145615695
+pseudoseed	12345678	tag	2	0.44168117778080696
+pseudoseed	12345678	tag	3	0.62040083460230688
+draw	12345678	tag	0	0.22104647168508151
+draw	12345678	tag	1	0.19431475114162522
+draw	12345678	tag	2	0.50292406551506308
+draw	12345678	tag	3	0.32873327386510653
+draw	12345678	tag	4	0.9858104515486259
+draw	12345678	tag	5	0.35394361257051798
+int	12345678	tag	0	3
+int	12345678	tag	1	2
+int	12345678	tag	2	6
+int	12345678	tag	3	4
+int	12345678	tag	4	10
+int	12345678	tag	5	4
+pseudoseed	12345678	pack	0	0.56018698088810703
+pseudoseed	12345678	pack	1	0.32474185326185695
+pseudoseed	12345678	pack	2	0.41876091430305695
+pseudoseed	12345678	pack	3	0.58087914145160702
+draw	12345678	pack	0	0.47189526817169969
+draw	12345678	pack	1	0.33728357947880605
+draw	12345678	pack	2	0.62474784499281655
+draw	12345678	pack	3	0.3140231412128538
+draw	12345678	pack	4	0.72819558065247536
+draw	12345678	pack	5	0.9756010029859068
+int	12345678	pack	0	5
+int	12345678	pack	1	4
+int	12345678	pack	2	7
+int	12345678	pack	3	4
+int	12345678	pack	4	8
+int	12345678	pack	5	10
+pseudoseed	12345678	edition	0	0.36417974191050695
+pseudoseed	12345678	edition	1	0.48676415236345694
+pseudoseed	12345678	edition	2	0.69813796399910699
+pseudoseed	12345678	edition	3	0.56261243575530695
+draw	12345678	edition	0	0.19687665541803856
+draw	12345678	edition	1	0.026058986428157072
+draw	12345678	edition	2	0.11184778868888645
+draw	12345678	edition	3	0.46848538884645152
+draw	12345678	edition	4	0.97367193192286683
+draw	12345678	edition	5	0.52643281627667626
+int	12345678	edition	0	2
+int	12345678	edition	1	1
+int	12345678	edition	2	2
+int	12345678	edition	3	5
+int	12345678	edition	4	10
+int	12345678	edition	5	6
+live	12345678	0	0.92651180447600923
+live	12345678	1	0.26025312752252128
+live	12345678	2	0.054905453372904978
+live	12345678	3	0.71199827702012741
+live	12345678	4	0.76234375457653969
+live	12345678	5	0.82887196934346652
+livemix	12345678	shop_pack	0.056114640872422017,0.46616988217203414,0.49045339234391316
+livemix	12345678	Joker1	0.82695167994614849,0.015905875539612424,0.84170492659240526
+livemix	12345678	shuffle	0.89109965190486506,0.80286236590451487,0.020301397263513099
+livemix	12345678	cashout	0.25409488190619878,0.70417798593830017,0.83596245065206176
+shuffle	12345678	1	0
+shuffle	12345678	5	2,1,0,3,4
+shuffle	12345678	8	1,4,3,6,2,0,5,7
+shuffle	12345678	52	43,18,41,7,12,44,35,1,42,28,10,13,29,16,39,4,21,33,5,6,49,27,26,22,31,32,25,14,51,0,50,47,34,17,46,36,8,20,30,38,23,45,19,37,15,11,9,3,24,2,40,48
+hash	ZZZZZZZZ	0.55275140078902041
+pseudoseed	ZZZZZZZZ	Joker1	0	0.42762349526726018
+pseudoseed	ZZZZZZZZ	Joker1	1	0.60440085406186017
+pseudoseed	ZZZZZZZZ	Joker1	2	0.40922023526401019
+pseudoseed	ZZZZZZZZ	Joker1	3	0.57266788574206018
+draw	ZZZZZZZZ	Joker1	0	0.44149761638668061
+draw	ZZZZZZZZ	Joker1	1	0.26769621092761198
+draw	ZZZZZZZZ	Joker1	2	0.52191233390245073
+draw	ZZZZZZZZ	Joker1	3	0.62003865537592429
+draw	ZZZZZZZZ	Joker1	4	0.70745824859704465
+draw	ZZZZZZZZ	Joker1	5	0.050689071551083709
+int	ZZZZZZZZ	Joker1	0	5
+int	ZZZZZZZZ	Joker1	1	3
+int	ZZZZZZZZ	Joker1	2	6
+int	ZZZZZZZZ	Joker1	3	7
+int	ZZZZZZZZ	Joker1	4	8
+int	ZZZZZZZZ	Joker1	5	1
+pseudoseed	ZZZZZZZZ	shop_pack	0	0.76192322066446017
+pseudoseed	ZZZZZZZZ	shop_pack	1	0.6808379958228602
+pseudoseed	ZZZZZZZZ	shop_pack	2	0.54102174203686015
+pseudoseed	ZZZZZZZZ	shop_pack	3	0.29993485030106021
+draw	ZZZZZZZZ	shop_pack	0	0.81215286726624147
+draw	ZZZZZZZZ	shop_pack	1	0.62060241096925362
+draw	ZZZZZZZZ	shop_pack	2	0.21488766433129447
+draw	ZZZZZZZZ	shop_pack	3	0.081527930675163951
+draw	ZZZZZZZZ	shop_pack	4	0.32413988526419346
+draw	ZZZZZZZZ	shop_pack	5	0.64752317769996193
+int	ZZZZZZZZ	shop_pack	0	9
+int	ZZZZZZZZ	shop_pack	1	7
+int	ZZZZZZZZ	shop_pack	2	3
+int	ZZZZZZZZ	shop_pack	3	1
+int	ZZZZZZZZ	shop_pack	4	4
+int	ZZZZZZZZ	shop_pack	5	7
+pseudoseed	ZZZZZZZZ	erratic	0	0.3578461535735602
+pseudoseed	ZZZZZZZZ	erratic	1	0.48408292272706022
+pseudoseed	ZZZZZZZZ	erratic	2	0.70175454154016026
+pseudoseed	ZZZZZZZZ	erratic	3	0.57708839992736016
+draw	ZZZZZZZZ	erratic	0	0.68315125013582612
+draw	ZZZZZZZZ	erratic	1	0.28948151305560677
+draw	ZZZZZZZZ	erratic	2	0.80676477354907061
+draw	ZZZZZZZZ	erratic	3	0.99191082519195284
+draw	ZZZZZZZZ	erratic	4	0.39202712455679434
+draw	ZZZZZZZZ	erratic	5	0.36108520254953302
+int	ZZZZZZZZ	erratic	0	7
+int	ZZZZZZZZ	erratic	1	3
+int	ZZZZZZZZ	erratic	2	9
+int	ZZZZZZZZ	erratic	3	10
+int	ZZZZZZZZ	erratic	4	4
+int	ZZZZZZZZ	erratic	5	4
+pseudoseed	ZZZZZZZZ	shuffle	0	0.71172319641246018
+pseudoseed	ZZZZZZZZ	shuffle	1	0.5942774745368602
+pseudoseed	ZZZZZZZZ	shuffle	2	0.3917643670265602
+pseudoseed	ZZZZZZZZ	shuffle	3	0.54256851673481021
+draw	ZZZZZZZZ	shuffle	0	0.014817298100007203
+draw	ZZZZZZZZ	shuffle	1	0.94091047751657797
+draw	ZZZZZZZZ	shuffle	2	0.24129814834354124
+draw	ZZZZZZZZ	shuffle	3	0.61982153571209464
+draw	ZZZZZZZZ	shuffle	4	0.15325918411473372
+draw	ZZZZZZZZ	shuffle	5	0.70488251005401281
+int	ZZZZZZZZ	shuffle	0	1
+int	ZZZZZZZZ	shuffle	1	10
+int	ZZZZZZZZ	shuffle	2	3
+int	ZZZZZZZZ	shuffle	3	7
+int	ZZZZZZZZ	shuffle	4	2
+int	ZZZZZZZZ	shuffle	5	8
+pseudoseed	ZZZZZZZZ	glass	0	0.58450938800821017
+pseudoseed	ZZZZZZZZ	glass	1	0.37492113488701018
+pseudoseed	ZZZZZZZZ	glass	2	0.51352552371111027
+pseudoseed	ZZZZZZZZ	glass	3	0.75252278173866016
+draw	ZZZZZZZZ	glass	0	0.23987840862803167
+draw	ZZZZZZZZ	glass	1	0.26838095894064851
+draw	ZZZZZZZZ	glass	2	0.089371431305850901
+draw	ZZZZZZZZ	glass	3	0.29351086849556252
+draw	ZZZZZZZZ	glass	4	0.44915137595705312
+draw	ZZZZZZZZ	glass	5	0.37795011722961513
+int	ZZZZZZZZ	glass	0	3
+int	ZZZZZZZZ	glass	1	3
+int	ZZZZZZZZ	glass	2	1
+int	ZZZZZZZZ	glass	3	3
+int	ZZZZZZZZ	glass	4	5
+int	ZZZZZZZZ	glass	5	4
+pseudoseed	ZZZZZZZZ	lucky_mult	0	0.39305525561971022
+pseudoseed	ZZZZZZZZ	lucky_mult	1	0.54479441186551014
+pseudoseed	ZZZZZZZZ	lucky_mult	2	0.30644011144136019
+pseudoseed	ZZZZZZZZ	lucky_mult	3	0.39544284992791023
+draw	ZZZZZZZZ	lucky_mult	0	0.48231366650912166
+draw	ZZZZZZZZ	lucky_mult	1	0.16524045659379394
+draw	ZZZZZZZZ	lucky_mult	2	0.71511740675538982
+draw	ZZZZZZZZ	lucky_mult	3	0.92079989268721363
+draw	ZZZZZZZZ	lucky_mult	4	0.25621776278730968
+draw	ZZZZZZZZ	lucky_mult	5	0.39003366783139581
+int	ZZZZZZZZ	lucky_mult	0	5
+int	ZZZZZZZZ	lucky_mult	1	2
+int	ZZZZZZZZ	lucky_mult	2	8
+int	ZZZZZZZZ	lucky_mult	3	10
+int	ZZZZZZZZ	lucky_mult	4	3
+int	ZZZZZZZZ	lucky_mult	5	4
+pseudoseed	ZZZZZZZZ	Joker2	0	0.30662896856401023
+pseudoseed	ZZZZZZZZ	Joker2	1	0.39576849859501018
+pseudoseed	ZZZZZZZZ	Joker2	2	0.54947289020926027
+pseudoseed	ZZZZZZZZ	Joker2	3	0.3145072693819102
+draw	ZZZZZZZZ	Joker2	0	0.28268936599532313
+draw	ZZZZZZZZ	Joker2	1	0.60554604151379054
+draw	ZZZZZZZZ	Joker2	2	0.87292844944663295
+draw	ZZZZZZZZ	Joker2	3	0.98792928518893164
+draw	ZZZZZZZZ	Joker2	4	0.81113910536674427
+draw	ZZZZZZZZ	Joker2	5	0.70424546773376173
+int	ZZZZZZZZ	Joker2	0	3
+int	ZZZZZZZZ	Joker2	1	7
+int	ZZZZZZZZ	Joker2	2	9
+int	ZZZZZZZZ	Joker2	3	10
+int	ZZZZZZZZ	Joker2	4	9
+int	ZZZZZZZZ	Joker2	5	8
+pseudoseed	ZZZZZZZZ	rarity	0	0.33085900856261019
+pseudoseed	ZZZZZZZZ	rarity	1	0.43754865556331024
+pseudoseed	ZZZZZZZZ	rarity	2	0.62151493043686012
+pseudoseed	ZZZZZZZZ	rarity	3	0.43873024834511021
+draw	ZZZZZZZZ	rarity	0	0.21324923654138406
+draw	ZZZZZZZZ	rarity	1	0.38012982259360051
+draw	ZZZZZZZZ	rarity	2	0.5499830511464463
+draw	ZZZZZZZZ	rarity	3	0.77530674225211094
+draw	ZZZZZZZZ	rarity	4	0.2090200723970943
+draw	ZZZZZZZZ	rarity	5	0.50463843701895628
+int	ZZZZZZZZ	rarity	0	3
+int	ZZZZZZZZ	rarity	1	4
+int	ZZZZZZZZ	rarity	2	6
+int	ZZZZZZZZ	rarity	3	8
+int	ZZZZZZZZ	rarity	4	3
+int	ZZZZZZZZ	rarity	5	6
+pseudoseed	ZZZZZZZZ	voucher	0	0.49082795718866024
+pseudoseed	ZZZZZZZZ	voucher	1	0.71338508769601017
+pseudoseed	ZZZZZZZZ	voucher	2	0.59714309418481015
+pseudoseed	ZZZZZZZZ	voucher	3	0.39670559034726022
+draw	ZZZZZZZZ	voucher	0	0.97377812786140372
+draw	ZZZZZZZZ	voucher	1	0.43888001019083256
+draw	ZZZZZZZZ	voucher	2	0.50398911301007665
+draw	ZZZZZZZZ	voucher	3	0.029370816303397662
+draw	ZZZZZZZZ	voucher	4	0.27744752245357396
+draw	ZZZZZZZZ	voucher	5	0.4726309269153055
+int	ZZZZZZZZ	voucher	0	10
+int	ZZZZZZZZ	voucher	1	5
+int	ZZZZZZZZ	voucher	2	6
+int	ZZZZZZZZ	voucher	3	1
+int	ZZZZZZZZ	voucher	4	3
+int	ZZZZZZZZ	voucher	5	5
+pseudoseed	ZZZZZZZZ	boss	0	0.60627352486426023
+pseudoseed	ZZZZZZZZ	boss	1	0.41244930463736018
+pseudoseed	ZZZZZZZZ	boss	2	0.5782358099092102
+pseudoseed	ZZZZZZZZ	boss	3	0.36410352675496022
+draw	ZZZZZZZZ	boss	0	0.071884641539887273
+draw	ZZZZZZZZ	boss	1	0.81592054716821227
+draw	ZZZZZZZZ	boss	2	0.31366234123141123
+draw	ZZZZZZZZ	boss	3	0.92759057957719993
+draw	ZZZZZZZZ	boss	4	0.27396611232462664
+draw	ZZZZZZZZ	boss	5	0.30898939828304939
+int	ZZZZZZZZ	boss	0	1
+int	ZZZZZZZZ	boss	1	9
+int	ZZZZZZZZ	boss	2	4
+int	ZZZZZZZZ	boss	3	10
+int	ZZZZZZZZ	boss	4	3
+int	ZZZZZZZZ	boss	5	4
+pseudoseed	ZZZZZZZZ	tag	0	0.64239093457076013
+pseudoseed	ZZZZZZZZ	tag	1	0.47472699988311018
+pseudoseed	ZZZZZZZZ	tag	2	0.68562200832826026
+pseudoseed	ZZZZZZZZ	tag	3	0.54927087383461015
+draw	ZZZZZZZZ	tag	0	0.32856168388657547
+draw	ZZZZZZZZ	tag	1	0.019892323182892691
+draw	ZZZZZZZZ	tag	2	0.69433056916844427
+draw	ZZZZZZZZ	tag	3	0.88132958683646434
+draw	ZZZZZZZZ	tag	4	0.94809742913236272
+draw	ZZZZZZZZ	tag	5	0.2178941395816929
+int	ZZZZZZZZ	tag	0	4
+int	ZZZZZZZZ	tag	1	1
+int	ZZZZZZZZ	tag	2	7
+int	ZZZZZZZZ	tag	3	9
+int	ZZZZZZZZ	tag	4	10
+int	ZZZZZZZZ	tag	5	3
+pseudoseed	ZZZZZZZZ	pack	0	0.67186301703736018
+pseudoseed	ZZZZZZZZ	pack	1	0.52554607536576015
+pseudoseed	ZZZZZZZZ	pack	2	0.77324996729036022
+pseudoseed	ZZZZZZZZ	pack	3	0.70036884480196027
+draw	ZZZZZZZZ	pack	0	0.96868863422612761
+draw	ZZZZZZZZ	pack	1	0.97949308190031759
+draw	ZZZZZZZZ	pack	2	0.016894746048529807
+draw	ZZZZZZZZ	pack	3	0.27211916362258015
+draw	ZZZZZZZZ	pack	4	0.17818289531316167
+draw	ZZZZZZZZ	pack	5	0.91341788318854089
+int	ZZZZZZZZ	pack	0	10
+int	ZZZZZZZZ	pack	1	10
+int	ZZZZZZZZ	pack	2	1
+int	ZZZZZZZZ	pack	3	3
+int	ZZZZZZZZ	pack	4	2
+int	ZZZZZZZZ	pack	5	10
+pseudoseed	ZZZZZZZZ	edition	0	0.4371652850433102
+pseudoseed	ZZZZZZZZ	edition	1	0.62085387991841023
+pseudoseed	ZZZZZZZZ	edition	2	0.43759039077881023
+pseudoseed	ZZZZZZZZ	edition	3	0.62158689498396025
+draw	ZZZZZZZZ	edition	0	0.60369859265740433
+draw	ZZZZZZZZ	edition	1	0.15696229690768959
+draw	ZZZZZZZZ	edition	2	0.93701358308633531
+draw	ZZZZZZZZ	edition	3	0.68538409180586668
+draw	ZZZZZZZZ	edition	4	0.81182125791421145
+draw	ZZZZZZZZ	edition	5	0.43260287261971975
+int	ZZZZZZZZ	edition	0	7
+int	ZZZZZZZZ	edition	1	2
+int	ZZZZZZZZ	edition	2	10
+int	ZZZZZZZZ	edition	3	7
+int	ZZZZZZZZ	edition	4	9
+int	ZZZZZZZZ	edition	5	5
+live	ZZZZZZZZ	0	0.271408098218898
+live	ZZZZZZZZ	1	0.630905203998821
+live	ZZZZZZZZ	2	0.92092115141669262
+live	ZZZZZZZZ	3	0.83658212735359916
+live	ZZZZZZZZ	4	0.83198003965137124
+live	ZZZZZZZZ	5	0.7876067514909979
+livemix	ZZZZZZZZ	shop_pack	0.063961461773824002,0.13247696033977463,0.24970655803513386
+livemix	ZZZZZZZZ	Joker1	0.0033791967341829654,0.049037510522002226,0.25287220614276085
+livemix	ZZZZZZZZ	shuffle	0.4720382136545076,0.17609662937468396,0.1129720596180579
+livemix	ZZZZZZZZ	cashout	0.51794800063156732,0.67634369788827664,0.62365947507996511
+shuffle	ZZZZZZZZ	1	0
+shuffle	ZZZZZZZZ	5	3,1,2,4,0
+shuffle	ZZZZZZZZ	8	6,5,2,7,3,4,1,0
+shuffle	ZZZZZZZZ	52	8,31,35,22,29,47,17,12,45,49,14,23,7,40,24,42,15,46,44,3,19,33,13,16,20,39,21,41,4,51,2,50,38,37,1,25,5,9,43,48,27,26,30,28,6,18,34,10,32,36,11,0
+hash	U1AYP8BC	0.27776631441849986
+pseudoseed	U1AYP8BC	Joker1	0	0.32688584027114992
+pseudoseed	U1AYP8BC	Joker1	1	0.53028521813649987
+pseudoseed	U1AYP8BC	Joker1	2	0.38100927533804996
+pseudoseed	U1AYP8BC	Joker1	3	0.62361092510554994
+draw	U1AYP8BC	Joker1	0	0.76771267239192276
+draw	U1AYP8BC	Joker1	1	0.59432398393949182
+draw	U1AYP8BC	Joker1	2	0.31484721901969981
+draw	U1AYP8BC	Joker1	3	0.027720591276378936
+draw	U1AYP8BC	Joker1	4	0.39722646309894971
+draw	U1AYP8BC	Joker1	5	0.52307048914961873
+int	U1AYP8BC	Joker1	0	8
+int	U1AYP8BC	Joker1	1	6
+int	U1AYP8BC	Joker1	2	4
+int	U1AYP8BC	Joker1	3	1
+int	U1AYP8BC	Joker1	4	4
+int	U1AYP8BC	Joker1	5	6
+pseudoseed	U1AYP8BC	shop_pack	0	0.20734903540364993
+pseudoseed	U1AYP8BC	shop_pack	1	0.32416643041929993
+pseudoseed	U1AYP8BC	shop_pack	2	0.52559610617144992
+pseudoseed	U1AYP8BC	shop_pack	3	0.37292378171304996
+draw	U1AYP8BC	shop_pack	0	0.1848221293882264
+draw	U1AYP8BC	shop_pack	1	0.28275153348519333
+draw	U1AYP8BC	shop_pack	2	0.39216861753662902
+draw	U1AYP8BC	shop_pack	3	0.68871688251567331
+draw	U1AYP8BC	shop_pack	4	0.69177192829737155
+draw	U1AYP8BC	shop_pack	5	0.68400761923475595
+int	U1AYP8BC	shop_pack	0	2
+int	U1AYP8BC	shop_pack	1	3
+int	U1AYP8BC	shop_pack	2	4
+int	U1AYP8BC	shop_pack	3	7
+int	U1AYP8BC	shop_pack	4	7
+int	U1AYP8BC	shop_pack	5	7
+pseudoseed	U1AYP8BC	erratic	0	0.42630942153269991
+pseudoseed	U1AYP8BC	erratic	1	0.20172252619279993
+pseudoseed	U1AYP8BC	erratic	2	0.31446457115589993
+pseudoseed	U1AYP8BC	erratic	3	0.50886707052259994
+draw	U1AYP8BC	erratic	0	0.64214676840187734
+draw	U1AYP8BC	erratic	1	0.58207550203054703
+draw	U1AYP8BC	erratic	2	0.73308315441555782
+draw	U1AYP8BC	erratic	3	0.076414247790987488
+draw	U1AYP8BC	erratic	4	0.57619452449198461
+draw	U1AYP8BC	erratic	5	0.023640969379379317
+int	U1AYP8BC	erratic	0	7
+int	U1AYP8BC	erratic	1	6
+int	U1AYP8BC	erratic	2	8
+int	U1AYP8BC	erratic	3	1
+int	U1AYP8BC	erratic	4	6
+int	U1AYP8BC	erratic	5	1
+pseudoseed	U1AYP8BC	shuffle	0	0.51867632543190001
+pseudoseed	U1AYP8BC	shuffle	1	0.36099191839374989
+pseudoseed	U1AYP8BC	shuffle	2	0.58909474951230001
+pseudoseed	U1AYP8BC	shuffle	3	0.48241527599894996
+draw	U1AYP8BC	shuffle	0	0.74830501702248453
+draw	U1AYP8BC	shuffle	1	0.51252090285086416
+draw	U1AYP8BC	shuffle	2	0.24127375541323448
+draw	U1AYP8BC	shuffle	3	0.56112120229062024
+draw	U1AYP8BC	shuffle	4	0.0038086970183137669
+draw	U1AYP8BC	shuffle	5	0.4219740093366533
+int	U1AYP8BC	shuffle	0	8
+int	U1AYP8BC	shuffle	1	6
+int	U1AYP8BC	shuffle	2	3
+int	U1AYP8BC	shuffle	3	6
+int	U1AYP8BC	shuffle	4	1
+int	U1AYP8BC	shuffle	5	5
+pseudoseed	U1AYP8BC	glass	0	0.52801524735924987
+pseudoseed	U1AYP8BC	glass	1	0.37709513671539996
+pseudoseed	U1AYP8BC	glass	2	0.61686172757804991
+pseudoseed	U1AYP8BC	glass	3	0.53029421892224993
+draw	U1AYP8BC	glass	0	0.97406544635713255
+draw	U1AYP8BC	glass	1	0.19282357754407875
+draw	U1AYP8BC	glass	2	0.52949431185740403
+draw	U1AYP8BC	glass	3	0.76288616777421248
+draw	U1AYP8BC	glass	4	0.88823722097157121
+draw	U1AYP8BC	glass	5	0.061552293739031372
+int	U1AYP8BC	glass	0	10
+int	U1AYP8BC	glass	1	2
+int	U1AYP8BC	glass	2	6
+int	U1AYP8BC	glass	3	8
+int	U1AYP8BC	glass	4	9
+int	U1AYP8BC	glass	5	1
+pseudoseed	U1AYP8BC	lucky_mult	0	0.45256368796924995
+pseudoseed	U1AYP8BC	lucky_mult	1	0.24699308178694993
+pseudoseed	U1AYP8BC	lucky_mult	2	0.39252514880554995
+pseudoseed	U1AYP8BC	lucky_mult	3	0.14346788783144993
+draw	U1AYP8BC	lucky_mult	0	0.49608963593280353
+draw	U1AYP8BC	lucky_mult	1	0.93260964533981738
+draw	U1AYP8BC	lucky_mult	2	0.98915365309774339
+draw	U1AYP8BC	lucky_mult	3	0.38243010228609209
+draw	U1AYP8BC	lucky_mult	4	0.76947089101724209
+draw	U1AYP8BC	lucky_mult	5	0.69984616566276636
+int	U1AYP8BC	lucky_mult	0	5
+int	U1AYP8BC	lucky_mult	1	10
+int	U1AYP8BC	lucky_mult	2	10
+int	U1AYP8BC	lucky_mult	3	4
+int	U1AYP8BC	lucky_mult	4	8
+int	U1AYP8BC	lucky_mult	5	7
+pseudoseed	U1AYP8BC	Joker2	0	0.44855020145114993
+pseudoseed	U1AYP8BC	Joker2	1	0.24007257745739993
+pseudoseed	U1AYP8BC	Joker2	2	0.38059203779109996
+pseudoseed	U1AYP8BC	Joker2	3	0.62289147725459992
+draw	U1AYP8BC	Joker2	0	0.26698777245193428
+draw	U1AYP8BC	Joker2	1	0.78980895094119208
+draw	U1AYP8BC	Joker2	2	0.065526652494447113
+draw	U1AYP8BC	Joker2	3	0.49980007296377216
+draw	U1AYP8BC	Joker2	4	0.70340718184230733
+draw	U1AYP8BC	Joker2	5	0.68772213123555126
+int	U1AYP8BC	Joker2	0	3
+int	U1AYP8BC	Joker2	1	8
+int	U1AYP8BC	Joker2	2	1
+int	U1AYP8BC	Joker2	3	5
+int	U1AYP8BC	Joker2	4	8
+int	U1AYP8BC	Joker2	5	7
+pseudoseed	U1AYP8BC	rarity	0	0.38222240968889992
+pseudoseed	U1AYP8BC	rarity	1	0.62570274763680001
+pseudoseed	U1AYP8BC	rarity	2	0.54553889890769991
+pseudoseed	U1AYP8BC	rarity	3	0.40731138532224992
+draw	U1AYP8BC	rarity	0	0.57967473227733901
+draw	U1AYP8BC	rarity	1	0.068182797477595702
+draw	U1AYP8BC	rarity	2	0.19016572985540892
+draw	U1AYP8BC	rarity	3	0.034102053930101794
+draw	U1AYP8BC	rarity	4	0.49547610133666109
+draw	U1AYP8BC	rarity	5	0.44822323392862695
+int	U1AYP8BC	rarity	0	6
+int	U1AYP8BC	rarity	1	1
+int	U1AYP8BC	rarity	2	2
+int	U1AYP8BC	rarity	3	1
+int	U1AYP8BC	rarity	4	5
+int	U1AYP8BC	rarity	5	5
+pseudoseed	U1AYP8BC	voucher	0	0.57866109718064995
+pseudoseed	U1AYP8BC	voucher	1	0.46442440053219991
+pseudoseed	U1AYP8BC	voucher	2	0.26744465482044993
+pseudoseed	U1AYP8BC	voucher	3	0.42779004855959996
+draw	U1AYP8BC	voucher	0	0.68472271440858834
+draw	U1AYP8BC	voucher	1	0.89225483257844251
+draw	U1AYP8BC	voucher	2	0.63797796215987135
+draw	U1AYP8BC	voucher	3	0.8076825570767554
+draw	U1AYP8BC	voucher	4	0.51031007906020198
+draw	U1AYP8BC	voucher	5	0.88274306449853324
+int	U1AYP8BC	voucher	0	7
+int	U1AYP8BC	voucher	1	9
+int	U1AYP8BC	voucher	2	7
+int	U1AYP8BC	voucher	3	9
+int	U1AYP8BC	voucher	4	6
+int	U1AYP8BC	voucher	5	9
+pseudoseed	U1AYP8BC	boss	0	0.49675486660194995
+pseudoseed	U1AYP8BC	boss	1	0.32319247642249993
+pseudoseed	U1AYP8BC	boss	2	0.52391670527614997
+pseudoseed	U1AYP8BC	boss	3	0.37002797002549992
+draw	U1AYP8BC	boss	0	0.88113312457281157
+draw	U1AYP8BC	boss	1	0.037318701356411133
+draw	U1AYP8BC	boss	2	0.48905584548361003
+draw	U1AYP8BC	boss	3	0.57202875820729093
+draw	U1AYP8BC	boss	4	0.32568359040815142
+draw	U1AYP8BC	boss	5	0.28712637072395553
+int	U1AYP8BC	boss	0	9
+int	U1AYP8BC	boss	1	1
+int	U1AYP8BC	boss	2	5
+int	U1AYP8BC	boss	3	6
+int	U1AYP8BC	boss	4	4
+int	U1AYP8BC	boss	5	3
+pseudoseed	U1AYP8BC	tag	0	0.54796027469349995
+pseudoseed	U1AYP8BC	tag	1	0.41148659346944993
+pseudoseed	U1AYP8BC	tag	2	0.17616334084959992
+pseudoseed	U1AYP8BC	tag	3	0.27039255246824989
+draw	U1AYP8BC	tag	0	0.18171483661304078
+draw	U1AYP8BC	tag	1	0.041915463262642838
+draw	U1AYP8BC	tag	2	0.11647413714011967
+draw	U1AYP8BC	tag	3	0.97775861356410254
+draw	U1AYP8BC	tag	4	0.042015044669667434
+draw	U1AYP8BC	tag	5	0.34484588355866919
+int	U1AYP8BC	tag	0	2
+int	U1AYP8BC	tag	1	1
+int	U1AYP8BC	tag	2	2
+int	U1AYP8BC	tag	3	10
+int	U1AYP8BC	tag	4	1
+int	U1AYP8BC	tag	5	4
+pseudoseed	U1AYP8BC	pack	0	0.26107662345529992
+pseudoseed	U1AYP8BC	pack	1	0.41680957349519993
+pseudoseed	U1AYP8BC	pack	2	0.18534182099359992
+pseudoseed	U1AYP8BC	pack	3	0.2862191190429999
+draw	U1AYP8BC	pack	0	0.39767221427966493
+draw	U1AYP8BC	pack	1	0.26682051088748993
+draw	U1AYP8BC	pack	2	0.56898654546518923
+draw	U1AYP8BC	pack	3	0.23935397939793401
+draw	U1AYP8BC	pack	4	0.30157668385983283
+draw	U1AYP8BC	pack	5	0.25289551390515541
+int	U1AYP8BC	pack	0	4
+int	U1AYP8BC	pack	1	3
+int	U1AYP8BC	pack	2	6
+int	U1AYP8BC	pack	3	3
+int	U1AYP8BC	pack	4	4
+int	U1AYP8BC	pack	5	3
+pseudoseed	U1AYP8BC	edition	0	0.23244652573644992
+pseudoseed	U1AYP8BC	edition	1	0.3674423427031499
+pseudoseed	U1AYP8BC	edition	2	0.60021729574724991
+pseudoseed	U1AYP8BC	edition	3	0.5015940197241
+draw	U1AYP8BC	edition	0	0.81763243918158923
+draw	U1AYP8BC	edition	1	0.45184313983137581
+draw	U1AYP8BC	edition	2	0.23210561038457844
+draw	U1AYP8BC	edition	3	0.80452551625252178
+draw	U1AYP8BC	edition	4	0.39842533175343942
+draw	U1AYP8BC	edition	5	0.88127221074520001
+int	U1AYP8BC	edition	0	9
+int	U1AYP8BC	edition	1	5
+int	U1AYP8BC	edition	2	3
+int	U1AYP8BC	edition	3	9
+int	U1AYP8BC	edition	4	4
+int	U1AYP8BC	edition	5	9
+live	U1AYP8BC	0	0.25660630389540762
+live	U1AYP8BC	1	0.85244138921623924
+live	U1AYP8BC	2	0.51251501133338362
+live	U1AYP8BC	3	0.72113975823027521
+live	U1AYP8BC	4	0.14806735752396749
+live	U1AYP8BC	5	0.84490747122041987
+livemix	U1AYP8BC	shop_pack	0.98881251431625428,0.8980060776727643,0.93470129593149776
+livemix	U1AYP8BC	Joker1	0.36637242958923122,0.51403488718571944,0.44115136908892838
+livemix	U1AYP8BC	shuffle	0.46992992949035628,0.29363669873165033,0.3588768720618376
+livemix	U1AYP8BC	cashout	0.28998163611829963,0.42610837130210832,0.16261931048556821
+shuffle	U1AYP8BC	1	0
+shuffle	U1AYP8BC	5	4,2,0,1,3
+shuffle	U1AYP8BC	8	2,4,0,6,7,1,3,5
+shuffle	U1AYP8BC	52	4,8,36,32,25,43,10,34,19,31,9,21,14,46,7,15,12,1,41,47,16,42,0,45,48,2,3,50,49,5,51,40,24,35,33,37,17,30,23,28,29,20,26,11,27,39,6,44,18,13,22,38
+hash	0	0.62601790091102316
+pseudoseed	0	Joker1	0	0.52824641459956156
+pseudoseed	0	Joker1	1	0.75137228047991156
+pseudoseed	0	Joker1	2	0.63611096439056158
+pseudoseed	0	Joker1	3	0.43736445473306157
+draw	0	Joker1	0	0.22238008742111326
+draw	0	Joker1	1	0.53453288071526917
+draw	0	Joker1	2	0.55982258543050523
+draw	0	Joker1	3	0.8451605652571168
+draw	0	Joker1	4	0.22233788083305628
+draw	0	Joker1	5	0.092511961932629561
+int	0	Joker1	0	3
+int	0	Joker1	1	6
+int	0	Joker1	2	6
+int	0	Joker1	3	9
+int	0	Joker1	4	3
+int	0	Joker1	5	1
+pseudoseed	0	shop_pack	0	0.46963574571816158
+pseudoseed	0	shop_pack	1	0.65030918087206158
+pseudoseed	0	shop_pack	2	0.46184661461811161
+pseudoseed	0	shop_pack	3	0.6368782859983616
+draw	0	shop_pack	0	0.99822428497679816
+draw	0	shop_pack	1	0.65880899481971111
+draw	0	shop_pack	2	0.33855669799392474
+draw	0	shop_pack	3	0.048788808712317389
+draw	0	shop_pack	4	0.8639810150238767
+draw	0	shop_pack	5	0.3408855337401473
+int	0	shop_pack	0	10
+int	0	shop_pack	1	7
+int	0	shop_pack	2	4
+int	0	shop_pack	3	1
+int	0	shop_pack	4	9
+int	0	shop_pack	5	4
+pseudoseed	0	erratic	0	0.6184960761287116
+pseudoseed	0	erratic	1	0.40699088553546159
+pseudoseed	0	erratic	2	0.54228987542146156
+pseudoseed	0	erratic	3	0.77558759327141158
+draw	0	erratic	0	0.09448756907023026
+draw	0	erratic	1	0.35979487590295678
+draw	0	erratic	2	0.69474662165246048
+draw	0	erratic	3	0.17230997406054027
+draw	0	erratic	4	0.14630000428984014
+draw	0	erratic	5	0.12851463403010066
+int	0	erratic	0	1
+int	0	erratic	1	4
+int	0	erratic	2	7
+int	0	erratic	3	2
+int	0	erratic	4	2
+int	0	erratic	5	2
+pseudoseed	0	shuffle	0	0.34839590805376158
+pseudoseed	0	shuffle	1	0.44125383268771157
+pseudoseed	0	shuffle	2	0.6013698980008616
+pseudoseed	0	shuffle	3	0.37746000525256157
+draw	0	shuffle	0	0.21910204957190915
+draw	0	shuffle	1	0.6111721408767814
+draw	0	shuffle	2	0.51702131999233458
+draw	0	shuffle	3	0.92009287658255579
+draw	0	shuffle	4	0.73861785496915799
+draw	0	shuffle	5	0.99730731339516487
+int	0	shuffle	0	3
+int	0	shuffle	1	7
+int	0	shuffle	2	6
+int	0	shuffle	3	10
+int	0	shuffle	4	8
+int	0	shuffle	5	10
+pseudoseed	0	glass	0	0.40458758145776158
+pseudoseed	0	glass	1	0.53814582854351156
+pseudoseed	0	glass	2	0.76844196210221161
+pseudoseed	0	glass	3	0.66554442705176164
+draw	0	glass	0	0.93823060450993179
+draw	0	glass	1	0.15043400829086995
+draw	0	glass	2	0.65693888897212727
+draw	0	glass	3	0.27994704504279255
+draw	0	glass	4	0.42801762700877477
+draw	0	glass	5	0.17771661272261352
+int	0	glass	0	10
+int	0	glass	1	2
+int	0	glass	2	7
+int	0	glass	3	3
+int	0	glass	4	5
+int	0	glass	5	2
+pseudoseed	0	lucky_mult	0	0.7414889171375616
+pseudoseed	0	lucky_mult	1	0.61906895901866155
+pseudoseed	0	lucky_mult	2	0.40797871457196155
+pseudoseed	0	lucky_mult	3	0.54399320121891159
+draw	0	lucky_mult	0	0.17052049456159701
+draw	0	lucky_mult	1	0.67866573422544629
+draw	0	lucky_mult	2	0.099394627662850121
+draw	0	lucky_mult	3	0.48288114870211141
+draw	0	lucky_mult	4	0.023371602213155818
+draw	0	lucky_mult	5	0.91904762236921766
+int	0	lucky_mult	0	2
+int	0	lucky_mult	1	7
+int	0	lucky_mult	2	1
+int	0	lucky_mult	3	5
+int	0	lucky_mult	4	1
+int	0	lucky_mult	5	10
+pseudoseed	0	Joker2	0	0.49147377082526156
+pseudoseed	0	Joker2	1	0.68796475704546156
+pseudoseed	0	Joker2	2	0.52677658928371152
+pseudoseed	0	Joker2	3	0.74883784255016161
+draw	0	Joker2	0	0.55966032126496912
+draw	0	Joker2	1	0.94274383531234052
+draw	0	Joker2	2	0.50486946458157411
+draw	0	Joker2	3	0.03698493869045727
+draw	0	Joker2	4	0.49941150588694239
+draw	0	Joker2	5	0.51708295018805361
+int	0	Joker2	0	6
+int	0	Joker2	1	10
+int	0	Joker2	2	6
+int	0	Joker2	3	1
+int	0	Joker2	4	5
+int	0	Joker2	5	6
+pseudoseed	0	rarity	0	0.59286946762461157
+pseudoseed	0	rarity	1	0.36280260825946159
+pseudoseed	0	rarity	2	0.46609548363111158
+pseudoseed	0	rarity	3	0.64420466326851156
+draw	0	rarity	0	0.12063650180195884
+draw	0	rarity	1	0.72586983227288182
+draw	0	rarity	2	0.99579612443264631
+draw	0	rarity	3	0.4176243964790094
+draw	0	rarity	4	0.221256028145842
+draw	0	rarity	5	0.97396220225483843
+int	0	rarity	0	2
+int	0	rarity	1	8
+int	0	rarity	2	10
+int	0	rarity	3	5
+int	0	rarity	4	3
+int	0	rarity	5	10
+pseudoseed	0	voucher	0	0.56784260867431158
+pseudoseed	0	voucher	1	0.3196484865400116
+pseudoseed	0	voucher	2	0.39168429902841156
+pseudoseed	0	voucher	3	0.51589653942406155
+draw	0	voucher	0	0.92515266325722911
+draw	0	voucher	1	0.66738099040238774
+draw	0	voucher	2	0.28980307862094645
+draw	0	voucher	3	0.75367062862667145
+draw	0	voucher	4	0.75367682968495697
+draw	0	voucher	5	0.059225547265819189
+int	0	voucher	0	10
+int	0	voucher	1	7
+int	0	voucher	2	3
+int	0	voucher	3	8
+int	0	voucher	4	8
+int	0	voucher	5	1
+pseudoseed	0	boss	0	0.45469041538206156
+pseudoseed	0	boss	1	0.62453876334816161
+pseudoseed	0	boss	2	0.41741036567471157
+pseudoseed	0	boss	3	0.5602563136019616
+draw	0	boss	0	0.84956023341678355
+draw	0	boss	1	0.32261594165201113
+draw	0	boss	2	0.16253695349639097
+draw	0	boss	3	0.85037884410762166
+draw	0	boss	4	0.83366512807520854
+draw	0	boss	5	0.11253898175931654
+int	0	boss	0	9
+int	0	boss	1	4
+int	0	boss	2	2
+int	0	boss	3	9
+int	0	boss	4	9
+int	0	boss	5	2
+pseudoseed	0	tag	0	0.68555555876246155
+pseudoseed	0	tag	1	0.52262237895481156
+pseudoseed	0	tag	2	0.74167468641706158
+pseudoseed	0	tag	3	0.61938928327971166
+draw	0	tag	0	0.86420852729599873
+draw	0	tag	1	0.43423460237900757
+draw	0	tag	2	0.14259692803582324
+draw	0	tag	3	0.99715607211926582
+draw	0	tag	4	0.63531534137343959
+draw	0	tag	5	0.42881645368718835
+int	0	tag	0	9
+int	0	tag	1	5
+int	0	tag	2	2
+int	0	tag	3	10
+int	0	tag	4	7
+int	0	tag	5	5
+pseudoseed	0	pack	0	0.62337004772891158
+pseudoseed	0	pack	1	0.41539513491046159
+pseudoseed	0	pack	2	0.55678142632721161
+pseudoseed	0	pack	3	0.80057555332391162
+draw	0	pack	0	0.53668061080231921
+draw	0	pack	1	0.081513108581614313
+draw	0	pack	2	0.41636387420597698
+draw	0	pack	3	0.65812195962003628
+draw	0	pack	4	0.82588564117723107
+draw	0	pack	5	0.892514957039241
+int	0	pack	0	6
+int	0	pack	1	1
+int	0	pack	2	5
+int	0	pack	3	7
+int	0	pack	4	9
+int	0	pack	5	9
+pseudoseed	0	edition	0	0.53109496206621154
+pseudoseed	0	edition	1	0.75628406602771159
+pseudoseed	0	edition	2	0.64458041682206157
+pseudoseed	0	edition	3	0.45196843607376158
+draw	0	edition	0	0.82706229513635932
+draw	0	edition	1	0.79440628615340425
+draw	0	edition	2	0.69112544983929425
+draw	0	edition	3	0.81362454621219382
+draw	0	edition	4	0.62300253631252311
+draw	0	edition	5	0.55769725292828465
+int	0	edition	0	9
+int	0	edition	1	8
+int	0	edition	2	7
+int	0	edition	3	9
+int	0	edition	4	7
+int	0	edition	5	6
+live	0	0	0.20691267588530238
+live	0	1	0.81373273146554115
+live	0	2	0.62653737214194871
+live	0	3	0.06480862397327769
+live	0	4	0.0052034338918676148
+live	0	5	0.86959215245461663
+livemix	0	shop_pack	0.32979125301272161,0.91612431132384087,0.50676451327555894
+livemix	0	Joker1	0.64559871922508782,0.67414078389842769,0.690047778264953
+livemix	0	shuffle	0.14490406079948892,0.47754890572358399,0.021957513540204365
+livemix	0	cashout	0.087411215162981559,0.6919715276871663,0.50555566244491246
+shuffle	0	1	0
+shuffle	0	5	4,0,3,2,1
+shuffle	0	8	2,3,0,6,7,5,4,1
+shuffle	0	52	36,42,15,40,34,32,46,4,16,23,5,13,8,2,30,38,35,9,43,51,39,41,25,10,18,50,49,7,12,33,1,44,45,19,6,0,37,24,22,20,21,3,26,28,31,27,47,14,17,48,29,11
+pessimistic	-	-	0.99999999900000003
+pessimistic	3	9	3
+pessimistic	9	3	3
+pessimistic	3	-	3
+pessimistic	1	2	1
+pessimistic	2	1	1
+tw223	0.5	0	0.09657393438653461
+tw223	0.5	1	0.96226945770684003
+tw223	0.5	2	0.52150907845154126
+tw223	0.5	3	0.15322304181447155
+tw223	0.5	4	0.66536134256176127
+tw223	0.5	5	0.088843180372468966
+tw223	0.5	6	0.93760280101024862
+tw223	0.5	7	0.34787768742986214
+tw223int	0.5	0	2
+tw223int	0.5	1	20
+tw223int	0.5	2	11
+tw223int	0.5	3	4
+tw223int	0.5	4	14
+tw223int	0.5	5	2
+tw223int	0.5	6	19
+tw223int	0.5	7	7
+tw223	0	0	0.79420629243124097
+tw223	0	1	0.69885246563716397
+tw223	0	2	0.59010374172810343
+tw223	0	3	0.75322861668360219
+tw223	0	4	0.080971251199854377
+tw223	0	5	0.66110719599521794
+tw223	0	6	0.33933341140342632
+tw223	0	7	0.73573903003308017
+tw223int	0	0	16
+tw223int	0	1	14
+tw223int	0	2	12
+tw223int	0	3	16
+tw223int	0	4	2
+tw223int	0	5	14
+tw223int	0	6	7
+tw223int	0	7	15
+tw223	1	0	0.3238105623786367
+tw223	1	1	0.013613396334358319
+tw223	1	2	0.91272211102583189
+tw223	1	3	0.29870373331795941
+tw223	1	4	0.10823745140267671
+tw223	1	5	0.10534841446173493
+tw223	1	6	0.23915525894522549
+tw223	1	7	0.83858243215692108
+tw223int	1	0	7
+tw223int	1	1	1
+tw223int	1	2	19
+tw223int	1	3	6
+tw223int	1	4	3
+tw223int	1	5	3
+tw223int	1	6	5
+tw223int	1	7	17
+tw223	3.25	0	0.58816766942832155
+tw223	3.25	1	0.35798032244345235
+tw223	3.25	2	0.74249587659537175
+tw223	3.25	3	0.10709042193000307
+tw223	3.25	4	0.4565853293502431
+tw223	3.25	5	0.84563350567620432
+tw223	3.25	6	0.96241116734689247
+tw223	3.25	7	0.71045963439276827
+tw223int	3.25	0	12
+tw223int	3.25	1	8
+tw223int	3.25	2	15
+tw223int	3.25	3	3
+tw223int	3.25	4	10
+tw223int	3.25	5	17
+tw223int	3.25	6	20
+tw223int	3.25	7	15
+tw223	12345.678	0	0.99329529146485629
+tw223	12345.678	1	0.95429820395321818
+tw223	12345.678	2	0.51828037238437896
+tw223	12345.678	3	0.86750712194187729
+tw223	12345.678	4	0.95809739857301857
+tw223	12345.678	5	0.75657034476790019
+tw223	12345.678	6	0.16185661069204382
+tw223	12345.678	7	0.3056968846460848
+tw223int	12345.678	0	20
+tw223int	12345.678	1	20
+tw223int	12345.678	2	11
+tw223int	12345.678	3	18
+tw223int	12345.678	4	20
+tw223int	12345.678	5	16
+tw223int	12345.678	6	4
+tw223int	12345.678	7	7

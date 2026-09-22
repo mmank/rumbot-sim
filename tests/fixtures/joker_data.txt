@@ -1,0 +1,151 @@
+total	150
+joker	Joker	j_joker	1	1	True				True	True
+joker	Greedy Joker	j_greedy_joker	1	2	True				True	True
+joker	Lusty Joker	j_lusty_joker	1	3	True				True	True
+joker	Wrathful Joker	j_wrathful_joker	1	4	True				True	True
+joker	Gluttonous Joker	j_gluttenous_joker	1	5	True				True	True
+joker	Jolly Joker	j_jolly	1	6	True				True	True
+joker	Zany Joker	j_zany	1	7	True				True	True
+joker	Mad Joker	j_mad	1	8	True				True	True
+joker	Crazy Joker	j_crazy	1	9	True				True	True
+joker	Droll Joker	j_droll	1	10	True				True	True
+joker	Sly Joker	j_sly	1	11	True				True	True
+joker	Wily Joker	j_wily	1	12	True				True	True
+joker	Clever Joker	j_clever	1	13	True				True	True
+joker	Devious Joker	j_devious	1	14	True				True	True
+joker	Crafty Joker	j_crafty	1	15	True				True	True
+joker	Half Joker	j_half	1	16	True				True	True
+joker	Credit Card	j_credit_card	1	20	True				True	True
+joker	Banner	j_banner	1	22	True				True	True
+joker	Mystic Summit	j_mystic_summit	1	23	True				True	True
+joker	8 Ball	j_8_ball	1	26	True				True	True
+joker	Misprint	j_misprint	1	27	True				True	True
+joker	Raised Fist	j_raised_fist	1	29	True				True	True
+joker	Chaos the Clown	j_chaos	1	30	True				True	True
+joker	Scary Face	j_scary_face	1	33	True				True	True
+joker	Abstract Joker	j_abstract	1	34	True				True	True
+joker	Delayed Gratification	j_delayed_grat	1	35	True				True	True
+joker	Gros Michel	j_gros_michel	1	38	True		gros_michel_extinct		False	True
+joker	Even Steven	j_even_steven	1	39	True				True	True
+joker	Odd Todd	j_odd_todd	1	40	True				True	True
+joker	Scholar	j_scholar	1	41	True				True	True
+joker	Business Card	j_business	1	42	True				True	True
+joker	Supernova	j_supernova	1	43	True				True	True
+joker	Ride the Bus	j_ride_the_bus	1	44	True				True	False
+joker	Egg	j_egg	1	46	True				True	True
+joker	Runner	j_runner	1	49	True				True	False
+joker	Ice Cream	j_ice_cream	1	50	True				False	True
+joker	Splash	j_splash	1	52	True				True	True
+joker	Blue Joker	j_blue_joker	1	53	True				True	True
+joker	Faceless Joker	j_faceless	1	57	True				True	True
+joker	Green Joker	j_green_joker	1	58	True				True	False
+joker	Superposition	j_superposition	1	59	True				True	True
+joker	To Do List	j_todo_list	1	60	True				True	True
+joker	Cavendish	j_cavendish	1	61	True			gros_michel_extinct	False	True
+joker	Red Card	j_red_card	1	63	True				True	False
+joker	Square Joker	j_square	1	65	True				True	False
+joker	Riff-Raff	j_riff_raff	1	67	True				True	True
+joker	Photograph	j_photograph	1	78	True				True	True
+joker	Reserved Parking	j_reserved_parking	1	82	True				True	True
+joker	Mail-In Rebate	j_mail	1	83	True				True	True
+joker	Hallucination	j_hallucination	1	85	True				True	True
+joker	Fortune Teller	j_fortune_teller	1	86	True				True	True
+joker	Juggler	j_juggler	1	87	True				True	True
+joker	Drunkard	j_drunkard	1	88	True				True	True
+joker	Golden Joker	j_golden	1	90	True				True	True
+joker	Popcorn	j_popcorn	1	97	True				False	True
+joker	Walkie Talkie	j_walkie_talkie	1	101	True				True	True
+joker	Smiley Face	j_smiley	1	104	True				True	True
+joker	Golden Ticket	j_ticket	1	106	True	m_gold			True	True
+joker	Swashbuckler	j_swashbuckler	1	110	True				True	True
+joker	Hanging Chad	j_hanging_chad	1	115	True				True	True
+joker	Shoot the Moon	j_shoot_the_moon	1	140	True				True	True
+joker	Joker Stencil	j_stencil	2	17	True				True	True
+joker	Four Fingers	j_four_fingers	2	18	True				True	True
+joker	Mime	j_mime	2	19	True				True	True
+joker	Ceremonial Dagger	j_ceremonial	2	21	True				True	False
+joker	Marble Joker	j_marble	2	24	True				True	True
+joker	Loyalty Card	j_loyalty_card	2	25	True				True	True
+joker	Dusk	j_dusk	2	28	True				True	True
+joker	Fibonacci	j_fibonacci	2	31	True				True	True
+joker	Steel Joker	j_steel_joker	2	32	True	m_steel			True	True
+joker	Hack	j_hack	2	36	True				True	True
+joker	Pareidolia	j_pareidolia	2	37	True				True	True
+joker	Space Joker	j_space	2	45	True				True	True
+joker	Burglar	j_burglar	2	47	True				True	True
+joker	Blackboard	j_blackboard	2	48	True				True	True
+joker	Sixth Sense	j_sixth_sense	2	54	True				True	True
+joker	Constellation	j_constellation	2	55	True				True	False
+joker	Hiker	j_hiker	2	56	True				True	True
+joker	Card Sharp	j_card_sharp	2	62	True				True	True
+joker	Madness	j_madness	2	64	True				True	False
+joker	Séance	j_seance	2	66	True				True	True
+joker	Vampire	j_vampire	2	68	True				True	False
+joker	Shortcut	j_shortcut	2	69	True				True	True
+joker	Hologram	j_hologram	2	70	True				True	False
+joker	Cloud 9	j_cloud_9	2	73	True				True	True
+joker	Rocket	j_rocket	2	74	True				True	False
+joker	Midas Mask	j_midas_mask	2	76	True				True	True
+joker	Luchador	j_luchador	2	77	True				False	True
+joker	Gift Card	j_gift	2	79	True				True	True
+joker	Turtle Bean	j_turtle_bean	2	80	True				False	True
+joker	Erosion	j_erosion	2	81	True				True	True
+joker	To the Moon	j_to_the_moon	2	84	True				True	True
+joker	Stone Joker	j_stone	2	89	True	m_stone			True	True
+joker	Lucky Cat	j_lucky_cat	2	91	True	m_lucky			True	False
+joker	Bull	j_bull	2	93	True				True	True
+joker	Diet Cola	j_diet_cola	2	94	True				False	True
+joker	Trading Card	j_trading	2	95	True				True	True
+joker	Flash Card	j_flash	2	96	True				True	False
+joker	Spare Trousers	j_trousers	2	98	True				True	False
+joker	Ramen	j_ramen	2	100	True				False	True
+joker	Seltzer	j_selzer	2	102	True				False	True
+joker	Castle	j_castle	2	103	True				True	False
+joker	Mr. Bones	j_mr_bones	2	107	True				False	True
+joker	Acrobat	j_acrobat	2	108	True				True	True
+joker	Sock and Buskin	j_sock_and_buskin	2	109	True				True	True
+joker	Troubadour	j_troubadour	2	111	True				True	True
+joker	Certificate	j_certificate	2	112	True				True	True
+joker	Smeared Joker	j_smeared	2	113	True				True	True
+joker	Throwback	j_throwback	2	114	True				True	True
+joker	Rough Gem	j_rough_gem	2	116	True				True	True
+joker	Bloodstone	j_bloodstone	2	117	True				True	True
+joker	Arrowhead	j_arrowhead	2	118	True				True	True
+joker	Onyx Agate	j_onyx_agate	2	119	True				True	True
+joker	Glass Joker	j_glass	2	120	True	m_glass			True	False
+joker	Showman	j_ring_master	2	121	True				True	True
+joker	Flower Pot	j_flower_pot	2	122	True				True	True
+joker	Merry Andy	j_merry_andy	2	125	True				True	True
+joker	Oops! All 6s	j_oops	2	126	True				True	True
+joker	The Idol	j_idol	2	127	True				True	True
+joker	Seeing Double	j_seeing_double	2	128	True				True	True
+joker	Matador	j_matador	2	129	True				True	True
+joker	Satellite	j_satellite	2	139	True				True	True
+joker	Cartomancer	j_cartomancer	2	142	True				True	True
+joker	Astronomer	j_astronomer	2	143	True				True	True
+joker	Bootstraps	j_bootstraps	2	145	True				True	True
+joker	DNA	j_dna	3	51	True				True	True
+joker	Vagabond	j_vagabond	3	71	True				True	True
+joker	Baron	j_baron	3	72	True				True	True
+joker	Obelisk	j_obelisk	3	75	True				True	False
+joker	Baseball Card	j_baseball	3	92	True				True	True
+joker	Ancient Joker	j_ancient	3	99	True				True	True
+joker	Campfire	j_campfire	3	105	True				True	True
+joker	Blueprint	j_blueprint	3	123	True				True	True
+joker	Wee Joker	j_wee	3	124	True				True	False
+joker	Hit the Road	j_hit_the_road	3	130	True				True	True
+joker	The Duo	j_duo	3	131	True				True	True
+joker	The Trio	j_trio	3	132	True				True	True
+joker	The Family	j_family	3	133	True				True	True
+joker	The Order	j_order	3	134	True				True	True
+joker	The Tribe	j_tribe	3	135	True				True	True
+joker	Stuntman	j_stuntman	3	136	True				True	True
+joker	Invisible Joker	j_invisible	3	137	True				False	True
+joker	Brainstorm	j_brainstorm	3	138	True				True	True
+joker	Driver's License	j_drivers_license	3	141	True				True	True
+joker	Burnt Joker	j_burnt	3	144	True				True	True
+joker	Canio	j_caino	4	146	True				True	True
+joker	Triboulet	j_triboulet	4	147	True				True	True
+joker	Yorick	j_yorick	4	148	True				True	True
+joker	Chicot	j_chicot	4	149	True				True	True
+joker	Perkeo	j_perkeo	4	150	True				True	True

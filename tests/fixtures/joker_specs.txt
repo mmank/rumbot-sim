@@ -1,0 +1,152 @@
+registry	150
+game	150
+joker	Joker	COMMON	2
+joker	Greedy Joker	COMMON	5
+joker	Lusty Joker	COMMON	5
+joker	Wrathful Joker	COMMON	5
+joker	Gluttonous Joker	COMMON	5
+joker	Jolly Joker	COMMON	3
+joker	Zany Joker	COMMON	4
+joker	Mad Joker	COMMON	4
+joker	Crazy Joker	COMMON	4
+joker	Droll Joker	COMMON	4
+joker	Sly Joker	COMMON	3
+joker	Wily Joker	COMMON	4
+joker	Clever Joker	COMMON	4
+joker	Devious Joker	COMMON	4
+joker	Crafty Joker	COMMON	4
+joker	Half Joker	COMMON	5
+joker	Banner	COMMON	5
+joker	Mystic Summit	COMMON	5
+joker	Misprint	COMMON	4
+joker	Even Steven	COMMON	4
+joker	Odd Todd	COMMON	4
+joker	Fibonacci	UNCOMMON	8
+joker	Scholar	COMMON	4
+joker	Walkie Talkie	COMMON	4
+joker	Scary Face	COMMON	4
+joker	Smiley Face	COMMON	4
+joker	Abstract Joker	COMMON	4
+joker	Blue Joker	COMMON	5
+joker	Bull	UNCOMMON	6
+joker	Bootstraps	UNCOMMON	7
+joker	Ride the Bus	COMMON	6
+joker	Green Joker	COMMON	4
+joker	Runner	COMMON	5
+joker	Ice Cream	COMMON	5
+joker	Square Joker	COMMON	4
+joker	Supernova	COMMON	5
+joker	Popcorn	COMMON	5
+joker	Swashbuckler	COMMON	4
+joker	Golden Joker	COMMON	6
+joker	Faceless Joker	COMMON	4
+joker	Gros Michel	COMMON	5
+joker	Cavendish	COMMON	4
+joker	The Duo	RARE	8
+joker	The Trio	RARE	8
+joker	The Family	RARE	8
+joker	The Order	RARE	8
+joker	The Tribe	RARE	8
+joker	Baron	RARE	8
+joker	Blackboard	UNCOMMON	6
+joker	Card Sharp	UNCOMMON	6
+joker	Flower Pot	UNCOMMON	6
+joker	Stuntman	RARE	7
+joker	Steel Joker	UNCOMMON	7
+joker	Vampire	UNCOMMON	7
+joker	Ramen	UNCOMMON	6
+joker	Loyalty Card	UNCOMMON	5
+joker	Hologram	UNCOMMON	7
+joker	Baseball Card	RARE	8
+joker	Hack	UNCOMMON	6
+joker	Sock and Buskin	UNCOMMON	6
+joker	Hanging Chad	COMMON	4
+joker	Dusk	UNCOMMON	5
+joker	Mime	UNCOMMON	5
+joker	Four Fingers	UNCOMMON	7
+joker	Shortcut	UNCOMMON	7
+joker	Blueprint	RARE	10
+joker	Brainstorm	RARE	10
+joker	Triboulet	LEGENDARY	20
+joker	Canio	LEGENDARY	20
+joker	Yorick	LEGENDARY	20
+joker	Chicot	LEGENDARY	20
+joker	Perkeo	LEGENDARY	20
+joker	Arrowhead	UNCOMMON	7
+joker	Onyx Agate	UNCOMMON	7
+joker	Rough Gem	UNCOMMON	7
+joker	Golden Ticket	COMMON	5
+joker	Photograph	COMMON	5
+joker	Shoot the Moon	COMMON	5
+joker	Raised Fist	COMMON	5
+joker	Acrobat	UNCOMMON	6
+joker	Seeing Double	UNCOMMON	6
+joker	Erosion	UNCOMMON	6
+joker	Stone Joker	UNCOMMON	6
+joker	Driver's License	RARE	7
+joker	Joker Stencil	UNCOMMON	8
+joker	Fortune Teller	COMMON	6
+joker	Constellation	UNCOMMON	6
+joker	Flash Card	UNCOMMON	5
+joker	Throwback	UNCOMMON	6
+joker	Campfire	RARE	9
+joker	Glass Joker	UNCOMMON	6
+joker	Lucky Cat	UNCOMMON	6
+joker	Wee Joker	RARE	8
+joker	Spare Trousers	UNCOMMON	6
+joker	Hiker	UNCOMMON	5
+joker	Ceremonial Dagger	UNCOMMON	6
+joker	Castle	UNCOMMON	6
+joker	Obelisk	RARE	8
+joker	Hit the Road	RARE	8
+joker	Splash	COMMON	3
+joker	Pareidolia	UNCOMMON	5
+joker	Smeared Joker	UNCOMMON	7
+joker	Oops! All 6s	UNCOMMON	4
+joker	Bloodstone	UNCOMMON	7
+joker	Business Card	COMMON	4
+joker	Reserved Parking	COMMON	6
+joker	Space Joker	UNCOMMON	5
+joker	The Idol	UNCOMMON	6
+joker	Ancient Joker	RARE	8
+joker	To Do List	COMMON	4
+joker	Midas Mask	UNCOMMON	7
+joker	Seltzer	UNCOMMON	6
+joker	Matador	UNCOMMON	7
+joker	Red Card	COMMON	5
+joker	Madness	UNCOMMON	7
+joker	Juggler	COMMON	4
+joker	Drunkard	COMMON	4
+joker	Merry Andy	UNCOMMON	7
+joker	Troubadour	UNCOMMON	6
+joker	Turtle Bean	UNCOMMON	6
+joker	Burglar	UNCOMMON	6
+joker	Cloud 9	UNCOMMON	7
+joker	Rocket	UNCOMMON	6
+joker	Satellite	UNCOMMON	6
+joker	Egg	COMMON	4
+joker	Gift Card	UNCOMMON	6
+joker	Delayed Gratification	COMMON	4
+joker	Mail-In Rebate	COMMON	4
+joker	To the Moon	UNCOMMON	5
+joker	Chaos the Clown	COMMON	4
+joker	Credit Card	COMMON	1
+joker	Astronomer	UNCOMMON	8
+joker	Showman	UNCOMMON	5
+joker	Mr. Bones	UNCOMMON	5
+joker	Luchador	UNCOMMON	5
+joker	Invisible Joker	RARE	8
+joker	Diet Cola	UNCOMMON	6
+joker	Marble Joker	UNCOMMON	6
+joker	Cartomancer	UNCOMMON	6
+joker	Certificate	UNCOMMON	6
+joker	Riff-Raff	COMMON	6
+joker	8 Ball	COMMON	5
+joker	Hallucination	COMMON	4
+joker	Superposition	COMMON	4
+joker	Séance	UNCOMMON	6
+joker	Vagabond	RARE	8
+joker	Sixth Sense	UNCOMMON	6
+joker	DNA	RARE	8
+joker	Trading Card	UNCOMMON	6
+joker	Burnt Joker	RARE	8

@@ -1,0 +1,68 @@
+score	SEED0000	Red Deck	1	A:S:none:none:none:0	-	-	roll	0	16	1	16	0	0	0	0
+score	SEED0000	Red Deck	1	A:S:none:none:none:0|A:H:none:none:none:0	-	-	roll	0,1	32	2	64	0	0	0	0
+score	SEED0000	Red Deck	1	2:H:none:none:none:0|5:H:none:none:none:0|8:H:none:none:none:0|J:H:none:none:none:0|K:H:none:none:none:0	-	-	roll	0,1,2,3,4	70	4	280	0	0	0	0
+score	SEED0000	Red Deck	3	K:S:none:foil:none:0|K:H:none:holo:none:0|K:D:none:polychrome:none:0	-	-	roll	0,1,2	110	19.5	2145	0	0	0	0
+score	QWERTYUI	Red Deck	1	K:S:bonus:none:none:0|K:H:mult:none:none:0|K:D:glass:none:none:0	-	-	roll	0,1,2	90	14	1260	0	0	0	0
+score	SEED0000	Red Deck	1	A:S:none:none:none:0|A:H:none:none:none:0	2:C:steel:none:none:0|3:C:steel:none:none:0	-	roll	0,1	32	4.5	144	0	0	0	0
+score	0	Red Deck	1	A:S:lucky:none:none:0|A:H:none:none:none:0	-	-	roll	0,1	32	22	704	20	1	20	1.3333333333333333
+score	0	Red Deck	1	A:S:lucky:none:none:0|A:H:none:none:none:0	-	-	pess	0,1	32	2	64	0	1	0	1.3333333333333333
+score	SEED0000	Red Deck	1	A:S:lucky:none:none:0|A:H:none:none:none:0	-	-	roll	0,1	32	2	64	0	1	0	1.3333333333333333
+score	SEED0000	Plasma Deck	1	A:S:none:none:none:0|A:H:none:none:none:0	-	-	roll	0,1	17	17	289	0	0	0	0
+score	SEED0000	Red Deck	1	A:S:none:none:none:0|A:H:none:none:none:0	-	Joker:0:0:none:0	roll	0,1	32	6	192	0	0	0	0
+score	SEED0000	Red Deck	1	A:S:none:none:none:0|A:H:none:none:none:0	-	The Duo:0:0:none:0	roll	0,1	32	4	128	0	0	0	0
+score	SEED0000	Red Deck	1	A:S:none:none:none:0|A:H:none:none:none:0	-	Green Joker:3:0:none:0	roll	0,1	32	6	192	0	0	0	0
+score	SEED0000	Red Deck	1	A:S:none:none:none:0|A:H:none:none:none:0	-	Ride the Bus:4:0:none:0	roll	0,1	32	7	224	0	0	0	0
+score	SEED0000	Red Deck	1	A:S:none:none:none:0|A:H:none:none:none:0	-	Joker:0:0:polychrome:0	roll	0,1	32	9	288	0	0	0	0
+score	SEED0000	Red Deck	1	2:C:none:none:none:0|5:C:none:none:none:0|8:S:none:none:none:0|J:S:none:none:none:0|K:C:none:none:none:0	-	Smeared Joker:0:0:none:0	roll	0,1,2,3,4	70	4	280	0	0	0	0
+held	SEED0000	A:S:none:none:none:0	-	1
+held	SEED0000	A:S:none:none:red:0	-	2
+held	SEED0000	A:S:none:none:red:1	-	0
+held	SEED0000	A:S:none:none:red:0	Mime:0:0:none:0	3
+glass	ABCDEFGH	2:H:glass:none:none:0|3:H:bonus:none:none:0|4:H:glass:none:none:0	0
+glass	ABCDEFGH	2:H:glass:none:none:1|4:H:glass:none:none:0	1
+glass	QWERTYUI	2:H:glass:none:none:0|3:H:glass:none:none:0|4:H:glass:none:none:0	1
+glass	SEED0000	2:H:glass:none:none:0|3:H:glass:none:none:0|4:H:glass:none:none:0	-
+rarity	SEED0000	1		2
+rarity	QWERTYUI	4	sho	2
+rarity	0	8	sou	1
+joker	SEED0000	1		-	-	-	0	-	j_satellite
+joker	QWERTYUI	3	sho	m_lucky	-	-	0	-	j_splash
+joker	0	5		-	j_joker	-	0	-	j_card_sharp
+joker	SEED0000	2		m_glass	-	-	1	-	j_banner
+joker	SEED0000	1		-	-	-	0	4	j_perkeo
+joker	ABC	4		-	-	gros_michel_extinct	0	-	j_space
+joker	SEED0000	1		m_lucky,m_glass	j_joker,j_greedy_joker	-	0	2	j_satellite
+slot	SEED0000	1	Joker
+slot	QWERTYUI	3	Joker
+slot	0	8	Tarot
+shopcard	SEED0000	1	-	-	-	-	Joker	j_abstract
+shopcard	QWERTYUI	3	m_lucky	j_joker	-	Pair	Joker	j_splash
+shopcard	0	8	-	j_joker,j_greedy_joker	gros_michel_extinct	-	Tarot	c_temperance
+consumable	SEED0000	Tarot	1		-	-	0	c_death
+consumable	QWERTYUI	Planet	3	pl1	Pair	-	0	c_pluto
+consumable	0	Spectral	2	spe	-	c_fool	0	c_deja_vu
+consumable	SEED0000	Planet	5		-	-	1	c_saturn
+tag	SEED0000	1		tag_polychrome
+tag	QWERTYUI	3		tag_top_up
+tag	0	8		tag_buffoon
+voucher	SEED0000	1	-	-	0	v_wasteful
+voucher	QWERTYUI	3	v_blank	-	0	v_planet_merchant
+voucher	0	4	-	v_hone	0	v_reroll_surplus
+voucher	SEED0000	2	v_blank	-	1	v_paint_brush
+edition	SEED0000	edition_generic	1	0	1	0	none
+edition	QWERTYUI	edi_sho1	1	0	1	0	none
+edition	0	wheel	1	0	1	1	foil
+edition	SEED0000	std	2	1	1	0	none
+edition	ABCDEFGH	edi	1	0	2	0	none
+pack	SEED0000	1	0	p_buffoon_mega_1
+pack	QWERTYUI	3	0	p_arcana_jumbo_2
+pack	0	8	0	p_standard_normal_2
+pack	SEED0000	1	1	p_buffoon_normal_2
+stickers	SEED0000	1	0	1	1	1	-	0	0	0
+stickers	QWERTYUI	3	1	1	1	0	-	0	0	0
+stickers	0	8	0	1	0	1	Spare Trousers	0	0	0
+packitems	SEED0000	Arcana	3	1	C:Tarot:c_empress,C:Tarot:c_hanged_man,C:Tarot:c_hermit
+packitems	QWERTYUI	Standard	3	2	P:3:H:-:none:-,P:5:D:-:none:-,P:7:S:-:none:Red
+packitems	0	Buffoon	2	3	J:j_acrobat:none:0:0:0,J:j_blue_joker:none:0:0:0
+packitems	SEED0000	Spectral	2	4	C:Spectral:c_ectoplasm,C:Spectral:c_sigil
+packitems	QWERTYUI	Celestial	3	5	C:Planet:c_mars,C:Planet:c_pluto,C:Planet:c_mercury
