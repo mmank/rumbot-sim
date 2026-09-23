@@ -32,6 +32,18 @@ pub fn next_sort_id() -> u64 {
     })
 }
 
+/// Where the counter stands, for `set_sort_id` to put it back.
+pub fn sort_id_now() -> u64 {
+    NEXT_SORT_ID.with(|c| c.get())
+}
+
+/// Put the counter back where `sort_id_now` found it. Only for a lookahead
+/// whose forks are all dropped: every id drawn since the mark must be gone,
+/// or two live objects share one.
+pub fn set_sort_id(v: u64) {
+    NEXT_SORT_ID.with(|c| c.set(v))
+}
+
 #[derive(Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, Debug)]
 pub enum Suit {
     Spades,
