@@ -300,6 +300,13 @@ pub struct Card {
     pub played_this_ante: bool,
     pub uid: u64,
     pub debuffed: bool,
+    /// Drawn face down (`Blind:stay_flipped`, blind.lua:605): The House, The
+    /// Wheel, The Mark and The Fish. The rules do not read it -- a face-down
+    /// card scores as itself -- it is what a player could not see. Set on
+    /// every draw into the hand, cleared when the card is played (emplace
+    /// into `G.play` turns it over, cardarea.lua:38) or leaves the hand, and
+    /// by `Blind:disable`. The game's `ability.wheel_flipped` is the same fact.
+    pub face_down: bool,
 }
 
 impl PartialEq for Card {
@@ -328,6 +335,7 @@ impl Card {
             played_this_ante: false,
             uid: next_sort_id(),
             debuffed: false,
+            face_down: false,
         }
     }
 
@@ -414,6 +422,9 @@ impl Card {
     pub fn copy(&self) -> Card {
         let mut out = self.clone();
         out.uid = next_sort_id();
+        // A new Card, and Card:init faces it up: a Cryptid copy of a
+        // face-down card lands in the hand showing.
+        out.face_down = false;
         out
     }
 

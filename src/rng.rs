@@ -46,6 +46,19 @@ pub fn py_mod(a: f64, b: f64) -> f64 {
     }
 }
 
+/// Pools the game draws on that the Python simulator never did.
+///
+/// The Python-recorded fixtures (`flow_*`, `fuzz_*`, `fuzz_sweep`, `replay_*`,
+/// `stake_deal`) compare the whole pool map after every step, and a pool the
+/// Python never rolled appears in it here the first time the rule fires. They
+/// leave these out; `tests/facedown_fixture.rs`, recorded off the game's own
+/// Lua, is what pins them instead. Every other pool is still compared to the
+/// bit.
+///
+/// * `wheel` -- The Wheel's 1-in-7 face-down roll, one draw per card dealt
+///   (blind.lua:608). Moving no other pool, it changes nothing the Python
+///   fixtures record but the map itself.
+pub const LUA_ONLY_POOLS: &[&str] = &["wheel"];
 /// The game's string hash: a reverse fold over the bytes.
 ///
 /// The Python original encodes with `latin-1, replace`, so a character outside

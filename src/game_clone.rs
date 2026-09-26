@@ -51,6 +51,7 @@ impl Memo {
             played_this_ante: c.played_this_ante,
             uid: c.uid,
             debuffed: c.debuffed,
+            face_down: c.face_down,
         }));
         drop(c);
         self.cards.insert(key, new.clone());
@@ -81,6 +82,7 @@ impl Memo {
             secondary: j.secondary,
             extra_sell_value: j.extra_sell_value,
             named_hand: j.named_hand,
+            face_down: j.face_down,
         }));
         drop(j);
         self.jokers.insert(key, new.clone());

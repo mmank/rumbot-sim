@@ -23,7 +23,12 @@ struct Case {
 
 fn rng_signature(game: &GameState) -> String {
     let state = game.rng.state();
-    let mut keys: Vec<&String> = state.keys().collect();
+    // Less the pools only the game's Lua draws, which this Python-recorded
+    // fixture cannot know: see `rng::LUA_ONLY_POOLS`.
+    let mut keys: Vec<&String> = state
+        .keys()
+        .filter(|key| !jimbot_sim::rng::LUA_ONLY_POOLS.contains(&key.as_str()))
+        .collect();
     keys.sort();
     keys.iter()
         .map(|key| format!("{}:{}", key, state[*key].to_bits()))

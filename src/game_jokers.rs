@@ -453,6 +453,8 @@ impl GameState {
                 secondary: j.secondary,
                 extra_sell_value: j.extra_sell_value,
                 named_hand: j.named_hand,
+                // A new card, made face up.
+                face_down: false,
             }
         };
         let clone = crate::jokers::make_ref(clone);

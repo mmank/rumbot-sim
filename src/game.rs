@@ -1646,16 +1646,36 @@ impl GameState {
         }
 
         // set_blind leaves the blind prepped, which is what lets Crimson Heart
-        // take a joker on the opening deal.
+        // take a joker on the opening deal -- all but The Fish, which it
+        // unpreps (blind.lua:176), so the opening deal is dealt face up.
+        let fish = self.boss().is_some_and(|b| b.face_down_after_play);
         if let Some(blind) = &mut self.blind {
-            blind.prepped = true;
+            blind.prepped = !fish;
+        }
+        // Amber Acorn turns the row over in set_blind itself (blind.lua:190),
+        // before any joker hears setting_blind: a joker Riff-raff makes is
+        // shuffled in below face up. Chicot turns them back at once
+        // (Blind:disable), which is `boss()` already answering None.
+        if self.boss().is_some_and(|b| b.shuffles_jokers) {
+            for joker in &self.jokers {
+                joker.borrow_mut().face_down = true;
+            }
         }
         self._apply_debuffs();
         self._setting_blind();
 
         // Amber Acorn shuffles the joker row under its own pool name -- three
-        // times, each sorted by card id first (blind.lua:195-201).
-        let shuffles = self.boss().is_some_and(|b| b.shuffles_jokers);
+        // times, each sorted by card id first (blind.lua:195-201). Chicot does
+        // not stop it: set_blind queues the shuffle before Chicot's
+        // setting_blind queues the disable, so the row is shuffled and then
+        // turned face up (the game's own Lua, three seeds: `aajk` advanced and
+        // the row reordered). Hence the blind's boss, not `boss()`, which
+        // answers None beside Chicot.
+        let shuffles = self
+            .blind
+            .as_ref()
+            .and_then(|b| b.boss)
+            .is_some_and(|b| b.shuffles_jokers);
         if shuffles && self.jokers.len() > 1 {
             for _ in 0..3 {
                 self.jokers.sort_by_key(|j| j.borrow().uid);
@@ -1864,6 +1884,8 @@ impl GameState {
         for _ in 0..count {
             match self.draw_pile.pop() {
                 Some(card) => {
+                    let flipped = self._stay_flipped(&card);
+                    card.borrow_mut().face_down = flipped;
                     self.hand.push(card);
                     drawn += 1;
                 }
@@ -1900,6 +1922,8 @@ impl GameState {
         let mut drawn = 0;
         while (self.hand.len() as i32) < self.hand_size() && !self.draw_pile.is_empty() {
             let card = self.draw_pile.pop().unwrap();
+            let flipped = self._stay_flipped(&card);
+            card.borrow_mut().face_down = flipped;
             self.hand.push(card);
             drawn += 1;
         }
@@ -1911,6 +1935,58 @@ impl GameState {
             // Hand and deck both empty ends the round where it stands.
             self.phase = Phase::GameOver;
             self.log("Ran out of cards");
+        }
+    }
+
+    /// Blind:stay_flipped (blind.lua:605-620), asked of each card dealt into
+    /// the hand: is it dealt face down?
+    ///
+    /// Asked one card at a time, in the order they are dealt, because The
+    /// Wheel's answer is a draw on its own pool -- `pseudorandom(
+    /// pseudoseed('wheel')) < normal/7` -- taken for every card while the
+    /// Wheel is live and for none otherwise, so a hand of eight is eight draws
+    /// and no other pool moves. A disabled boss (Chicot, Luchador) turns
+    /// nothing over, and neither does a pack's deal, which happens with no
+    /// blind in force.
+    pub fn _stay_flipped(&mut self, card: &CardRef) -> bool {
+        let boss = match self.boss() {
+            Some(boss) => boss,
+            None => return false,
+        };
+        if boss.face_down_odds > 0 {
+            let normal = self.probability_scale();
+            if self.rng.chance("wheel", normal, boss.face_down_odds as f64) {
+                return true;
+            }
+        }
+        if boss.face_down_first_hand
+            && self.hands_played_this_round.is_empty()
+            && self.discards_used == 0
+        {
+            return true;
+        }
+        if boss.face_down_faces && crate::jokers::is_face_for(card, self, true) {
+            return true;
+        }
+        if boss.face_down_after_play && self.blind.as_ref().is_some_and(|b| b.prepped) {
+            return true;
+        }
+        false
+    }
+
+    /// Turn every card in the hand face up -- `Blind:disable`'s loop over
+    /// `G.hand.cards` (blind.lua:364-372), and the end of a round.
+    pub fn _hand_face_up(&mut self) {
+        for card in &self.hand {
+            card.borrow_mut().face_down = false;
+        }
+    }
+
+    /// Turn the joker row face up: `Blind:defeat` and `Blind:disable`
+    /// (blind.lua:338, 358).
+    pub fn _jokers_face_up(&mut self) {
+        for joker in &self.jokers {
+            joker.borrow_mut().face_down = false;
         }
     }
 
@@ -1936,6 +2012,10 @@ impl GameState {
         if let Some(blind) = &mut self.blind {
             blind.disabled = true;
         }
+        // Everything face down turns over, the row for any boss and the hand
+        // for the four that dealt it that way.
+        self._jokers_face_up();
+        self._hand_face_up();
         if boss.chip_mult != 2.0 && boss.chip_mult != 0.0 {
             if let Some(blind) = &mut self.blind {
                 blind.target = (blind.target as f64 * 2.0 / boss.chip_mult) as i64;
@@ -2016,6 +2096,13 @@ impl GameState {
                 blind.prepped = true;
             }
         }
+        // The Fish's press_play preps it too (blind.lua:494), so the draw that
+        // follows the hand is dealt face down.
+        if self.boss().is_some_and(|b| b.face_down_after_play) {
+            if let Some(blind) = &mut self.blind {
+                blind.prepped = true;
+            }
+        }
 
         let arranged = self._arrange_play(&indices);
         let played: Vec<CardRef> = arranged.iter().map(|&i| self.hand[i].clone()).collect();
@@ -2025,6 +2112,8 @@ impl GameState {
         // scores.
         for card in &played {
             crate::cards::set_played_this_ante(card, true);
+            // Into G.play, which turns a face-down card over (cardarea.lua:38).
+            card.borrow_mut().face_down = false;
         }
 
         // The Hook takes its two cards *before* the hand scores. By creation
@@ -2283,6 +2372,7 @@ impl GameState {
             }
             if let Some(i) = self.hand.iter().position(|c| uid_of(c) == uid_of(card)) {
                 self.hand.remove(i);
+                card.borrow_mut().face_down = false;
                 self.discard_pile.push(card.clone());
             }
         }
@@ -2496,6 +2586,10 @@ impl GameState {
         // Every card returns to the deck as the round closes -- but in the game's
         // order: the hand to the discard from the front, the discard to the deck
         // from the back, each inserted at the deck's front.
+        // Blind:defeat turns the row back over; the hand goes back to the deck,
+        // where nothing is face up or down until it is dealt again.
+        self._jokers_face_up();
+        self._hand_face_up();
         self.discard_pile.extend(self.hand.clone());
         self.hand = Vec::new();
         let mut fresh = self.discard_pile.clone();
@@ -4165,6 +4259,7 @@ fn clone_joker_instance(inst: &crate::jokers::JokerInstance) -> crate::jokers::J
     copy.secondary = inst.secondary;
     copy.extra_sell_value = inst.extra_sell_value;
     copy.named_hand = inst.named_hand;
+    copy.face_down = inst.face_down;
     copy
 }
 

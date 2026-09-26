@@ -264,6 +264,10 @@ pub struct JokerInstance {
     /// To Do List's poker hand. The game keeps it in the joker's own ability
     /// table -- ability.to_do_poker_hand -- so two of them name two hands.
     pub named_hand: Option<HandType>,
+    /// Turned over by Amber Acorn (blind.lua:190-193) before it shuffles the
+    /// row, and back by `Blind:defeat` and `Blind:disable`. The rules do not
+    /// read it; it is what a player could not see -- which joker sits where.
+    pub face_down: bool,
 }
 
 impl JokerInstance {
@@ -282,6 +286,7 @@ impl JokerInstance {
             secondary: spec.init_secondary,
             extra_sell_value: 0.0,
             named_hand: None,
+            face_down: false,
         }
     }
 

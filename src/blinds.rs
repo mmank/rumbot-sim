@@ -106,8 +106,11 @@ pub const FINISHER_REWARD: i32 = 8;
 
 /// Declarative boss modifiers; the engine reads these fields directly.
 ///
-/// Bosses whose effect is purely about face-down cards are represented with no
-/// mechanical modifier, since this engine has full information anyway.
+/// The four face-down bosses change no rule: a face-down card scores as
+/// itself. What they change is what a player can see, so the engine marks the
+/// cards (`Card::face_down`) the way `Blind:stay_flipped` (blind.lua:605)
+/// decides it, and a policy that plays fair reads the mark. The Wheel's roll
+/// is a real draw on the `wheel` pool, one per card dealt into the hand.
 #[derive(Clone, Debug, PartialEq)]
 pub struct BossEffect {
     pub name: &'static str,
@@ -127,11 +130,23 @@ pub struct BossEffect {
     pub lock_first_hand_type: bool,
     pub debuff_previously_played: bool,
     pub halve_base: bool,
+    // The face-down draws, one field a boss (blind.lua:605-620).
+    /// The House: dealt face down while no hand has been played and no
+    /// discard used this round.
+    pub face_down_first_hand: bool,
+    /// The Wheel: each card dealt face down on `normal / odds`.
+    pub face_down_odds: i32,
+    /// The Mark: face cards, `is_face(true)` -- every card beside Pareidolia.
+    pub face_down_faces: bool,
+    /// The Fish: the draw that follows a played hand, off `Blind.prepped`.
+    pub face_down_after_play: bool,
     // The finishers, and one ordinary boss, that do something to the run
     // rather than to a card. These were all left blank on the grounds that
     // face-down cards mean nothing to an engine with full information, which
-    // is true of four of them and not of these five.
+    // is true of the rules of four of them and not of these five.
     pub always_draw_three: bool,
+    /// Amber Acorn: turns the row face down (`JokerInstance::face_down`) and
+    /// shuffles it three times on `aajk`.
     pub shuffles_jokers: bool,
     pub debuff_until_sale: bool,
     pub debuff_a_joker: bool,
@@ -162,6 +177,10 @@ impl BossEffect {
             lock_first_hand_type: false,
             debuff_previously_played: false,
             halve_base: false,
+            face_down_first_hand: false,
+            face_down_odds: 0,
+            face_down_faces: false,
+            face_down_after_play: false,
             always_draw_three: false,
             shuffles_jokers: false,
             debuff_until_sale: false,
@@ -188,12 +207,18 @@ pub const BOSSES: &[BossEffect] = &[
         zero_money_on_most_played: true,
         ..BossEffect::new("The Ox", "Playing your most played hand sets money to $0")
     },
-    BossEffect::new("The House", "First hand is drawn face down"),
+    BossEffect {
+        face_down_first_hand: true,
+        ..BossEffect::new("The House", "First hand is drawn face down")
+    },
     BossEffect {
         chip_mult: 4.0,
         ..BossEffect::new("The Wall", "Extra large blind")
     },
-    BossEffect::new("The Wheel", "1 in 7 cards get drawn face down"),
+    BossEffect {
+        face_down_odds: 7,
+        ..BossEffect::new("The Wheel", "1 in 7 cards get drawn face down")
+    },
     BossEffect {
         level_down_played_hand: true,
         ..BossEffect::new("The Arm", "Decrease level of played poker hand")
@@ -202,7 +227,10 @@ pub const BOSSES: &[BossEffect] = &[
         debuff_suit: Some(Suit::Clubs),
         ..BossEffect::new("The Club", "All Club cards are debuffed")
     },
-    BossEffect::new("The Fish", "Cards drawn face down after each hand played"),
+    BossEffect {
+        face_down_after_play: true,
+        ..BossEffect::new("The Fish", "Cards drawn face down after each hand played")
+    },
     BossEffect {
         min_cards_played: 5,
         ..BossEffect::new("The Psychic", "Must play 5 cards")
@@ -265,7 +293,10 @@ pub const BOSSES: &[BossEffect] = &[
         halve_base: true,
         ..BossEffect::new("The Flint", "Base Chips and Mult are halved")
     },
-    BossEffect::new("The Mark", "All face cards are drawn face down"),
+    BossEffect {
+        face_down_faces: true,
+        ..BossEffect::new("The Mark", "All face cards are drawn face down")
+    },
 ];
 
 /// The five finisher bosses, in the game's order.
@@ -327,7 +358,10 @@ pub struct Blind {
     // Set by set_blind (blind.lua:94) -- which here is _start_round, not the
     // moment a blind is put on offer -- and by press_play when Crimson Heart
     // has a joker to take (blind.lua:488-493); cleared by drawn_to_hand
-    // (blind.lua:602). Only Crimson Heart reads it: GameState._drawn_to_hand.
+    // (blind.lua:602). Crimson Heart reads it in GameState._drawn_to_hand, and
+    // The Fish in GameState._stay_flipped: set_blind clears it for the Fish
+    // (blind.lua:176) and every press_play sets it (blind.lua:494), so only
+    // the draw after a played hand is dealt face down.
     pub prepped: bool,
     // On offer on the blind select screen and not yet set (set_blind is
     // _start_round). The game's G.GAME.blind is then the empty one the last
