@@ -499,6 +499,12 @@ pub struct GameState {
     pub money_at_play: Option<i32>,
 
     pub full_deck: Vec<CardRef>,
+    /// G.GAME.starting_deck_size: the full deck as the run dealt it, 40 on an
+    /// Abandoned Deck. Erosion counts the cards missing below this, not below
+    /// 52 -- DM46XNV1 / Abandoned / stake 8 bought Erosion in ante 5 and the
+    /// shadow scored +48 Mult the game never paid, cleared a blind the game
+    /// had not, and waited on a cash-out that never came.
+    pub starting_deck_size: usize,
     pub draw_pile: Vec<CardRef>,
     pub hand: Vec<CardRef>,
     pub discard_pile: Vec<CardRef>,
@@ -704,6 +710,7 @@ impl GameState {
             money: 4,
             money_at_play: None,
             full_deck: Vec::new(),
+            starting_deck_size: 52,
             draw_pile: Vec::new(),
             hand: Vec::new(),
             discard_pile: Vec::new(),
@@ -793,6 +800,7 @@ impl GameState {
                 None
             },
         );
+        game.starting_deck_size = game.full_deck.len();
         game.apply_deck_config();
         // G:start_run's own deck:shuffle(), under the bare pool name. Almost
         // invisible, because pseudoshuffle sorts by id before it shuffles, so the

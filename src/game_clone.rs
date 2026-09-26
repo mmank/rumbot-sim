@@ -165,6 +165,7 @@ impl GameState {
             money_at_play: self.money_at_play,
 
             full_deck: memo.cards(&self.full_deck),
+            starting_deck_size: self.starting_deck_size,
             draw_pile: memo.cards(&self.draw_pile),
             hand: memo.cards(&self.hand),
             discard_pile: memo.cards(&self.discard_pile),

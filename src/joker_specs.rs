@@ -1028,7 +1028,7 @@ fn seeing_double(j: &JokerRef, ctx: &mut ScoreContext, game: &mut GameState) {
 // -- jokers that scale on the deck ------------------------------------------
 
 fn erosion(j: &JokerRef, ctx: &mut ScoreContext, game: &mut GameState) {
-    let missing = 52 - game.full_deck.len() as i32;
+    let missing = game.starting_deck_size as i32 - game.full_deck.len() as i32;
     ctx.add_mult(4.0 * missing.max(0) as f64, j.borrow().spec.name);
 }
 
@@ -1968,7 +1968,7 @@ pub const SPECS: &[JokerSpec] = &[
                 text: "X2 Mult if the hand scores a Club and a card of any other suit", cost: 6,
                 independent: Some(seeing_double), ..JokerSpec::DEFAULT },
     JokerSpec { name: "Erosion", rarity: Rarity::Uncommon,
-                text: "+4 Mult for each card below 52 in your full deck", cost: 6,
+                text: "+4 Mult for each card below the starting deck size in your full deck", cost: 6,
                 independent: Some(erosion), ..JokerSpec::DEFAULT },
 
     JokerSpec { name: "Stone Joker", rarity: Rarity::Uncommon,

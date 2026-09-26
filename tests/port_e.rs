@@ -1546,6 +1546,31 @@ fn test_a_created_joker_polls_its_edition_under_its_append() {
 }
 
 // ==========================================================================
+// Erosion counts below the deck the run started with, not below 52.
+//
+// game.lua:2375 sets G.GAME.starting_deck_size = #G.playing_cards as the run
+// deals its deck, and card.lua:3894 reads that. On an Abandoned Deck it is 40,
+// so a fresh Erosion pays nothing. DM46XNV1 / Abandoned / stake 8: the shadow
+// paid it +48 Mult, scored 21436 where the game scored 7616, called the next
+// hand a safe farm and waited on a cash-out the game never offered.
+// ==========================================================================
+
+#[test]
+fn test_erosion_pays_nothing_on_a_whole_abandoned_deck() {
+    let mut bare = run("TESTSEED", "Abandoned Deck", &[]);
+    let mut eroded = run("TESTSEED", "Abandoned Deck", &["Erosion"]);
+    assert_eq!(eroded.starting_deck_size, 40);
+    assert_eq!(
+        eroded.preview_score(&[0], "pessimistic"),
+        bare.preview_score(&[0], "pessimistic")
+    );
+    // One card gone from the full deck, and it pays +4.
+    let gone = eroded.full_deck.pop().unwrap();
+    eroded.draw_pile.retain(|c| !std::rc::Rc::ptr_eq(c, &gone));
+    assert!(eroded.preview_score(&[0], "pessimistic") > bare.preview_score(&[0], "pessimistic"));
+}
+
+// ==========================================================================
 // tests/test_vagabond_reads_money_before_the_hand.py -- "Vagabond reads the
 // money the hand was played with, not what it pays."
 //
