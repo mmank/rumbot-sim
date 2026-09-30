@@ -673,7 +673,8 @@ pub struct GameState {
     /// below this line knows the difference. It is for tuning the sticker
     /// rules on a stake that does not kill the run first; a real run cannot
     /// be at stake -3, and the rolls move the RNG, so it is not a stake-3 run
-    /// with stickers added but its own run.
+    /// with stickers added but its own run. There is no -8: Gold already
+    /// rolls every sticker, so it would be stake 8 under another name.
     pub stake: i32,
     /// Put every sticker on every stake, whatever the stake would allow.
     /// Set by a negative stake (above). It moves the RNG, so a measurement
@@ -700,6 +701,12 @@ impl GameState {
     /// two skip tags, the named cards and suits, and the opening blind -- all land
     /// in the same order the Python original performs them.
     pub fn new<S: ToString>(seed: S, deck: &str, stake: i32) -> Self {
+        // -8 would be Gold with Gold's own stickers: the same game as 8, row
+        // for row, under a second name that read as a separate measurement.
+        assert!(
+            stake >= -7,
+            "stake {stake}: a negative stake runs -1 to -7 (-8 is stake 8)"
+        );
         let mut game = GameState {
             seed: seed.to_string(),
             deck: deck.to_string(),

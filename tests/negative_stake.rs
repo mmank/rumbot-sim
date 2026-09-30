@@ -33,12 +33,8 @@ fn everything_but_the_stickers_reads_the_positive_stake() {
 }
 
 #[test]
-fn minus_eight_is_gold() {
-    let gold = GameState::new("NEGSTAKE", "Red Deck", 8);
-    let neg = GameState::new("NEGSTAKE", "Red Deck", -8);
-    let (g, n) = (gold.sticker_rules(), neg.sticker_rules());
-    assert_eq!(
-        (g.eternals, g.perishables, g.rentals),
-        (n.eternals, n.perishables, n.rentals)
-    );
+#[should_panic(expected = "-8 is stake 8")]
+fn minus_eight_is_refused() {
+    // Gold already rolls every sticker, so -8 was stake 8 under a second name.
+    GameState::new("NEGSTAKE", "Red Deck", -8);
 }
