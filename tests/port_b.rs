@@ -877,6 +877,78 @@ fn test_a_blueprint_copy_pays_on_a_refused_hand() {
     let four = flush(Suit::Spades)[..4].to_vec();
     assert_eq!(matador_play(&mut game, &four), 16);
 }
+
+// `GameState::preview_trigger`: a preview sets the boss's trigger for the
+// play it scores. Off (the default, and what every fixture was recorded
+// under) it keeps the flag the last real play left.
+
+/// What a preview of exactly these cards says they pay, the hand dealt as
+/// `matador_play` deals it.
+fn matador_preview(game: &mut GameState, cards: &[CardRef], trigger: bool) -> i64 {
+    let mut hand: Vec<CardRef> = cards.to_vec();
+    hand.push(make_card(Rank::Three, Suit::Diamonds));
+    hand.push(make_card(Rank::Four, Suit::Diamonds));
+    hand.push(make_card(Rank::Six, Suit::Diamonds));
+    game.hand = hand;
+    let extras: Vec<CardRef> = game
+        .hand
+        .iter()
+        .filter(|c| !game.full_deck.iter().any(|d| Rc::ptr_eq(d, c)))
+        .cloned()
+        .collect();
+    game.full_deck.extend(extras);
+    game._apply_debuffs();
+    game.preview_trigger = trigger;
+    let indices: Vec<usize> = (0..cards.len()).collect();
+    let before = game.blind.as_ref().unwrap().triggered;
+    let dollars = game.preview_outcome(&indices).1;
+    assert_eq!(game.blind.as_ref().unwrap().triggered, before, "put back");
+    dollars
+}
+
+#[test]
+fn test_a_preview_keeps_the_last_plays_trigger_unless_asked() {
+    // A Club Flush into The Club sets the boss off; a Spade Flush after it
+    // does not, which the stale flag previewed as $8.
+    let mut game = boss_game("The Club", &["Matador"]);
+    assert_eq!(matador_play(&mut game, &flush(Suit::Clubs)), 8);
+    assert_eq!(matador_preview(&mut game, &flush(Suit::Spades), false), 8);
+    assert_eq!(matador_preview(&mut game, &flush(Suit::Spades), true), 0);
+    assert_eq!(matador_preview(&mut game, &flush(Suit::Clubs), true), 8);
+    assert_eq!(matador_play(&mut game, &flush(Suit::Spades)), 0);
+}
+
+#[test]
+fn test_a_preview_sets_the_arms_and_the_oxs_trigger() {
+    let mut game = boss_game("The Arm", &["Matador"]);
+    game.hand_levels.levels.insert(HandType::Flush, 3);
+    assert_eq!(matador_preview(&mut game, &flush(Suit::Spades), false), 0);
+    assert_eq!(matador_preview(&mut game, &flush(Suit::Spades), true), 8);
+    assert_eq!(game.hand_levels.level(HandType::Flush), 3);
+    let mut game = boss_game("The Ox", &["Matador"]);
+    game.most_played_hand = HandType::Flush;
+    assert_eq!(matador_preview(&mut game, &flush(Suit::Spades), false), 0);
+    // The trigger only: The Ox's $0 is not previewed.
+    assert_eq!(matador_preview(&mut game, &flush(Suit::Spades), true), 8);
+    let pair = vec![
+        make_card(Rank::Ace, Suit::Hearts),
+        make_card(Rank::Ace, Suit::Clubs),
+    ];
+    assert_eq!(matador_preview(&mut game, &pair, true), 0);
+}
+
+#[test]
+fn test_a_preview_pays_matador_for_a_refused_hand() {
+    let mut game = boss_game("The Psychic", &["Blueprint", "Matador"]);
+    let four = flush(Suit::Spades)[..4].to_vec();
+    let money = game.money;
+    assert_eq!(matador_preview(&mut game, &four, false), 0);
+    assert_eq!(matador_preview(&mut game, &four, true), 16);
+    assert_eq!(game.money, money);
+    let logs = game.logs.len();
+    assert_eq!(matador_preview(&mut game, &four, true), 16);
+    assert_eq!(game.logs.len(), logs);
+}
 // ==========================================================================
 // tests/test_joker_room.py -- "A joker needs a free slot. A Negative joker does
 // not."

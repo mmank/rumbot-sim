@@ -255,6 +255,7 @@ impl GameState {
             pack_picks_left: self.pack_picks_left,
 
             preview_expected: self.preview_expected,
+            preview_trigger: self.preview_trigger,
 
             logs: self.logs.clone(),
             verbose: self.verbose,

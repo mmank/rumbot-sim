@@ -689,6 +689,20 @@ pub struct GameState {
     /// expectation. Set by `_preview`, read the instant after.
     pub preview_expected: f64,
 
+    /// Whether `_preview` sets `blind.triggered` for the play it scores, as
+    /// `_play_hand_score` does, rather than keeping the flag the last real
+    /// play left. Off (the old behaviour, which the differential fixtures
+    /// were recorded under), the flag is read stale: after a hand that set
+    /// the boss off every preview pays Matador's $8, The Arm's and The Ox's
+    /// half is never set, and a refused hand previews $0. On, the flag is
+    /// cleared first, The Arm (a hand above level 1) and The Ox (its
+    /// most-played hand) set it, and a hand the boss refuses runs
+    /// `on_debuffed_hand` so Matador's $8 shows in the dollars. The Ox's
+    /// money going to $0 is still not previewed. Matador is the only reader
+    /// of the flag, so nothing moves without it. Set by the policy under
+    /// `fix_preview_trigger`; the simulator never sets it.
+    pub preview_trigger: bool,
+
     pub logs: Vec<String>,
     pub verbose: bool,
 }
@@ -794,6 +808,7 @@ impl GameState {
             pack_options: Vec::new(),
             pack_picks_left: 0,
             preview_expected: 0.0,
+            preview_trigger: false,
             logs: Vec::new(),
             verbose: false,
         };
@@ -4414,6 +4429,13 @@ impl GameState {
         let consumables = self.consumables.clone();
         let money = self.money;
         let triggered = self.blind.as_ref().map(|b| b.triggered).unwrap_or(false);
+        // The play's own trigger, not the last real play's (`preview_trigger`).
+        // Scoring sets The Flint's and a debuffed scoring card's half.
+        if self.preview_trigger {
+            if let Some(blind) = &mut self.blind {
+                blind.triggered = false;
+            }
+        }
 
         let real_jokers = self.jokers.clone();
         self.jokers = real_jokers
@@ -4431,17 +4453,51 @@ impl GameState {
         if self.hand_is_debuffed(result.hand, &played) {
             // A hand the boss zeroes scores nothing and runs no scoring joker. But
             // the `after` pass is outside that block and asked of every hand.
+            let mut dollars = 0;
+            if self.preview_trigger {
+                // A refused hand sets the boss off and asks every joker under
+                // context.debuffed_hand, as `_play_hand_score` does: Matador's
+                // $8. The log lines the hooks write are not the run's.
+                let logged = self.logs.len();
+                if self.boss().is_some() {
+                    if let Some(blind) = &mut self.blind {
+                        blind.triggered = true;
+                    }
+                }
+                for (spec, source) in calculating_specs(&self.jokers) {
+                    if let Some(answer) = spec.on_debuffed_hand {
+                        answer(&source, self);
+                    }
+                }
+                self.logs.truncate(logged);
+                dollars = (self.money - money) as i64;
+                self.preview_expected = dollars as f64;
+            }
             self._refused_hand_after_pass(&result, &played, &held);
-            out = (0, self.jokers.clone(), 0, 0);
+            out = (0, self.jokers.clone(), dollars, 0);
         } else {
             // Counted before it scores, as the play counts it.
             *self.hand_levels.plays.entry(result.hand).or_insert(0) += 1;
             // The Arm takes the level off before the hand scores, as `_play` does.
+            let mut arm = false;
             if self.boss().is_some_and(|b| b.level_down_played_hand) {
                 let level = self.hand_levels.level(result.hand);
+                arm = level > 1;
                 self.hand_levels
                     .levels
                     .insert(result.hand, (level - 1).max(1));
+            }
+            // The Arm's and The Ox's half of the trigger, as `_play_hand_score`
+            // sets it (The Ox's $0 itself is not previewed).
+            if self.preview_trigger {
+                let ox = self.boss().is_some_and(|b| {
+                    b.zero_money_on_most_played && self._is_most_played(result.hand)
+                });
+                if arm || ox {
+                    if let Some(blind) = &mut self.blind {
+                        blind.triggered = true;
+                    }
+                }
             }
             let ctx = score_hand(self, &result, &played, &held);
             let dollars = (ctx.money_gained as i64) + ((self.money - money) as i64);
