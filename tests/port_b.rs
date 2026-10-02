@@ -19,7 +19,7 @@ use jimbot_sim::blinds::{boss_by_name, make_blind, BlindKind};
 use jimbot_sim::cards::{make_card, CardRef, Edition, Enhancement, Rank, Seal, Suit};
 use jimbot_sim::consumables;
 use jimbot_sim::game::{Action, ActionType, GameState, PackChoice, Phase, Tag};
-use jimbot_sim::hands::{HandType, HANDLIST, SECRET_HANDS};
+use jimbot_sim::hands::{HandType, GAME_PAIRS_ORDER, SECRET_HANDS};
 use jimbot_sim::jokers::{self, JokerInstance, JokerRef, JokerSpec};
 use jimbot_sim::shop::ShopSlot;
 use jimbot_sim::state;
@@ -2221,10 +2221,11 @@ fn test_the_secret_hands_are_not_in_the_pool_until_they_are_played() {
 }
 
 #[test]
-fn test_the_pool_is_in_the_game_s_stated_order() {
-    // HANDLIST, strongest first -- see the note in hands.py on why.
+fn test_the_pool_is_in_the_order_the_game_walks_its_hands() {
+    // pairs(G.GAME.hands) under the game's LuaJIT 2.0.5, not G.handlist: the
+    // draws that read this pool index into that walk. See GAME_PAIRS_ORDER.
     let game = declared_run(&[], None);
-    let expected: Vec<HandType> = HANDLIST
+    let expected: Vec<HandType> = GAME_PAIRS_ORDER
         .into_iter()
         .filter(|hand| !SECRET_HANDS.contains(hand))
         .collect();

@@ -1219,8 +1219,12 @@ impl GameState {
     /// a poker hand at random draws from the visible ones only, so the difference
     /// is not cosmetic: it is a nine-entry pool rather than a twelve-entry one,
     /// which changes both the hand picked and where the stream lands afterwards.
+    ///
+    /// In the order the game's `pairs(G.GAME.hands)` walks them
+    /// (`hands::GAME_PAIRS_ORDER`), because every caller is a draw that
+    /// indexes into a list built by that walk.
     pub fn visible_hands(&self) -> Vec<HandType> {
-        crate::hands::HANDLIST
+        crate::hands::GAME_PAIRS_ORDER
             .into_iter()
             .filter(|h| !crate::hands::is_secret(*h) || self.hand_levels.played(*h) > 0)
             .collect()

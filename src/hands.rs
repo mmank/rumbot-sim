@@ -185,6 +185,36 @@ pub const HANDLIST: [HandType; 12] = [
     HandType::HighCard,
 ];
 
+/// `pairs(G.GAME.hands)` in the shipped game: the order a walk of the hash
+/// table meets the twelve hands.
+///
+/// Three draws index into a list built by that walk -- To Do List's hand when
+/// the card is made (card.lua:313) and at round end (card.lua:2977), and each
+/// blind's Orbital Tag hand (UI_definitions.lua:1511) -- so the same draw names
+/// a different hand under a different order. The game's `lua51.dll` is LuaJIT
+/// 2.0.5, whose string hash is the string's alone, so the table literal in
+/// game.lua:2001 lays out the same way in every process; this is that layout,
+/// read off the game's own DLL. (lupa's LuaJIT 2.1 seeds its hash per process,
+/// which is why the order was once thought unrepeatable.) Walking HANDLIST
+/// instead had JOKER189's To Do List name Pair where the game named Three of a
+/// Kind, and the policy farmed Pairs for $4 the game never paid, shopping
+/// itself to -$36. Holds for a run started fresh; one continued from a save
+/// rebuilds the table and may lay it out otherwise.
+pub const GAME_PAIRS_ORDER: [HandType; 12] = [
+    HandType::FlushHouse,
+    HandType::FullHouse,
+    HandType::Flush,
+    HandType::Pair,
+    HandType::HighCard,
+    HandType::StraightFlush,
+    HandType::Straight,
+    HandType::TwoPair,
+    HandType::FlushFive,
+    HandType::FiveOfAKind,
+    HandType::ThreeOfAKind,
+    HandType::FourOfAKind,
+];
+
 /// Planet card that levels each hand, for shop generation.
 pub fn planet_for_hand(hand: HandType) -> &'static str {
     match hand {
