@@ -1797,9 +1797,12 @@ fn test_the_round_shuffle_sorts_by_id_first() {
 // action for action."
 //
 // In Python this replays every checked-in recording through `jimbot_sim.replay`
-// + `jimbot_sim.run.SimRun` and asserts each reaches the end. Rust has no
-// equivalent replayer module: `replay.py`/`run.py` are drivers that PORTING.md
-// puts out of scope, and the port's own replayer is `tests/replay_fixture.rs` +
+// + `jimbot_sim.run.SimRun` and asserts each reaches the end. That replayer
+// was ported later, to the policy crate (`rust/handcrafted/src/replay.rs`, the
+// `replay` binary), and `rust/handcrafted/tests/replay.rs` is this test and
+// `test_replay.py`'s translation tests. When this was written there was none:
+// `replay.py`/`run.py` were drivers that PORTING.md put out of scope, and the
+// port's own replayer was `tests/replay_fixture.rs` +
 // `tools/gen_replay_fixture.py`, which replays all 15 recordings through the
 // engine field-by-field (every one of the 13 fields, all 42 `state_dict` key
 // digests and the RNG pool signature at every step) -- a strictly stronger check
