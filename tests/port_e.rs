@@ -929,6 +929,42 @@ fn test_a_golden_joker_that_perishes_this_round_pays_nothing() {
     assert!(paid(&game, "Golden Joker").is_empty());
 }
 
+/// end_round ticks the row's perishables before the held cards pay
+/// (state_events.lua:109 against :170), so a Mime on its last round retriggers
+/// nothing. JOKER211 (Yellow Deck, stake -5): two Gold 6s held beside it paid
+/// $6 in the game and $12 in the shadow.
+#[test]
+fn test_a_mime_that_perishes_this_round_does_not_retrigger_a_gold_card() {
+    let mut game = run("TESTSEED", "Red Deck", &["Mime"]);
+    {
+        let mut joker = game.jokers[0].borrow_mut();
+        joker.perishable = true;
+        joker.perish_tally = 1;
+    }
+    let gold = make_card(Rank::Six, Suit::Spades);
+    gold.borrow_mut().enhancement = Enhancement::Gold;
+    game.hand = vec![gold];
+    round_end(&mut game, BlindKind::Small);
+    assert!(game.jokers[0].borrow().debuffed);
+    assert_eq!(paid(&game, "gold cards"), vec![3]);
+}
+
+#[test]
+fn test_a_mime_with_rounds_left_retriggers_a_gold_card() {
+    let mut game = run("TESTSEED", "Red Deck", &["Mime"]);
+    {
+        let mut joker = game.jokers[0].borrow_mut();
+        joker.perishable = true;
+        joker.perish_tally = 2;
+    }
+    let gold = make_card(Rank::Six, Suit::Spades);
+    gold.borrow_mut().enhancement = Enhancement::Gold;
+    game.hand = vec![gold];
+    round_end(&mut game, BlindKind::Small);
+    assert!(!game.jokers[0].borrow().debuffed);
+    assert_eq!(paid(&game, "gold cards"), vec![6]);
+}
+
 #[test]
 fn test_a_debuffed_rocket_pays_nothing() {
     let mut game = run("TESTSEED", "Red Deck", &["Rocket"]);

@@ -2563,6 +2563,21 @@ impl GameState {
             self.reroll_price_carried =
                 (5 - self.vouchers.iter().map(|v| v.reroll_discount).sum::<i32>()).max(0);
         }
+        // end_round walks the row once, joker by joker -- its end_of_round
+        // effect, then its rent, then its perish tick (state_events.lua:99-110)
+        // -- and only then the cards held (:170). So a joker that perishes this
+        // round is already off when they pay: JOKER211 (Yellow Deck, stake -5)
+        // held two Gold 6s beside a Mime on its last round, and the game paid
+        // $6 for them where the simulator, retriggering, paid $12.
+        //
+        // The effects themselves still run below, after the ante has turned
+        // (Rocket reads `beaten_was_boss`), but over the row as it stood before
+        // the tick: the game runs a joker's effect before its own tick, so one
+        // perishing now still has its say.
+        let in_row = self.jokers.clone();
+        let round_end_hooks = self.calculating_hooks("round_end");
+        self._charge_stickers(&in_row);
+
         // A gold card pays the moment the round ends -- ease_dollars, right there
         // in the hand loop -- rather than as a row on the cash-out screen.
         let mut gold = 0;
@@ -2602,13 +2617,43 @@ impl GameState {
         self.pending_payout = (if reward { blind.reward } else { 0 }) as i64
             + (self.hands_left.max(0) * per_hand) as i64
             + (self.discards_left.max(0) * per_discard) as i64;
-        self._beat_blind_deck(blind, config.double_tag_after_boss);
+        self._beat_blind_deck(blind, config.double_tag_after_boss, round_end_hooks);
     }
 }
 
 impl GameState {
+    /// The stake's stickers, paid for when the round ends, not when the money
+    /// is taken: rent, and a round off each perishable, which is switched off
+    /// on its last. Over the row the pass began with, not what is left of it.
+    fn _charge_stickers(&mut self, in_row: &[JokerRef]) {
+        for joker in in_row {
+            let (rental, perishable, tally, name) = {
+                let j = joker.borrow();
+                (j.rental, j.perishable, j.perish_tally, j.name())
+            };
+            if rental {
+                self.add_money(-RENTAL_RATE, &format!("{} rental", name));
+            }
+            if perishable && tally > 0 {
+                let mut j = joker.borrow_mut();
+                j.perish_tally -= 1;
+                if j.perish_tally == 0 {
+                    j.debuffed = true;
+                }
+            }
+            if perishable && tally == 1 {
+                self.log(format!("{} perished", name));
+            }
+        }
+    }
+
     /// The deck-return and tag half of `_beat_blind`, split for readability.
-    fn _beat_blind_deck(&mut self, blind: crate::blinds::Blind, double_tag: bool) {
+    fn _beat_blind_deck(
+        &mut self,
+        blind: crate::blinds::Blind,
+        double_tag: bool,
+        round_end_hooks: Vec<(JokerRef, &'static crate::jokers::JokerSpec)>,
+    ) {
         // Every card returns to the deck as the round closes -- but in the game's
         // order: the hand to the discard from the front, the discard to the deck
         // from the back, each inserted at the deck's front.
@@ -2670,34 +2715,11 @@ impl GameState {
 
         // calculate_joker({end_of_round}) -- decay, growth and destruction, all of
         // it the instant the round closes and before the cash-out screen appears.
-        // No copies: the branch is `elseif not context.blueprint`.
-        let in_row = self.jokers.clone();
-        let hooks = self.calculating_hooks("round_end");
-        for (joker, spec) in hooks {
+        // No copies: the branch is `elseif not context.blueprint`. The row was
+        // read in `_beat_blind`, before the stickers were charged.
+        for (joker, spec) in round_end_hooks {
             if let Some(answer) = spec.round_end {
                 answer(&joker, self);
-            }
-        }
-
-        // The stake's stickers are paid for when the round ends, not when the money
-        // is taken. Over the row the pass began with, not what is left of it.
-        for joker in in_row {
-            let (rental, perishable, tally, name) = {
-                let j = joker.borrow();
-                (j.rental, j.perishable, j.perish_tally, j.name())
-            };
-            if rental {
-                self.add_money(-RENTAL_RATE, &format!("{} rental", name));
-            }
-            if perishable && tally > 0 {
-                let mut j = joker.borrow_mut();
-                j.perish_tally -= 1;
-                if j.perish_tally == 0 {
-                    j.debuffed = true;
-                }
-            }
-            if perishable && tally == 1 {
-                self.log(format!("{} perished", name));
             }
         }
 
