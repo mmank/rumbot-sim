@@ -85,7 +85,10 @@ iteration; `--release` only for anything measured for speed.
   `JokerInstance::face_down`) and play as themselves; hiding them from a
   decision is the caller's job. The Python-recorded fixtures compare the RNG
   pools less `rng::LUA_ONLY_POOLS` (The Wheel's `wheel`), which the Python
-  never drew.
+  did not draw when they were recorded.
+- **A rule fixed here is fixed in the Python too**, so the two simulators keep
+  agreeing (the four fixes of 2026-10-04 went back as jimbot-sim `7c441fc`):
+  port the change and a test to `jimbot-sim` when you ship one here.
 - **`jimbot_sim.*` in comments is the Python package**, not this crate: those
   names say where a function was translated from. The crate is `rumbot_sim`.
 

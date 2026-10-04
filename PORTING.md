@@ -288,16 +288,27 @@ the recordings in `external/jimbot-sim/recordings/` and from the seed lists in
   pure optimisation: the cache key is the shape plus the four flags, and the
   answer is a pure function of them, which is precisely why dropping it cannot
   change a result.
-* Face-down cards (see "Face-down cards" below). The Python never turned a
-  card over, so it never rolled The Wheel's `wheel` pool; the Rust does, and
-  the Python-recorded fixtures leave that one pool out of their comparison
+
+The rest of this list was found here first, by the policy's shadow of the real
+game, and was backported to the Python on 2026-10-04 (jimbot-sim `7c441fc`), so
+the two simulators agree on them again. The fixtures were recorded off the
+Python before that, which is why they still leave `wheel` out:
+
+* Face-down cards (see "Face-down cards" below). The Python then never turned
+  a card over, so it never rolled The Wheel's `wheel` pool; the Python-recorded
+  fixtures leave that one pool out of their comparison
   (`rng::LUA_ONLY_POOLS`). Amber Acorn also shuffles its row beside Chicot,
-  which the Python skipped.
+  which the Python skipped. The Python is now checked against the same
+  `facedown.txt` (its `tests/test_face_down_draws.py`).
 * Erosion counts the cards below `GameState::starting_deck_size`, the full
   deck as the run dealt it (`G.GAME.starting_deck_size`, game.lua:2375), where
-  the Python counts below a flat 52. The two agree on every deck but the
+  the Python counted below a flat 52. The two agree on every deck but the
   Abandoned, whose 40 cards the Python paid +48 Mult for. No fixture plays
   Erosion on an Abandoned Deck; the live game found it (DM46XNV1, stake 8).
+* A perishable is ticked before the held cards pay, as end_round walks it, so
+  a Mime on its last round retriggers nothing (JOKER211, Yellow Deck, stake
+  -5).
+* A negative stake -n is stake n with every sticker on, -1 to -7.
 
 ## Speed: Rust against CPython and PyPy
 
