@@ -7,8 +7,8 @@
 //! shop. Every field is compared, and the totals are checked so a table that
 //! merely drops a row cannot pass.
 
-use jimbot_sim::consumable_data as cd;
-use jimbot_sim::joker_data as jd;
+use rumbot_sim::consumable_data as cd;
+use rumbot_sim::joker_data as jd;
 
 const JOKER_FIXTURE: &str = include_str!("fixtures/joker_data.txt");
 const CONSUMABLE_FIXTURE: &str = include_str!("fixtures/consumable_data.txt");

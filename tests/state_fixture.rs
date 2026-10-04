@@ -14,12 +14,12 @@
 //! translated) and then populate the joker, consumable, shop and pack rows so
 //! the four renderers are compared with something in them, not just empty.
 
-use jimbot_sim::cards::{wrap, Card, Edition, Enhancement, Rank, Seal, Suit};
-use jimbot_sim::consumables::{ConsumableInstance, ConsumableRef, ConsumableSpec};
-use jimbot_sim::game::{GameState, PackChoice, Phase};
-use jimbot_sim::jokers::JokerRef;
-use jimbot_sim::shop::{pack_from_key, voucher_by_key, Shop, ShopSlot};
-use jimbot_sim::state::{flatten_state, state_dict, top_key, StateValue};
+use rumbot_sim::cards::{wrap, Card, Edition, Enhancement, Rank, Seal, Suit};
+use rumbot_sim::consumables::{ConsumableInstance, ConsumableRef, ConsumableSpec};
+use rumbot_sim::game::{GameState, PackChoice, Phase};
+use rumbot_sim::jokers::JokerRef;
+use rumbot_sim::shop::{pack_from_key, voucher_by_key, Shop, ShopSlot};
+use rumbot_sim::state::{flatten_state, state_dict, top_key, StateValue};
 
 const FIXTURE: &str = include_str!("fixtures/state.txt");
 
@@ -149,7 +149,7 @@ fn split_list(text: &str) -> Vec<String> {
 fn build_joker(spec: &str) -> JokerRef {
     let fields: Vec<&str> = spec.split('|').collect();
     assert_eq!(fields.len(), 11, "joker spec {:?}", spec);
-    let joker = jimbot_sim::jokers::make(fields[0]);
+    let joker = rumbot_sim::jokers::make(fields[0]);
     {
         let mut j = joker.borrow_mut();
         if !fields[1].is_empty() {
@@ -200,16 +200,16 @@ fn build_consumable(spec: &str) -> ConsumableRef {
     } else {
         Edition::None
     };
-    let spec = jimbot_sim::consumables::spec_or_panic(fields[0]);
+    let spec = rumbot_sim::consumables::spec_or_panic(fields[0]);
     let mut held = ConsumableInstance::new(spec, edition);
     if fields.len() > 2 && !fields[2].is_empty() {
         held.extra_sell_value = fields[2].parse().unwrap();
     }
-    jimbot_sim::consumables::make_ref(held)
+    rumbot_sim::consumables::make_ref(held)
 }
 
 fn consumable_spec(name: &str) -> &'static ConsumableSpec {
-    jimbot_sim::consumables::spec_or_panic(name)
+    rumbot_sim::consumables::spec_or_panic(name)
 }
 
 /// One shop slot, from the generator's ten `|`-separated fields.

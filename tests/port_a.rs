@@ -19,16 +19,16 @@
 use std::collections::BTreeMap;
 use std::rc::Rc;
 
-use jimbot_sim::blinds::{boss_by_name, make_blind, BlindKind};
-use jimbot_sim::cards::{
+use rumbot_sim::blinds::{boss_by_name, make_blind, BlindKind};
+use rumbot_sim::cards::{
     label_of, make_card, uid_of, CardRef, Edition, Enhancement, Rank, Seal, Suit,
 };
-use jimbot_sim::consumables;
-use jimbot_sim::effects::ScoreContext;
-use jimbot_sim::game::{Action, ActionType, GameState};
-use jimbot_sim::hands::{evaluate, EvalFlags, HandLevels, HandType};
-use jimbot_sim::jokers::{self, JokerInstance};
-use jimbot_sim::scoring::{effective_specs, score_hand};
+use rumbot_sim::consumables;
+use rumbot_sim::effects::ScoreContext;
+use rumbot_sim::game::{Action, ActionType, GameState};
+use rumbot_sim::hands::{evaluate, EvalFlags, HandLevels, HandType};
+use rumbot_sim::jokers::{self, JokerInstance};
+use rumbot_sim::scoring::{effective_specs, score_hand};
 
 const S: Suit = Suit::Spades;
 const H: Suit = Suit::Hearts;

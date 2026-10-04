@@ -15,10 +15,10 @@
 
 use std::collections::BTreeSet;
 
-use jimbot_sim::cards::{make_card, Rank, Suit};
-use jimbot_sim::game::GameState;
-use jimbot_sim::jokers::{self, Rarity};
-use jimbot_sim::scoring;
+use rumbot_sim::cards::{make_card, Rank, Suit};
+use rumbot_sim::game::GameState;
+use rumbot_sim::jokers::{self, Rarity};
+use rumbot_sim::scoring;
 
 const FIXTURE: &str = include_str!("fixtures/joker_specs.txt");
 

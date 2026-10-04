@@ -11,8 +11,8 @@
 
 use std::rc::Rc;
 
-use jimbot_sim::game::{Action, GameState};
-use jimbot_sim::state::{key_digests, state_dict};
+use rumbot_sim::game::{Action, GameState};
+use rumbot_sim::state::{key_digests, state_dict};
 
 /// Play a run into a state worth cloning: past the opening deal, with jokers,
 /// consumables and a shop reached.

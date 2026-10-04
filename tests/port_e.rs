@@ -14,16 +14,16 @@
 use std::collections::BTreeMap;
 use std::rc::Rc;
 
-use jimbot_sim::blinds::{all_bosses, boss_by_name, make_blind, BlindKind, BossEffect};
-use jimbot_sim::cards::{
+use rumbot_sim::blinds::{all_bosses, boss_by_name, make_blind, BlindKind, BossEffect};
+use rumbot_sim::cards::{
     debuffed_of, make_card, rank_of, suit_of, uid_of, CardRef, Edition, Enhancement, Rank, Seal,
     Suit,
 };
-use jimbot_sim::consumables::spec_or_panic;
-use jimbot_sim::game::{Action, ActionType, GameState, Phase};
-use jimbot_sim::hands::HandType;
-use jimbot_sim::jokers::{self, JokerRef};
-use jimbot_sim::rng::{pseudohash, py_mod, round13, TW223};
+use rumbot_sim::consumables::spec_or_panic;
+use rumbot_sim::game::{Action, ActionType, GameState, Phase};
+use rumbot_sim::hands::HandType;
+use rumbot_sim::jokers::{self, JokerRef};
+use rumbot_sim::rng::{pseudohash, py_mod, round13, TW223};
 
 // ==========================================================================
 // shared builders
@@ -1291,7 +1291,7 @@ fn test_a_debuffed_glass_card_does_not_shatter() {
     let mut game = GameState::new("QWERTYUI", "Blue Deck", 1);
     for _ in 0..40 {
         // any draw at all would break one
-        assert!(jimbot_sim::scoring::shattered_glass(&mut game, &[glass_card(true)]).is_empty());
+        assert!(rumbot_sim::scoring::shattered_glass(&mut game, &[glass_card(true)]).is_empty());
     }
 }
 
@@ -1299,7 +1299,7 @@ fn test_a_debuffed_glass_card_does_not_shatter() {
 fn test_it_does_not_move_the_glass_stream() {
     let mut game = GameState::new("QWERTYUI", "Blue Deck", 1);
     let before = game.rng.state();
-    jimbot_sim::scoring::shattered_glass(&mut game, &[glass_card(true)]);
+    rumbot_sim::scoring::shattered_glass(&mut game, &[glass_card(true)]);
     assert_eq!(game.rng.state(), before);
 }
 
@@ -1309,7 +1309,7 @@ fn test_a_live_glass_card_still_rolls() {
     let before = game.rng.state();
     let mut broke = 0;
     for _ in 0..200 {
-        broke += jimbot_sim::scoring::shattered_glass(&mut game, &[glass_card(false)]).len();
+        broke += rumbot_sim::scoring::shattered_glass(&mut game, &[glass_card(false)]).len();
     }
     assert_ne!(game.rng.state(), before);
     assert!(
@@ -1434,7 +1434,7 @@ fn test_a_hook_discard_costs_no_discard() {
 fn riff_row(seed: &str, deck: &str, stake: i32, keys: &[&str]) -> GameState {
     let mut game = GameState::new(seed, deck, stake);
     for key in keys {
-        let name = jimbot_sim::shop_pool::name_by_joker_key(key).unwrap();
+        let name = rumbot_sim::shop_pool::name_by_joker_key(key).unwrap();
         game.gain_joker(&joker(name));
     }
     game
@@ -1454,7 +1454,7 @@ fn select_blind_riff(game: &mut GameState) {
 fn riff_keys(game: &GameState) -> Vec<&'static str> {
     game.jokers
         .iter()
-        .map(|j| jimbot_sim::shop_pool::key_by_joker_name(j.borrow().name()).unwrap())
+        .map(|j| rumbot_sim::shop_pool::key_by_joker_name(j.borrow().name()).unwrap())
         .collect()
 }
 
@@ -1693,7 +1693,7 @@ fn test_madness_draws_by_age_not_by_row_position() {
 fn test_a_joker_bought_later_from_an_earlier_slot_is_older() {
     // The N1OA90W1 shop: slot two bought first, then slot one. The ages are
     // stamped when the shop builds the shelf, not when each is bought.
-    use jimbot_sim::shop::ShopSlot;
+    use rumbot_sim::shop::ShopSlot;
 
     let shop_then_blind = |buys: [i32; 2]| -> (GameState, JokerRef, JokerRef) {
         let mut game = GameState::new("N1OA90W1", "Red Deck", 1);
@@ -1712,7 +1712,7 @@ fn test_a_joker_bought_later_from_an_earlier_slot_is_older() {
                     joker: Some(popcorn.clone()),
                     consumable: None,
                     card: None,
-                    sort_id: jimbot_sim::cards::next_sort_id(),
+                    sort_id: rumbot_sim::cards::next_sort_id(),
                 },
                 ShopSlot {
                     kind: "joker",
@@ -1721,7 +1721,7 @@ fn test_a_joker_bought_later_from_an_earlier_slot_is_older() {
                     joker: Some(summit.clone()),
                     consumable: None,
                     card: None,
-                    sort_id: jimbot_sim::cards::next_sort_id(),
+                    sort_id: rumbot_sim::cards::next_sort_id(),
                 },
             ];
         }
@@ -1766,8 +1766,8 @@ fn test_a_joker_bought_later_from_an_earlier_slot_is_older() {
 
 #[test]
 fn test_a_pack_slot_keeps_its_build_order_when_taken_out_of_order() {
-    use jimbot_sim::game::PackChoice;
-    use jimbot_sim::shop_pool::PackCard;
+    use rumbot_sim::game::PackChoice;
+    use rumbot_sim::shop_pool::PackCard;
 
     let mut game = GameState::new("TESTSEED", "Red Deck", 1);
     // Build the two the way _open_pack does: in slot order, before either is
@@ -1834,7 +1834,7 @@ fn test_the_round_shuffle_sorts_by_id_first() {
 //
 // In Python this replays every checked-in recording through `jimbot_sim.replay`
 // + `jimbot_sim.run.SimRun` and asserts each reaches the end. That replayer
-// was ported later, to the policy crate (`rust/handcrafted/src/replay.rs`, the
+// was ported later, to the policy crate (rumbot's `rust/handcrafted/src/replay.rs`, the
 // `replay` binary), and `rust/handcrafted/tests/replay.rs` is this test and
 // `test_replay.py`'s translation tests. When this was written there was none:
 // `replay.py`/`run.py` were drivers that PORTING.md put out of scope, and the

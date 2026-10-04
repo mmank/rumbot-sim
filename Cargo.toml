@@ -1,5 +1,5 @@
 [package]
-name = "jimbot_sim"
+name = "rumbot_sim"
 version = "0.1.0"
 edition = "2021"
 description = "Balatro as a Rust library: the pure-Python simulator from jimbot-sim, translated"
@@ -10,7 +10,7 @@ license = "MIT"
 [dev-dependencies]
 
 [lib]
-name = "jimbot_sim"
+name = "rumbot_sim"
 path = "src/lib.rs"
 
 [profile.release]
@@ -25,7 +25,7 @@ codegen-units = 1
 #
 #     cargo test --profile quick
 #
-# Use `--release` for anything measured for speed (see rust/PORTING.md).
+# Use `--release` for anything measured for speed (see PORTING.md).
 [profile.quick]
 inherits = "release"
 lto = false

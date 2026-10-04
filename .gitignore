@@ -1,1 +1,5 @@
-target/
+/target/
+
+# Claude Code: per-machine state
+/.claude/worktrees/
+/.claude/settings.local.json

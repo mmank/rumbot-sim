@@ -15,7 +15,7 @@
 
 use std::time::Instant;
 
-use jimbot_sim::game::{Action, ActionType, GameState, Phase};
+use rumbot_sim::game::{Action, ActionType, GameState, Phase};
 
 const STEPS_PER_RUN: usize = 400;
 /// One-chip blinds with endless play drive the ante to where Python's

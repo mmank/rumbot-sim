@@ -5,7 +5,7 @@
 //! rather than on printed digits -- which is the only test that separates
 //! replication from coincidence.
 
-use jimbot_sim::rng::{pseudohash, PessimisticRng, RunRng, TW223};
+use rumbot_sim::rng::{pseudohash, PessimisticRng, RunRng, TW223};
 
 const FIXTURE: &str = include_str!("fixtures/rng_stream.txt");
 

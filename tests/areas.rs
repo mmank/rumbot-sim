@@ -25,12 +25,12 @@
 
 use std::rc::Rc;
 
-use jimbot_sim::cards::{
+use rumbot_sim::cards::{
     enhancement_of, extra_chips_of, make_card, played_this_ante_of, set_played_this_ante, Edition,
     Enhancement, Rank, Suit,
 };
-use jimbot_sim::game::GameState;
-use jimbot_sim::jokers::{JokerInstance, JokerSpec};
+use rumbot_sim::game::GameState;
+use rumbot_sim::jokers::{JokerInstance, JokerSpec};
 
 const FIXTURE: &str = "\
 money\t10\t5\t-3\t0\t12\n\
@@ -135,8 +135,8 @@ fn destroy_joker_removes_exactly_that_joker_and_leaves_the_others() {
         ..JokerSpec::DEFAULT
     };
     let mut game = game();
-    let first = jimbot_sim::jokers::make_ref(JokerInstance::new(&JOKER));
-    let second = jimbot_sim::jokers::make_ref(JokerInstance::new(&JOKER));
+    let first = rumbot_sim::jokers::make_ref(JokerInstance::new(&JOKER));
+    let second = rumbot_sim::jokers::make_ref(JokerInstance::new(&JOKER));
     game.jokers.push(first.clone());
     game.jokers.push(second.clone());
 
@@ -146,7 +146,7 @@ fn destroy_joker_removes_exactly_that_joker_and_leaves_the_others() {
     assert!(Rc::ptr_eq(&game.jokers[0], &second));
 
     // An eternal joker is never removed, whatever is asked.
-    let eternal = jimbot_sim::jokers::make_ref(JokerInstance::new(&JOKER));
+    let eternal = rumbot_sim::jokers::make_ref(JokerInstance::new(&JOKER));
     eternal.borrow_mut().eternal = true;
     game.jokers.push(eternal.clone());
     game.destroy_joker(&eternal, "test");
@@ -200,7 +200,7 @@ fn credit_card_moves_the_floor_and_the_free_escape_stays() {
     let mut game = game();
     game.money = 12;
     game.jokers
-        .push(jimbot_sim::jokers::make_ref(JokerInstance::new(&CREDIT)));
+        .push(rumbot_sim::jokers::make_ref(JokerInstance::new(&CREDIT)));
 
     assert_eq!(game.bankrupt_at(), want_bankrupt);
     assert_eq!(game.spendable(), want_spendable);
@@ -220,7 +220,7 @@ fn card_cost_is_the_games_set_cost_formula() {
     let mut game = game();
     assert_eq!(game.card_cost(4, Edition::None), 4);
     // A $10 voucher under Clearance Sale is floor(10.5 * 0.75) = $7, not $8.
-    game.vouchers.push(jimbot_sim::shop::Voucher {
+    game.vouchers.push(rumbot_sim::shop::Voucher {
         discount_percent: 25,
         ..Default::default()
     });
@@ -244,6 +244,6 @@ fn seen_centers_is_the_centres_that_currently_exist() {
         ..JokerSpec::DEFAULT
     };
     game.jokers
-        .push(jimbot_sim::jokers::make_ref(JokerInstance::new(&JOKER)));
+        .push(rumbot_sim::jokers::make_ref(JokerInstance::new(&JOKER)));
     assert!(game.seen_centers().contains("j_joker"));
 }

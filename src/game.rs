@@ -7,7 +7,7 @@
 //!
 //! This file currently holds the vocabulary the rest of the machine is built
 //! from -- the phase enum, the action table and the skip tags. The state machine
-//! itself is the remaining work; see `rust/PORTING.md`.
+//! itself is the remaining work; see `PORTING.md`.
 
 use std::collections::HashMap;
 

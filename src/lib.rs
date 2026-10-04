@@ -1,7 +1,7 @@
 //! Balatro as a Rust library.
 //!
 //! A translation of `jimbot_sim`, the pure-Python simulator in the
-//! `jimbot-sim` submodule. Deterministic given a seed, no I/O, and the run is
+//! `jimbot-sim` repository. Deterministic given a seed, no I/O, and the run is
 //! a phase-based state machine:
 //!
 //! ```text

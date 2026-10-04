@@ -16,10 +16,10 @@
 //! one, two and five -- and beside Chicot, which leaves the row face up but
 //! shuffled all the same.
 
-use jimbot_sim::blinds::{boss_by_name, make_blind, BlindKind};
-use jimbot_sim::cards::CardRef;
-use jimbot_sim::game::{Action, ActionType, GameState};
-use jimbot_sim::jokers::{make_ref, spec_or_panic, JokerInstance};
+use rumbot_sim::blinds::{boss_by_name, make_blind, BlindKind};
+use rumbot_sim::cards::CardRef;
+use rumbot_sim::game::{Action, ActionType, GameState};
+use rumbot_sim::jokers::{make_ref, spec_or_panic, JokerInstance};
 
 const FIXTURE: &str = include_str!("fixtures/facedown.txt");
 

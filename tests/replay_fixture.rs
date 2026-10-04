@@ -37,11 +37,11 @@ use std::collections::HashMap;
 use std::path::PathBuf;
 use std::rc::Rc;
 
-use jimbot_sim::cards::{self, CardRef};
-use jimbot_sim::game::{Action, ActionType, GameState, PackChoice};
-use jimbot_sim::jokers::JokerRef;
-use jimbot_sim::shop_pool::key_by_joker_name;
-use jimbot_sim::state::{digest_leaves, flatten_state, key_digests, state_dict, StateValue};
+use rumbot_sim::cards::{self, CardRef};
+use rumbot_sim::game::{Action, ActionType, GameState, PackChoice};
+use rumbot_sim::jokers::JokerRef;
+use rumbot_sim::shop_pool::key_by_joker_name;
+use rumbot_sim::state::{digest_leaves, flatten_state, key_digests, state_dict, StateValue};
 
 /// The recording stems. `13` does not exist (the raw files are 1..16 minus 13).
 const RECORDINGS: [&str; 15] = [
@@ -62,7 +62,7 @@ fn rng_signature(game: &GameState) -> String {
     // fixture cannot know: see `rng::LUA_ONLY_POOLS`.
     let mut keys: Vec<&String> = state
         .keys()
-        .filter(|key| !jimbot_sim::rng::LUA_ONLY_POOLS.contains(&key.as_str()))
+        .filter(|key| !rumbot_sim::rng::LUA_ONLY_POOLS.contains(&key.as_str()))
         .collect();
     keys.sort();
     let parts: Vec<String> = keys

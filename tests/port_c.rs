@@ -16,18 +16,18 @@
 
 use std::collections::{BTreeSet, HashSet};
 
-use jimbot_sim::blinds::{ante_base_chips, make_blind, BlindKind};
-use jimbot_sim::cards::{make_card, CardRef, Edition, Rank, Suit};
-use jimbot_sim::consumables::spec_or_panic;
-use jimbot_sim::game::{
+use rumbot_sim::blinds::{ante_base_chips, make_blind, BlindKind};
+use rumbot_sim::cards::{make_card, CardRef, Edition, Rank, Suit};
+use rumbot_sim::consumables::spec_or_panic;
+use rumbot_sim::game::{
     tag_by_key, tag_key, Action, ActionType, GameState, PackChoice, Phase, Tag, IMMEDIATE_TAGS,
     TAG_POOL,
 };
-use jimbot_sim::hands::{HandType, HANDLIST, SECRET_HANDS};
-use jimbot_sim::jokers::{self, JokerRef};
-use jimbot_sim::shop::{all_vouchers, pack_from_key, voucher_by_key, PackKind, PackSpec};
-use jimbot_sim::shop_pool::{build_voucher_pool, UNAVAILABLE};
-use jimbot_sim::tag_data::TAG_DATA;
+use rumbot_sim::hands::{HandType, HANDLIST, SECRET_HANDS};
+use rumbot_sim::jokers::{self, JokerRef};
+use rumbot_sim::shop::{all_vouchers, pack_from_key, voucher_by_key, PackKind, PackSpec};
+use rumbot_sim::shop_pool::{build_voucher_pool, UNAVAILABLE};
+use rumbot_sim::tag_data::TAG_DATA;
 
 fn run() -> GameState {
     GameState::new("TESTSEED", "Red Deck", 1)

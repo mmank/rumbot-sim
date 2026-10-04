@@ -9,13 +9,13 @@
 
 use std::collections::BTreeMap;
 
-use jimbot_sim::cards::{make_card, uid_of, CardRef, Edition, Enhancement, Rank, Seal, Suit};
-use jimbot_sim::game::GameState;
-use jimbot_sim::hands::HandLevels;
-use jimbot_sim::jokers::{self, JokerInstance, JokerRef};
-use jimbot_sim::rng::RunRng;
-use jimbot_sim::scoring::{held_triggers, score_hand, shattered_glass};
-use jimbot_sim::shop_pool::{self, PackCard};
+use rumbot_sim::cards::{make_card, uid_of, CardRef, Edition, Enhancement, Rank, Seal, Suit};
+use rumbot_sim::game::GameState;
+use rumbot_sim::hands::HandLevels;
+use rumbot_sim::jokers::{self, JokerInstance, JokerRef};
+use rumbot_sim::rng::RunRng;
+use rumbot_sim::scoring::{held_triggers, score_hand, shattered_glass};
+use rumbot_sim::shop_pool::{self, PackCard};
 
 const FIXTURE: &str = include_str!("fixtures/scoring.txt");
 const EMPTY: &[&str] = &[];

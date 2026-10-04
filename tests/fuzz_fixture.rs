@@ -30,9 +30,9 @@
 use std::collections::HashMap;
 use std::path::PathBuf;
 
-use jimbot_sim::cards::{self, CardRef};
-use jimbot_sim::game::{Action, ActionType, GameState, PackChoice};
-use jimbot_sim::state::{
+use rumbot_sim::cards::{self, CardRef};
+use rumbot_sim::game::{Action, ActionType, GameState, PackChoice};
+use rumbot_sim::state::{
     digest_leaves, flatten_state, key_digests, state_dict, top_key, StateValue,
 };
 
@@ -74,7 +74,7 @@ fn rng_signature(game: &GameState) -> String {
     // fixture cannot know: see `rng::LUA_ONLY_POOLS`.
     let mut keys: Vec<&String> = state
         .keys()
-        .filter(|key| !jimbot_sim::rng::LUA_ONLY_POOLS.contains(&key.as_str()))
+        .filter(|key| !rumbot_sim::rng::LUA_ONLY_POOLS.contains(&key.as_str()))
         .collect();
     keys.sort();
     let parts: Vec<String> = keys

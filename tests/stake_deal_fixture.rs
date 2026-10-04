@@ -7,10 +7,10 @@
 //! artefact; this asks the narrow question directly and permanently.
 //!
 //!     /home/marcin/balatro_bot/.venv/bin/python tools/gen_stake_deal_fixture.py \
-//!         > rust/jimbot_sim/tests/fixtures/stake_deal.txt
-//!     cargo test -p jimbot_sim --offline --test stake_deal_fixture
+//!         > tests/fixtures/stake_deal.txt
+//!     cargo test -p rumbot_sim --offline --test stake_deal_fixture
 
-use jimbot_sim::game::{Action, ActionType, GameState};
+use rumbot_sim::game::{Action, ActionType, GameState};
 
 #[derive(Debug)]
 struct Case {
@@ -27,7 +27,7 @@ fn rng_signature(game: &GameState) -> String {
     // fixture cannot know: see `rng::LUA_ONLY_POOLS`.
     let mut keys: Vec<&String> = state
         .keys()
-        .filter(|key| !jimbot_sim::rng::LUA_ONLY_POOLS.contains(&key.as_str()))
+        .filter(|key| !rumbot_sim::rng::LUA_ONLY_POOLS.contains(&key.as_str()))
         .collect();
     keys.sort();
     keys.iter()

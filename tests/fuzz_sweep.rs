@@ -31,14 +31,14 @@
 //! range, both digests and the exact `--detail` command that turns it into a
 //! runnable `tests/fuzz_fixture.rs` comparison. Every run stays under ante 16
 //! by construction (`blinds` reports Python's unbounded int, which the Rust
-//! i64 `ante_base_chips` saturates at ante 16; see `rust/PORTING.md`).
+//! i64 `ante_base_chips` saturates at ante 16; see `PORTING.md`).
 
 use std::collections::BTreeMap;
 use std::path::PathBuf;
 
-use jimbot_sim::game::{Action, ActionType, GameState};
-use jimbot_sim::rng::RunRng;
-use jimbot_sim::state::{
+use rumbot_sim::game::{Action, ActionType, GameState};
+use rumbot_sim::rng::RunRng;
+use rumbot_sim::state::{
     flatten_state, fnv1a64, fnv1a64_update, leaves_to_bytes, state_dict, StateValue,
     FNV_OFFSET_BASIS,
 };
@@ -64,7 +64,7 @@ fn rng_signature(game: &GameState) -> String {
     // fixture cannot know: see `rng::LUA_ONLY_POOLS`.
     let mut keys: Vec<&String> = state
         .keys()
-        .filter(|key| !jimbot_sim::rng::LUA_ONLY_POOLS.contains(&key.as_str()))
+        .filter(|key| !rumbot_sim::rng::LUA_ONLY_POOLS.contains(&key.as_str()))
         .collect();
     keys.sort();
     let parts: Vec<String> = keys

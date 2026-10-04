@@ -6,12 +6,12 @@
 //! the four scores are the engine's own numbers: X5 for one stencil, X16 for
 //! two beside a plain joker, X125 for three, all confirmed against the game.
 //!
-//!     cargo test -p jimbot_sim --offline --test joker_stencil
+//!     cargo test -p rumbot_sim --offline --test joker_stencil
 
-use jimbot_sim::cards::{make_card, Rank, Suit};
-use jimbot_sim::game::GameState;
-use jimbot_sim::jokers;
-use jimbot_sim::scoring;
+use rumbot_sim::cards::{make_card, Rank, Suit};
+use rumbot_sim::game::GameState;
+use rumbot_sim::jokers;
+use rumbot_sim::scoring;
 
 // "S_K H_K D_2 C_5 H_7 S_9 D_3 C_4": a pair of Kings, and six held cards.
 const HAND: [(Rank, Suit); 8] = [

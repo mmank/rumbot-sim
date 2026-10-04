@@ -9,16 +9,16 @@
 
 use std::collections::HashMap;
 
-use jimbot_sim::blinds::{
+use rumbot_sim::blinds::{
     all_bosses, ante_base_chips, boss_by_name, make_blind, reward_for, BlindKind, BOSSES,
     FINISHER_BOSSES, FINISHER_REWARD,
 };
-use jimbot_sim::boss_data::eligible_bosses;
-use jimbot_sim::cards::Suit;
-use jimbot_sim::deck_data::{deck_config, DeckConfig, DECK_DATA};
-use jimbot_sim::pack_data::PACK_DATA;
-use jimbot_sim::tag_data::{tag_row, tag_row_by_key, TAG_DATA};
-use jimbot_sim::voucher_data::{voucher_row, VOUCHER_DATA};
+use rumbot_sim::boss_data::eligible_bosses;
+use rumbot_sim::cards::Suit;
+use rumbot_sim::deck_data::{deck_config, DeckConfig, DECK_DATA};
+use rumbot_sim::pack_data::PACK_DATA;
+use rumbot_sim::tag_data::{tag_row, tag_row_by_key, TAG_DATA};
+use rumbot_sim::voucher_data::{voucher_row, VOUCHER_DATA};
 
 const FIXTURE: &str = include_str!("fixtures/blinds.txt");
 

@@ -15,14 +15,14 @@
 use std::collections::{BTreeMap, BTreeSet, HashMap, HashSet};
 use std::rc::Rc;
 
-use jimbot_sim::blinds::{boss_by_name, make_blind, BlindKind};
-use jimbot_sim::cards::{make_card, CardRef, Edition, Enhancement, Rank, Seal, Suit};
-use jimbot_sim::consumables;
-use jimbot_sim::game::{Action, ActionType, GameState, PackChoice, Phase, Tag};
-use jimbot_sim::hands::{HandType, GAME_PAIRS_ORDER, SECRET_HANDS};
-use jimbot_sim::jokers::{self, JokerInstance, JokerRef, JokerSpec};
-use jimbot_sim::shop::ShopSlot;
-use jimbot_sim::state;
+use rumbot_sim::blinds::{boss_by_name, make_blind, BlindKind};
+use rumbot_sim::cards::{make_card, CardRef, Edition, Enhancement, Rank, Seal, Suit};
+use rumbot_sim::consumables;
+use rumbot_sim::game::{Action, ActionType, GameState, PackChoice, Phase, Tag};
+use rumbot_sim::hands::{HandType, GAME_PAIRS_ORDER, SECRET_HANDS};
+use rumbot_sim::jokers::{self, JokerInstance, JokerRef, JokerSpec};
+use rumbot_sim::shop::ShopSlot;
+use rumbot_sim::state;
 
 // ==========================================================================
 // shared builders
@@ -395,7 +395,7 @@ fn face_card(game: &GameState) -> CardRef {
         .iter()
         .find(|c| {
             matches!(
-                jimbot_sim::cards::rank_of(c),
+                rumbot_sim::cards::rank_of(c),
                 Rank::Jack | Rank::Queen | Rank::King
             )
         })
@@ -420,7 +420,7 @@ fn test_canio_ignores_a_number_card() {
         .iter()
         .find(|c| {
             !matches!(
-                jimbot_sim::cards::rank_of(c),
+                rumbot_sim::cards::rank_of(c),
                 Rank::Jack | Rank::Queen | Rank::King
             )
         })
@@ -1143,8 +1143,8 @@ fn row_names(game: &GameState) -> Vec<String> {
 }
 
 /// A copy of the run's RNG state, so a probe draw does not move the run.
-fn copy_rng(rng: &jimbot_sim::rng::RunRng) -> jimbot_sim::rng::RunRng {
-    let mut out = jimbot_sim::rng::RunRng::new(rng.seed.clone());
+fn copy_rng(rng: &rumbot_sim::rng::RunRng) -> rumbot_sim::rng::RunRng {
+    let mut out = rumbot_sim::rng::RunRng::new(rng.seed.clone());
     out.pools = rng.pools.clone();
     out.live = rng.live.clone();
     out.pessimistic = rng.pessimistic;
@@ -1585,13 +1585,13 @@ fn test_surviving_does_not() {
 
 #[test]
 fn test_the_flag_swaps_gros_michel_for_cavendish_in_the_pool() {
-    let gros = jimbot_sim::shop_pool::key_by_joker_name("Gros Michel").unwrap();
+    let gros = rumbot_sim::shop_pool::key_by_joker_name("Gros Michel").unwrap();
     let owned: [&str; 0] = [];
     let seen: [&str; 0] = [];
     let no_flags: [&str; 0] = [];
-    let before = jimbot_sim::shop_pool::build_pool(1u8, &owned, &seen, false, &no_flags);
+    let before = rumbot_sim::shop_pool::build_pool(1u8, &owned, &seen, false, &no_flags);
     let after =
-        jimbot_sim::shop_pool::build_pool(1u8, &owned, &seen, false, &["gros_michel_extinct"]);
+        rumbot_sim::shop_pool::build_pool(1u8, &owned, &seen, false, &["gros_michel_extinct"]);
     assert!(before.contains(&gros.to_string()) && !before.contains(&"j_cavendish".to_string()));
     assert!(after.contains(&"j_cavendish".to_string()) && !after.contains(&gros.to_string()));
     assert_eq!(
@@ -1668,7 +1668,7 @@ fn test_a_rare_tag_joker_respects_the_enhancement_gate() {
 // it.
 //
 // `jimbot_sim.compare` is the policy's live driver, which the port leaves out of
-// scope (see rust/PORTING.md). The two pure functions the assertions use --
+// scope (see PORTING.md). The two pure functions the assertions use --
 // `deck_cards` and `differences` -- are reimplemented here as test-local code,
 // the same way `tests/port_a.rs` reimplements the replay driver's `ranked`.
 // `differences` compares every top-level state key, so "no difference" means the
@@ -1919,7 +1919,7 @@ fn test_a_hand_in_flight_is_not_compared() {
 
 fn honed(seed: &str) -> GameState {
     let mut game = GameState::new(seed, "Red Deck", 1);
-    let voucher = jimbot_sim::shop::voucher_by_key("v_hone").unwrap();
+    let voucher = rumbot_sim::shop::voucher_by_key("v_hone").unwrap();
     game.vouchers.push(voucher);
     game._redeem_voucher(voucher);
     assert_eq!(game.edition_rate(), 2.0);
@@ -1934,8 +1934,8 @@ fn test_a_buffoon_pack_joker_is_polled_at_the_runs_edition_rate() {
     // 0.99058: above 1 - 0.006*2 (polychrome at Hone's rate) but below
     // 1 - 0.006 (polychrome without it), and above 1 - 0.02 either way.
     let pack = |rate: f64| -> Vec<(String, String)> {
-        let mut rng = jimbot_sim::rng::RunRng::new("H7NS6Y2Y");
-        let cards = jimbot_sim::shop_pool::pack_contents(
+        let mut rng = rumbot_sim::rng::RunRng::new("H7NS6Y2Y");
+        let cards = rumbot_sim::shop_pool::pack_contents(
             &mut rng,
             "Buffoon",
             2,
@@ -2261,14 +2261,14 @@ fn test_a_joker_only_takes_the_stickers_its_centre_allows() {
     // shop perishable and was debuffed five rounds later in a run where the game
     // had left it alone.
     assert_eq!(
-        jimbot_sim::shop_pool::takes_sticker("Ride the Bus"),
+        rumbot_sim::shop_pool::takes_sticker("Ride the Bus"),
         (true, false)
     );
-    assert!(!jimbot_sim::shop_pool::takes_sticker("Gros Michel").0);
+    assert!(!rumbot_sim::shop_pool::takes_sticker("Gros Michel").0);
 
     let mut game = GameState::new("TESTSEED", "Red Deck", 8);
     for name in ["Ride the Bus", "Gros Michel", "Joker"] {
-        let (eternal_ok, perishable_ok) = jimbot_sim::shop_pool::takes_sticker(name);
+        let (eternal_ok, perishable_ok) = rumbot_sim::shop_pool::takes_sticker(name);
         for _ in 0..40 {
             let joker = joker_ref(name);
             game._apply_stickers(&joker, false);
@@ -2496,7 +2496,7 @@ fn context_read(game: &GameState, name: &str) -> f64 {
 fn context_act(game: &mut GameState, name: &str) {
     match name {
         "Hologram" => {
-            let copy = jimbot_sim::cards::copy_card(&game.hand[0]);
+            let copy = rumbot_sim::cards::copy_card(&game.hand[0]);
             game.add_card_to_hand(&copy);
         }
         "Constellation" => game.use_consumable(consumables::spec_or_panic("Mercury"), &[], false),
@@ -2513,7 +2513,7 @@ fn context_act(game: &mut GameState, name: &str) {
         }
         "Flash Card" => game.step(&Action::new(ActionType::Reroll)),
         "Red Card" => {
-            let spec = jimbot_sim::shop::pack_from_key("p_buffoon_normal_1");
+            let spec = rumbot_sim::shop::pack_from_key("p_buffoon_normal_1");
             game._open_pack(spec, false);
             game.step(&Action::new(ActionType::SkipPack));
         }
@@ -2528,7 +2528,7 @@ fn context_act(game: &mut GameState, name: &str) {
             game.step(&Action::with_cards(ActionType::Play, vec![0]));
         }
         "Hallucination" => {
-            let spec = jimbot_sim::shop::pack_from_key("p_arcana_normal_1");
+            let spec = rumbot_sim::shop::pack_from_key("p_arcana_normal_1");
             game._open_pack(spec, false);
         }
         other => panic!("unknown context {other}"),

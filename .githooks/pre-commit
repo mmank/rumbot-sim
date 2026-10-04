@@ -1,0 +1,32 @@
+#!/bin/sh
+# Formats staged Rust (rustfmt) and Python (ruff) files and re-stages them.
+# Enable once per clone:  git config core.hooksPath .githooks
+# Line endings are handled by .gitattributes, not here.
+
+files=$(git diff --cached --name-only --diff-filter=ACMR -- '*.rs' '*.py' \
+  | grep -v -e '^external/' -e '^vendor/')
+[ -z "$files" ] && exit 0
+
+# Formatting a file that also has unstaged edits would stage those edits too.
+partial=$(git diff --name-only -- $files)
+if [ -n "$partial" ]; then
+  echo "pre-commit: these files have unstaged changes; stage or stash them first:" >&2
+  echo "$partial" | sed 's/^/  /' >&2
+  exit 1
+fi
+
+rs=$(echo "$files" | grep '\.rs$')
+py=$(echo "$files" | grep '\.py$')
+
+if [ -n "$rs" ]; then
+  rustfmt $rs || exit 1
+fi
+if [ -n "$py" ]; then
+  if command -v ruff >/dev/null 2>&1; then
+    ruff format -q $py || exit 1
+  else
+    echo "pre-commit: ruff not installed, skipping Python formatting (pip install ruff)" >&2
+  fi
+fi
+
+git add -- $files

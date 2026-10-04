@@ -8,7 +8,7 @@
 
 use std::path::PathBuf;
 
-use jimbot_sim::game::{Action, ActionType, GameState, PackChoice, Phase};
+use rumbot_sim::game::{Action, ActionType, GameState, PackChoice, Phase};
 
 const SEEDS: [&str; 32] = [
     "FLOW0001", "FLOW0002", "FLOW0003", "FLOW0004", "FLOW0005", "FLOW0006", "FLOW0007", "FLOW0008",
@@ -30,7 +30,7 @@ fn rng_signature(game: &GameState) -> String {
     // fixture cannot know: see `rng::LUA_ONLY_POOLS`.
     let mut keys: Vec<&String> = state
         .keys()
-        .filter(|key| !jimbot_sim::rng::LUA_ONLY_POOLS.contains(&key.as_str()))
+        .filter(|key| !rumbot_sim::rng::LUA_ONLY_POOLS.contains(&key.as_str()))
         .collect();
     keys.sort();
     let parts: Vec<String> = keys
@@ -213,8 +213,8 @@ fn hand_label(game: &GameState) -> String {
         .map(|c| {
             format!(
                 "{}{}",
-                jimbot_sim::cards::rank_of(c).short(),
-                jimbot_sim::cards::suit_of(c).as_str()
+                rumbot_sim::cards::rank_of(c).short(),
+                rumbot_sim::cards::suit_of(c).as_str()
             )
         })
         .collect();
@@ -238,11 +238,11 @@ fn consumable_label(game: &GameState) -> String {
         .join(",")
 }
 
-fn card_label(card: &jimbot_sim::cards::CardRef) -> String {
+fn card_label(card: &rumbot_sim::cards::CardRef) -> String {
     format!(
         "{}{}",
-        jimbot_sim::cards::rank_of(card).short(),
-        jimbot_sim::cards::suit_of(card).as_str()
+        rumbot_sim::cards::rank_of(card).short(),
+        rumbot_sim::cards::suit_of(card).as_str()
     )
 }
 

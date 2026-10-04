@@ -6,7 +6,7 @@
 //! environment depends on and which a single un-restored counter would silently
 //! break.
 
-use jimbot_sim::game::{Action, ActionType, GameState, Phase};
+use rumbot_sim::game::{Action, ActionType, GameState, Phase};
 
 /// Always play the highest-scoring subset, else the first legal action.
 pub fn choose(game: &mut GameState) -> Action {
@@ -45,8 +45,8 @@ pub fn card_labels(game: &GameState) -> Vec<String> {
         .map(|c| {
             format!(
                 "{}{}",
-                jimbot_sim::cards::rank_of(c).short(),
-                jimbot_sim::cards::suit_of(c).as_str()
+                rumbot_sim::cards::rank_of(c).short(),
+                rumbot_sim::cards::suit_of(c).as_str()
             )
         })
         .collect();
@@ -206,7 +206,7 @@ fn previews_are_read_only() {
         // careless restore would leave moved: Runner and Square Joker grow after a
         // hand, and both carry a counter the fingerprint reads.
         for name in ["Runner", "Square Joker", "Joker"] {
-            let joker = jimbot_sim::jokers::make(name);
+            let joker = rumbot_sim::jokers::make(name);
             game.gain_joker(&joker);
         }
 

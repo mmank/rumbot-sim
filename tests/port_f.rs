@@ -22,19 +22,19 @@
 use std::collections::{BTreeMap, BTreeSet};
 use std::rc::Rc;
 
-use jimbot_sim::blinds::{boss_by_name, make_blind, Blind, BlindKind};
-use jimbot_sim::cards::{
+use rumbot_sim::blinds::{boss_by_name, make_blind, Blind, BlindKind};
+use rumbot_sim::cards::{
     make_card, rank_of, suit_of, uid_of, CardRef, Edition, Enhancement, Rank, Suit,
 };
-use jimbot_sim::consumables::{self, spec_or_panic, ConsumableSpec};
-use jimbot_sim::game::{Action, ActionType, GameState, PackChoice, Phase, Tag};
-use jimbot_sim::hands::{evaluate, EvalFlags, HandType};
-use jimbot_sim::jokers::{self, JokerRef};
-use jimbot_sim::rng::RunRng;
-use jimbot_sim::scoring::score_hand;
-use jimbot_sim::shop::{pack_from_key, voucher_by_key, Shop, ShopSlot};
-use jimbot_sim::shop_pool;
-use jimbot_sim::state::{state_dict, StateValue};
+use rumbot_sim::consumables::{self, spec_or_panic, ConsumableSpec};
+use rumbot_sim::game::{Action, ActionType, GameState, PackChoice, Phase, Tag};
+use rumbot_sim::hands::{evaluate, EvalFlags, HandType};
+use rumbot_sim::jokers::{self, JokerRef};
+use rumbot_sim::rng::RunRng;
+use rumbot_sim::scoring::score_hand;
+use rumbot_sim::shop::{pack_from_key, voucher_by_key, Shop, ShopSlot};
+use rumbot_sim::shop_pool;
+use rumbot_sim::state::{state_dict, StateValue};
 
 const S: Suit = Suit::Spades;
 const H: Suit = Suit::Hearts;
@@ -1194,7 +1194,7 @@ fn build(rarity: u8, owned: &[&str], seen: &[&str], showman: bool, flags: &[&str
 }
 
 fn joker_key(name: &str) -> &'static str {
-    jimbot_sim::joker_data::joker_row(name)
+    rumbot_sim::joker_data::joker_row(name)
         .unwrap_or_else(|| panic!("no joker named {name:?}"))
         .key
 }
@@ -1220,7 +1220,7 @@ fn test_a_gated_joker_is_blanked_not_dropped() {
     let full = build(2, &[], &[], false, &[]);
     let gated = build(2, &["m_lucky"], &[], false, &[]);
     assert_eq!(full.len(), gated.len());
-    assert_eq!(full.len(), jimbot_sim::joker_data::pool_for_rarity(2).len());
+    assert_eq!(full.len(), rumbot_sim::joker_data::pool_for_rarity(2).len());
     let lucky_cat = joker_key("Lucky Cat");
     assert!(
         !full.contains(&lucky_cat.to_string()),
@@ -1234,7 +1234,7 @@ fn test_a_gated_joker_is_blanked_not_dropped() {
 
 #[test]
 fn test_every_gate_names_a_real_enhancement() {
-    let gates: BTreeSet<&str> = jimbot_sim::joker_data::JOKER_DATA
+    let gates: BTreeSet<&str> = rumbot_sim::joker_data::JOKER_DATA
         .iter()
         .map(|row| row.enhancement_gate)
         .filter(|g| !g.is_empty())
@@ -1243,7 +1243,7 @@ fn test_every_gate_names_a_real_enhancement() {
         .into_iter()
         .collect();
     assert!(gates.is_subset(&real));
-    let gated = jimbot_sim::joker_data::JOKER_DATA
+    let gated = rumbot_sim::joker_data::JOKER_DATA
         .iter()
         .filter(|row| !row.enhancement_gate.is_empty())
         .count();
@@ -1261,7 +1261,7 @@ fn test_a_joker_already_seen_is_withheld_unless_showman() {
 fn test_the_pools_are_the_games_sizes() {
     let sizes: Vec<usize> = [1, 2, 3, 4]
         .iter()
-        .map(|r| jimbot_sim::joker_data::pool_for_rarity(*r).len())
+        .map(|r| rumbot_sim::joker_data::pool_for_rarity(*r).len())
         .collect();
     assert_eq!(sizes, vec![61, 64, 20, 5]);
     assert_eq!(sizes.iter().sum::<usize>(), 150);
@@ -1472,7 +1472,7 @@ fn test_the_enhancement_pool_is_the_games_order() {
 fn test_pack_data_carries_the_prices() {
     // The cost is the pack's, not a function of its size class.
     let by_key = |key: &str| {
-        jimbot_sim::pack_data::PACK_DATA
+        rumbot_sim::pack_data::PACK_DATA
             .iter()
             .find(|row| row.key == key)
             .unwrap_or_else(|| panic!("no pack {key:?}"))
@@ -1586,7 +1586,7 @@ fn test_full_content_is_loaded() {
     // The whole point of running the real Lua: nothing is a subset. The
     // port's registries and data tables are the same content, so the counts
     // are asserted against them.
-    assert_eq!(jimbot_sim::jokers::all_specs().len(), 150);
+    assert_eq!(rumbot_sim::jokers::all_specs().len(), 150);
     assert_eq!(
         consumables::by_kind(consumables::ConsumableKind::Tarot).len(),
         22
@@ -1599,11 +1599,11 @@ fn test_full_content_is_loaded() {
         consumables::by_kind(consumables::ConsumableKind::Spectral).len(),
         18
     );
-    assert_eq!(jimbot_sim::shop::all_vouchers().len(), 32);
+    assert_eq!(rumbot_sim::shop::all_vouchers().len(), 32);
     // G.P_BLINDS: the Small and Big blinds plus every boss, ordinary then
     // finisher.
-    assert_eq!(jimbot_sim::blinds::all_bosses().count() + 2, 30);
-    assert_eq!(jimbot_sim::tag_data::TAG_DATA.len(), 24);
+    assert_eq!(rumbot_sim::blinds::all_bosses().count() + 2, 30);
+    assert_eq!(rumbot_sim::tag_data::TAG_DATA.len(), 24);
 }
 
 #[test]

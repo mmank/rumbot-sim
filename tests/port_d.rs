@@ -15,18 +15,18 @@
 use std::collections::HashSet;
 use std::rc::Rc;
 
-use jimbot_sim::blinds::{
+use rumbot_sim::blinds::{
     boss_by_name, make_blind, BlindKind, BossEffect, BOSSES, FINISHER_BOSSES,
 };
-use jimbot_sim::cards::{make_card, uid_of, CardRef, Edition, Enhancement, Rank, Seal, Suit};
-use jimbot_sim::consumables::spec_or_panic;
-use jimbot_sim::game::{Action, ActionType, GameState, PackChoice, Phase, BOSS_REROLL_COST};
-use jimbot_sim::hands::HandType;
-use jimbot_sim::jokers::{self, JokerRef};
-use jimbot_sim::rng::RunRng;
-use jimbot_sim::scoring::held_triggers;
-use jimbot_sim::shop::{voucher_by_key, PackKind, PackSpec, ShopSlot};
-use jimbot_sim::shop_pool::{draw_joker, PackCard};
+use rumbot_sim::cards::{make_card, uid_of, CardRef, Edition, Enhancement, Rank, Seal, Suit};
+use rumbot_sim::consumables::spec_or_panic;
+use rumbot_sim::game::{Action, ActionType, GameState, PackChoice, Phase, BOSS_REROLL_COST};
+use rumbot_sim::hands::HandType;
+use rumbot_sim::jokers::{self, JokerRef};
+use rumbot_sim::rng::RunRng;
+use rumbot_sim::scoring::held_triggers;
+use rumbot_sim::shop::{voucher_by_key, PackKind, PackSpec, ShopSlot};
+use rumbot_sim::shop_pool::{draw_joker, PackCard};
 
 // ==========================================================================
 // shared builders

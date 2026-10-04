@@ -8,14 +8,14 @@
 
 use std::rc::Rc;
 
-use jimbot_sim::cards::{
+use rumbot_sim::cards::{
     edition_of, enhancement_of, extra_chips_of, make_card, rank_of, seal_of, suit_of, Edition,
     Enhancement, Rank, Seal, Suit,
 };
-use jimbot_sim::consumables::{self, spec_or_panic};
-use jimbot_sim::game::GameState;
-use jimbot_sim::hands::HandType;
-use jimbot_sim::jokers;
+use rumbot_sim::consumables::{self, spec_or_panic};
+use rumbot_sim::game::GameState;
+use rumbot_sim::hands::HandType;
+use rumbot_sim::jokers;
 
 const FIXTURE: &str = include_str!("fixtures/consumable_specs.txt");
 
@@ -33,7 +33,7 @@ fn fresh() -> GameState {
     game
 }
 
-fn apply(name: &str, game: &mut GameState, cards: &[jimbot_sim::cards::CardRef]) {
+fn apply(name: &str, game: &mut GameState, cards: &[rumbot_sim::cards::CardRef]) {
     let spec = spec_or_panic(name);
     (spec.apply.expect("a registered consumable has an apply"))(game, cards);
 }
@@ -103,7 +103,7 @@ fn every_python_registry_card_is_registered() {
         "consumable_data rows with no spec: {missing_from_data:?}"
     );
     assert_eq!(
-        jimbot_sim::consumable_data::CONSUMABLE_DATA.len(),
+        rumbot_sim::consumable_data::CONSUMABLE_DATA.len(),
         data_total,
         "the data table has a different row count"
     );

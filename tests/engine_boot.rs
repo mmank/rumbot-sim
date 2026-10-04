@@ -4,9 +4,9 @@
 //! boots from a seed, builds the game's own 52-card deck in the game's own
 //! order, and the deck's own config lands on the run.
 
-use jimbot_sim::cards::{rank_of, suit_of, Suit};
-use jimbot_sim::game::{GameState, Phase, BASE_CONSUMABLE_SLOTS, BASE_HAND_SIZE};
-use jimbot_sim::jokers;
+use rumbot_sim::cards::{rank_of, suit_of, Suit};
+use rumbot_sim::game::{GameState, Phase, BASE_CONSUMABLE_SLOTS, BASE_HAND_SIZE};
+use rumbot_sim::jokers;
 
 #[test]
 fn a_run_boots_from_a_seed() {
@@ -19,13 +19,13 @@ fn a_run_boots_from_a_seed() {
     let mut uids: Vec<u64> = game
         .draw_pile
         .iter()
-        .map(jimbot_sim::cards::uid_of)
+        .map(rumbot_sim::cards::uid_of)
         .collect();
     uids.sort();
     let mut deck_uids: Vec<u64> = game
         .full_deck
         .iter()
-        .map(jimbot_sim::cards::uid_of)
+        .map(rumbot_sim::cards::uid_of)
         .collect();
     deck_uids.sort();
     assert_eq!(uids, deck_uids);

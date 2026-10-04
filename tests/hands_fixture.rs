@@ -6,8 +6,8 @@
 //! hand, or scores a different card, or misses a containment, fails here rather
 //! than three thousand decisions into a run.
 
-use jimbot_sim::cards::{make_card, uid_of, CardRef, Enhancement, Rank, Suit};
-use jimbot_sim::hands::{evaluate, EvalFlags, HandSet, HandType};
+use rumbot_sim::cards::{make_card, uid_of, CardRef, Enhancement, Rank, Suit};
+use rumbot_sim::hands::{evaluate, EvalFlags, HandSet, HandType};
 use std::rc::Rc;
 
 const FIXTURE: &str = include_str!("fixtures/hands.txt");

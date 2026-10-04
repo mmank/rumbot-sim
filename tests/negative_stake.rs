@@ -1,6 +1,6 @@
 //! A negative stake is its positive twin with every sticker on.
 
-use jimbot_sim::game::GameState;
+use rumbot_sim::game::GameState;
 
 #[test]
 fn minus_n_is_n_with_every_sticker() {
